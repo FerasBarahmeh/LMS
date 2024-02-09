@@ -1,0 +1,19 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0.5rem; /* 16px 8px */
+    transition: ease-in-out 150ms;
+    outline: none;
+    border: none;
+    height: 20px;
+    border-radius: 2px;
+}
+.btn:hover {
+    background-color: var(--salt-box);
+}
+.btn-primary {
+    background-color: var(--east-bay);
+    color: var(--lavender-gray);
+}
+
