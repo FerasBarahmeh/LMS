@@ -1,36 +1,63 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-{{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
+        @include('backend.layouts.meta')
+        <!-- Title -->
+        <title> {{ $title }} </title>
+        @include('backend.layouts.links')
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+    <body class="main-body app sidebar-mini dark-theme">
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+        <!-- Loader -->
+        <div id="global-loader">
+            <img src="{{asset('backend/assets/img/loader.svg')}}" class="loader-img" alt="Loader">
         </div>
+
+
+        <section class="page">
+            @include('backend.layouts.main-aside')
+
+            <div class="main-content app-content">
+                @include('backend.layouts.main-header')
+                <div class="container-fluid">
+                    <!-- breadcrumb -->
+                    <div class="breadcrumb-header justify-content-between">
+                        <div class="left-content">
+                            <div>
+                                <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
+                                <p class="mg-b-0">Sales monitoring dashboard template.</p>
+                            </div>
+                        </div>
+                        <div class="main-dashboard-header-right">
+                            <div>
+                                <label class="tx-13">Customer Ratings</label>
+                                <div class="main-star">
+                                    <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star"></i> <span>(14,873)</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="tx-13">Online Sales</label>
+                                <h5>563,275</h5>
+                            </div>
+                            <div>
+                                <label class="tx-13">Offline Sales</label>
+                                <h5>783,675</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /breadcrumb -->
+                    {{ $content }}
+                </div>
+
+            </div>
+
+            @include('backend.layouts.right-sidebar')
+
+            @include('backend.layouts.footer')
+        </section>
+
+
+        @include('backend.layouts.scripts')
     </body>
 </html>

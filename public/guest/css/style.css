@@ -34931,8 +34931,9 @@ input.parsley-error:focus, textarea.parsley-error:focus, input.parsley-success:f
 
 .main-signup-header h2 {
     font-weight: 500;
-    color: #0162e8;
+    color: var(--blue-marguerite);
     letter-spacing: -1px;
+    margin-bottom: 20px;
 }
 
 .main-signup-header h4 {

@@ -4,7 +4,7 @@
 Project        :   VALEX - HTML5 Bootstrap Admin Template
 Version        :   V.1
 Create Date    :   09/05/20
-Copyright      :   Spruko Technologies Private Limited 
+Copyright      :   Spruko Technologies Private Limited
 Author         :   SprukoSoft
 Author URL     :   https://themeforest.net/user/sprukosoft
 Support	       :   support@spruko.com
@@ -37176,9 +37176,10 @@ input.parsley-error:focus, textarea.parsley-error:focus, input.parsley-success:f
 }
 
 .main-signup-header h2 {
-  font-weight: 500;
-  color: #0162e8;
-  letter-spacing: -1px;
+    font-weight: 500;
+    color: var(--blue-marguerite);
+    letter-spacing: -1px;
+    margin-bottom: 20px;
 }
 
 .main-signup-header h4 {

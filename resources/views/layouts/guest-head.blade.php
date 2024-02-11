@@ -10,7 +10,7 @@
 <link href="{{asset('guest/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
 {{-- Sidemenu css --}}
 <link rel="stylesheet" href="{{asset('guest/css/sidemenu.css')}}">
-@yield('css')
+
 {{-- Maps css --}}
 <link href="{{asset('guest/plugins/jqvmap/jqvmap.min.css')}}" rel="stylesheet">
 {{-- style css --}}
@@ -20,3 +20,4 @@
 <link href="{{asset('guest/css/skin-modes.css')}}" rel="stylesheet" />
 <link href="{{asset('css/buttons.css')}}" rel="stylesheet" />
 <link href="{{asset('css/style.css')}}" rel="stylesheet" />
+@yield('css')
