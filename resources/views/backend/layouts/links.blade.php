@@ -25,3 +25,4 @@
 
 <!---Skinmodes css-->
 <link href="{{ asset('backend/assets/css/skin-modes.css')}}" rel="stylesheet" />
+@stack('css')

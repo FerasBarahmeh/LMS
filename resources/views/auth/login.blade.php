@@ -55,7 +55,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex items-center justify-end mt-4">
-                                                    <x-primary-button class="ms-3">
+                                                    <x-primary-button class="ms-3 w-100">
                                                         {{ __('Log in') }}
                                                     </x-primary-button>
                                                 </div>
