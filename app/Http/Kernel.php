@@ -3,6 +3,7 @@
 namespace App\Http;
 
 
+use App\Enums\Privileges;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -43,6 +44,18 @@ class Kernel extends HttpKernel
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+        Privileges::Instructor->value => [
+            \App\Http\Middleware\InstructorPrivilege::class,
+        ],
+
+        Privileges::Admin->value => [
+            \App\Http\Middleware\AdminPrivilege::class,
+        ],
+
+        Privileges::Student->value => [
+            \App\Http\Middleware\StudentPrivilege::class,
         ],
     ];
 
