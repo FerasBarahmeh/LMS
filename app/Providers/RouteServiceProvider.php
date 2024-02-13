@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Enums\Privileges;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -14,10 +15,19 @@ class RouteServiceProvider extends ServiceProvider
      * The path to your application's "home" route.
      *
      * Typically, users are redirected here after authentication.
-     *
-     * @var string
      */
-    public const HOME = '/dashboard';
+    public static function determineIntendedHome(): string|null
+    {
+        $intended = null;
+        if (request()->user()->privilege === Privileges::Admin->value) {
+            $intended = route('admin.dashboard');
+        } elseif(request()->user()->privilege === Privileges::Student->value) {
+            $intended = route('student.dashboard');
+        } elseif(request()->user()->privilege === Privileges::Instructor->value) {
+            $intended = route('instructor.dashboard');
+        }
+        return $intended;
+    }
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
