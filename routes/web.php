@@ -22,6 +22,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    /**
+     * Instructors
+     */
+    Route::prefix('instructors')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admins\InstructorController::class, 'index'])
+            ->name('instructor.index');
+
+    });
 });
 
 require __DIR__ . '/auth.php';

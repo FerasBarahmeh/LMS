@@ -3,16 +3,34 @@ $(function(e) {
 	var table = $('#example').DataTable({
 		lengthChange: false,
 		buttons: [ 'copy', 'excel', 'pdf', 'colvis' ],
+        // buttons:[
+        //     {
+        //         extend: 'copy',
+        //         className: 'btn btn-danger'
+        //     },
+        //     {
+        //         extend: 'colvis',
+        //         className: 'btn btn-warning',
+        //     },
+        //     {
+        //         extend: 'print',
+        //         className: 'btn btn-success',
+        //         split: ['pdf','excel','csv']
+        //     }
+        // ],
 		responsive: true,
+        paging: false,
+        info:false,
 		language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',
 			lengthMenu: '_MENU_ ',
-		}
+		},
+
 	});
 	table.buttons().container()
-	.appendTo( '#example_wrapper .col-md-6:eq(0)' );		
-	
+	.appendTo( '#example_wrapper .col-md-6:eq(0)' );
+
 	$('#example1').DataTable({
 		language: {
 			searchPlaceholder: 'Search...',
@@ -35,7 +53,7 @@ $(function(e) {
 			sSearch: '',
 			lengthMenu: '_MENU_',
 		}
-	}); 
+	});
     $('#example-delete tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
             $(this).removeClass('selected');
@@ -45,11 +63,11 @@ $(function(e) {
             $(this).addClass('selected');
         }
     } );
- 
+
     $('#button').click( function () {
         table.row('.selected').remove().draw( false );
     } );
-	
+
 	//Details display datatable
 	$('#example-1').DataTable( {
 		responsive: true,

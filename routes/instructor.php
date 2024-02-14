@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])
     ->prefix('instructor')->group(function () {
-        Route::get('dashboard', [InstructorController::class, 'index'])
+        Route::get('dashboard', [InstructorController::class, 'dashboard'])
             ->name('instructor.dashboard');
     });
