@@ -7,7 +7,7 @@
     @include('backend.layouts.links')
 </head>
 
-<body class="main-body app sidebar-mini dark-theme">
+<body class="main-body app sidebar-mini {{ auth()->user()->theme == \App\Enums\Theme::Dim->value ? 'dark-theme' : '' }}"> {{-- dark-theme --}}
 
 <!-- Loader -->
 <div id="global-loader">

@@ -4,6 +4,9 @@
 <!-- Icons css -->
 <link href="{{ asset('backend/assets/css/icons.css')}}" rel="stylesheet">
 
+<!--- Internal Select2 css-->
+<link href="{{ asset('backend/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
 <!--  Owl-carousel css-->
 <link href="{{ asset('backend/assets/plugins/owl-carousel/owl.carousel.css')}}" rel="stylesheet" />
 

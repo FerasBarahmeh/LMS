@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function () {
         ->name('user.toggle.status')
         ->middleware('admin');
 
+    Route::put('/change-theme', [UnifiedController::class, 'changeTheme'])
+        ->name('user.change.theme');
+
     /**
      * Instructors
      */

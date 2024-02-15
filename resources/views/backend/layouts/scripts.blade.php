@@ -4,6 +4,9 @@
 <!-- JQuery min js -->
 <script src="{{ asset('backend/assets/plugins/jquery/jquery.min.js')}}"></script>
 
+<!--Internal  Select2 js -->
+<script src="{{ asset('backend/assets/plugins/select2/js/select2.min.js') }}"></script>
+
 <!-- Bootstrap Bundle js -->
 <script src="{{ asset('backend/assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 

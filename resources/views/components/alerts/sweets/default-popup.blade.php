@@ -1,6 +1,6 @@
 @props([
-    'success',
-    'fail',
+    'success' => null,
+    'fail' => null,
     'title' => 'Well done !',
     'confirmButtonColor' => '#57a94f',
     'confirmButtonText' => 'Acknowledged',

@@ -22,6 +22,12 @@
                             <span> Delete Account</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="#app-settings" data-toggle="tab">
+                            <i class="fa fa-desktop"></i>
+                            <span> App Settings</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -35,6 +41,10 @@
                 </div>
                 <div class="tab-pane" id="tab13">
                     @include('profile.partials.delete-user-form')
+                </div>
+
+                <div class="tab-pane" id="app-settings">
+                    @include('profile.partials.app-setting')
                 </div>
 
             </div>
