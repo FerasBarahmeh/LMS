@@ -10,3 +10,5 @@
     </td>
 </tr>
 <x-backend.confirm-toggle-status :id="$instructor->id" :status="$instructor->status"/>
+
+@include('backend.instructors.widget-information', ['instructor' => $instructor])
