@@ -9,10 +9,14 @@
                             <h4 class="card-title mg-b-0">Instructors</h4>
                             <i class="mdi mdi-dots-horizontal text-gray"></i>
                         </div>
-                        <p class="tx-12 tx-gray-500 mb-2">They comprise the entire roster of instructors on your platform.</p>
+                        <p class="tx-12 tx-gray-500 mb-2">They comprise the entire roster of instructors on your
+                            platform.</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+                            <div class="container mb-1">
+                                <x-alerts.errors :success="$errors->get('password')"/>
+                            </div>
                             <table id="example" class="table key-buttons text-md-nowrap">
                                 <thead>
                                 <tr>
@@ -37,7 +41,14 @@
             </div>
             <!--/div-->
         </div>
+
     </x-slot>
 
     @include('layouts.table-data-assets')
+
+    <x-alerts.sweets.default-popup
+        :title="'Changed Successfully'"
+        :success="session('change-status-success')"
+        :fail="session('change-status-fail')"
+    />
 </x-app-layout>

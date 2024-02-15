@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admins\InstructorController;
+use App\Http\Controllers\Admins\UnifiedController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,10 +26,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     /**
+     * Unified
+     */
+    Route::put('/toggle-status/{id}', [UnifiedController::class, 'toggleStatus'])
+        ->name('user.toggle.status')
+        ->middleware('admin');
+
+    /**
      * Instructors
      */
     Route::prefix('instructors')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admins\InstructorController::class, 'index'])
+        Route::get('/', [InstructorController::class, 'index'])
             ->name('instructor.index');
 
     });
