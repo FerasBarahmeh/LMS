@@ -27,18 +27,17 @@ return new class extends Migration {
 
             $table->string('password');
 
-            $table->enum('privilege', [Privileges::Admin->value, Privileges::Instructor->value, Privileges::Student->value])
+            $table->enum('privilege', Privileges::values())
                 ->default(Privileges::Student->value);
 
-            $table->enum('status', [Status::Active->value, Status::InActive->value])
+            $table->enum('status', Status::values())
                 ->default(Status::Active->value);
 
-            $table->enum('theme', [Theme::Dim->value, Theme::Light->value])
+            $table->enum('theme', Theme::values())
                 ->default(Theme::Light->value);
 
-            $table->enum('notify_through',
-                [NotifyThrough::Mail, NotifyThrough::DB, NotifyThrough::MDB])
-                ->default(NotifyThrough::Mail);
+            $table->enum('notify_through', NotifyThrough::values())
+                ->default(NotifyThrough::Mail->value);
 
             $table->rememberToken();
             $table->timestamps();
