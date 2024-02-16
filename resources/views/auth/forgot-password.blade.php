@@ -1,4 +1,4 @@
-<x-guest-layout >
+<x-auth-layout :title="'Forget Password'">
 
     <div class="d-flex align-items-center flex-column py-2 m-auto w-50">
         <!-- Session Status -->
@@ -29,4 +29,4 @@
             </form>
         </div>
     </div>
-</x-guest-layout>
+</x-auth-layout>
