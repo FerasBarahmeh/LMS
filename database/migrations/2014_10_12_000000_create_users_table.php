@@ -15,19 +15,28 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
+
             $table->string('username')->unique();
+
+            $table->string('email')->unique();
+
+            $table->timestamp('email_verified_at')->nullable();
+
+            $table->string('password');
+
             $table->enum('privilege', [Privileges::Admin->value, Privileges::Instructor->value, Privileges::Student->value])
                 ->default(Privileges::Student->value);
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+
             $table->enum('status', [Status::Active->value, Status::InActive->value])
                 ->default(Status::Active->value);
 
             $table->enum('theme', [Theme::Dim->value, Theme::Light->value])
                 ->default(Theme::Light->value);
 
+            $table->enum('notify_through', [Theme::Dim->value, Theme::Light->value])
+                ->default(Theme::Light->value);
 
             $table->rememberToken();
             $table->timestamps();

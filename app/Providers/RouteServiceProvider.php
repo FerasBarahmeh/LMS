@@ -19,6 +19,8 @@ class RouteServiceProvider extends ServiceProvider
     public static function determineIntendedHome(): string|null
     {
         $intended = null;
+        if (request()->user()->email_verified_at === null) return '/verify-email';
+
         if (request()->user()->privilege === Privileges::Admin->value) {
             $intended = route('admin.dashboard');
         } elseif(request()->user()->privilege === Privileges::Student->value) {
