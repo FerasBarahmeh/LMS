@@ -4,11 +4,11 @@
     <td>{{ $instructor->username }}</td>
     <td>{{ $instructor->email }}</td>
     <td>{{ $instructor->privilege }}</td>
-    <td><x-backend.status :status="$instructor->status"/></td>
+    <td class="text-center"><x-backend.status :status="$instructor->status"/></td>
     <td class="flex">
         @include('backend.layouts.table-options', ['id' => $instructor->id, 'status' => $instructor->status])
     </td>
 </tr>
-<x-backend.confirm-toggle-status :id="$instructor->id" :status="$instructor->status"/>
+<x-backend.users.confirm-toggle-status :id="$instructor->id" :status="$instructor->status"/>
 
-@include('backend.instructors.widget-information', ['instructor' => $instructor])
+@include('backend.instructors.widget-information', ['user' => $instructor])

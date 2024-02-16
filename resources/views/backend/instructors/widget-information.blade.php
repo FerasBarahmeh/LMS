@@ -1,60 +1,39 @@
 @props([
-    'instructor'
+    'user'
 ])
 
-<x-modal :id="'show-info-' . $instructor->id" >
+<x-modal :id="'show-info-' . $user->id" >
     <div class="modal-header">
-        <h6 class="modal-title text-capitalize ">Information <span class="text-primary">{{ $instructor->username }}</span> Instructor</h6>
+        <h6 class="modal-title text-capitalize ">Information <span class="text-primary">{{ $user->username }}</span> User</h6>
         <x-close-modal-header-button />
     </div>
-    <div class="modal-body ">
-        <div class="rounded-5">
+    <div class="modal-body" @style(['overflow: scroll;'])>
 
-            <div class="row flex justify-content-center" @style(['background-color: #ecf0fa;'])>
-                <div class="col-3 border-right border-secondary border-right-1 pt-2 pb-2 text-capitalize">column</div>
-                <div class="col-9 pt-2 pb-2 text-capitalize">value</div>
+        <div class="d-md-flex " @style(['gap: 10px;'])>
+            <div class="">
+                <div class="panel panel-primary tabs-style-4">
+                    <div class="tab-menu-heading" @style(['width: 100px;'])>
+                        <div class="tabs-menu ">
+                            <!-- Tabs Buttons -->
+                            <ul class="nav panel-tabs">
+                                <li class=""><a href="#tab21" class="active" data-toggle="tab">Main info</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="row flex justify-content-center border-top border-secondary border-top-1">
-                <div class="col-3 border-right border-secondary border-right-1 pt-2 pb-2">Name</div>
-                <div class="col-9 pt-2 pb-2">{{ $instructor->name }}</div>
+            <div class="tabs-style-4" @style(['overflow: scroll;   '])>
+                <div class="panel-body tabs-menu-body" @style(['width: 1000px; padding: 5px;'])>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab21">
+                            @include('backend.users.widget-main-info-section')
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="row flex justify-content-center border-top border-secondary border-top-1">
-                <div class="col-3 border-right border-secondary border-right-1 pt-2 pb-2">Username</div>
-                <div class="col-9 pt-2 pb-2">{{ $instructor->username }}</div>
-            </div>
-
-            <div class="row flex justify-content-center border-top border-secondary border-top-1">
-                <div class="col-3 border-right border-secondary border-right-1 pt-2 pb-2">E-mail</div>
-                <div class="col-9 pt-2 pb-2">{{ $instructor->email }}</div>
-            </div>
-
-            <div class="row flex justify-content-center border-top border-secondary border-top-1">
-                <div class="col-3 border-right border-secondary border-right-1 pt-2 pb-2">Privilege</div>
-                <div class="col-9 pt-2 pb-2">{{ $instructor->privilege }}</div>
-            </div>
-            <div class="row flex justify-content-center border-top border-secondary border-top-1">
-                <div class="col-3 border-right border-secondary border-right-1 pt-2 pb-2">Status</div>
-                <div class="col-9 pt-2 pb-2 text-capitalize {{ $instructor->status === \App\Enums\Status::Active->value ? 'text-success' : 'text-danger'  }}">{{ $instructor->status }}</div>
-            </div>
-            <div class="row flex justify-content-center border-top border-secondary border-top-1">
-                <div class="col-3 border-right border-secondary border-right-1 pt-2 pb-2">Theme</div>
-                <div class="col-9 pt-2 pb-2">{{ $instructor->theme === \App\Enums\Theme::Light->value ?  \App\Enums\Theme::Light->name : \App\Enums\Theme::Dim->name }}</div>
-            </div>
-
-            <div class="row flex justify-content-center border-top border-secondary border-top-1">
-                <div class="col-3 border-right border-secondary border-right-1 pt-2 pb-2">Created At</div>
-                <div class="col-9 pt-2 pb-2">{{ \Illuminate\Support\Carbon::parse($instructor->created_at)->format('Y-M-d   h:i a') }}</div>
-            </div>
-
-            <div class="row flex justify-content-center border-top border-secondary border-top-1">
-                <div class="col-3 border-right border-secondary border-right-1 pt-2 pb-2">Updated At</div>
-                <div class="col-9 pt-2 pb-2">{{ \Illuminate\Support\Carbon::parse($instructor->updated_at)->format('Y-M-d   h:i a') }}</div>
-            </div>
-
-
         </div>
+
+
     </div>
 
     <div class="modal-footer">
