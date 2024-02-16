@@ -3,7 +3,8 @@
 namespace App\Observers;
 
 use App\Models\User;
-use App\Notifications\WelcomeEmailNotification;
+use App\Notifications\ChangeStatusNotification;
+use App\Notifications\WelcomeNotification;
 
 class UserObserver
 {
@@ -12,7 +13,7 @@ class UserObserver
      */
     public function created(User $user): void
     {
-        $user->notify(new WelcomeEmailNotification());
+        $user->notify(new WelcomeNotification());
     }
 
     /**
@@ -20,7 +21,9 @@ class UserObserver
      */
     public function updated(User $user): void
     {
-        //
+        if ($user->isDirty('status')) {
+            $user->notify(new ChangeStatusNotification());
+        }
     }
 
     /**

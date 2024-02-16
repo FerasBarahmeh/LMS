@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\NotifyThrough;
 use App\Enums\Privileges;
 use App\Enums\Status;
 use App\Enums\Theme;
@@ -35,8 +36,9 @@ return new class extends Migration {
             $table->enum('theme', [Theme::Dim->value, Theme::Light->value])
                 ->default(Theme::Light->value);
 
-            $table->enum('notify_through', [Theme::Dim->value, Theme::Light->value])
-                ->default(Theme::Light->value);
+            $table->enum('notify_through',
+                [NotifyThrough::Mail, NotifyThrough::DB, NotifyThrough::MDB])
+                ->default(NotifyThrough::Mail);
 
             $table->rememberToken();
             $table->timestamps();
