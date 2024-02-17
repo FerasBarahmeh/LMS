@@ -36,7 +36,7 @@
                 <ul class="slide-menu">
                     <li>
                         <a class="slide-item text-capitalize" href="#">show all</a>
-{{--                        <a class="slide-item text-capitalize" href="{{ route('instructor.index') }}">instructors</a>--}}
+                        <a class="slide-item text-capitalize" href="{{ route('admin.instructors') }}">instructors</a>
                     </li>
                 </ul>
             </li>
@@ -50,7 +50,7 @@
                 </a>
                 <ul class="slide-menu">
                     <li>
-                        <a class="slide-item text-capitalize" href="{{ route('instructor.index') }}">show all</a>
+                        <a class="slide-item text-capitalize" href="{{ route('admin.instructors') }}">show all</a>
                     </li>
                 </ul>
             </li>

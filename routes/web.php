@@ -37,15 +37,6 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/change-theme', [UnifiedController::class, 'changeTheme'])
         ->name('user.change.theme');
-
-    /**
-     * Instructors
-     */
-    Route::prefix('instructors')->group(function () {
-        Route::get('/', [InstructorController::class, 'index'])
-            ->name('instructor.index');
-
-    });
 });
 
 require __DIR__ . '/auth.php';

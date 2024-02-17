@@ -11,4 +11,4 @@
 </tr>
 <x-backend.users.confirm-toggle-status :id="$instructor->id" :status="$instructor->status"/>
 
-@include('backend.instructors.widget-information', ['user' => $instructor])
+@include('backend.admins.instructors.widget-information', ['user' => $instructor])

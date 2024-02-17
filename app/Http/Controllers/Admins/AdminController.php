@@ -19,4 +19,9 @@ class AdminController extends Controller
     {
         return $this->admin->index();
     }
+
+    public function instructors()
+    {
+        return $this->admin->instructors();
+    }
 }
