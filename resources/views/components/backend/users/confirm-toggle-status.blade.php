@@ -16,9 +16,16 @@
                 {{ __('Are you sure you want to change status for instructor ?') }}
             </h2>
 
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ __('Modify status for the instructor, resulting in the deactivation of all courses and restricting student access to these specific courses.') }}
-            </p>
+            @if($status === \App\Enums\Status::Active->value )
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Modify status for the user, resulting in the deactivation of account in platform.') }}
+            @else
+                </p>                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Make the account now active and ready to use on our platform.') }}
+                </p>
+
+            @endif
+
 
             <div class="mt-6">
                 <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />

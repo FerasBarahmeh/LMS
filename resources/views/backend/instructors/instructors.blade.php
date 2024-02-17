@@ -4,7 +4,7 @@
     <td>{{ $instructor->username }}</td>
     <td>{{ $instructor->email }}</td>
     <td>{{ $instructor->privilege }}</td>
-    <td class="text-center"><x-backend.status :status="$instructor->status"/></td>
+    <td class="text-center position-relative"><x-backend.status :status="$instructor->status" :style="'pulse'"/></td>
     <td class="flex">
         @include('backend.layouts.table-options', ['id' => $instructor->id, 'status' => $instructor->status])
     </td>
