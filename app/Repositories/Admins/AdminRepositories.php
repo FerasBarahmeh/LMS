@@ -26,7 +26,7 @@ class AdminRepositories implements DBAdminInterface, StrictVariablesInterface
         $instructors = User::where('privilege', Privileges::Instructor->value)
             ->paginate(10);
 
-        return view($this->bladePath('instructors/index'), [
+        return view($this->bladePath('instructors.index'), [
             'instructors' => $instructors,
         ]);
 
@@ -37,6 +37,6 @@ class AdminRepositories implements DBAdminInterface, StrictVariablesInterface
      */
     public function bladePath(string $blade): string
     {
-        return 'backend/admins/' . $blade;
+        return 'backend.admins.' . $blade;
     }
 }

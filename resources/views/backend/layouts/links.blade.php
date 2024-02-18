@@ -28,4 +28,6 @@
 
 <!---Skinmodes css-->
 <link href="{{ asset('backend/assets/css/skin-modes.css')}}" rel="stylesheet" />
+{{-- Custem --}}
+<link href="{{ asset('css/style.css')}}" rel="stylesheet">
 @stack('css')

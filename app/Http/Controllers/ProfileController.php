@@ -3,22 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Interfaces\Repositories\Admins\DBProfileInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    private DBProfileInterface $profile;
+
+    public function __construct(DBProfileInterface $profile)
+    {
+        $this->profile = $profile;
+    }
+
     /**
      * Display the user's profile form.
      */
+    public function index(Request $request): View
+    {
+        return $this->profile->index($request);
+    }
+
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        return $this->profile->edit($request);
     }
 
     /**
@@ -26,18 +35,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $saved = $request->user()->save();
-
-        if (! $saved)
-            return Redirect::route('profile.edit')->with('profile-update-fail', 'Fail  Updated Profile');
-
-        return Redirect::route('profile.edit')->with('profile-update-successfully', 'Profile Updated Successfully');
+        return $this->profile->update($request);
     }
 
     /**
@@ -45,19 +43,6 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
-        $user = $request->user();
-
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+        return $this->profile->destroy($request);
     }
 }

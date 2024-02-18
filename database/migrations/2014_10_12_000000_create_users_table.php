@@ -17,15 +17,17 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-
-            $table->string('username')->unique();
-
+            $table->string('name', 255);
+            $table->string('first_name', 127)->nullable();
+            $table->string('last_name', 127)->nullable();
+            $table->string('username', 30)->unique();
             $table->string('email')->unique();
-
-            $table->timestamp('email_verified_at')->nullable();
-
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('designation')->nullable();
+            $table->string('website')->nullable();
+            $table->string('phone', 10)->nullable();
+            $table->string('about')->nullable();
 
             $table->enum('privilege', Privileges::values())
                 ->default(Privileges::Student->value);

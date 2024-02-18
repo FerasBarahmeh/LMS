@@ -3,209 +3,226 @@
         <div class="container">
             <x-alerts.alert :success="session('profile-update-successfully')"
                             :fail="session('profile-update-fail')"/>
-            <x-alerts.alert :success="session('password-updated-successfully')" />
-            <x-alerts.alert :success="session('status')" />
+            <x-alerts.alert :success="session('password-updated-successfully')"/>
+            <x-alerts.alert :success="session('status')"/>
+
         </div>
         <div class="row row-sm">
-            <div class="col-lg-4">
-                <div class="card mg-b-20">
-                    <div class="card-body">
-                        <div class="pl-0">
-                            <div class="main-profile-overview">
-                                <div class="main-img-user profile-user">
-                                    <img alt="" src="{{ asset('backend/assets/img/faces/6.jpg') }}"><a
-                                        class="fas fa-camera profile-edit" href="JavaScript:void(0);"></a>
-                                </div>
-                                <div class="d-flex justify-content-between mg-b-20">
-                                    <div>
-                                        <h5 class="main-profile-name">Petey Cruiser</h5>
-                                        <p class="main-profile-name-text">Web Designer</p>
-                                    </div>
-                                </div>
-                                <h6>Bio</h6>
-                                <div class="main-profile-bio">
-                                    pleasure rationally encounter but because pursue consequences that are extremely
-                                    painful.occur in which toil and pain can procure him some great pleasure.. <a
-                                        href="">More</a>
-                                </div><!-- main-profile-bio -->
-                                <div class="row">
-                                    <div class="col-md-4 col mb20">
-                                        <h5>947</h5>
-                                        <h6 class="text-small text-muted mb-0">Followers</h6>
-                                    </div>
-                                    <div class="col-md-4 col mb20">
-                                        <h5>583</h5>
-                                        <h6 class="text-small text-muted mb-0">Tweets</h6>
-                                    </div>
-                                    <div class="col-md-4 col mb20">
-                                        <h5>48</h5>
-                                        <h6 class="text-small text-muted mb-0">Posts</h6>
-                                    </div>
-                                </div>
-                                <hr class="mg-y-30">
-                                <label class="main-content-label tx-13 mg-b-20">Social</label>
-                                <div class="main-profile-social-list">
-                                    <div class="media">
-                                        <div class="media-icon bg-primary-transparent text-primary">
-                                            <i class="icon ion-logo-github"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <span>Github</span> <a href="">github.com/spruko</a>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="media-icon bg-success-transparent text-success">
-                                            <i class="icon ion-logo-twitter"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <span>Twitter</span> <a href="">twitter.com/spruko.me</a>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="media-icon bg-info-transparent text-info">
-                                            <i class="icon ion-logo-linkedin"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <span>Linkedin</span> <a href="">linkedin.com/in/spruko</a>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="media-icon bg-danger-transparent text-danger">
-                                            <i class="icon ion-md-link"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <span>My Portfolio</span> <a href="">spruko.com/</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="mg-y-30">
-                                <h6>Skills</h6>
-                                <div class="skill-bar mb-4 clearfix mt-3">
-                                    <span>HTML5 / CSS3</span>
-                                    <div class="progress mt-2">
-                                        <div class="progress-bar bg-primary-gradient" role="progressbar"
-                                             aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                                             style="width: 85%"></div>
-                                    </div>
-                                </div>
-                                <!--skill bar-->
-                                <div class="skill-bar mb-4 clearfix">
-                                    <span>Javascript</span>
-                                    <div class="progress mt-2">
-                                        <div class="progress-bar bg-danger-gradient" role="progressbar"
-                                             aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                                             style="width: 89%"></div>
-                                    </div>
-                                </div>
-                                <!--skill bar-->
-                                <div class="skill-bar mb-4 clearfix">
-                                    <span>Bootstrap</span>
-                                    <div class="progress mt-2">
-                                        <div class="progress-bar bg-success-gradient" role="progressbar"
-                                             aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                                             style="width: 80%"></div>
-                                    </div>
-                                </div>
-                                <!--skill bar-->
-                                <div class="skill-bar clearfix">
-                                    <span>Coffee</span>
-                                    <div class="progress mt-2">
-                                        <div class="progress-bar bg-info-gradient" role="progressbar" aria-valuenow="85"
-                                             aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <!--skill bar-->
-                            </div><!-- main-profile-overview -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
+            <div class="container-fluid">
+                <!-- row -->
                 <div class="row row-sm">
-                    <div class="col-sm-12 col-xl-4 col-lg-12 col-md-12">
-                        <div class="card ">
-                            <div class="card-body">
-                                <div class="counter-status d-flex md-mb-0">
-                                    <div class="counter-icon bg-primary-transparent">
-                                        <i class="icon-layers text-primary"></i>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <h5 class="tx-13">Orders</h5>
-                                        <h2 class="mb-0 tx-22 mb-1 mt-1">1,587</h2>
-                                        <p class="text-muted mb-0 tx-11"><i
-                                                class="si si-arrow-up-circle text-success mr-1"></i>increase</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-4 col-lg-12 col-md-12">
-                        <div class="card ">
-                            <div class="card-body">
-                                <div class="counter-status d-flex md-mb-0">
-                                    <div class="counter-icon bg-danger-transparent">
-                                        <i class="icon-paypal text-danger"></i>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <h5 class="tx-13">Revenue</h5>
-                                        <h2 class="mb-0 tx-22 mb-1 mt-1">46,782</h2>
-                                        <p class="text-muted mb-0 tx-11"><i
-                                                class="si si-arrow-up-circle text-success mr-1"></i>increase</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-4 col-lg-12 col-md-12">
-                        <div class="card ">
-                            <div class="card-body">
-                                <div class="counter-status d-flex md-mb-0">
-                                    <div class="counter-icon bg-success-transparent">
-                                        <i class="icon-rocket text-success"></i>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <h5 class="tx-13">Product sold</h5>
-                                        <h2 class="mb-0 tx-22 mb-1 mt-1">1,890</h2>
-                                        <p class="text-muted mb-0 tx-11"><i
-                                                class="si si-arrow-up-circle text-success mr-1"></i>increase</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="tabs-menu ">
+                    <!-- Col -->
+                    @include('profile.partials.left-aside')
 
+                    <!-- Col -->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-4 main-content-label">Update Your information</div>
+                                <x-alerts.errors/>
+                                <div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
+                                    <form action="{{ route('profile.update') }}" method="post">
+                                        @csrf         @method('patch')
 
-                            <!-- Tabs -->
-                            <ul class="nav nav-tabs profile navtab-custom panel-tabs">
-                                <li class="active">
-                                    <a href="#home" data-toggle="tab" aria-expanded="true"> <span class="visible-xs"><i
-                                                class="las la-user-circle tx-16 mr-1"></i></span> <span
-                                            class="hidden-xs">ABOUT ME</span> </a>
-                                </li>
-                                <li class="">
-                                    <a href="#profile" data-toggle="tab" aria-expanded="false"> <span
-                                            class="visible-xs"><i class="las la-images tx-15 mr-1"></i></span> <span
-                                            class="hidden-xs">GALLERY</span> </a>
-                                </li>
-                                <li class="">
-                                    <a href="#settings" data-toggle="tab" aria-expanded="false"> <span
-                                            class="visible-xs"><i class="las la-cog tx-16 mr-1"></i></span> <span
-                                            class="hidden-xs">SETTINGS</span> </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content border-left border-bottom border-right border-top-0 p-4">
-                            @include('profile.partials.home-tab-pane')
-                            @include('profile.partials.profile-tab-pane')
-                            @include('profile.partials.settings-tab-pane')
+                                        <!-- Name Card -->
+                                        <x-card-simple-collapse :id="'collapseName'" :title="'Name'" :show="true">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <x-input-label for="username" class="form-label"
+                                                                       :value="__('Username')"/>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <x-text-input id="username" name="username" type="text"
+                                                                      class="form-control"
+                                                                      :value="old('username', $user->username)"
+                                                                      required autofocus
+                                                                      autocomplete="username"/>
+                                                        <x-input-error class="mt-2"
+                                                                       :messages="$errors->get('username')"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- first name --}}
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <x-input-label for="username" class="form-label"
+                                                                       :value="__('First Name')"/>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <x-text-input id="first_name" name="first_name"
+                                                                      type="text" class="form-control"
+                                                                      :value="old('first_name', $user->first_name)"
+                                                                      required
+                                                                      autocomplete="first_name"/>
+                                                        <x-input-error class="mt-2"
+                                                                       :messages="$errors->get('first_name')"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {{-- last name --}}
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <x-input-label for="last_name" class="form-label"
+                                                                       :value="__('Last Name')"/>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <x-text-input id="last_name" name="last_name"
+                                                                      type="text" class="form-control"
+                                                                      :value="old('last_name', $user->last_name)"
+                                                                      required
+                                                                      autocomplete="last_name"/>
+                                                        <x-input-error class="mt-2"
+                                                                       :messages="$errors->get('last_name')"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {{-- Designation --}}
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <x-input-label for="designation" class="form-label"
+                                                                       :value="__('Designation')"/>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <x-text-input id="designation" name="designation"
+                                                                      type="text" class="form-control"
+                                                                      :value="old('designation', $user->designation)"
+                                                                      required
+                                                                      autocomplete="designation"/>
+                                                        <x-input-error class="mt-2"
+                                                                       :messages="$errors->get('designation')"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2">
+                                                <x-primary-button :content="'Update Information'"/>
+                                            </div>
+                                        </x-card-simple-collapse>
+                                        <!-- End Name Card  -->
+
+                                        <!-- Contact Card -->
+                                        <x-card-simple-collapse :id="'collapseContact'" :title="'Contact'">
+                                            {{-- E-mail --}}
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <x-input-label for="email" class="form-label"
+                                                                       :value="__('email')"/>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <x-text-input id="email" name="email"
+                                                                      type="email" class="form-control"
+                                                                      :value="old('email', $user->email)"
+                                                                      autocomplete="email"/>
+                                                        <x-input-error class="mt-2"
+                                                                       :messages="$errors->get('email')"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- End E-mail --}}
+
+                                            {{-- Website --}}
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <x-input-label for="website" class="form-label"
+                                                                       :value="__('website')"/>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <x-text-input id="website" name="website"
+                                                                      type="text" class="form-control"
+                                                                      :value="old('website', $user->website)"
+                                                                      autocomplete="website"/>
+                                                        <x-input-error class="mt-2"
+                                                                       :messages="$errors->get('website')"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- End Website --}}
+
+                                            {{-- Phone --}}
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <x-input-label for="phone" class="form-label"
+                                                                       :value="__('phone')"/>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <x-text-input id="phone" name="phone"
+                                                                      type="text" class="form-control"
+                                                                      :value="old('phone', $user->phone)"
+                                                                      autocomplete="phone"/>
+                                                        <x-input-error class="mt-2"
+                                                                       :messages="$errors->get('phone')"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- End Phone --}}
+
+                                            {{-- Address --}}
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <x-input-label for="address" class="form-label"
+                                                                       :value="__('address')"/>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <x-text-input id="address" name="address"
+                                                                      type="text" class="form-control"
+                                                                      :value="old('address', $user->address)"
+                                                                      autocomplete="address"/>
+                                                        <x-input-error class="mt-2"
+                                                                       :messages="$errors->get('address')"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- End Address --}}
+
+                                            <div class="mt-2">
+                                                <x-primary-button :content="'Update Information'"/>
+                                            </div>
+                                        </x-card-simple-collapse>
+                                        <!-- End Contact Card  -->
+
+                                        <!-- ABOUT Card -->
+                                        <x-card-simple-collapse :id="'collapseAbout'" :title="'About'">
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <x-input-label for="about" class="form-label"
+                                                                       :value="__('about')"/>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <x-textarea-input id="about" name="about"
+                                                                          type="text" class="form-control"
+                                                                          autocomplete="about">{{ old('about', $user->about) }}</x-textarea-input>
+                                                        <x-input-error class="mt-2"
+                                                                       :messages="$errors->get('about')"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2">
+                                                <x-primary-button :content="'Update Information'"/>
+                                            </div>
+                                        </x-card-simple-collapse>
+                                        <!-- End About Card -->
+
+                                    </form>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+                    <!-- /Col -->
                 </div>
+                <!-- row closed -->
             </div>
         </div>
     </x-slot>
+
 </x-app-layout>

@@ -13,11 +13,11 @@
                             platform.</p>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive table-responsive-no-bar">
                             <div class="container mb-1">
                                 <x-alerts.errors :success="$errors->get('password')"/>
                             </div>
-                            <table id="example" class="table key-buttons text-md-nowrap">
+                            <table id="example" class="table key-buttons text-md-nowrap ">
                                 <thead>
                                 <tr>
                                     <th class="border-bottom-0">#</th>

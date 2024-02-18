@@ -1,3 +1,11 @@
 ul {
     list-style: none;
 }
+/* Start Custom Data table */
+.table-responsive-no-bar {
+   scrollbar-width: none;
+}
+.table.dataTable.no-footer {
+    border-bottom: 1px solid #eee;
+}
+/* End Custom Data table */
