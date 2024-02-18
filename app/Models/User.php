@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+ use App\Enums\Privileges;
  use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -49,4 +50,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function instructors()
+    {
+        return User::where('privilege', Privileges::Instructor->value)->get();
+    }
 }

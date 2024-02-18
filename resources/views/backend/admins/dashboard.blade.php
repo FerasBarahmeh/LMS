@@ -4,49 +4,43 @@
         <!-- row -->
         <div class="row row-sm">
             <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
-                <div class="card overflow-hidden sales-card bg-primary-gradient">
-                    <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
-                        <div class="">
-                            <h6 class="mb-3 tx-12 text-white">TODAY ORDERS Admin</h6>
-                        </div>
-                        <div class="pb-0 mt-0">
-                            <div class="d-flex">
-                                <div class="">
-                                    <h4 class="tx-20 font-weight-bold mb-1 text-white">$5,74.12</h4>
-                                    <p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
-                                </div>
-                                <span class="float-right my-auto ml-auto">
-												<i class="fas fa-arrow-circle-up text-white"></i>
-												<span class="text-white op-7"> +427</span>
-											</span>
+                <!-- Users Card -->
+                <div class="card  bg-primary-gradient">
+                    <div class="card-body">
+                        <div class="counter-status d-flex md-mb-0">
+                            <div class="counter-icon">
+                                <i class="icon icon-people"></i>
+                            </div>
+                            <div class="ml-auto">
+                                <h5 class="tx-13 tx-white-8 mb-3">Users</h5>
+                                <h2 class="counter mb-0 text-white">{{ \App\Models\User::count() }}</h2>
                             </div>
                         </div>
                     </div>
                     <span id="compositeline" class="pt-1">5,9,5,6,4,12,18,14,10,15,12,5,8,5,12,5,12,10,16,12</span>
                 </div>
+                <!-- End users card -->
             </div>
+
+            <!-- Instructors Card -->
             <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
-                <div class="card overflow-hidden sales-card bg-danger-gradient">
-                    <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
-                        <div class="">
-                            <h6 class="mb-3 tx-12 text-white">TODAY EARNINGS</h6>
-                        </div>
-                        <div class="pb-0 mt-0">
-                            <div class="d-flex">
-                                <div class="">
-                                    <h4 class="tx-20 font-weight-bold mb-1 text-white">$1,230.17</h4>
-                                    <p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
-                                </div>
-                                <span class="float-right my-auto ml-auto">
-												<i class="fas fa-arrow-circle-down text-white"></i>
-												<span class="text-white op-7"> -23.09%</span>
-											</span>
+                <div class="card  bg-danger-gradient">
+                    <div class="card-body">
+                        <div class="counter-status d-flex md-mb-0">
+                            <div class="counter-icon text-warning">
+                                <i class="icon icon-rocket"></i>
+                            </div>
+                            <div class="ml-auto">
+                                <h5 class="tx-13 tx-white-8 mb-3">Instructors</h5>
+                                <h2 class="counter mb-0 text-white">{{ \App\Models\User::instructors()->count() }}</h2>
                             </div>
                         </div>
                     </div>
                     <span id="compositeline2" class="pt-1">3,2,4,6,12,14,8,7,14,16,12,7,8,4,3,2,2,5,6,7</span>
                 </div>
             </div>
+            <!-- End Instructors Card -->
+
             <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
                 <div class="card overflow-hidden sales-card bg-success-gradient">
                     <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -402,4 +396,35 @@
             </div>
         </div>
     </x-slot>
+
+    @push('js')
+
+        <!--Internal  Chart.bundle js -->
+        <script src="{{ asset('backend/assets/plugins/chart.js/Chart.bundle.min.js')}}"></script>
+
+
+        <!--Internal Sparkline js -->
+        <script src="{{ asset('backend/assets/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+
+        <!--Internal Counters -->
+        <script src="{{asset('backend/assets/plugins/counters/waypoints.min.js')}}"></script>
+        <script src="{{asset('backend/assets/plugins/counters/counterup.min.js')}}"></script>
+        <!--Internal Time Counter -->
+        <script src="{{asset('backend/assets/plugins/counters/jquery.missofis-countdown.js')}}"></script>
+        <script src="{{asset('backend/assets/plugins/counters/counter.js')}}"></script>
+
+        <!-- Rating js-->
+        <script src="{{ asset('backend/assets/plugins/rating/jquery.rating-stars.js')}}"></script>
+        <script src="{{ asset('backend/assets/plugins/rating/jquery.barrating.js')}}"></script>
+
+        <!-- Internal Map -->
+        <script src="{{ asset('backend/assets/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+        <script src="{{ asset('backend/assets/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+
+        <!--Internal Apexchart js-->
+        <script src="{{ asset('backend/assets/js/apexcharts.js')}}"></script>
+            <!-- Apexchart js-->
+        <script src="{{ asset('backend/assets/js/apexcharts.js')}}"></script>
+
+    @endpush
 </x-app-layout>
