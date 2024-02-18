@@ -3,21 +3,6 @@ $(function(e) {
 	var table = $('#example').DataTable({
 		lengthChange: false,
 		buttons: [ 'copy', 'excel', 'pdf', 'colvis' ],
-        // buttons:[
-        //     {
-        //         extend: 'copy',
-        //         className: 'btn btn-danger'
-        //     },
-        //     {
-        //         extend: 'colvis',
-        //         className: 'btn btn-warning',
-        //     },
-        //     {
-        //         extend: 'print',
-        //         className: 'btn btn-success',
-        //         split: ['pdf','excel','csv']
-        //     }
-        // ],
 		responsive: true,
         paging: false,
         info:false,
@@ -32,7 +17,9 @@ $(function(e) {
 	.appendTo( '#example_wrapper .col-md-6:eq(0)' );
 
 	$('#example1').DataTable({
-		language: {
+        paging: false,
+        info: false,
+        language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',
 			lengthMenu: '_MENU_',

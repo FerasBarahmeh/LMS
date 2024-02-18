@@ -54,6 +54,21 @@
                     </li>
                 </ul>
             </li>
+
+            <!-- Available Platforms -->
+            <li class="slide">
+                <a class="side-menu__item" data-toggle="slide" href="#">
+                    <i class="fa fa-layer-group ml-2 mr-2"></i>
+                    <span class="side-menu__label">Available Platforms</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li>
+                        <a class="slide-item text-capitalize" href="{{ route('platforms.index') }}">show all</a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </div>
 </aside>

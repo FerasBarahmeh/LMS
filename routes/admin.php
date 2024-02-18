@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admins\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admins\AvailablePlatformController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,9 @@ Route::middleware(['auth', 'verified'])
 
         Route::get('instructors', [AdminController::class, 'instructors'])
             ->name('admin.instructors');
+
+        /**
+         * Available Platforms
+         */
+        Route::resource('platforms', AvailablePlatformController::class);
     });
