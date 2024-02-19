@@ -1,0 +1,48 @@
+1)  create images table with this schema
+
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
+            $table->string('url');
+            $table->integer('imageable_id');
+            $table->string('imageable_type')
+                ->comment('column will contain the class name of the parent model');
+            $table->string('disk');
+            $table->timestamps();
+        });
+
+2) create model with images table
+    set this method
+      public function imageable(): MorphTo
+        {
+            return $this->morphTo();
+        }
+
+3) create  CKEditorController with route and set this code in action
+
+    if ($request->hasFile('upload')) {
+
+            $fileName = Upload::uploadFile('upload', 'temp', 0);
+            $imag = $fileName->getImage();
+            $url = Storage::url($imag->url);
+            return response()->json([
+                'fileName' => $fileName,
+                'uploaded' => true,
+                'url' => $url,
+            ]);
+
+        }
+        return '';
+
+
+* if use this package in text editor set this hidden input in form
+    <x-text-editor :namespace="\App\Models\Example::class"/>
+
+* set name for input
+        <x-text-editor :name="post"/>
+
+* if you get image for Example model
+    public function images(): MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+

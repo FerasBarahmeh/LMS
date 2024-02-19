@@ -55,4 +55,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return User::where('privilege', Privileges::Instructor->value)->get();
     }
+
+    /**
+     * Get the user's profile picture.
+     */
+    public function image(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
