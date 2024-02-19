@@ -9,16 +9,15 @@
                     </div>
                     <div class="d-flex justify-content-between mg-b-20">
                         <div>
-                            <h5 class="main-profile-name">Petey Cruiser</h5>
-                            <p class="main-profile-name-text">Web Designer</p>
+                            <h5 class="main-profile-name">{{ user()->name }}</h5>
+                            <p class="main-profile-name-text">{{ user()->privilege }}</p>
                         </div>
                     </div>
                     <h6>Bio</h6>
                     <div class="main-profile-bio">
-                        pleasure rationally encounter but because pursue consequences that are extremely
-                        painful.occur in which toil and pain can procure him some great pleasure.. <a
-                            href="">More</a>
-                    </div><!-- main-profile-bio -->
+                        {{ user()->about }}
+                    </div>
+                    <!-- main-profile-bio -->
                     <div class="row">
                         <div class="col-md-4 col mb20">
                             <h5>947</h5>

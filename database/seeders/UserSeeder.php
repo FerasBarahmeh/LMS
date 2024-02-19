@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('password'),
+            'about' => 'A results-driven backend developer with hand-on experience excelling in PHP, SQL, Laravel. Indicatively design and implement robust backend solutions.',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -32,6 +33,7 @@ class UserSeeder extends Seeder
             'email' => 'instructor@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('password'),
+            'about' => 'A results-driven backend developer with hand-on experience excelling in PHP, SQL, Laravel. Indicatively design and implement robust backend solutions.',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -43,6 +45,7 @@ class UserSeeder extends Seeder
             'email' => 'student@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('password'),
+            'about' => 'A results-driven backend developer with hand-on experience excelling in PHP, SQL, Laravel. Indicatively design and implement robust backend solutions.',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
