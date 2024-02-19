@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 30)->unique();
             $table->string('domain')->unique();
-            $table->string('color');
             $table->timestamps();
         });
     }
