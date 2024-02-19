@@ -4,8 +4,15 @@
             <div class="pl-0">
                 <div class="main-profile-overview">
                     <div class="main-img-user profile-user">
-                        <img alt="" src="{{ asset('backend/assets/img/faces/6.jpg') }}"><a
-                            class="fas fa-camera profile-edit" href="JavaScript:void(0);"></a>
+                        <!-- Start change profile picture -->
+                        <img alt="" src="{{ asset('backend/assets/img/faces/6.jpg') }}">
+                        <x-modals.buttons.horizontal :dataEffect="'change-profile-picture-modal'" class="profile-edit p-0" >
+                            <i class="fas fa-camera text-dark"></i>
+                        </x-modals.buttons.horizontal>
+
+                        @include('profile.partials.change-profile-picture-modal')
+                        <!-- End change profile picture -->
+
                     </div>
                     <div class="d-flex justify-content-between mg-b-20">
                         <div>
