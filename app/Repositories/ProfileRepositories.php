@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Interfaces\Controllers\StrictVariablesInterface;
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -77,5 +78,17 @@ class ProfileRepositories implements DBProfileInterface, StrictVariablesInterfac
     public function bladePath(string $blade=null): string
     {
         return 'profile.'.$blade;
+    }
+
+    public function changeProfilePicture(Request $request)
+    {
+        $blob = $request->json('image');
+        $user = User::find(auth()->id());
+        $user->clearMediaCollection();
+
+        $user->addMediaFromBase64($blob)
+            ->usingFileName('profile-picture-'.$user->id.'.png')
+            ->toMediaCollection('users');
+        return '';
     }
 }

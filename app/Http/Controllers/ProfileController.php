@@ -45,4 +45,9 @@ class ProfileController extends Controller
     {
         return $this->profile->destroy($request);
     }
+
+    public function changeProfilePicture(Request $request)
+    {
+        return $this->profile->changeProfilePicture($request);
+    }
 }

@@ -28,4 +28,6 @@ interface DBProfileInterface
      * Delete the user's account.
      */
     public function destroy(Request $request): RedirectResponse;
+
+    public function changeProfilePicture(Request $request);
 }
