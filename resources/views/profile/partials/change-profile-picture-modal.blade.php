@@ -5,7 +5,8 @@
 
     <div class="modal-body">
         <form method="post" action="">
-            <input type="file" name="profile-picture"    id="">
+{{--            <input type="file" name="profile-picture"    id="">--}}
+            <x-filepond :name="'profile-picture'"/>
         </form>
     </div>
 

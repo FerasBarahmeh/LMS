@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admins\InstructorController;
 use App\Http\Controllers\Admins\UnifiedController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TemporaryFileController;
+use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    /**
+     * Temporary Files
+     */
+    Route::post('/tmp-upload', [TemporaryFileController::class, 'upload'])
+        ->name('tmp.upload');
+    Route::delete('/tmp-delete', [TemporaryFileController::class, 'delete'])
+        ->name('tmp.delete');
+
 
     /**
      * Unified
