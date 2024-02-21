@@ -41,6 +41,12 @@
 <script src="{{ asset('backend/assets/js/custom.js')}}"></script>
 
 
+<script>
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
 <!--Internal  Flot js-->
 {{--<script src="{{ asset('backend/assets/plugins/jquery.flot/jquery.flot.js')}}"></script>--}}
 {{--<script src="{{ asset('backend/assets/plugins/jquery.flot/jquery.flot.pie.js')}}"></script>--}}

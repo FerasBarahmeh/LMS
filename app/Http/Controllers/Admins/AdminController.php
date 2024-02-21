@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
 use App\Interfaces\Repositories\Admins\DBAdminInterface;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class AdminController extends Controller
 {
@@ -20,8 +20,19 @@ class AdminController extends Controller
         return $this->admin->index();
     }
 
-    public function instructors()
+    public function users(): View
+    {
+        return $this->admin->users();
+    }
+
+
+    public function instructors(): View
     {
         return $this->admin->instructors();
+    }
+
+    public function students(): View
+    {
+        return $this->admin->students();
     }
 }

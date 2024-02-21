@@ -183,8 +183,17 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        /**
+         * Framework class
+         */
+         'Str' => \Illuminate\Support\Str::class,
+
+        /**
+         * Enums
+         */
          'Collection' => \App\Enums\MediaCollections::class,
+         'Status' =>  \App\Enums\Status::class,
+         'Theme' =>  \App\Enums\Theme::class,
     ])->toArray(),
 
 ];

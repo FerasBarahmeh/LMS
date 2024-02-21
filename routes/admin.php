@@ -19,8 +19,19 @@ Route::middleware(['auth', 'verified'])
         Route::get('dashboard', [AdminController::class, 'index'])
             ->name('admin.dashboard');
 
-        Route::get('instructors', [AdminController::class, 'instructors'])
-            ->name('admin.instructors');
+        Route::prefix('users')->group(function () {
+            Route::get('', [AdminController::class, 'users'])
+                ->name('admin.users.all');
+
+            Route::get('instructors', [AdminController::class, 'instructors'])
+                ->name('admin.users.instructors');
+
+
+            Route::get('students', [AdminController::class, 'students'])
+                ->name('admin.users.students');
+
+        });
+
 
         /**
          * Available Platforms

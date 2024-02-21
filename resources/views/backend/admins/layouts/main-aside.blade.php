@@ -18,7 +18,7 @@
                 </div>
                 <div class="user-info">
                     <h4 class="font-weight-semibold mt-3 mb-0">{{ auth()->user()->name }}</h4>
-                    <span class="mb-0 text-muted">{{ \Illuminate\Support\Str::ucfirst(auth()->user()->privilege) }}</span>
+                    <span class="mb-0 text-muted">{{ Str::ucfirst(auth()->user()->privilege) }}</span>
                 </div>
             </div>
         </div>
@@ -28,7 +28,6 @@
                 <a class="side-menu__item" href="{{ route('admin.dashboard') }}">
                     <i class="fa fa-chart-line mr-2 ml-2 "></i>
                     <span class="side-menu__label">Dashboard</span>
-{{--                    <span class="badge badge-success side-badge">1</span>--}}
                 </a>
             </li>
             <li class="side-item side-item-category">General</li>
@@ -41,22 +40,9 @@
                 </a>
                 <ul class="slide-menu">
                     <li>
-                        <a class="slide-item text-capitalize" href="#">show all</a>
-                        <a class="slide-item text-capitalize" href="{{ route('admin.instructors') }}">instructors</a>
-                    </li>
-                </ul>
-            </li>
-
-            <!-- Instructors -->
-            <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="#">
-                    <i class="fa fa-users ml-2 mr-2"></i>
-                    <span class="side-menu__label">Instructors</span>
-                    <i class="angle fe fe-chevron-down"></i>
-                </a>
-                <ul class="slide-menu">
-                    <li>
-                        <a class="slide-item text-capitalize" href="{{ route('admin.instructors') }}">show all</a>
+                        <a class="slide-item text-capitalize" href="{{ route('admin.users.all') }}">show all</a>
+                        <a class="slide-item text-capitalize" href="{{ route('admin.users.instructors') }}">instructors</a>
+                        <a class="slide-item text-capitalize" href="{{ route('admin.users.students') }}">students</a>
                     </li>
                 </ul>
             </li>

@@ -1,4 +1,3 @@
-@php use App\Enums\Status; @endphp
 @props([
     'id',
     'edit' => true,
@@ -9,14 +8,14 @@
 ])
 
 <div class="options" @style(['display: flex; gap: 7px;'])>
-    @if($edit)
+{{--    @if($edit)--}}
 
-        <x-modals.buttons.horizontal :dataEffect="'edit-'.$id" class="p-0 bg-transparent "
-                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Information">
-            <i class="fa fa-edit text-success"></i>
-        </x-modals.buttons.horizontal>
+{{--        <x-modals.buttons.horizontal :dataEffect="'edit-'.$id" class="p-0 bg-transparent "--}}
+{{--                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Information">--}}
+{{--            <i class="fa fa-edit text-success"></i>--}}
+{{--        </x-modals.buttons.horizontal>--}}
+{{--    @endif--}}
 
-    @endif
     @if($eye)
         <x-modals.buttons.horizontal :dataEffect="'show-info-'.$id" class="p-0 bg-transparent "
                                      data-bs-toggle="tooltip" data-bs-placement="top" title="Information">
@@ -45,11 +44,3 @@
             </x-modals.buttons.horizontal>
     @endif
 </div>
-
-@push('js')
-    <script>
-        $(function() {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
-@endpush
