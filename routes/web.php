@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admins\UnifiedController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TemporaryFileController;
-use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,11 +23,27 @@ Route::get('/test', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('/change-profile-picture', [ProfileController::class, 'changeProfilePicture'])->name('profile.change.profile.picture');
+    Route::get('/profile', [ProfileController::class, 'index'])
+        ->name('profile.index');
+
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
+
+    Route::post('/change-profile-picture', [ProfileController::class, 'changeProfilePicture'])
+        ->name('profile.change.profile.picture');
+
+    Route::put('/toggle-status/{id}', [ProfileController::class, 'toggleStatus'])
+        ->name('user.toggle.status')
+        ->middleware('admin');
+
+    Route::put('/change-theme', [ProfileController::class, 'changeTheme'])
+        ->name('user.change.theme');
 
 
     /**
@@ -41,15 +55,6 @@ Route::middleware('auth')->group(function () {
         ->name('tmp.delete');
 
 
-    /**
-     * Unified
-     */
-    Route::put('/toggle-status/{id}', [UnifiedController::class, 'toggleStatus'])
-        ->name('user.toggle.status')
-        ->middleware('admin');
-
-    Route::put('/change-theme', [UnifiedController::class, 'changeTheme'])
-        ->name('user.change.theme');
 });
 
 require __DIR__ . '/auth.php';

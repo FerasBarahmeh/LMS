@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\ToggleStatusRequest;
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,5 +50,14 @@ class ProfileController extends Controller
     public function changeProfilePicture(Request $request)
     {
         return $this->profile->changeProfilePicture($request);
+    }
+
+    public function toggleStatus(ToggleStatusRequest $request, string $id): RedirectResponse
+    {
+        return $this->profile->toggleStatus($request, $id);
+    }
+    public function changeTheme(Request $request): RedirectResponse
+    {
+        return $this->profile->changeTheme($request);
     }
 }
