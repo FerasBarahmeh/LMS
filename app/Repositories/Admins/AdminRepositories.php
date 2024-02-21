@@ -9,20 +9,18 @@ use App\Interfaces\Repositories\Admins\DBAdminInterface;
 use App\Models\User;
 
 use App\Traits\Controllers\QuantumQuerier;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
 class AdminRepositories implements DBAdminInterface, QuantumQuerierInterface
 {
     use QuantumQuerier;
 
-    public function index(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function index(): View
     {
         return view(self::retrieveBlade('dashboard'));
     }
 
-    public function instructors(): View|Factory|\Illuminate\Foundation\Application|Application
+    public function instructors(): View
     {
 
         $instructors = User::where('privilege', Privileges::Instructor->value)
@@ -36,7 +34,7 @@ class AdminRepositories implements DBAdminInterface, QuantumQuerierInterface
 
     public static function setBladeHub(): void
     {
-        self::$BLADES_HUB = 'profile.';
+        self::$BLADES_HUB = 'backend.admins.';
     }
 
     public static function setCollection(): void
