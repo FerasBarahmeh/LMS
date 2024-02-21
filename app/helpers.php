@@ -9,3 +9,11 @@ if (! function_exists('user')) {
         return auth()->user();
     }
 }
+
+if (! function_exists('phantomImagePicker')) {
+    function phantomImagePicker($url)
+    {
+        if ($url == null) return asset('backend/assets/img/faces/6.jpg');
+        return $url;
+    }
+}

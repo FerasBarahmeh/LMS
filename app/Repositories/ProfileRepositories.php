@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Enums\MediaCollections;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Interfaces\Controllers\StrictVariablesInterface;
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
@@ -75,20 +76,25 @@ class ProfileRepositories implements DBProfileInterface, StrictVariablesInterfac
         return Redirect::to('/');
     }
 
+    public function changeProfilePicture(Request $request): void
+    {
+        $blob = $request->json('image');
+        $user = User::find(auth()->id());
+        if ($user->hasMedia(MediaCollections::Users->value))
+            $user->getFirstMedia(MediaCollections::Users->value)->delete();
+
+        $user->addMediaFromBase64($blob)
+            ->usingFileName('profile-picture-'.$user->id.'.png')
+            ->toMediaCollection(MediaCollections::Users->value);
+    }
+
     public function bladePath(string $blade=null): string
     {
         return 'profile.'.$blade;
     }
 
-    public function changeProfilePicture(Request $request)
+    public function collectionName(): string
     {
-        $blob = $request->json('image');
-        $user = User::find(auth()->id());
-        $user->clearMediaCollection();
-
-        $user->addMediaFromBase64($blob)
-            ->usingFileName('profile-picture-'.$user->id.'.png')
-            ->toMediaCollection('users');
-        return '';
+        return MediaCollections::Users->value;
     }
 }

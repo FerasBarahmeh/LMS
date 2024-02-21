@@ -4,6 +4,7 @@ let displayPreviewModalBtn = document.getElementById('display-preview-modal-btn'
 let cropBtn = document.getElementById('crop-btn');
 let footerCanselPreviewBtn = document.getElementById('footer-cansel-preview-btn');
 let headerCanselPreviewBtn = document.getElementById('header-cansel-preview-btn');
+let profilePictureUploaded = document.querySelectorAll('.profile-picture-uploaded');
 let cropper;
 
 
@@ -53,7 +54,6 @@ cropBtn.addEventListener('click', () => {
         render.readAsDataURL(blob);
         render.onloadend = function () {
             let base64data = render.result;
-            console.log(method)
 
             const response = fetch(route, {
                 method: method,
@@ -68,13 +68,15 @@ cropBtn.addEventListener('click', () => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! Status: ${response.status}`);
                     }
-                    return response.json();
+                    footerCanselPreviewBtn.click();
+                    profilePictureUploaded.forEach(img => {
+                        img.src = base64data;
+                    });
+                    return response;
                 })
-                .then((data) => {
-                    console.log(data.message); // Log the success message from the server
-                })
+
                 .catch((error) => {
-                    console.error(error); // Log any errors that occurred during the fetch
+                    console.error(error);
                 });
         };
     });

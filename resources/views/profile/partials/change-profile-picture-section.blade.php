@@ -1,7 +1,7 @@
 <div class="main-img-user profile-user position-relative " >
     <form method="post" >
         <label for="profile-img">
-            <img alt="" src="{{ asset('backend/assets/img/faces/6.jpg') }}" id="uploaded-img">
+            <img alt="" src="{{ phantomImagePicker(user()->getFirstMediaUrl(Collection::Users->value) ) }}" class="profile-picture-uploaded">
             <i class="fas fa-camera text-dark" @style(['position: absolute; top: 5px; right: 0; background-color: #eee; padding: 10px; border-radius: 50%;'])></i>
             <input type="file" name="profile-img" id="profile-img" style="display:none;">
         </label>

@@ -14,4 +14,10 @@ interface StrictVariablesInterface
      * @return string The full path to the specified blade view.
      */
     public function bladePath(string $blade): string;
+
+    /**
+     * Return collection name for this Controller
+     * @return string
+     */
+    public function collectionName(): string;
 }

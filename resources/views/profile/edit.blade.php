@@ -92,7 +92,7 @@
                                                         <x-text-input id="designation" name="designation"
                                                                       type="text" class="form-control"
                                                                       :value="old('designation', $user->designation)"
-                                                                      required
+
                                                                       autocomplete="designation"/>
                                                         <x-input-error class="mt-2"
                                                                        :messages="$errors->get('designation')"/>
