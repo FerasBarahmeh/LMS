@@ -4,22 +4,24 @@ namespace App\Repositories\Admins;
 
 use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
-use App\Interfaces\Controllers\StrictVariablesInterface;
+use App\Interfaces\Controllers\QuantumQuerierInterface;
 use App\Interfaces\Repositories\Admins\DBAvailablePlatformInterface;
 use App\Models\AvailablePlatform;
+use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 
-class AvailablePlatformRepositories implements DBAvailablePlatformInterface, StrictVariablesInterface
+class AvailablePlatformRepositories implements DBAvailablePlatformInterface, QuantumQuerierInterface
 {
+    use QuantumQuerier;
 
     /**
      * @inheritDoc
      */
     public function index(): View
     {
-        return view($this->bladePath('index'), [
+        return view(self::retrieveBlade('index'), [
             'platforms' => AvailablePlatform::all(),
         ]);
     }
@@ -35,7 +37,7 @@ class AvailablePlatformRepositories implements DBAvailablePlatformInterface, Str
     /**
      * @inheritDoc
      */
-    public function store(StoreAvailablePlatformRequest $request)
+    public function store(StoreAvailablePlatformRequest $request): RedirectResponse
     {
         $platform = AvailablePlatform::create($request->validated());
         if (! $platform)
@@ -87,8 +89,13 @@ class AvailablePlatformRepositories implements DBAvailablePlatformInterface, Str
         return Redirect::route('platforms.index')->with('success-delete-platform', 'Successfully delete platform');
     }
 
-    public function bladePath(string $blade): string
+    public static function setBladeHub(): void
     {
-        return 'backend.admins.platforms.' . $blade;
+        self::$BLADES_HUB = 'backend.admins.platforms.';
+    }
+
+    public static function setCollection(): void
+    {
+        self::$COLLECTION = '';
     }
 }

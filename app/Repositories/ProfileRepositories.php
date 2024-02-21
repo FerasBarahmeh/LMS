@@ -4,24 +4,25 @@ namespace App\Repositories;
 
 use App\Enums\MediaCollections;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Interfaces\Controllers\StrictVariablesInterface;
+use App\Interfaces\Controllers\QuantumQuerierInterface;
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
 use App\Models\User;
+use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-class ProfileRepositories implements DBProfileInterface, StrictVariablesInterface
+class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
 {
-
+    use QuantumQuerier;
     /**
      * @inheritDoc
      */
     public function index(Request $request): View
     {
-        return view($this->bladePath('index'), [
+        return view(self::retrieveBlade('index'), [
             'user' => $request->user(),
         ]);
     }
@@ -31,7 +32,7 @@ class ProfileRepositories implements DBProfileInterface, StrictVariablesInterfac
      */
     public function edit(Request $request): View
     {
-        return view($this->bladePath('edit'), [
+        return view(self::retrieveBlade('edit'), [
             'user' => $request->user(),
         ]);
     }
@@ -80,21 +81,22 @@ class ProfileRepositories implements DBProfileInterface, StrictVariablesInterfac
     {
         $blob = $request->json('image');
         $user = User::find(auth()->id());
-        if ($user->hasMedia(MediaCollections::Users->value))
-            $user->getFirstMedia(MediaCollections::Users->value)->delete();
+
+        if ($user->hasMedia(self::$COLLECTION))
+            $user->getFirstMedia(self::$COLLECTION)->delete();
 
         $user->addMediaFromBase64($blob)
             ->usingFileName('profile-picture-'.$user->id.'.png')
-            ->toMediaCollection(MediaCollections::Users->value);
+            ->toMediaCollection(self::$COLLECTION);
     }
 
-    public function bladePath(string $blade=null): string
+    public static function setBladeHub(): void
     {
-        return 'profile.'.$blade;
+        self::$BLADES_HUB = 'profile.';
     }
 
-    public function collectionName(): string
+    public static function setCollection(): void
     {
-        return MediaCollections::Users->value;
+        self::$COLLECTION = MediaCollections::Users->value;
     }
 }

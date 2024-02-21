@@ -3,9 +3,9 @@
 namespace App\Repositories\Admins;
 
 use App\Enums\Privileges;
-use App\Http\Controllers\Traits\Helper;
 use App\Interfaces\Repositories\Admins\DBInstructorInterface;
 use App\Models\User;
+use App\Traits\Controllers\Helper;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
