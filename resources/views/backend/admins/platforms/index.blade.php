@@ -36,6 +36,7 @@
                                     <th class="border-bottom-0">#</th>
                                     <th class="border-bottom-0">Name</th>
                                     <th class="border-bottom-0">domain</th>
+                                    <th class="border-bottom-0">TLD</th>
                                     <th class="border-bottom-0">Options</th>
                                 </tr>
                                 </thead>

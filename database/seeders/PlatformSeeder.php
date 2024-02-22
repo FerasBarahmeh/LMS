@@ -18,6 +18,7 @@ class PlatformSeeder extends Seeder
         DB::table('available_platforms')->insert([
             'name' => 'linkedin',
             'domain' => 'linkedin',
+            'TLD' => 'com',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

@@ -28,6 +28,7 @@ class UpdateAvailablePlatformRequest extends FormRequest
         return [
             'name' => ['required', 'max:30', Rule::unique(AvailablePlatform::class)->ignore($id)],
             'domain' => ['required',  Rule::unique(AvailablePlatform::class)->ignore($id)],
+            'TLD' => ['required'],
         ];
     }
 }

@@ -12,5 +12,6 @@ class AvailablePlatform extends Model
     protected $fillable =[
        'name',
        'domain',
+       'TLD',
     ];
 }

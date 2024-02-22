@@ -35,6 +35,22 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <div class="mt-4">
+                    <!-- Domain -->
+                    <x-input-label for="TLD" :value="__('TLD')"/>
+
+                    <x-text-input id="TLD" class="form-control"
+                                  type="text"
+                                  :value="old('TLD')"
+                                  name="TLD"
+                                  autocomplete="TLD"/>
+
+                    <x-input-error :messages="$errors->get('TLD')"
+                                   class="mt-2"/>
+                </div>
+            </div>
+
             <div class="card-footer pt-1 p-3  d-flex justify-content-end">
                 <x-close-modal-footer-button :content="'close'"/>
                 <x-primary-button class="bg-dark ms-3 ml-1 mr-1">

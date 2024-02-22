@@ -27,6 +27,7 @@ class StoreAvailablePlatformRequest extends FormRequest
         return [
             'name' => ['required', 'max:30', Rule::unique(AvailablePlatform::class)],
             'domain' => ['required', Rule::unique(AvailablePlatform::class)],
+            'TLD' => ['required'],
         ];
     }
 }
