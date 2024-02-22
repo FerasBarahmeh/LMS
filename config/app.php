@@ -194,6 +194,7 @@ return [
          'Collection' => \App\Enums\MediaCollections::class,
          'Status' =>  \App\Enums\Status::class,
          'Theme' =>  \App\Enums\Theme::class,
+         'TypeSkills' =>  \App\Enums\TypeSkills::class,
     ])->toArray(),
 
 ];

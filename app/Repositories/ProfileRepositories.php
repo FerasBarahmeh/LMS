@@ -23,6 +23,7 @@ use Illuminate\View\View;
 class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
 {
     use QuantumQuerier;
+
     /**
      * @inheritDoc
      */
@@ -56,7 +57,7 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
 
         $saved = $request->user()->save();
 
-        if (! $saved)
+        if (!$saved)
             return Redirect::route('profile.index')->with('profile-update-fail', 'Fail  Updated Profile');
 
         return Redirect::route('profile.index')->with('profile-update-successfully', 'Profile Updated Successfully');
@@ -92,18 +93,14 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
             $user->getFirstMedia(self::$COLLECTION)->delete();
 
         $user->addMediaFromBase64($blob)
-            ->usingFileName('profile-picture-'.$user->id.'.png')
+            ->usingFileName('profile-picture-' . $user->id . '.png')
             ->toMediaCollection(self::$COLLECTION);
     }
 
-    public static function setBladeHub(): void
+    public function addSkills(Request $request): RedirectResponse
     {
-        self::$BLADES_HUB = 'profile.';
-    }
-
-    public static function setCollection(): void
-    {
-        self::$COLLECTION = MediaCollections::Users->value;
+        dd($_POST);
+        return Redirect::back();
     }
 
     public function toggleStatus(ToggleStatusRequest $request, string $id): RedirectResponse
@@ -131,7 +128,7 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
             'theme' => ['required', Rule::enum(Theme::class)],
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             throw ValidationException::withMessages([
                 'fail-change-theme' => 'not valid theme',
             ]);
@@ -141,4 +138,16 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
         $request->user()->save();
         return Redirect::back();
     }
+
+
+    public static function setBladeHub(): void
+    {
+        self::$BLADES_HUB = 'profile.';
+    }
+
+    public static function setCollection(): void
+    {
+        self::$COLLECTION = MediaCollections::Users->value;
+    }
+
 }

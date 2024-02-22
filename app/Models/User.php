@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
- use App\Enums\Privileges;
- use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\Privileges;
+use App\Enums\TypeSkills;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
- use Spatie\MediaLibrary\HasMedia;
- use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
@@ -58,11 +60,18 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         return User::where('privilege', Privileges::Instructor->value)->get();
     }
 
-    /**
-     * Get the user's profile picture.
-     */
-    public function image(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    public function skills(): HasMany
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->hasMany(Skill::class);
+    }
+
+    public function softSkills(): HasMany
+    {
+        return $this->hasMany(Skill::class)->where('type', '=',TypeSkills::Soft->value);
+    }
+
+    public function technicalSkills(): HasMany
+    {
+        return $this->hasMany(Skill::class)->where('type', "=", TypeSkills::Technical->value);
     }
 }

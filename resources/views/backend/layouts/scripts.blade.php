@@ -39,6 +39,7 @@
 
 <!-- custom js -->
 <script src="{{ asset('backend/assets/js/custom.js')}}"></script>
+<script src="{{ asset('js/main.js')}}"></script>
 
 
 <script>
@@ -46,24 +47,4 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
-
-<!--Internal  Flot js-->
-{{--<script src="{{ asset('backend/assets/plugins/jquery.flot/jquery.flot.js')}}"></script>--}}
-{{--<script src="{{ asset('backend/assets/plugins/jquery.flot/jquery.flot.pie.js')}}"></script>--}}
-{{--<script src="{{ asset('backend/assets/plugins/jquery.flot/jquery.flot.resize.js')}}"></script>--}}
-{{--<script src="{{ asset('backend/assets/plugins/jquery.flot/jquery.flot.categories.js')}}"></script>--}}
-{{--<script src="{{ asset('backend/assets/js/dashboard.sampledata.js')}}"></script>--}}
-{{--<script src="{{ asset('backend/assets/js/chart.flot.sampledata.js')}}"></script>--}}
-
-<!-- Custom Scroll bar Js-->
-{{--<script src="{{ asset('backend/assets/plugins/mscrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>--}}
-
-
-
-<!--Internal  Perfect-scrollbar js -->
-{{--<script src="{{ asset('backend/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>--}}
-{{--<script src="{{ asset('backend/assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>--}}
-
-<!-- get demo data -->
-{{--<script src="{{ asset('backend/assets/js/jquery.vmap.sampledata.js')}}"></script>--}}
 @stack('js')

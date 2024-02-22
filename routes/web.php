@@ -45,6 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/change-theme', [ProfileController::class, 'changeTheme'])
         ->name('user.change.theme');
 
+    Route::post('/add-skills', [ProfileController::class, 'addSkills'])
+        ->name('user.skills.add');
+
 
     /**
      * Temporary Files

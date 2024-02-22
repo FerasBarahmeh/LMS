@@ -18,7 +18,8 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <div class="mb-4 main-content-label">Update Your information</div>
+                                <div class="mb-2 main-content-label">Update Your information</div>
+                                <p class="tx-12 tx-gray-500 mb-2">Revitalize your data realm with the freshest, utmost precision-laden information.</p>
                                 <x-alerts.errors/>
                                 <div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
                                     <form action="{{ route('profile.update') }}" method="post">
@@ -26,6 +27,11 @@
 
                                         <!-- Name Card -->
                                         <x-card-simple-collapse :id="'collapseName'" :title="'Name'" :show="true">
+
+                                            <x-slot name="icon">
+                                                <i class="fa fa-signature"></i>
+                                            </x-slot>
+
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-3">
@@ -99,14 +105,19 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-2">
+                                            <div class="mt-2 d-flex justify-content-end">
                                                 <x-primary-button :content="'Update Information'"/>
                                             </div>
                                         </x-card-simple-collapse>
                                         <!-- End Name Card  -->
 
                                         <!-- Contact Card -->
-                                        <x-card-simple-collapse :id="'collapseContact'" :title="'Contact'">
+                                        <x-card-simple-collapse :id="'collapseContact'" :title="'Contact'" >
+
+                                            <x-slot name="icon">
+                                                <i class="fa fa-address-card"></i>
+                                            </x-slot>
+
                                             {{-- E-mail --}}
                                             <div class="form-group ">
                                                 <div class="row">
@@ -183,7 +194,7 @@
                                             </div>
                                             {{-- End Address --}}
 
-                                            <div class="mt-2">
+                                            <div class="mt-2 d-flex justify-content-end">
                                                 <x-primary-button :content="'Update Information'"/>
                                             </div>
                                         </x-card-simple-collapse>
@@ -191,6 +202,11 @@
 
                                         <!-- ABOUT Card -->
                                         <x-card-simple-collapse :id="'collapseAbout'" :title="'About'">
+
+                                            <x-slot name="icon">
+                                                <i class="fa fa-info"></i>
+                                            </x-slot>
+
                                             <div class="form-group ">
                                                 <div class="row">
                                                     <div class="col-md-3">
@@ -206,13 +222,32 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-2">
+                                            <div class="mt-2 d-flex justify-content-end">
                                                 <x-primary-button :content="'Update Information'"/>
                                             </div>
                                         </x-card-simple-collapse>
                                         <!-- End About Card -->
 
                                     </form>
+
+                                    <!-- Skill Technical Card -->
+                                    <x-card-simple-collapse :id="'collapseTechnicalSkills'" :title="'Technical Skill'" class="pt-10">
+                                        <x-slot name="icon">
+                                            <i class="fa fa-microchip"></i>
+                                        </x-slot>
+                                        <livewire:add-skills-user :type="TypeSkills::Technical->value"/>
+                                    </x-card-simple-collapse>
+                                    <!-- End Skill Technical Card -->
+
+
+                                    <!-- Skill Soft Card -->
+                                    <x-card-simple-collapse :id="'collapseSoftSkills'" :title="'Soft Skill'"  class="pt-10">
+                                        <x-slot name="icon">
+                                            <i class="fa fa-tty"></i>
+                                        </x-slot>
+                                        <livewire:add-skills-user :type="TypeSkills::Soft->value"/>
+                                    </x-card-simple-collapse>
+                                    <!-- End Skill Soft Card -->
                                 </div>
                             </div>
 
@@ -225,4 +260,8 @@
         </div>
     </x-slot>
 
+    @push('css')
+        <!---Internal Input tags css-->
+        <link href="{{ asset('backend/assets/plugins/inputtags/inputtags.css')}}" rel="stylesheet">
+    @endpush
 </x-app-layout>

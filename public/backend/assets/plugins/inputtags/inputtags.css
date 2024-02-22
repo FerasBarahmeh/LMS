@@ -1,67 +1,135 @@
 /*
  * bootstrap-tagsinput v0.8.0
- * 
+ *
  */
 
-.bootstrap-tagsinput {
-  background-color: #fff;
-  display: inline-block;
-  color: #777ab2;
-  vertical-align: middle;
-  border-radius: 0px;
-  width: 100%;
-  cursor: text;
-}
-.bootstrap-tagsinput input {
-  border: none;
-  box-shadow: none;
-  outline: none;
-  background-color: transparent;
-  padding: 0 6px;
-  margin: 0;
-  width: auto;
-  max-width: inherit;
-}
-.bootstrap-tagsinput.form-control input::-moz-placeholder {
-  color: #777;
-  opacity: 1;
-}
-.bootstrap-tagsinput.form-control input:-ms-input-placeholder {
-  color: #777;
-}
-.bootstrap-tagsinput.form-control input::-webkit-input-placeholder {
-  color: #777;
-}
-.bootstrap-tagsinput input:focus {
-  border: none;
-  box-shadow: none;
+/*.bootstrap-tagsinput {*/
+/*  background-color: #fff;*/
+/*  color: #777ab2;*/
+/*  vertical-align: middle;*/
+/*  border-radius: 0px;*/
+/*  width: 100%;*/
+/*  cursor: text;*/
+/*    display: flex;*/
+/*    gap: 5px;*/
+/*}*/
+/*.bootstrap-tagsinput input {*/
+/*  border: none;*/
+/*  box-shadow: none;*/
+/*  outline: none;*/
+/*  background-color: transparent;*/
+/*  padding: 0 6px;*/
+/*  margin: 0;*/
+/*  width: auto;*/
+/*  max-width: inherit;*/
+/*}*/
+/*.bootstrap-tagsinput.form-control input::-moz-placeholder {*/
+/*  color: #777;*/
+/*  opacity: 1;*/
+/*}*/
+/*.bootstrap-tagsinput.form-control input:-ms-input-placeholder {*/
+/*  color: #777;*/
+/*}*/
+/*.bootstrap-tagsinput.form-control input::-webkit-input-placeholder {*/
+/*  color: #777;*/
+/*}*/
+/*.bootstrap-tagsinput input:focus {*/
+/*  border: none;*/
+/*  box-shadow: none;*/
+/*}*/
+
+/*.bootstrap-tagsinput .badge {*/
+/*    margin-right: 2px;*/
+/*    color: white;*/
+/*    background-color: #0162e8;*/
+/*    padding: 5px 8px 8px 8px !important;*/
+/*    border-radius: 0px;*/
+/*    border: 1px solid #0162e8;*/
+/*    margin-top: 8px;*/
+/*    border-radius: 3px;*/
+/*    line-height: 1;*/
+/*}*/
+/*.bootstrap-tagsinput .badge [data-role="remove"] {*/
+/*  margin-left: 8px;*/
+/*  cursor: pointer;*/
+/*}*/
+/*.bootstrap-tagsinput .badge [data-role="remove"]:after {*/
+/*  content: "×";*/
+/*  padding: 0 4px;*/
+/*  background-color:rgba(0, 0, 0, 0.3);*/
+/*  border-radius:50%;*/
+/*  font-size:12px;*/
+/*}*/
+/*.bootstrap-tagsinput .badge [data-role="remove"]:hover:after {*/
+
+/*  background-color:rgba(0, 0, 0, 0.2);}*/
+/*.bootstrap-tagsinput .badge [data-role="remove"]:hover:active {*/
+/*  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);*/
+/*}*/
+.tags-container {
+    cursor: text;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1px;
 }
 
-.bootstrap-tagsinput .badge {
-    margin-right: 2px;
+.tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     color: white;
-    background-color: #0162e8;
-    padding: 5px 8px 8px 8px !important;
-    border-radius: 0px;
-    border: 1px solid #0162e8;
-    margin-top: 8px;
-    border-radius: 3px;
-    line-height: 1;
+    margin: 0 !important;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
-.bootstrap-tagsinput .badge [data-role="remove"] {
-  margin-left: 8px;
-  cursor: pointer;
-}
-.bootstrap-tagsinput .badge [data-role="remove"]:after {
-  content: "×";
-  padding: 0 4px;
-  background-color:rgba(0, 0, 0, 0.3);
-  border-radius:50%;
-  font-size:12px;
-}
-.bootstrap-tagsinput .badge [data-role="remove"]:hover:after {
 
-  background-color:rgba(0, 0, 0, 0.2);}
-.bootstrap-tagsinput .badge [data-role="remove"]:hover:active {
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+.tag.dag-dark {
+    background-color: #343a40 !important;
+}
+
+.tag .remove-btn {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+    border: 1px solid transparent;
+    transition: color .3s ease-in-out,
+    background-color .3s ease-in-out;
+
+}
+
+.tag .remove-btn:hover {
+    color: black;
+    background: white;
+}
+
+.tag .remove-btn:focus {
+    border: none;
+    outline: none;
+}
+
+.label-add-tag {
+    width: 150px;
+    margin: 0;
+}
+
+.tags-container .add-tag-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+}
+
+.tags-container .add-tag-input:focus {
+    outline: none;
+    border: none;
 }

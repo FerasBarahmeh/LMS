@@ -1,5 +1,3 @@
-
-
 <div class="col-lg-4">
     <div class="card mg-b-20">
         <div class="card-body">
@@ -71,42 +69,16 @@
                     </div>
                     <hr class="mg-y-30">
                     <h6>Skills</h6>
-                    <div class="skill-bar mb-4 clearfix mt-3">
-                        <span>HTML5 / CSS3</span>
-                        <div class="progress mt-2">
-                            <div class="progress-bar bg-primary-gradient" role="progressbar"
-                                 aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                                 style="width: 85%"></div>
-                        </div>
+                    <div class="skills d-flex" @style(['gap: 2px;'])>
+                        @foreach(user()->skills as $skill)
+                            <div class="tag tag-gray-dark">
+                                <span>{{$skill->name}}</span>
+                            </div>
+                        @endforeach
                     </div>
-                    <!--skill bar-->
-                    <div class="skill-bar mb-4 clearfix">
-                        <span>Javascript</span>
-                        <div class="progress mt-2">
-                            <div class="progress-bar bg-danger-gradient" role="progressbar"
-                                 aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                                 style="width: 89%"></div>
-                        </div>
-                    </div>
-                    <!--skill bar-->
-                    <div class="skill-bar mb-4 clearfix">
-                        <span>Bootstrap</span>
-                        <div class="progress mt-2">
-                            <div class="progress-bar bg-success-gradient" role="progressbar"
-                                 aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                                 style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <!--skill bar-->
-                    <div class="skill-bar clearfix">
-                        <span>Coffee</span>
-                        <div class="progress mt-2">
-                            <div class="progress-bar bg-info-gradient" role="progressbar" aria-valuenow="85"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <!--skill bar-->
-                </div><!-- main-profile-overview -->
+
+                </div>
+                <!-- main-profile-overview -->
             </div>
         </div>
     </div>
