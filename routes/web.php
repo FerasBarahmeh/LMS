@@ -19,6 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
+    $platform = \App\Models\AvailablePlatform::find(1);
+
+    \Illuminate\Support\Facades\DB::enableQueryLog();
+
+    $queries = \Illuminate\Support\Facades\DB::getQueryLog();
+    \Illuminate\Support\Facades\DB::disableQueryLog();
+//dd($platform->users()->where('user_id', '1')->count ());
     return 'test';
 });
 
