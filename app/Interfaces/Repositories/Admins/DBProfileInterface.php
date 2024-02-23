@@ -35,5 +35,4 @@ interface DBProfileInterface
     public function toggleStatus(ToggleStatusRequest $request, string $id): RedirectResponse;
 
     public function changeTheme(Request $request): RedirectResponse;
-    public function addSkills(Request $request): RedirectResponse;
 }

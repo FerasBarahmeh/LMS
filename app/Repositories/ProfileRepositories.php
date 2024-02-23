@@ -97,12 +97,6 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
             ->toMediaCollection(self::$COLLECTION);
     }
 
-    public function addSkills(Request $request): RedirectResponse
-    {
-        dd($_POST);
-        return Redirect::back();
-    }
-
     public function toggleStatus(ToggleStatusRequest $request, string $id): RedirectResponse
     {
         $request->validated();
