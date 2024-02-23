@@ -74,4 +74,12 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         return $this->hasMany(Skill::class)->where('type', "=", TypeSkills::Technical->value);
     }
+
+    public function mediaAccounts(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(AvailablePlatform::class, 'social_media_account', 'user_id', 'available_platform_id')
+            ->withTimestamps()
+            ->withPivot(['username'])
+            ->as('mediaAccounts');
+    }
 }

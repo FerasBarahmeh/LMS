@@ -25,7 +25,7 @@ Route::get('/test', function () {
 
     $queries = \Illuminate\Support\Facades\DB::getQueryLog();
     \Illuminate\Support\Facades\DB::disableQueryLog();
-//dd($platform->users()->where('user_id', '1')->count ());
+
     return 'test';
 });
 
@@ -51,6 +51,9 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/change-theme', [ProfileController::class, 'changeTheme'])
         ->name('user.change.theme');
+
+    Route::put('/social-media-account/{platform}', [ProfileController::class, 'socialMediaAccount'])
+        ->name('user.social.media.account');
 
     /**
      * Temporary Files

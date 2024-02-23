@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\SocialMediaAccountsRequest;
 use App\Http\Requests\ToggleStatusRequest;
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
 use Illuminate\Http\RedirectResponse;
@@ -59,5 +60,10 @@ class ProfileController extends Controller
     public function changeTheme(Request $request): RedirectResponse
     {
         return $this->profile->changeTheme($request);
+    }
+
+    public function socialMediaAccount(SocialMediaAccountsRequest $request, string $platform): RedirectResponse
+    {
+        return $this->profile->socialMediaAccount($request, $platform);
     }
 }

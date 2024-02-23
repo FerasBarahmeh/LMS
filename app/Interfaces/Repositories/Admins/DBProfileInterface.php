@@ -3,6 +3,7 @@
 namespace App\Interfaces\Repositories\Admins;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\SocialMediaAccountsRequest;
 use App\Http\Requests\ToggleStatusRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -35,4 +36,5 @@ interface DBProfileInterface
     public function toggleStatus(ToggleStatusRequest $request, string $id): RedirectResponse;
 
     public function changeTheme(Request $request): RedirectResponse;
+    public function socialMediaAccount(SocialMediaAccountsRequest $request, string $platform): RedirectResponse;
 }

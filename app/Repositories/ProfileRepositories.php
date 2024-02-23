@@ -6,9 +6,11 @@ use App\Enums\MediaCollections;
 use App\Enums\Status;
 use App\Enums\Theme;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\SocialMediaAccountsRequest;
 use App\Http\Requests\ToggleStatusRequest;
 use App\Interfaces\Controllers\QuantumQuerierInterface;
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
+use App\Models\AvailablePlatform;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Http\RedirectResponse;
@@ -41,6 +43,7 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
     {
         return view(self::retrieveBlade('edit'), [
             'user' => $request->user(),
+            'platforms' => AvailablePlatform::all(),
         ]);
     }
 
@@ -133,6 +136,19 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
         return Redirect::back();
     }
 
+    public function socialMediaAccount(SocialMediaAccountsRequest $request, string $platform): RedirectResponse
+    {
+        $availablePlatform = AvailablePlatform::find($platform);
+
+        $availablePlatform->users()->detach();
+        $availablePlatform->users()
+            ->attach(
+                $request->validated()['user_id'],
+                ['username' => $request->validated()['username']],
+            );
+
+        return Redirect::back()->with('success-update-media', "Updated user name successfully");
+    }
 
     public static function setBladeHub(): void
     {

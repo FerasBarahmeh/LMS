@@ -33,40 +33,7 @@
                     </div>
                     <hr class="mg-y-30">
                     <label class="main-content-label tx-13 mg-b-20">Social</label>
-                    <div class="main-profile-social-list">
-                        <div class="media">
-                            <div class="media-icon bg-primary-transparent text-primary">
-                                <i class="icon ion-logo-github"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>Github</span> <a href="">github.com/spruko</a>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-icon bg-success-transparent text-success">
-                                <i class="icon ion-logo-twitter"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>Twitter</span> <a href="">twitter.com/spruko.me</a>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-icon bg-info-transparent text-info">
-                                <i class="icon ion-logo-linkedin"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>Linkedin</span> <a href="">linkedin.com/in/spruko</a>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-icon bg-danger-transparent text-danger">
-                                <i class="icon ion-md-link"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>My Portfolio</span> <a href="">spruko.com/</a>
-                            </div>
-                        </div>
-                    </div>
+                    @include('profile.partials.left-aside.media-card')
                     <hr class="mg-y-30">
                     <h6>Skills</h6>
                     <div class="skills d-flex" @style(['gap: 2px;'])>
