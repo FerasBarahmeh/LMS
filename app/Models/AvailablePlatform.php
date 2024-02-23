@@ -19,7 +19,7 @@ class AvailablePlatform extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user_available_platform', 'available_platform_id', 'user_id')
+        return $this->belongsToMany(User::class, 'social_media_account', 'available_platform_id', 'user_id')
             ->withTimestamps()
             ->withPivot('username')
             ->as('mediaAccounts');

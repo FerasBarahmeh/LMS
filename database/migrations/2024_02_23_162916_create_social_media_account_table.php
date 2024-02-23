@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('user_available_platform', function (Blueprint $table) {
+        Schema::create('social_media_account', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
                 ->constrained();
