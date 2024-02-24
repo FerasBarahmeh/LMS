@@ -2,19 +2,24 @@
     <h4 class="tx-15 text-uppercase mb-3">BIOdata</h4>
     <p class="m-b-5">{{ user()->about }}</p>
     <div class="m-t-30">
-        <h4 class="tx-15 text-uppercase mt-3">Experience</h4>
-        <div class=" p-t-10">
-            <h5 class="text-primary m-b-5 tx-14">Lead designer / Developer</h5>
-            <p class="">websitename.com</p>
-            <p><b>2010-2015</b></p>
-            <p class="text-muted tx-13 m-b-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
-        <hr>
-        <div class="">
-            <h5 class="text-primary m-b-5 tx-14">Senior Graphic Designer</h5>
-            <p class="">coderthemes.com</p>
-            <p><b>2007-2009</b></p>
-            <p class="text-muted tx-13 mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
+        <h4 class="tx-15 text-uppercase mt-3 mb-3">Experience</h4>
+
+        @foreach(user()->experiences as $experience)
+            <div class="experience p-t-10 p-l-1 position-relative" >
+                <h5 class="text-dark m-b-5 tx-14">{{ $experience->job_title }}</h5>
+                <p class="text-muted">{{ $experience->company_name }}</p>
+                <p class="position-absolute r-0 t-0">
+                    <span class="tx-10">{{ $experience->joined_date }}</span>
+                    <b>To</b>
+                    <span class="tx-10">{{ $experience->leave_date }}</span>
+                </p>
+                <p class="text-muted tx-13 m-b-0">{{ $experience->job_description }}</p>
+            </div>
+            <hr/>
+        @endforeach
     </div>
 </div>
+
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/experience.css') }}">
+@endpush

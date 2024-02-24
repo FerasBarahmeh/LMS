@@ -48,7 +48,6 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
         return view(self::retrieveBlade('edit'), [
             'user' => $request->user(),
             'platforms' => AvailablePlatform::all(),
-            'experiences' => $request->user()->experiences,
         ]);
     }
 

@@ -21,29 +21,6 @@
 @include('profile.partials.experience.edit')
 @include('profile.partials.experience.delete')
 
-<style>
-    .experience {
-        padding-left: 10px;
-    }
-    .experience::before,
-    .experience::after {
-        content: '';
-        background-color: #031b4e;
-        position: absolute;
-        display: block;
-        z-index: 1;
-    }
-    .experience::before {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        left: -10px;
-        top: 3px;
-    }
-    .experience::after {
-        min-height: 100%;
-        width: 1px;
-        top: 4px;
-        left: -5px;
-    }
-</style>
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/experience.css') }}">
+@endpush
