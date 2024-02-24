@@ -19,13 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
-    $platform = \App\Models\AvailablePlatform::find(1);
-
     \Illuminate\Support\Facades\DB::enableQueryLog();
-
     $queries = \Illuminate\Support\Facades\DB::getQueryLog();
     \Illuminate\Support\Facades\DB::disableQueryLog();
-
     return 'test';
 });
 
@@ -54,6 +50,15 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/social-media-account/{platform}', [ProfileController::class, 'socialMediaAccount'])
         ->name('user.social.media.account');
+
+    Route::post('/add/experience', [ProfileController::class, 'addExperience'])
+        ->name('user.add.experience');
+
+    Route::put('/edit/experience/{experience}', [ProfileController::class, 'editExperience'])
+        ->name('user.edit.experience');
+
+    Route::delete('/delete/experience/{experience}', [ProfileController::class, 'deleteExperience'])
+        ->name('user.delete.experience');
 
     /**
      * Temporary Files

@@ -2,6 +2,9 @@
 
 namespace App\Interfaces\Repositories\Admins;
 
+use App\Http\Requests\AddExperienceRequest;
+use App\Http\Requests\DeleteExperienceRequest;
+use App\Http\Requests\EditExperienceRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\SocialMediaAccountsRequest;
 use App\Http\Requests\ToggleStatusRequest;
@@ -37,4 +40,8 @@ interface DBProfileInterface
 
     public function changeTheme(Request $request): RedirectResponse;
     public function socialMediaAccount(SocialMediaAccountsRequest $request, string $platform): RedirectResponse;
+
+    public function addExperience(AddExperienceRequest $request): RedirectResponse;
+    public function editExperience(EditExperienceRequest $request, $id): RedirectResponse;
+    public function deleteExperience(DeleteExperienceRequest $request, $id): RedirectResponse;
 }

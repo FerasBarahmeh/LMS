@@ -16,11 +16,12 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="">
                                         <div class="mb-2 main-content-label">Update Your information</div>
-                                        <p class="tx-14 tx-gray-500 mb-2">Revitalize your data realm with the freshest, utmost
+                                        <p class="tx-14 tx-gray-500 mb-2">Revitalize your data realm with the freshest,
+                                            utmost
                                             precision-laden information.</p>
                                     </div>
                                     <div @style(['width: 30px; height: 30px; background-color: var(--livewire-progress-bar-color); padding: 11px; display: flex; justify-content: center; align-items: center;overflow: hidden; border-radius: 50%; color: white;'])>
-                                        <i class="icon icon-arrow-up"></i>
+                                        <i class="icon icon-info"></i>
                                     </div>
                                 </div>
                                 <!-- errors -->
@@ -61,6 +62,11 @@
                             </div>
 
                         </div>
+
+                        <!-- Start  Experience   -->
+                        @include('profile.partials.collapses.experiences-card')
+                        <!--  End Experience   -->
+
                     </div>
                     <!-- /Col -->
                 </div>

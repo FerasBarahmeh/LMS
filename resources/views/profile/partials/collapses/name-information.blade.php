@@ -1,4 +1,4 @@
-<x-card-simple-collapse :id="'collapseName'" :title="'Name'" :show="true">
+<x-card-simple-collapse :id="'collapseName'" :title="'Name'">
 
     <x-slot name="icon">
         <i class="fa fa-signature"></i>

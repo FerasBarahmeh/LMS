@@ -82,4 +82,9 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
             ->withPivot(['username'])
             ->as('mediaAccounts');
     }
+
+    public function experiences(): HasMany
+    {
+        return $this->hasMany(Experience::class);
+    }
 }

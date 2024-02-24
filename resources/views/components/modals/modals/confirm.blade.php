@@ -7,7 +7,7 @@
     <div class="modal-dialog m-0" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title text-capitalize">are you sure you want delete </h6>
+                <h6 class="modal-title text-capitalize">{{ $title ?? 'are you sure you want delete' }} </h6>
                 <x-close-modal-header-button />
             </div>
             <div class="modal-body">
@@ -15,7 +15,7 @@
                     @csrf @method('delete')
 
                     <h2 class="text-lg font-medium text-danger">
-                        {{ __('Are you sure you want to delete') }}
+                        {{ $subTitle ?? __('Are you sure you want to delete') }}
                     </h2>
 
                     <p class="mt-1 text-sm">

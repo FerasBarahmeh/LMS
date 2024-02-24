@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddExperienceRequest;
+use App\Http\Requests\DeleteExperienceRequest;
+use App\Http\Requests\EditExperienceRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\SocialMediaAccountsRequest;
 use App\Http\Requests\ToggleStatusRequest;
@@ -57,6 +60,7 @@ class ProfileController extends Controller
     {
         return $this->profile->toggleStatus($request, $id);
     }
+
     public function changeTheme(Request $request): RedirectResponse
     {
         return $this->profile->changeTheme($request);
@@ -66,4 +70,20 @@ class ProfileController extends Controller
     {
         return $this->profile->socialMediaAccount($request, $platform);
     }
+
+    public function addExperience(AddExperienceRequest $request): RedirectResponse
+    {
+        return $this->profile->addExperience($request);
+    }
+
+    public function editExperience(EditExperienceRequest $request, $id): RedirectResponse
+    {
+        return $this->profile->editExperience($request, $id);
+    }
+
+    public function deleteExperience(DeleteExperienceRequest $request, $id): RedirectResponse
+    {
+        return $this->profile->deleteExperience($request, $id);
+    }
+
 }
