@@ -11,22 +11,42 @@
 
                     <!-- Col -->
                     <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="">
-                                        <div class="mb-2 main-content-label">Update Your information</div>
-                                        <p class="tx-14 tx-gray-500 mb-2">Revitalize your data realm with the freshest,
-                                            utmost
-                                            precision-laden information.</p>
-                                    </div>
-                                    <div @style(['width: 30px; height: 30px; background-color: var(--livewire-progress-bar-color); padding: 11px; display: flex; justify-content: center; align-items: center;overflow: hidden; border-radius: 50%; color: white;'])>
-                                        <i class="icon icon-info"></i>
-                                    </div>
-                                </div>
-                                <!-- errors -->
-                                <x-alerts.errors/>
+                        <section class="mt-3 card">
+                            <x-alerts.errors/>
+                            <header class="card-header">
 
+                                <!-- Start verify email message -->
+                                @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+                                    <div class="verify-message bg-warning p-2 m-2 box-shadow-warning d-flex justify-content-center align-items-center br-bl-7 br-br-7">
+                                        <p class="text-gray-800 dark:text-gray-200 m-0">
+                                            {{ __('Your email address is unverified.') }}
+                                        </p>
+                                        <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+                                            @csrf
+                                            <button form="send-verification" type="submit" class="btn p-0 text-gray-800 dark:text-gray-200">
+                                                {{ __('Click here to re-send the verification email.') }}
+                                            </button>
+                                        </form>
+
+                                        @if (session('status') === 'verification-link-sent')
+                                            <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
+                                                {{ __('A new verification link has been sent to your email address.') }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                @endif
+                                <!-- End verify email message -->
+
+                                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                    {{ __('Update information') }}
+                                </h2>
+
+                                <p class="mt-1">
+                                    {{ __('Revitalize your data realm with the freshest, utmost precision-laden information.') }}
+                                </p>
+                            </header>
+
+                            <div class="card-body">
                                 <div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
                                     <form action="{{ route('profile.update') }}" method="post">
                                         @csrf         @method('patch')
@@ -60,12 +80,22 @@
                                     <!--  End Social Media Accounts  -->
                                 </div>
                             </div>
+                        </section>
 
-                        </div>
 
                         <!-- Start  Experience   -->
                         @include('profile.partials.collapses.experiences-card')
                         <!--  End Experience   -->
+
+
+                        <!-- Start  Change Password   -->
+                        @include('profile.partials.update-password-form')
+                        <!--  End Change Password   -->
+
+
+                        <!-- Start  delete account -->
+                        @include('profile.partials.delete-user-form')
+                        <!--  End delete account  -->
 
                     </div>
                     <!-- /Col -->

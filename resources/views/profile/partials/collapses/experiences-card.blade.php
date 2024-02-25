@@ -1,27 +1,25 @@
-<div class="card">
-    <div class="card-header">
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex justify-content-between w-100">
-                <div class="">
-                    <div class="mb-2 main-content-label">Experience</div>
-                    <p class="tx-14 tx-gray-500 mb-2">Journey of Expertise: Illuminate Your Professional Path in the
-                        Experience Section</p>
-                </div>
+<section class="mt-3 card">
+    <header class="card-header d-flex justify-content-between">
+        <div class="">
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                {{ __('Experience') }}
+            </h2>
 
-                <div class="">
-                    <x-modals.buttons.horizontal :dataEffect="'add-experience'" class="flex">
-                        <i class="fa fa-plus"></i>
-                    </x-modals.buttons.horizontal>
-                    @include('profile.partials.experience.add')
-                </div>
-            </div>
-
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                {{ __('Journey of Expertise: Illuminate Your Professional Path in the
+                            Experience Section.') }}
+            </p>
         </div>
-    </div>
+
+        <div class="">
+            <x-modals.buttons.horizontal :dataEffect="'add-experience'" class="flex">
+                <i class="fa fa-plus"></i>
+            </x-modals.buttons.horizontal>
+            @include('profile.partials.experience.add')
+        </div>
+    </header>
 
     <div class="card-body">
         @each('profile.partials.experience.experiences', user()->experiences, 'experience')
     </div>
-
-</div>
-
+</section>

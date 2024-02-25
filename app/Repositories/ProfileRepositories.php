@@ -65,9 +65,9 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
         $saved = $request->user()->save();
 
         if (!$saved)
-            return Redirect::route('profile.index')->with('profile-update-fail', 'Fail  Updated Profile');
+            return Redirect::route('profile.edit')->with('profile-update-fail', 'Fail  Updated Profile');
 
-        return Redirect::route('profile.index')->with('profile-update-successfully', 'Profile Updated Successfully');
+        return Redirect::route('profile.edit')->with('profile-update-successfully', 'Profile Updated Successfully');
     }
 
     /**

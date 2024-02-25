@@ -1,5 +1,5 @@
-<section class="space-y-6 mt-5">
-    <header>
+<section class="mt-3 card">
+    <header class="card-header">
         <h2 class="text-lg font-medium text-danger text-gray-900 dark:text-gray-100">
             {{ __('Delete Account') }}
         </h2>
@@ -9,13 +9,14 @@
         </p>
     </header>
 
-    <x-modal-button :type="'danger'" :dataTarget="'confirm-user-deletion'">
-        {{ __('Delete Account') }}
-    </x-modal-button>
-
+    <div class="card-body">
+        <x-modal-button :type="'danger'" :dataTarget="'confirm-user-deletion'">
+            {{ __('Delete Account') }}
+        </x-modal-button>
+    </div>
     <x-modal :id="'confirm-user-deletion'">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content modal-content-demo">
+        <div class="modal-dialog m-0" role="document">
+            <div class="modal-content modal-content-demo border-0">
                 <div class="modal-header">
                     <h6 class="modal-title">Delete Account</h6>
                     <button aria-label="Close" class="close" data-dismiss="modal" type="button">
@@ -23,7 +24,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+                    <form method="post" action="{{ route('profile.destroy') }}">
                         @csrf @method('delete')
 
                         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
@@ -35,7 +36,7 @@
                         </p>
 
                         <div class="mt-6">
-                            <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+                            <x-input-label for="password" value="{{ __('Password') }}" class="sr-only"/>
 
                             <x-text-input
                                 id="password"
@@ -44,7 +45,7 @@
                                 class="mt-2 mb-2"
                                 placeholder="{{ __('Password') }}"
                             />
-                            <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                            <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2"/>
                         </div>
 
                         <div class="modal-footer">
@@ -58,5 +59,6 @@
             </div>
         </div>
     </x-modal>
+
 
 </section>

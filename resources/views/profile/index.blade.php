@@ -1,8 +1,7 @@
 <x-app-layout :title="'Dashboard'">
     <x-slot name="content">
         <div class="container">
-            <x-alerts.alert :success="session('profile-update-successfully')"
-                            :fail="session('profile-update-fail')"/>
+            <x-alerts.alert :success="session('profile-update-successfully')" :fail="session('profile-update-fail')"/>
             <x-alerts.alert :success="session('password-updated-successfully')" />
             <x-alerts.alert :success="session('status')" />
         </div>
@@ -79,17 +78,11 @@
                                             class="visible-xs"><i class="las la-images tx-15 mr-1"></i></span> <span
                                             class="hidden-xs">GALLERY</span> </a>
                                 </li>
-                                <li class="">
-                                    <a href="#settings" data-toggle="tab" aria-expanded="false"> <span
-                                            class="visible-xs"><i class="las la-cog tx-16 mr-1"></i></span> <span
-                                            class="hidden-xs">SETTINGS</span> </a>
-                                </li>
                             </ul>
                         </div>
                         <div class="tab-content border-left border-bottom border-right border-top-0 p-4">
                             @include('profile.partials.home-tab-pane')
                             @include('profile.partials.profile-tab-pane')
-                            @include('profile.partials.settings-tab-pane')
                         </div>
                     </div>
                 </div>
