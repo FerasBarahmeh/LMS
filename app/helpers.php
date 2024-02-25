@@ -31,10 +31,10 @@ if (! function_exists('dateToDBFormat')) {
 }
 
 /**
- *
+ * Change date format
  */
 if (! function_exists('parseDate')) {
-    function parseDate($date, $format='M/D/Y'): string
+    function parseDate($date, $format='m/d/Y'): string
     {
        return $date != null ? \Illuminate\Support\Carbon::parse($date)->format($format) : '';
     }
