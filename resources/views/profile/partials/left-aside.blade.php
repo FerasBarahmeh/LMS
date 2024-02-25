@@ -8,8 +8,8 @@
 
                     <div class="d-flex justify-content-between mg-b-20">
                         <div>
-                            <h5 class="main-profile-name">{{ user()->name }}</h5>
-                            <p class="main-profile-name-text">{{ user()->privilege }}</p>
+                            <h5 class="main-profile-name">{{ $user->name }}</h5>
+                            <p class="main-profile-name-text">{{ $user->privilege }}</p>
                         </div>
                     </div>
                     <h6>Bio</h6>
@@ -37,7 +37,7 @@
                     <hr class="mg-y-30">
                     <h6>Skills</h6>
                     <div class="skills d-flex" @style(['gap: 2px;'])>
-                        @foreach(user()->skills as $skill)
+                        @foreach($user->skills as $skill)
                             <div class="tag tag-gray-dark">
                                 <span>{{$skill->name}}</span>
                             </div>

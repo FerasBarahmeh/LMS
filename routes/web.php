@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TemporaryFileController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,10 @@ Route::get('/', function () {
 });
 Route::get('/test', function () {
     \Illuminate\Support\Facades\DB::enableQueryLog();
+    $user = User::where('id', 1 )->with('skills')->get();
     $queries = \Illuminate\Support\Facades\DB::getQueryLog();
     \Illuminate\Support\Facades\DB::disableQueryLog();
+    dd($queries);
     return 'test';
 });
 
