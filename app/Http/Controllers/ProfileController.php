@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AddExperienceRequest;
-use App\Http\Requests\DeleteExperienceRequest;
-use App\Http\Requests\EditExperienceRequest;
-use App\Http\Requests\ProfileUpdateRequest;
-use App\Http\Requests\SocialMediaAccountsRequest;
-use App\Http\Requests\ToggleStatusRequest;
+use App\Http\Requests\{AddEducationRequest,
+    AddExperienceRequest,
+    DeleteEducationRequest,
+    DeleteExperienceRequest,
+    EditEducationRequest,
+    EditExperienceRequest,
+    ProfileUpdateRequest,
+    SocialMediaAccountsRequest,
+    ToggleStatusRequest};
+
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -84,6 +88,21 @@ class ProfileController extends Controller
     public function deleteExperience(DeleteExperienceRequest $request, $id): RedirectResponse
     {
         return $this->profile->deleteExperience($request, $id);
+    }
+
+    public function addEducation(AddEducationRequest $request): RedirectResponse
+    {
+        return $this->profile->addEducation($request);
+    }
+
+    public function editEducation(EditEducationRequest $request, $id): RedirectResponse
+    {
+        return $this->profile->editEducation($request, $id);
+    }
+
+    public function deleteEducation(DeleteEducationRequest $request, $id): RedirectResponse
+    {
+        return $this->profile->deleteEducation($request, $id);
     }
 
 }

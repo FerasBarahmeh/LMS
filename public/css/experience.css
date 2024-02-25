@@ -1,5 +1,6 @@
 /* Start Experience time line  */
 .experience {
+    margin-left: 10px;
     padding-left: 10px;
 }
 .experience::before,

@@ -12,7 +12,9 @@
                     <!-- Col -->
                     <div class="col-lg-8">
                         <section class="mt-3 card">
-                            <x-alerts.errors/>
+                            <div class="m-2">
+                                <x-alerts.errors/>
+                            </div>
                             <header class="card-header">
 
                                 <!-- Start verify email message -->
@@ -47,6 +49,9 @@
                             </header>
 
                             <div class="card-body">
+                                <!-- Message -->
+                                <x-alerts.alert :success="session('profile-update-successfully')" :fail="session('profile-update-fail')"/>
+
                                 <div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
                                     <form action="{{ route('profile.update') }}" method="post">
                                         @csrf         @method('patch')
@@ -83,8 +88,13 @@
                         </section>
 
 
+                        <!-- Start  Education   -->
+                        @include('profile.partials.education-form')
+                        <!--  End Education   -->
+
+
                         <!-- Start  Experience   -->
-                        @include('profile.partials.collapses.experiences-card')
+                        @include('profile.partials.experiences-form')
                         <!--  End Experience   -->
 
 

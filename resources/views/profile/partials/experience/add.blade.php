@@ -8,65 +8,42 @@
         <div class="card-body bg-transparent">
             <form method="POST" action="{{ route('user.add.experience') }}">
                 @csrf
-                <div class="form-group">
-                    <!-- Name -->
-                    <x-input-label for="job_title"
-                                   :value="__('job title')"/>
-                    <x-text-input id="job_title" class="form-control" type="text"
-                                  name="job_title"
-                                  :value="old('job_title')"
-                                  autofocus autocomplete="name"/>
-                    <x-input-error :messages="$errors->get('job_title')" class="mt-2"/>
-                </div>
-                <div class="form-group">
-                    <div class="mt-2">
-                        <!-- Domain -->
-                        <x-input-label for="company_name" :value="__('company name')"/>
+                <!-- Job Title -->
+               <div class="mb-3">
+                   <x-input-label for="job_title" :value="__('job title')"/>
+                   <x-text-input id="job_title" class="form-control" type="text" name="job_title" :value="old('job_title')" autofocus autocomplete="name"/>
+                   <x-input-error :messages="$errors->get('job_title')" class="mt-2"/>
+               </div>
 
-                        <x-text-input id="company_name" class="form-control"
-                                      type="text"
-                                      :value="old('company_name')"
-                                      name="company_name"
-                                      autocomplete="company_name"/>
-
-                        <x-input-error :messages="$errors->get('company_name')"
-                                       class="mt-2"/>
-                    </div>
+                <!-- Company Name -->
+                <div class="mb-3">
+                    <x-input-label for="company_name" :value="__('company name')"/>
+                    <x-text-input id="company_name" class="form-control" type="text" :value="old('company_name')" name="company_name" autocomplete="company_name"/>
+                    <x-input-error :messages="$errors->get('company_name')" class="mt-2"/>
                 </div>
 
                 <!-- Joined date -->
-                <div class="form-group">
-                    <div class="mt-2">
-                        <x-input-label for="joined_date" :value="__('joined date')"/>
-                       <x-input-date :name="'joined_date'" :value="parseDate(old('joined_date'))"/>
-                        <x-input-error :messages="$errors->get('joined_date')"
-                                       class="mt-2"/>
-                    </div>
+                <div class="mb-3">
+                    <x-input-label for="joined_date" :value="__('joined date')"/>
+                    <x-input-date :name="'joined_date'" :value="parseDate(old('joined_date'))"/>
+                    <x-input-error :messages="$errors->get('joined_date')" class="mt-2"/>
                 </div>
 
                 <!-- Leave date -->
-                <div class="form-group">
-                    <div class="mt-2">
-                        <x-input-label for="leave_date" :value="__('leave date')"/>
-                       <x-input-date :name="'leave_date'" :value="parseDate(old('leave_date', ''))"/>
-                        <x-input-error :messages="$errors->get('leave_date')"
-                                       class="mt-2"/>
-                    </div>
+                <div class="mb-3">
+                    <x-input-label for="leave_date" :value="__('leave date')"/>
+                    <x-input-date :name="'leave_date'" :value="parseDate(old('leave_date', ''))"/>
+                    <x-input-error :messages="$errors->get('leave_date')" class="mt-2"/>
                 </div>
 
-                <!-- Leave date -->
-                <div class="form-group">
-                    <div class="mt-2">
-                        <x-input-label for="job_description" :value="__('job description')"/>
-                        <x-textarea-input id="job_description" name="job_description"
-                                          type="text" class="form-control"
-                                          autocomplete="job_description">{{ old('job_description') }}</x-textarea-input>
-
-                        <x-input-error :messages="$errors->get('job_description')"
-                                       class="mt-2"/>
-                    </div>
+                <!-- Job description -->
+                <div class="mb-3">
+                    <x-input-label for="job_description" :value="__('job description')"/>
+                    <x-textarea-input id="job_description" name="job_description" type="text" class="form-control" autocomplete="job_description">{{ old('job_description') }}</x-textarea-input>
+                    <x-input-error :messages="$errors->get('job_description')" class="mt-2"/>
                 </div>
 
+                <!-- Submit -->
                 <div class="card-footer pt-1 p-2  d-flex justify-content-end">
                     <x-close-modal-footer-button :content="'close'"/>
                     <x-primary-button class="bg-dark ms-3 ml-1 mr-1">

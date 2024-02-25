@@ -3,12 +3,11 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AddExperienceRequest extends FormRequest
+class AddEducationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,11 +25,11 @@ class AddExperienceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'job_title' => ['required', 'max:255', 'string'],
-            'company_name' => ['required', 'max:255', 'string'],
-            'joined_date' => ['required', 'date', 'before:' . now()->format('n/j/Y'), 'before:leave_date' ],
-            'leave_date' => ['required', 'date', 'before:' . now()->format('n/j/Y'), 'after:joined_date'],
-            'job_description' => ['required', 'max:255'],
+            'education_name' => ['required', 'max:255', 'string'],
+            'organization_name' => ['required', 'max:255', 'string'],
+            'start_date' => ['required', 'date', 'before:' . now()->format('n/j/Y'), 'before:finish_date' ],
+            'finish_date' => ['required', 'date', 'before:' . now()->format('n/j/Y'), 'after:start_date'],
+            'description' => ['required', 'max:255'],
             'user_id' => ['required', Rule::exists(User::class, 'id')],
         ];
     }
@@ -38,9 +37,10 @@ class AddExperienceRequest extends FormRequest
     public function prepareForValidation(): void
     {
         $this->merge([
-            'joined_date' => dateToDBFormat($this->joined_date),
-            'leave_date' => dateToDBFormat($this->leave_date),
+            'start_date' => dateToDBFormat($this->start_date),
+            'finish_date' => dateToDBFormat($this->finish_date),
             'user_id' => auth()->id()
         ]);
     }
+
 }

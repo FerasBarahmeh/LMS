@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TemporaryFileController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,47 +20,69 @@ Route::get('/', function () {
 });
 Route::get('/test', function () {
     \Illuminate\Support\Facades\DB::enableQueryLog();
-    $user = User::where('id', 1 )->with('skills')->get();
     $queries = \Illuminate\Support\Facades\DB::getQueryLog();
     \Illuminate\Support\Facades\DB::disableQueryLog();
-    dd($queries);
     return 'test';
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'index'])
-        ->name('profile.index');
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])
+            ->name('profile.index');
 
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])
-        ->name('profile.edit');
+        Route::get('/edit', [ProfileController::class, 'edit'])
+            ->name('profile.edit');
 
-    Route::patch('/profile', [ProfileController::class, 'update'])
-        ->name('profile.update');
+        Route::patch('', [ProfileController::class, 'update'])
+            ->name('profile.update');
 
-    Route::delete('/profile', [ProfileController::class, 'destroy'])
-        ->name('profile.destroy');
+        Route::delete('', [ProfileController::class, 'destroy'])
+            ->name('profile.destroy');
 
-    Route::post('/change-profile-picture', [ProfileController::class, 'changeProfilePicture'])
-        ->name('profile.change.profile.picture');
+        Route::post('/change-profile-picture', [ProfileController::class, 'changeProfilePicture'])
+            ->name('profile.change.profile.picture');
 
-    Route::put('/toggle-status/{id}', [ProfileController::class, 'toggleStatus'])
-        ->name('user.toggle.status')
-        ->middleware('admin');
+        Route::put('/toggle-status/{id}', [ProfileController::class, 'toggleStatus'])
+            ->name('user.toggle.status')
+            ->middleware('admin');
 
-    Route::put('/change-theme', [ProfileController::class, 'changeTheme'])
-        ->name('user.change.theme');
+        Route::put('/change-theme', [ProfileController::class, 'changeTheme'])
+            ->name('user.change.theme');
 
-    Route::put('/social-media-account/{platform}', [ProfileController::class, 'socialMediaAccount'])
-        ->name('user.social.media.account');
+        Route::put('/social-media-account/{platform}', [ProfileController::class, 'socialMediaAccount'])
+            ->name('user.social.media.account');
 
-    Route::post('/add/experience', [ProfileController::class, 'addExperience'])
-        ->name('user.add.experience');
+        /**
+         * Experience
+         */
+        Route::prefix('experience')->group(function () {
+            Route::post('/add', [ProfileController::class, 'addExperience'])
+                ->name('user.add.experience');
+            Route::put('/edit/{experience}', [ProfileController::class, 'editExperience'])
+                ->name('user.edit.experience');
+            Route::delete('/delete/{experience}', [ProfileController::class, 'deleteExperience'])
+                ->name('user.delete.experience');
+        });
 
-    Route::put('/edit/experience/{experience}', [ProfileController::class, 'editExperience'])
-        ->name('user.edit.experience');
+        /**
+         * Education
+         */
+        Route::prefix('education')->group(function () {
+            Route::post('/add', [ProfileController::class, 'addEducation'])
+                ->name('user.add.education');
+            Route::put('/edit/{education}', [ProfileController::class, 'editEducation'])
+                ->name('user.edit.education');
+            Route::delete('/delete/{education}', [ProfileController::class, 'deleteEducation'])
+                ->name('user.delete.education');
+        });
+    });
 
-    Route::delete('/delete/experience/{experience}', [ProfileController::class, 'deleteExperience'])
-        ->name('user.delete.experience');
+
+
+
+
+
+
 
     /**
      * Temporary Files

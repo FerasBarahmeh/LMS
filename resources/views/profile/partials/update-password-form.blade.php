@@ -1,4 +1,7 @@
 <section class="mt-3 card">
+    <!-- Message -->
+    <x-alerts.alert :success="session('password-updated-successfully')"/>
+
     <header class="card-header">
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Update Password') }}
