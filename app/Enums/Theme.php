@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-use function Laravel\Prompts\search;
+use App\Traits\Enums\EnumOperations;
 
 enum Theme: string
 {

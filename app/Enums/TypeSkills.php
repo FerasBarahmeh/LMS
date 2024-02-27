@@ -2,6 +2,8 @@
 
 namespace App\Enums;
 
+use App\Traits\Enums\EnumOperations;
+
 enum TypeSkills: string
 {
     use EnumOperations;
