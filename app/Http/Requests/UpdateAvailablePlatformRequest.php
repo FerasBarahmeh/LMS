@@ -28,7 +28,7 @@ class UpdateAvailablePlatformRequest extends FormRequest
         return [
             'name' => ['required', 'max:30', Rule::unique(SocialMediaAccount::class)->ignore($id)],
             'username' => ['required'],
-            'link' => ['required', 'url', Rule::unique(SocialMediaAccount::class)->ignore($id)],
+            'link' => ['required', 'url'],
         ];
     }
 }
