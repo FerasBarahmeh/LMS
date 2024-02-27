@@ -13,14 +13,6 @@
     </div>
     {{-- End E-mail --}}
 
-    {{-- Website --}}
-    <div class="mb-3">
-        <x-input-label for="website" class="form-label" :value="__('website')"/>
-        <x-text-input id="website" name="website" type="text" class="form-control" :value="old('website', $user->website)" autocomplete="website"/>
-        <x-input-error class="mt-2" :messages="$errors->get('website')"/>
-    </div>
-    {{-- End Website --}}
-
     {{-- Phone --}}
     <div class="mb-3">
         <x-input-label for="phone" class="form-label" :value="__('phone')"/>

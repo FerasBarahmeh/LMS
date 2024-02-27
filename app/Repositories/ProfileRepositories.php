@@ -5,20 +5,11 @@ namespace App\Repositories;
 use App\Enums\MediaCollections;
 use App\Enums\Status;
 use App\Enums\Theme;
-use App\Http\Requests\AddEducationRequest;
-use App\Http\Requests\AddExperienceRequest;
-use App\Http\Requests\DeleteEducationRequest;
-use App\Http\Requests\DeleteExperienceRequest;
-use App\Http\Requests\EditEducationRequest;
-use App\Http\Requests\EditExperienceRequest;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Http\Requests\SocialMediaAccountsRequest;
 use App\Http\Requests\ToggleStatusRequest;
 use App\Interfaces\Controllers\QuantumQuerierInterface;
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
 use App\Models\AvailablePlatform;
-use App\Models\Education;
-use App\Models\Experience;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Http\RedirectResponse;
@@ -51,7 +42,6 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
     {
         return view(self::retrieveBlade('edit'), [
             'user' => $request->user(),
-            'platforms' => AvailablePlatform::with('user')->get(),
         ]);
     }
 
@@ -142,62 +132,6 @@ class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
         $request->user()->theme = $request->input('theme');
         $request->user()->save();
         return Redirect::back();
-    }
-
-    public function socialMediaAccount(SocialMediaAccountsRequest $request, string $platform): RedirectResponse
-    {
-        $availablePlatform = AvailablePlatform::find($platform);
-
-        $availablePlatform->users()->detach();
-        $availablePlatform->users()
-            ->attach(
-                $request->validated()['user_id'],
-                ['username' => $request->validated()['username']],
-            );
-
-        return Redirect::back()->with('success-update-media', "Updated user name successfully");
-    }
-
-    public function addExperience(AddExperienceRequest $request): RedirectResponse
-    {
-        $experience = Experience::create($request->validated());
-        return Redirect::back()->with('success-add-experience', "add {$experience->job_title} experience successfully");
-    }
-
-    public function editExperience(EditExperienceRequest $request, $id): RedirectResponse
-    {
-        $experience = Experience::find($id);
-        $experience->update($request->validated());
-        $experience->save();
-        return Redirect::back()->with('success-edit-experience', "Successfully edit {$experience->job_title} experience");
-    }
-
-    public function deleteExperience(DeleteExperienceRequest $request, $id): RedirectResponse
-    {
-        $experience = Experience::find($id);
-        $experience->delete();
-        return Redirect::back()->with('success-delete-experience', "Successfully delete experience");
-    }
-
-    public function addEducation(AddEducationRequest $request): RedirectResponse
-    {
-        $education = Education::create($request->validated());
-        return Redirect::back()->with('success-add-education', "add {$education->education_name} experience successfully");
-    }
-
-    public function editEducation(EditEducationRequest $request, $id): RedirectResponse
-    {
-        $education = Education::find($id);
-        $education->update($request->validated());
-        $education->save();
-        return Redirect::back()->with('success-edit-education', "Successfully edit {$education->education_name} education");
-    }
-
-    public function deleteEducation(DeleteEducationRequest $request, $id): RedirectResponse
-    {
-        $education = Education::find($id);
-        $education->delete();
-        return Redirect::back()->with('success-delete-education', "Successfully delete education");
     }
 
     public static function setBladeHub(): void

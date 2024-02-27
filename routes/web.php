@@ -5,6 +5,7 @@ use App\Http\Controllers\TemporaryFileController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,6 @@ Route::get('/', function () {
 });
 
 
-
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->prefix(LaravelLocalization::setLocale())
     ->group(function () {
@@ -34,9 +34,6 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
 
         Route::get('/test', function () {
-            \Illuminate\Support\Facades\DB::enableQueryLog();
-            $queries = \Illuminate\Support\Facades\DB::getQueryLog();
-            \Illuminate\Support\Facades\DB::disableQueryLog();
             return 'test';
         });
 
@@ -64,40 +61,7 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
                 Route::put('/change-theme', [ProfileController::class, 'changeTheme'])
                     ->name('user.change.theme');
 
-                Route::put('/social-media-account/{platform}', [ProfileController::class, 'socialMediaAccount'])
-                    ->name('user.social.media.account');
-
-                /**
-                 * Experience
-                 */
-                Route::prefix('experience')->group(function () {
-                    Route::post('/add', [ProfileController::class, 'addExperience'])
-                        ->name('user.add.experience');
-                    Route::put('/edit/{experience}', [ProfileController::class, 'editExperience'])
-                        ->name('user.edit.experience');
-                    Route::delete('/delete/{experience}', [ProfileController::class, 'deleteExperience'])
-                        ->name('user.delete.experience');
-                });
-
-                /**
-                 * Education
-                 */
-                Route::prefix('education')->group(function () {
-                    Route::post('/add', [ProfileController::class, 'addEducation'])
-                        ->name('user.add.education');
-                    Route::put('/edit/{education}', [ProfileController::class, 'editEducation'])
-                        ->name('user.edit.education');
-                    Route::delete('/delete/{education}', [ProfileController::class, 'deleteEducation'])
-                        ->name('user.delete.education');
-                });
             });
-
-
-
-
-
-
-
 
             /**
              * Temporary Files

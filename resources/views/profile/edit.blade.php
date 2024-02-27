@@ -66,44 +66,14 @@
                                         @include('profile.partials.collapses.contact-information')
                                         <!-- End Contact Card  -->
 
-                                        <!-- ABOUT Card -->
-                                        @include('profile.partials.collapses.about-information')
-                                        <!-- End About Card -->
-
                                     </form>
-
-                                    <!-- Skill Technical Card -->
-                                    @include('profile.partials.collapses.technical-skills')
-                                    <!-- End Skill Technical Card -->
-
-
-                                    <!-- Skill Soft Card -->
-                                    @include('profile.partials.collapses.soft-skills')
-                                    <!-- End Skill Soft Card -->
-
-
-                                    <!-- Start Social Media Accounts -->
-                                    @include('profile.partials.collapses.social-media-accounts')
-                                    <!--  End Social Media Accounts  -->
                                 </div>
                             </div>
                         </section>
 
-
-                        <!-- Start  Education   -->
-                        @include('profile.partials.education-form')
-                        <!--  End Education   -->
-
-
-                        <!-- Start  Experience   -->
-                        @include('profile.partials.experiences-form')
-                        <!--  End Experience   -->
-
-
                         <!-- Start  Change Password   -->
                         @include('profile.partials.update-password-form')
                         <!--  End Change Password   -->
-
 
                         <!-- Start  delete account -->
                         @include('profile.partials.delete-user-form')

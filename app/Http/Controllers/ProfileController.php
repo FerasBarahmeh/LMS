@@ -2,16 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\{AddEducationRequest,
-    AddExperienceRequest,
-    DeleteEducationRequest,
-    DeleteExperienceRequest,
-    EditEducationRequest,
-    EditExperienceRequest,
-    ProfileUpdateRequest,
-    SocialMediaAccountsRequest,
-    ToggleStatusRequest};
-
+use App\Http\Requests\{ProfileUpdateRequest, ToggleStatusRequest};
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -68,41 +59,6 @@ class ProfileController extends Controller
     public function changeTheme(Request $request): RedirectResponse
     {
         return $this->profile->changeTheme($request);
-    }
-
-    public function socialMediaAccount(SocialMediaAccountsRequest $request, string $platform): RedirectResponse
-    {
-        return $this->profile->socialMediaAccount($request, $platform);
-    }
-
-    public function addExperience(AddExperienceRequest $request): RedirectResponse
-    {
-        return $this->profile->addExperience($request);
-    }
-
-    public function editExperience(EditExperienceRequest $request, $id): RedirectResponse
-    {
-        return $this->profile->editExperience($request, $id);
-    }
-
-    public function deleteExperience(DeleteExperienceRequest $request, $id): RedirectResponse
-    {
-        return $this->profile->deleteExperience($request, $id);
-    }
-
-    public function addEducation(AddEducationRequest $request): RedirectResponse
-    {
-        return $this->profile->addEducation($request);
-    }
-
-    public function editEducation(EditEducationRequest $request, $id): RedirectResponse
-    {
-        return $this->profile->editEducation($request, $id);
-    }
-
-    public function deleteEducation(DeleteEducationRequest $request, $id): RedirectResponse
-    {
-        return $this->profile->deleteEducation($request, $id);
     }
 
 }

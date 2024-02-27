@@ -81,7 +81,6 @@
                             </ul>
                         </div>
                         <div class="tab-content border-left border-bottom border-right border-top-0 p-4">
-                            @include('profile.partials.home-tab-pane')
                             @include('profile.partials.profile-tab-pane')
                         </div>
                     </div>

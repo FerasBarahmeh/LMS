@@ -22,10 +22,7 @@ class ProfileUpdateRequest extends FormRequest
             'last_name' => ['required_without:first_name', 'string', 'max:127'],
             'username' => ['required', 'string', 'max:30', new NoSpaces, Rule::unique(User::class)->ignore($this->user()->id)],
             'email' => ['required' , 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-            'designation' => ['nullable', 'string', 'max:150'],
-            'website' => ['nullable', 'string', 'url'],
             'phone' => ['nullable', 'numeric', 'digits:10'],
-            'about' => ['nullable', 'string', 'max:255'],
         ];
     }
 

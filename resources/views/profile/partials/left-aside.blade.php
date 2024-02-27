@@ -31,18 +31,7 @@
                             <h6 class="text-small text-muted mb-0">Posts</h6>
                         </div>
                     </div>
-                    <hr class="mg-y-30">
-                    <label class="main-content-label tx-13 mg-b-20">Social</label>
-                    @include('profile.partials.left-aside.media-card')
-                    <hr class="mg-y-30">
-                    <h6>Skills</h6>
-                    <div class="skills d-flex" @style(['gap: 2px;'])>
-                        @foreach($user->skills as $skill)
-                            <div class="tag tag-gray-dark">
-                                <span>{{$skill->name}}</span>
-                            </div>
-                        @endforeach
-                    </div>
+
 
                 </div>
                 <!-- main-profile-overview -->
