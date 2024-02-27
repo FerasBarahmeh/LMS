@@ -2,21 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Enums\MediaCollections;
-use App\Enums\Status;
-use App\Enums\Theme;
-use App\Http\Requests\ProfileUpdateRequest;
-use App\Http\Requests\ToggleStatusRequest;
+use App\Enums\{MediaCollections, Status, Theme};
+use App\Http\Requests\{ProfileUpdateRequest, ToggleStatusRequest};
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Http\{RedirectResponse, Request};
+use Illuminate\Support\Facades\{Auth, Redirect, Validator};
+use Illuminate\Validation\{Rule, ValidationException};
 use Illuminate\View\View;
 
 class ProfileRepositories implements DBProfileInterface
@@ -57,9 +50,9 @@ class ProfileRepositories implements DBProfileInterface
         $saved = $request->user()->save();
 
         if (!$saved)
-            return Redirect::route('profile.edit')->with('profile-update-fail', 'Fail  Updated Profile');
+            return self::toHome('profile-update-fail', 'Fail  Updated Profile');
 
-        return Redirect::route('profile.edit')->with('profile-update-successfully', 'Profile Updated Successfully');
+        return self::toHome('profile-update-successfully', 'Profile Updated Successfully');
     }
 
     /**
@@ -140,6 +133,11 @@ class ProfileRepositories implements DBProfileInterface
     public static function setCollection(): void
     {
         self::$COLLECTION = MediaCollections::Users->value;
+    }
+
+    public function setHome(): void
+    {
+        self::$HOME = route('profile.edit');
     }
 
 }
