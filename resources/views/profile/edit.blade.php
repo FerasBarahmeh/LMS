@@ -1,7 +1,15 @@
 <x-app-layout :title="'Dashboard'">
+
     <x-slot name="content">
-        <!-- alert messages container -->
+        <!-- Start alert messages -->
         @include('profile.partials.alert-messages')
+        <div class="container">
+            @if (session('status') === 'verification-link-sent')
+                <x-alerts.alert :success="__('email.success_verification_email_send') "/>
+            @endif
+        </div>
+        <!-- End alert messages -->
+
         <div class="row row-sm">
             <div class="container-fluid">
                 <!-- row -->
@@ -21,20 +29,14 @@
                                 @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                                     <div class="verify-message bg-warning p-2 m-2 box-shadow-warning d-flex justify-content-center align-items-center br-bl-7 br-br-7">
                                         <p class="text-gray-800 dark:text-gray-200 m-0">
-                                            {{ __('Your email address is unverified.') }}
+                                            {{ __('email.email_un_verified_email') }}
                                         </p>
                                         <form id="send-verification" method="post" action="{{ route('verification.send') }}">
                                             @csrf
                                             <button form="send-verification" type="submit" class="btn p-0 text-gray-800 dark:text-gray-200">
-                                                {{ __('Click here to re-send the verification email.') }}
+                                                {{ __('email.click_to_resend_verification_email') }}
                                             </button>
                                         </form>
-
-                                        @if (session('status') === 'verification-link-sent')
-                                            <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
-                                                {{ __('A new verification link has been sent to your email address.') }}
-                                            </p>
-                                        @endif
                                     </div>
                                 @endif
                                 <!-- End verify email message -->

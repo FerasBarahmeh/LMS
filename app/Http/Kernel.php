@@ -81,5 +81,13 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\AdminPrivilege::class,
         'student' => \App\Http\Middleware\StudentPrivilege::class,
         'instructor' => \App\Http\Middleware\InstructorPrivilege::class,
+        /**
+         * laravel localization mcamara
+         */
+        'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
     ];
 }

@@ -7,7 +7,7 @@
 
     {{-- E-mail --}}
     <div class="mb-3">
-        <x-input-label for="email" class="form-label" :value="__('email')"/>
+        <x-input-label for="email" class="form-label" :value="__('common.email')"/>
         <x-text-input id="email" name="email" type="email" class="form-control" :value="old('email', $user->email)" autocomplete="email"/>
         <x-input-error class="mt-2" :messages="$errors->get('email')"/>
     </div>

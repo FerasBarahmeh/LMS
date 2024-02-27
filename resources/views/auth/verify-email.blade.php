@@ -1,4 +1,4 @@
-<x-auth-layout :title="'verify email'">
+<x-auth-layout :title="__('email.verify_email')">
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -21,11 +21,11 @@
                                 <div class="card-sigin">
                                     <div class="container p-0">
                                         @if (session('status') == 'verification-link-sent')
-                                            <x-alerts.alert :success="'A new verification link has been sent to the email address you provided during registration.'" />
+                                            <x-alerts.alert :success="__('email.success_verification_link_send')" />
                                         @endif
                                     <div class="main-signup-header">
                                         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                                            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+                                            {{ __('email.thanks_for_sign_up') }}
                                         </div>
 
                                         <div class="mt-4" @style(['display: flex; gap: 10px; align-items: center; justify-content: center;'])>
@@ -33,16 +33,15 @@
                                                 @csrf
                                                 <div>
                                                     <x-primary-button>
-                                                        {{ __('Resend Verification Email') }}
+                                                        {{ __('email.resend_verification_email') }}
                                                     </x-primary-button>
                                                 </div>
                                             </form>
 
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
-
                                                 <x-secondary-button type="submit">
-                                                    {{ __('Log Out') }}
+                                                    {{ __('common.logout' }}
                                                 </x-secondary-button>
                                             </form>
                                         </div>

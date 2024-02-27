@@ -7,11 +7,11 @@
     @include('backend.layouts.links')
 </head>
 
-<body class="main-body app sidebar-mini {{ auth()->user()->theme == \App\Enums\Theme::Dim->value ? 'dark-theme' : '' }}"> {{-- dark-theme --}}
+<body class="main-body app sidebar-mini {{ auth()->user()->theme == Theme::Dim->value ? 'dark-theme' : '' }}">
 
 <!-- Loader -->
 <div id="global-loader">
-    <img src="{{asset('backend/assets/img/loader.svg')}}" class="loader-img" alt="Loader">
+    <img src="{{asset('img/brand/loader.svg')}}" class="loader-img" alt="Loader">
 </div>
 
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admins\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\AvailablePlatformController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,27 +15,33 @@ use App\Http\Controllers\Admins\AvailablePlatformController;
 |
 */
 
-Route::middleware(['auth', 'verified'])
-    ->prefix('admin')->group(function () {
-        Route::get('dashboard', [AdminController::class, 'index'])
-            ->name('admin.dashboard');
+Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
+    ->prefix(LaravelLocalization::setLocale())
+    ->group(function () {
+        Route::middleware(['auth', 'verified'])
+            ->prefix('admin')->group(function () {
+                Route::get('dashboard', [AdminController::class, 'index'])
+                    ->name('admin.dashboard');
 
-        Route::prefix('users')->group(function () {
-            Route::get('', [AdminController::class, 'users'])
-                ->name('admin.users.all');
+                Route::prefix('users')->group(function () {
+                    Route::get('', [AdminController::class, 'users'])
+                        ->name('admin.users.all');
 
-            Route::get('instructors', [AdminController::class, 'instructors'])
-                ->name('admin.users.instructors');
-
-
-            Route::get('students', [AdminController::class, 'students'])
-                ->name('admin.users.students');
-
-        });
+                    Route::get('instructors', [AdminController::class, 'instructors'])
+                        ->name('admin.users.instructors');
 
 
-        /**
-         * Available Platforms
-         */
-        Route::resource('platforms', AvailablePlatformController::class);
+                    Route::get('students', [AdminController::class, 'students'])
+                        ->name('admin.users.students');
+
+                });
+
+
+                /**
+                 * Available Platforms
+                 */
+                Route::resource('platforms', AvailablePlatformController::class);
+            });
+
     });
+
