@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TemporaryFileController;
 use Illuminate\Support\Facades\Route;
+use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,13 @@ Route::get('/', function () {
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->prefix(LaravelLocalization::setLocale())
     ->group(function () {
+        /**
+         * Livewire
+         */
+        Livewire::setUpdateRoute(function ($handle) {
+            return Route::post('/livewire/update', $handle);
+        });
+
 
         Route::get('/test', function () {
             \Illuminate\Support\Facades\DB::enableQueryLog();
