@@ -7,9 +7,7 @@ use App\Enums\Status;
 use App\Enums\Theme;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\ToggleStatusRequest;
-use App\Interfaces\Controllers\QuantumQuerierInterface;
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
-use App\Models\SocialMediaAccount;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Http\RedirectResponse;
@@ -21,7 +19,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
-class ProfileRepositories implements DBProfileInterface, QuantumQuerierInterface
+class ProfileRepositories implements DBProfileInterface
 {
     use QuantumQuerier;
 

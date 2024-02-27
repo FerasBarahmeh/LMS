@@ -4,13 +4,12 @@ namespace App\Repositories\Admins;
 
 use App\Enums\MediaCollections;
 use App\Enums\Privileges;
-use App\Interfaces\Controllers\QuantumQuerierInterface;
 use App\Interfaces\Repositories\Admins\DBAdminInterface;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 
-class AdminRepositories implements DBAdminInterface, QuantumQuerierInterface
+class AdminRepositories implements DBAdminInterface
 {
     use QuantumQuerier;
 
