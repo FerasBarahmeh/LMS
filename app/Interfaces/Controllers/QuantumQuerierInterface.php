@@ -12,8 +12,10 @@ interface QuantumQuerierInterface
      */
     public static function retrieveBlade(string $tail): string;
 
-
     public static function setBladeHub(): void;
+
     public static function setCollection(): void;
+
+    public static function setHome(): void;
 
 }

@@ -32,10 +32,10 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, Q
     public function store(StoreAvailablePlatformRequest $request): RedirectResponse
     {
         $platform = SocialMediaAccount::create($request->validated());
-        if (! $platform)
-            return Redirect::route('platforms.index')->with('fail-add-platform', 'Fail add media platform');
+        if (!$platform)
+            return Redirect::intended(self::$Home)->with('fail-add-platform', 'Fail add media platform');
 
-        return Redirect::route('platforms.index')->with('success-add-platform', "'Success add media {$platform->name} to valid platform");
+        return Redirect::intended(self::$Home)->with('success-add-platform', "'Success add media {$platform->name} to valid platform");
     }
 
     /**
@@ -44,12 +44,12 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, Q
     public function update(UpdateAvailablePlatformRequest $request, string $id): RedirectResponse
     {
         $platform = SocialMediaAccount::find($id);
-        if (! $platform)
-            return Redirect::route('platforms.index')->with('fail-update-platform', 'Fail update platform');
+        if (!$platform)
+            return Redirect::intended(self::$Home)->with('fail-update-platform', 'Fail update platform');
 
         $platform->fill($request->validated());
         $platform->save();
-        return Redirect::route('platforms.index')->with('success-update-platform', 'Successfully update platform');
+        return Redirect::intended(self::$Home)->with('success-update-platform', 'Successfully update platform');
     }
 
     /**
@@ -59,10 +59,10 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, Q
     {
         $platform = SocialMediaAccount::findOrFail($id);
         if (!$platform)
-            return Redirect::route('platforms.index')->with('field-delete-platform', 'the platform not exist in our source');
+            return Redirect::intended(self::$Home)->with('field-delete-platform', 'the platform not exist in our source');
 
         $platform->delete();
-        return Redirect::route('platforms.index')->with('success-delete-platform', 'Successfully delete platform');
+        return Redirect::intended(self::$Home)->with('success-delete-platform', 'Successfully delete platform');
     }
 
     public static function setBladeHub(): void
@@ -74,4 +74,10 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, Q
     {
         self::$COLLECTION = '';
     }
+
+    public static function setHome(): void
+    {
+        self::$Home = route('platforms.index');
+    }
+
 }

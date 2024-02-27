@@ -15,10 +15,16 @@ trait QuantumQuerier
      */
     protected static string $BLADES_HUB;
 
+    /**
+     * Home url
+     */
+    protected static string $Home;
+
     public function __construct()
     {
         static::setBladeHub();
         static::setCollection();
+        static::setHome();
     }
 
     public static function retrieveBlade(string $tail): string
@@ -34,6 +40,10 @@ trait QuantumQuerier
     {
     }
 
+    public function setHome()
+    {
+    }
+
     public static function getCollection(): string
     {
         return self::$COLLECTION;
@@ -42,6 +52,11 @@ trait QuantumQuerier
     public static function getBladesHub(): string
     {
         return self::$BLADES_HUB;
+    }
+
+    public function getHome(): string
+    {
+        return self::$Home;
     }
 
 }
