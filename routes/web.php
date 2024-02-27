@@ -25,12 +25,6 @@ Route::get('/', function () {
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->prefix(LaravelLocalization::setLocale())
     ->group(function () {
-        /**
-         * Livewire
-         */
-        Livewire::setUpdateRoute(function ($handle) {
-            return Route::post('/livewire/update', $handle);
-        });
 
 
         Route::get('/test', function () {
