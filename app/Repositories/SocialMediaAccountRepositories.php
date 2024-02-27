@@ -4,15 +4,13 @@ namespace App\Repositories;
 
 use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
-use App\Interfaces\Controllers\QuantumQuerierInterface;
 use App\Interfaces\Repositories\Admins\DBSocialMediaAccountInterface;
 use App\Models\SocialMediaAccount;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Redirect;
 
-class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, QuantumQuerierInterface
+class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface
 {
     use QuantumQuerier;
 
@@ -33,9 +31,13 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, Q
     {
         $platform = SocialMediaAccount::create($request->validated());
         if (!$platform)
-            return Redirect::intended(self::$Home)->with('fail-add-platform', 'Fail add media platform');
+            return self::toHome('fail-add-platform', 'Fail add media platform');
 
-        return Redirect::intended(self::$Home)->with('success-add-platform', "'Success add media {$platform->name} to valid platform");
+
+        return self::toHome(
+            'success-add-platform',
+            "Success add media {$platform->name} to valid platform"
+        );
     }
 
     /**
@@ -45,11 +47,11 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, Q
     {
         $platform = SocialMediaAccount::find($id);
         if (!$platform)
-            return Redirect::intended(self::$Home)->with('fail-update-platform', 'Fail update platform');
+            return self::toHome('fail-update-platform', 'Fail update platform');
 
         $platform->fill($request->validated());
         $platform->save();
-        return Redirect::intended(self::$Home)->with('success-update-platform', 'Successfully update platform');
+        return self::toHome('success-update-platform', 'Successfully update platform');
     }
 
     /**
@@ -59,10 +61,10 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, Q
     {
         $platform = SocialMediaAccount::findOrFail($id);
         if (!$platform)
-            return Redirect::intended(self::$Home)->with('field-delete-platform', 'the platform not exist in our source');
+            return self::toHome('field-delete-platform', 'the platform not exist in our source');
 
         $platform->delete();
-        return Redirect::intended(self::$Home)->with('success-delete-platform', 'Successfully delete platform');
+        return self::toHome('success-delete-platform', 'Successfully delete platform');
     }
 
     public static function setBladeHub(): void
@@ -77,7 +79,7 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, Q
 
     public static function setHome(): void
     {
-        self::$Home = route('platforms.index');
+        self::$HOME = route('platforms.index');
     }
 
 }
