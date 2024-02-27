@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\AvailablePlatform;
+use App\Models\SocialMediaAccount;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -25,9 +25,9 @@ class StoreAvailablePlatformRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:30', Rule::unique(AvailablePlatform::class)],
-            'domain' => ['required', Rule::unique(AvailablePlatform::class)],
-            'TLD' => ['required'],
+            'name' => ['required', 'max:30', Rule::unique(SocialMediaAccount::class)],
+            'username' => ['required'],
+            'link' => ['required', 'url', Rule::unique(SocialMediaAccount::class)],
         ];
     }
 }

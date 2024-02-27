@@ -9,7 +9,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\ToggleStatusRequest;
 use App\Interfaces\Controllers\QuantumQuerierInterface;
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
-use App\Models\AvailablePlatform;
+use App\Models\SocialMediaAccount;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Http\RedirectResponse;

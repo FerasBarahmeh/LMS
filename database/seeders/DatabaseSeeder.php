@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
              * Without factories
              */
             UserSeeder::class,
-            PlatformSeeder::class,
+            SocialMediaAccountSeeder::class,
         ]);
     }
 }

@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Repositories\Admins;
+namespace App\Repositories;
 
 use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
 use App\Interfaces\Controllers\QuantumQuerierInterface;
-use App\Interfaces\Repositories\Admins\DBAvailablePlatformInterface;
-use App\Models\AvailablePlatform;
+use App\Interfaces\Repositories\Admins\DBSocialMediaAccountInterface;
+use App\Models\SocialMediaAccount;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 
-class AvailablePlatformRepositories implements DBAvailablePlatformInterface, QuantumQuerierInterface
+class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface, QuantumQuerierInterface
 {
     use QuantumQuerier;
 
@@ -22,16 +22,8 @@ class AvailablePlatformRepositories implements DBAvailablePlatformInterface, Qua
     public function index(): View
     {
         return view(self::retrieveBlade('index'), [
-            'platforms' => AvailablePlatform::all(),
+            'platforms' => SocialMediaAccount::all(),
         ]);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function create()
-    {
-        // TODO: Implement create() method.
     }
 
     /**
@@ -39,7 +31,7 @@ class AvailablePlatformRepositories implements DBAvailablePlatformInterface, Qua
      */
     public function store(StoreAvailablePlatformRequest $request): RedirectResponse
     {
-        $platform = AvailablePlatform::create($request->validated());
+        $platform = SocialMediaAccount::create($request->validated());
         if (! $platform)
             return Redirect::route('platforms.index')->with('fail-add-platform', 'Fail add media platform');
 
@@ -49,25 +41,9 @@ class AvailablePlatformRepositories implements DBAvailablePlatformInterface, Qua
     /**
      * @inheritDoc
      */
-    public function show(string $id)
-    {
-        // TODO: Implement show() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function edit(string $id)
-    {
-        // TODO: Implement edit() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function update(UpdateAvailablePlatformRequest $request, string $id): RedirectResponse
     {
-        $platform = AvailablePlatform::find($id);
+        $platform = SocialMediaAccount::find($id);
         if (! $platform)
             return Redirect::route('platforms.index')->with('fail-update-platform', 'Fail update platform');
 
@@ -81,7 +57,7 @@ class AvailablePlatformRepositories implements DBAvailablePlatformInterface, Qua
      */
     public function destroy(string $id): RedirectResponse
     {
-        $platform = AvailablePlatform::findOrFail($id);
+        $platform = SocialMediaAccount::findOrFail($id);
         if (!$platform)
             return Redirect::route('platforms.index')->with('field-delete-platform', 'the platform not exist in our source');
 

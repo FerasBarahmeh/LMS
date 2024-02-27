@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AvailablePlatform extends Model
+class SocialMediaAccount extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'domain',
-        'TLD',
+        'username',
+        'link',
     ];
 
 }

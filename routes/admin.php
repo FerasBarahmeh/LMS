@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admins\AdminController;
+use App\Http\Controllers\Admins\SocialMediaAccountsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admins\AvailablePlatformController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -18,6 +18,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->prefix(LaravelLocalization::setLocale())
     ->group(function () {
+
+
         Route::middleware(['auth', 'verified'])
             ->prefix('admin')->group(function () {
                 Route::get('dashboard', [AdminController::class, 'index'])
@@ -38,9 +40,10 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
 
                 /**
-                 * Available Platforms
+                 * Social media account for platform
                  */
-                Route::resource('platforms', AvailablePlatformController::class);
+                Route::resource('platforms', SocialMediaAccountsController::class)
+                    ->only('index', 'store', 'update', 'destroy');
             });
 
     });

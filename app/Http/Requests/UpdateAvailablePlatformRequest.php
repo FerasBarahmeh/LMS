@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\AvailablePlatform;
+use App\Models\SocialMediaAccount;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -26,9 +26,9 @@ class UpdateAvailablePlatformRequest extends FormRequest
     {
         $id = $this->route()->platform;
         return [
-            'name' => ['required', 'max:30', Rule::unique(AvailablePlatform::class)->ignore($id)],
-            'domain' => ['required',  Rule::unique(AvailablePlatform::class)->ignore($id)],
-            'TLD' => ['required'],
+            'name' => ['required', 'max:30', Rule::unique(SocialMediaAccount::class)->ignore($id)],
+            'username' => ['required'],
+            'link' => ['required', 'url', Rule::unique(SocialMediaAccount::class)->ignore($id)],
         ];
     }
 }

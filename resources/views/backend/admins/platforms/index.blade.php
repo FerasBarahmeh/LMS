@@ -9,9 +9,7 @@
                             <h4 class="card-title mg-b-0">Available Platforms</h4>
                             <i class="mdi mdi-dots-horizontal text-gray"></i>
                         </div>
-                        <p class="tx-12 tx-gray-500 mb-2">They comprise the entire roster of available platforms media
-                            on your
-                            platform.</p>
+                        <p class="tx-12 tx-gray-500 mb-2">They comprise the entire roster of available platforms media on your platform.</p>
                     </div>
 
                     <div class="card-body">
@@ -35,8 +33,8 @@
                                 <tr>
                                     <th class="border-bottom-0">#</th>
                                     <th class="border-bottom-0">Name</th>
-                                    <th class="border-bottom-0">domain</th>
-                                    <th class="border-bottom-0">TLD</th>
+                                    <th class="border-bottom-0">username</th>
+                                    <th class="border-bottom-0">link</th>
                                     <th class="border-bottom-0">Options</th>
                                 </tr>
                                 </thead>

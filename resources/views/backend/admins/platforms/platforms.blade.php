@@ -1,8 +1,8 @@
 <tr>
     <td class="sorting_1">{{ $platform->id }}</td>
     <td>{{ $platform->name }}</td>
-    <td>{{ $platform->domain }}</td>
-    <td>{{ $platform->TLD }}</td>
+    <td>{{ $platform->username }}</td>
+    <td><a href="{{ $platform->link }}">{{ $platform->link }}</a></td>
     <td class="text-center">
         <x-modals.buttons.horizontal :dataEffect="'edit-'.$platform->id" class="p-0 bg-transparent ">
             <i class="fa fa-edit text-success"></i>

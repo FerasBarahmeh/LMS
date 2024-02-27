@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
-use App\Interfaces\Repositories\Admins\DBAvailablePlatformInterface;
+use App\Interfaces\Repositories\Admins\DBSocialMediaAccountInterface;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
-class AvailablePlatformController extends Controller
+class SocialMediaAccountsController extends Controller
 {
-    private DBAvailablePlatformInterface $availablePlatform;
-    public function __construct(DBAvailablePlatformInterface $availablePlatform)
+    private DBSocialMediaAccountInterface $availablePlatform;
+
+    public function __construct(DBSocialMediaAccountInterface $availablePlatform)
     {
         $this->availablePlatform = $availablePlatform;
     }
@@ -26,35 +26,11 @@ class AvailablePlatformController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreAvailablePlatformRequest $request)
     {
         return $this->availablePlatform->store($request);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**
