@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             IconSeeder::class,
             SocialMediaAccountSeeder::class,
+            InstructorSeeder::class,
         ]);
     }
 }

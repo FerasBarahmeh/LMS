@@ -5,12 +5,14 @@ namespace App\Repositories\Admins;
 use App\Enums\MediaCollections;
 use App\Enums\Privileges;
 use App\Http\Requests\MigrateToInstructorRequest;
+use App\Http\Requests\MigrateToStudentRequest;
 use App\Interfaces\Repositories\Admins\DBAdminInterface;
 use App\Models\Instructor;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminRepositories implements DBAdminInterface
@@ -68,12 +70,31 @@ class AdminRepositories implements DBAdminInterface
         return Redirect::back()->with('migrate-student-field', 'Opp\'s ! The can\'t upgrade user now try again later plz.');
     }
 
-    public static function setBladeHub(): void
+    public function migrateToStudent(MigrateToStudentRequest $request, string $id): RedirectResponse
+    {
+        $user = User::find($id);
+        $user->privilege = Privileges::Student->value;
+        try {
+            DB::transaction(function () use ($user) {
+                $user->save();
+                $user->instructor->delete();
+            });
+            return Redirect::back()->with( 'migrate-instructor-success' , "Great news! The privilege level for instruct {$user->name} has been successfully downgraded to student.");
+
+        } catch (\Exception $exception) {
+            return Redirect::back()->with('migrate-instructor-field', 'Oops! The system could\'t downgrade the instructor. Please try again later.');
+        }
+
+    }
+
+    public
+    static function setBladeHub(): void
     {
         self::$BLADES_HUB = 'backend.admins.';
     }
 
-    public static function setCollection(): void
+    public
+    static function setCollection(): void
     {
         self::$COLLECTION = MediaCollections::Users->value;
     }

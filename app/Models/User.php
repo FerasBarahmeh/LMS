@@ -55,4 +55,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         return User::where('privilege', Privileges::Instructor->value)->get();
     }
 
+    public function instructor(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Instructor::class);
+    }
 }
