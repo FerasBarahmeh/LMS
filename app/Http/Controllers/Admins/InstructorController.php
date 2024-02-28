@@ -22,8 +22,4 @@ class InstructorController extends Controller
         return $this->instructor->dashboard();
     }
 
-    public function index(): \Illuminate\Foundation\Application|Factory|View|Application
-    {
-        return $this->instructor->index();
-    }
 }

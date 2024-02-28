@@ -15,10 +15,4 @@ interface DBInstructorInterface
      */
     public function dashboard(): View|\Illuminate\Foundation\Application|Factory|Application;
 
-    /**
-     * Display all instructors
-     *
-     * @return View|\Illuminate\Foundation\Application|Factory|Application
-     */
-    public function index(): View|\Illuminate\Foundation\Application|Factory|Application;
 }

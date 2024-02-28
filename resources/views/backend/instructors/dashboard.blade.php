@@ -402,4 +402,34 @@
             </div>
         </div>
     </x-slot>
+    @push('js')
+
+        <!--Internal  Chart.bundle js -->
+        <script src="{{ asset('backend/assets/plugins/chart.js/Chart.bundle.min.js')}}"></script>
+
+
+        <!--Internal Sparkline js -->
+        <script src="{{ asset('backend/assets/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+
+        <!--Internal Counters -->
+        <script src="{{asset('backend/assets/plugins/counters/waypoints.min.js')}}"></script>
+        <script src="{{asset('backend/assets/plugins/counters/counterup.min.js')}}"></script>
+        <!--Internal Time Counter -->
+        <script src="{{asset('backend/assets/plugins/counters/jquery.missofis-countdown.js')}}"></script>
+        <script src="{{asset('backend/assets/plugins/counters/counter.js')}}"></script>
+
+        <!-- Rating js-->
+        <script src="{{ asset('backend/assets/plugins/rating/jquery.rating-stars.js')}}"></script>
+        <script src="{{ asset('backend/assets/plugins/rating/jquery.barrating.js')}}"></script>
+
+        <!-- Internal Map -->
+        <script src="{{ asset('backend/assets/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+        <script src="{{ asset('backend/assets/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+
+        <!--Internal Apexchart js-->
+        <script src="{{ asset('backend/assets/js/apexcharts.js')}}"></script>
+        <!-- Apexchart js-->
+        <script src="{{ asset('backend/assets/js/apexcharts.js')}}"></script>
+
+    @endpush
 </x-app-layout>

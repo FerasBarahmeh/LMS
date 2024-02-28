@@ -42,7 +42,7 @@
                     <li>
                         <a class="slide-item text-capitalize" href="{{ route('admin.users.all') }}">show all</a>
                         <a class="slide-item text-capitalize" href="{{ route('admin.users.instructors') }}">instructors</a>
-                        <a class="slide-item text-capitalize" href="{{ route('admin.users.students') }}">students</a>
+                        <a class="slide-item text-capitalize" href="{{ route('admin.users.students') }}">users</a>
                     </li>
                 </ul>
             </li>

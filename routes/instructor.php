@@ -16,9 +16,11 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->prefix(LaravelLocalization::setLocale())
     ->group(function () {
+
         Route::middleware(['auth', 'verified'])
             ->prefix('instructor')->group(function () {
                 Route::get('dashboard', [InstructorController::class, 'dashboard'])
                     ->name('instructor.dashboard');
             });
+
     });
