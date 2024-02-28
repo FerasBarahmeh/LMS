@@ -12,7 +12,7 @@
 
 <nav aria-label="breadcrumb" @style(['padding: 4px; margin-top: 6px; margin-bottom: 10px'])>
     <ol class="breadcrumb-header breadcrumb breadcrumb-style2">
-        <li class="breadcrumb-item">
+        <li class="breadcrumb-item" @style(['font-size: 15px;'])>
             <a href="#">{{ $head }}</a>
         </li>
         @if($partsName != null)
@@ -22,6 +22,6 @@
                 </li>
         @endforeach
         @endif
-        <li class="breadcrumb-item active">{{ $tail }}</li>
+        <li class="breadcrumb-item active" @style(['font-size: 15px;'])>{{ $tail }}</li>
     </ol>
 </nav>
