@@ -7,6 +7,7 @@ use App\Traits\Enums\EnumOperations;
 enum NotifyThrough: int
 {
     use EnumOperations;
+
     /**
      * Mail
      */
@@ -21,13 +22,4 @@ enum NotifyThrough: int
      * Mail and Database
      */
     case MDB = 2;
-
-    public static function values(): array
-    {
-        return[
-            self::Mail->value,
-            self::DB->value,
-            self::MDB->value,
-        ];
-    }
 }

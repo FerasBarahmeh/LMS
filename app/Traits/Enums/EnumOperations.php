@@ -7,17 +7,30 @@ use ReflectionClass;
 trait EnumOperations
 {
 
-    public static function values()
+    public static function values(): array
     {
-        $reflection = new ReflectionClass(static::class);
-        $content = $reflection->getConstants();
-        return array_map(fn($value) => $value->value, array_values($content));
+        $values = [];
+        foreach (static::cases() as $case) {
+            $values[] = $case->value;
+        }
+        return $values;
     }
 
     public static function names(): array
     {
-        $reflection = new ReflectionClass(static::class);
-        $statusValues = $reflection->getConstants();
-        return array_map('lcfirst', (array_keys($statusValues)));
+        $names  =[];
+        foreach (static::cases() as $case) {
+            $names[] = $case->name;
+        }
+        return $names;
+    }
+
+    public static function namesLower(): array
+    {
+        $names = [];
+        foreach (static::cases() as $case) {
+            $names[] = strtolower($case->name);
+        }
+        return $names;
     }
 }
