@@ -32,7 +32,7 @@
                                 </thead>
 
                                 <tbody>
-                                @each('backend.admins.instructors.instructors', $instructors, 'instructor')
+                                @each('backend.admins.students.students', $instructors, 'instructor')
                                 </tbody>
                             </table>
                             {{ $instructors->links() }}

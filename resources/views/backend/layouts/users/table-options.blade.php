@@ -19,15 +19,15 @@
         </x-modals.buttons.horizontal>
 
     @endif
-        @if($downgrade)
+    @if($downgrade)
 
-            <x-modals.buttons.horizontal :dataEffect="'downgrade-'.$id" class="p-0 bg-transparent "
-                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                         title="downgrade instructor to user">
-                <i class="fa fa-caret-down text-success fa-15"></i>
-            </x-modals.buttons.horizontal>
+        <x-modals.buttons.horizontal :dataEffect="'downgrade-'.$id" class="p-0 bg-transparent "
+                                     data-bs-toggle="tooltip" data-bs-placement="top"
+                                     title="downgrade instructor to user">
+            <i class="fa fa-caret-down text-success fa-15"></i>
+        </x-modals.buttons.horizontal>
 
-        @endif
+    @endif
 
     @if($eye)
 
