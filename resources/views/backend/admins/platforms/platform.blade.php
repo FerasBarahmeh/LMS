@@ -16,4 +16,4 @@
 
 </tr>
 @include('backend.admins.platforms.edit-modal', ['platform' => $platform, 'icons' => $icons])
-<x-modals.modals.confirm :id="'confirm-delete-'.$platform->id" :route="route('platforms.destroy', $platform->id)"/>
+<x-modals.modals.confirm :id="'confirm-delete-'.$platform->id" :route="route('admin.platforms.destroy', $platform->id)"/>

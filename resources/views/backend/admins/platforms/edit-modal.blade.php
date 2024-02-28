@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route('platforms.update', $platform->id) }}">
+        <form method="POST" action="{{ route('admin.platforms.update', $platform->id) }}">
             @csrf @method('put')
 
             <!-- Name -->

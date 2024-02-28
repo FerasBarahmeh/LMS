@@ -6,7 +6,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route('platforms.store') }}">
+        <form method="POST" action="{{ route('admin.platforms.store') }}">
             @csrf
 
             <!-- Name platform -->
