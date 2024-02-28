@@ -10,7 +10,6 @@ use App\Interfaces\Repositories\Admins\DBAdminInterface;
 use App\Models\Instructor;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
-use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -61,19 +60,13 @@ class AdminRepositories implements DBAdminInterface
     {
         $user = User::find($id);
         $user->privilege = Privileges::Instructor->value;
-        try {
-            DB::transaction(function () use ($user) {
-                $user->save();
-                Instructor::create(['user_id' => $user->id]);
-            });
-
+        if ($user->save() && Instructor::create(['user_id' => $user->id])) {
             return redirect()->back()
                 ->with('migrate-student-success',
                     "Great news! The privilege level for instructor {$user->name} has been successfully upgraded to teacher status. Congratulations!");
-
-        } catch (Exception $exception) {
-            return Redirect::back()->with('migrate-student-field', 'Opp\'s ! The can\'t upgrade user now try again later plz.');
         }
+
+        return Redirect::back()->with('migrate-student-field', 'Opp\'s ! The can\'t upgrade user now try again later plz.');
     }
 
     public function migrateToStudent(MigrateToStudentRequest $request, string $id): RedirectResponse
