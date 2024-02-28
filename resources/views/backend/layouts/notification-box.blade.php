@@ -1,17 +1,17 @@
 <div class="menu-header-content bg-primary text-left">
     <div class="d-flex">
         <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Notifications</h6>
-        @if(auth()->user()->unreadNotifications->count() > 0)
+        @if(user()->unreadNotifications->count() > 0)
             <span class="badge badge-pill badge-warning ml-auto my-auto float-right">Mark All Read</span>
         @endif
     </div>
     <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">You
-        have {{ auth()->user()->unreadNotifications->count()  }} unread Notifications</p>
+        have {{ user()->unreadNotifications->count()  }} unread Notifications</p>
 </div>
 <div class="main-notification-list Notification-scroll">
 
-    @if( auth()->user()->unreadNotifications->count()  > 0 )
-        @foreach(auth()->user()->unreadNotifications as $notification)
+    @if( user()->unreadNotifications->count()  > 0 )
+        @foreach(user()->unreadNotifications as $notification)
             <a class="d-flex p-3 border-bottom" @style(['cursor: pointer;']) >
                 <div
                     class="notifyimg bg-pink" @style(['width: 50px; height: 50px; display: flex; align-items: center;'])>

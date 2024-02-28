@@ -187,6 +187,7 @@ return [
          * Framework class
          */
          'Str' => \Illuminate\Support\Str::class,
+         'Carbon' => \Illuminate\Support\Carbon::class,
 
         /**
          * Enums

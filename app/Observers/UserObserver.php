@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
+use App\Notifications\ChangePrivilegeNotification;
 use App\Notifications\ChangeStatusNotification;
 use App\Notifications\WelcomeNotification;
 
@@ -23,6 +24,9 @@ class UserObserver
     {
         if ($user->isDirty('status')) {
             $user->notify(new ChangeStatusNotification());
+        }
+        if ($user->isDirty('privilege')) {
+            $user->notify(new ChangePrivilegeNotification());
         }
     }
 
