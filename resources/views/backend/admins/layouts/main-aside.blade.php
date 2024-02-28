@@ -52,7 +52,7 @@
                 <a class="side-menu__item" data-toggle="slide" href="#">
                     <i class="fa fa-layer-group ml-2 mr-2"></i>
 
-                    <span class="side-menu__label">Available Platforms</span>
+                    <span class="side-menu__label">LMS Accounts</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
                 <ul class="slide-menu">

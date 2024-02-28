@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
              * Without factories
              */
             UserSeeder::class,
+            IconSeeder::class,
             SocialMediaAccountSeeder::class,
         ]);
     }

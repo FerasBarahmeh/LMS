@@ -33,6 +33,16 @@
                 <x-input-error :messages="$errors->get('link')" class="mt-2"/>
             </div>
 
+            <!-- Icon -->
+            <x-input-select name="icon_id">
+                <x-option-select :value="null">the icons available for platforms</x-option-select>
+                @foreach($icons as $icon)
+                    <x-option-select :value="$icon->id" :selected="old('icon_id') == $icon->id">
+                        {{ $icon->name }}
+                    </x-option-select>
+                @endforeach
+            </x-input-select>
+
             <div class="card-footer pt-1 p-3  d-flex justify-content-end">
                 <x-close-modal-footer-button :content="'close'"/>
                 <x-primary-button class="bg-dark ms-3 ml-1 mr-1">

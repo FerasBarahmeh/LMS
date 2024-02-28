@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Icon;
 use App\Models\SocialMediaAccount;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -28,6 +29,8 @@ class StoreAvailablePlatformRequest extends FormRequest
             'name' => ['required', 'max:30', Rule::unique(SocialMediaAccount::class)],
             'username' => ['required'],
             'link' => ['required', 'url', Rule::unique(SocialMediaAccount::class)],
+            'icon_id' => ['required', Rule::exists(Icon::class, 'id')],
         ];
     }
+
 }

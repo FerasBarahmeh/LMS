@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->string('name', 30)->unique();
             $table->string('username')->comment('Username account for platform');
             $table->string('link', 255);
+            $table->foreignId('icon_id')
+                ->constrained();
             $table->timestamps();
         });
     }

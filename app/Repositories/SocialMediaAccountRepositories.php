@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
 use App\Interfaces\Repositories\Admins\DBSocialMediaAccountInterface;
+use App\Models\Icon;
 use App\Models\SocialMediaAccount;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
@@ -20,7 +21,8 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface
     public function index(): View
     {
         return view(self::retrieveBlade('index'), [
-            'platforms' => SocialMediaAccount::all(),
+            'platforms' => SocialMediaAccount::with('icon')->get(),
+            'icons' => Icon::all('id', 'name'),
         ]);
     }
 
@@ -32,7 +34,6 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface
         $platform = SocialMediaAccount::create($request->validated());
         if (!$platform)
             return self::toHome('fail-add-platform', 'Fail add media platform');
-
 
         return self::toHome(
             'success-add-platform',

@@ -1,6 +1,8 @@
 <tr>
     <td class="sorting_1">{{ $platform->id }}</td>
     <td>{{ $platform->name }}</td>
+    <td><img src="{{ asset($platform->icon->svg_file_path) }}"
+             alt="icon" @style(['width: 30px; max-width: 30px; height: 30px;'])></td>
     <td>{{ $platform->username }}</td>
     <td><a href="{{ $platform->link }}">{{ $platform->link }}</a></td>
     <td class="text-center">
@@ -13,5 +15,5 @@
     </td>
 
 </tr>
-@include('backend.admins.platforms.edit-modal', [$platform])
+@include('backend.admins.platforms.edit-modal', ['platform' => $platform, 'icons' => $icons])
 <x-modals.modals.confirm :id="'confirm-delete-'.$platform->id" :route="route('platforms.destroy', $platform->id)"/>

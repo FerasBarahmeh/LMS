@@ -13,6 +13,12 @@ class SocialMediaAccount extends Model
         'name',
         'username',
         'link',
+        'icon_id',
     ];
+
+    public function icon(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Icon::class);
+    }
 
 }

@@ -1,4 +1,4 @@
-@props(['platform'])
+@props(['platform', 'icons'])
 <x-modal :id="'edit-'.$platform->id">
     <div class="card card-dark  ">
         <div class="card-header pb-0">
@@ -32,6 +32,16 @@
                               autocomplete="link"/>
                 <x-input-error :messages="$errors->get('link')" class="mt-2"/>
             </div>
+
+            <!-- Icon -->
+            <x-input-select name="icon_id">
+                <x-option-select :value="null">the icons available for platforms</x-option-select>
+                @foreach($icons as $icon)
+                    <x-option-select :value="$icon->id" :selected="old('icon_id') == $platform->icon->id">
+                        {{ $icon->name }}
+                    </x-option-select>
+                @endforeach
+            </x-input-select>
 
             <!-- Submit -->
             <div class="card-footer pt-1 p-3  d-flex justify-content-end">

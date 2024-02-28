@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TemporaryFileController;
 use Illuminate\Support\Facades\Route;
-use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -70,6 +69,3 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
         require __DIR__ . '/auth.php';
     });
-
-
-

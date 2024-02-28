@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Icon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -19,6 +20,7 @@ class SocialMediaAccountSeeder extends Seeder
             'name' => 'linkedin',
             'username' => 'feras-barahmeh',
             'link' => 'https://www.linkedin.com/in/feras-barahmeh/',
+            'icon_id' => Icon::where('name', 'linkedin')->first()->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -26,6 +28,7 @@ class SocialMediaAccountSeeder extends Seeder
             'name' => 'X',
             'username' => 'FerasBarahmeh',
             'link' => 'https://twitter.com/FerasBarahmeh',
+            'icon_id' => Icon::where('name', 'x')->first()->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

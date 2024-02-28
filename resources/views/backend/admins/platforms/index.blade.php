@@ -33,6 +33,7 @@
                                 <tr>
                                     <th class="border-bottom-0">#</th>
                                     <th class="border-bottom-0">Name</th>
+                                    <th class="border-bottom-0">Icon</th>
                                     <th class="border-bottom-0">username</th>
                                     <th class="border-bottom-0">link</th>
                                     <th class="border-bottom-0">Options</th>
@@ -40,7 +41,9 @@
                                 </thead>
 
                                 <tbody>
-                                @each('backend.admins.platforms.platforms', $platforms, 'platform')
+                                @foreach($platforms as $platform)
+                                    @include('backend.admins.platforms.platform', ['platform'=> $platform, 'icons' => $icons])
+                                @endforeach
                                 </tbody>
                             </table>
 
