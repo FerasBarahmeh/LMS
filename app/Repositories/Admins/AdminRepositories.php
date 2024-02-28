@@ -4,15 +4,16 @@ namespace App\Repositories\Admins;
 
 use App\Enums\MediaCollections;
 use App\Enums\Privileges;
+use App\Enums\Status;
 use App\Http\Requests\MigrateToInstructorRequest;
 use App\Http\Requests\MigrateToStudentRequest;
+use App\Http\Requests\ToggleStatusRequest;
 use App\Interfaces\Repositories\Admins\DBAdminInterface;
 use App\Models\Instructor;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminRepositories implements DBAdminInterface
@@ -56,6 +57,23 @@ class AdminRepositories implements DBAdminInterface
         ]);
     }
 
+    public function toggleStatus(ToggleStatusRequest $request, string $id): RedirectResponse
+    {
+        $request->validated();
+
+        $instructor = User::find($id);
+
+        $instructor->status = $instructor->status == Status::InActive->value ? Status::Active->value : Status::InActive->value;
+
+        if ($instructor->save()) {
+            return Redirect::back()->with('change-status-success', "Status update: The status for user {$instructor->name} has been successfully modified.");
+        }
+
+        return Redirect::back()->with('change-status-fail', "Failed to update status for user {$instructor->name}. Please check and try again.");
+
+    }
+
+
     public function migrateToInstructor(MigrateToInstructorRequest $request, string $id): RedirectResponse
     {
         $user = User::find($id);
@@ -74,7 +92,7 @@ class AdminRepositories implements DBAdminInterface
         $user = User::find($id);
         $user->privilege = Privileges::Student->value;
         if ($user->save() && $user->instructor->delete()) {
-            return Redirect::back()->with( 'migrate-instructor-success' , "Great news! The privilege level for instruct {$user->name} has been successfully downgraded to student.");
+            return Redirect::back()->with('migrate-instructor-success', "Great news! The privilege level for instruct {$user->name} has been successfully downgraded to student.");
         }
         return Redirect::back()->with('migrate-instructor-field', 'Oops! The system could\'t downgrade the instructor. Please try again later.');
     }

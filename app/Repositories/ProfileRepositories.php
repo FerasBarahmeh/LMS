@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Enums\{MediaCollections, Status, Theme};
-use App\Http\Requests\{ProfileUpdateRequest, ToggleStatusRequest};
+use App\Enums\{MediaCollections, Theme};
+use App\Http\Requests\{ProfileUpdateRequest};
 use App\Interfaces\Repositories\Admins\DBProfileInterface;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
@@ -87,22 +87,6 @@ class ProfileRepositories implements DBProfileInterface
         $user->addMediaFromBase64($blob)
             ->usingFileName('profile-picture-' . $user->id . '.png')
             ->toMediaCollection(self::$COLLECTION);
-    }
-
-    public function toggleStatus(ToggleStatusRequest $request, string $id): RedirectResponse
-    {
-        $request->validated();
-
-        $instructor = User::find($id);
-
-        $instructor->status = $instructor->status == Status::InActive->value ? Status::Active->value : Status::InActive->value;
-
-        if ($instructor->save()) {
-            return Redirect::back()->with('change-status-success', "Status update: The status for instructor {$instructor->name} has been successfully modified.");
-        }
-
-        return Redirect::back()->with('change-status-fail', "Failed to update status for instructor {$instructor->name}. Please check and try again.");
-
     }
 
     /**

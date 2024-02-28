@@ -39,7 +39,7 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
                     Route::get('students', [AdminController::class, 'students'])
                         ->name('users.students');
 
-                    Route::put('/toggle-status/{id}', [ProfileController::class, 'toggleStatus'])
+                    Route::put('/toggle-status/{id}', [AdminController::class, 'toggleStatus'])
                         ->name('user.toggle.status');
 
                     Route::put('/migrate-student-to-instructor/{id}', [AdminController::class, 'migrateToInstructor'])
