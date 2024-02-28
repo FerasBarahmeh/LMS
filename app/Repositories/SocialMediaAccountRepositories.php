@@ -80,7 +80,7 @@ class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface
 
     public static function setHome(): void
     {
-        self::$HOME = route('platforms.index');
+        self::$HOME = route('admin.platforms.index');
     }
 
 }

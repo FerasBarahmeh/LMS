@@ -47,10 +47,6 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
                 Route::post('/change-profile-picture', [ProfileController::class, 'changeProfilePicture'])
                     ->name('profile.change.profile.picture');
 
-                Route::put('/toggle-status/{id}', [ProfileController::class, 'toggleStatus'])
-                    ->name('user.toggle.status')
-                    ->middleware('admin');
-
                 Route::put('/change-theme', [ProfileController::class, 'changeTheme'])
                     ->name('user.change.theme');
 

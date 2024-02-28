@@ -4,19 +4,23 @@
     'eye' => true,
     'toggle' => true,
     'delete' => true,
+    'upgrade' => false,
     'status' => null,
 ])
 
 <div class="options" @style(['display: flex; gap: 7px;'])>
-{{--    @if($edit)--}}
+    @if($upgrade)
 
-{{--        <x-modals.buttons.horizontal :dataEffect="'edit-'.$id" class="p-0 bg-transparent "--}}
-{{--                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Information">--}}
-{{--            <i class="fa fa-edit text-success"></i>--}}
-{{--        </x-modals.buttons.horizontal>--}}
-{{--    @endif--}}
+        <x-modals.buttons.horizontal :dataEffect="'upgrade-'.$id" class="p-0 bg-transparent "
+                                     data-bs-toggle="tooltip" data-bs-placement="top"
+                                     title="Upgrade user to instructor">
+            <i class="fa fa-caret-up text-success fa-15"></i>
+        </x-modals.buttons.horizontal>
+
+    @endif
 
     @if($eye)
+
         <x-modals.buttons.horizontal :dataEffect="'show-info-'.$id" class="p-0 bg-transparent "
                                      data-bs-toggle="tooltip" data-bs-placement="top" title="Information">
             <i class="fa fa-eye text-primary"></i>
@@ -25,22 +29,23 @@
     @endif
 
     @if($toggle && $status != null)
-        @if($status == Status::Active->value)
-            @php $typeToggle = 'on' @endphp
-        @else
-                @php $typeToggle = 'off' @endphp
-        @endif
+
+        @php $typeToggle = $status == Status::Active->value ? 'on' : 'off' @endphp
+
         <x-modals.buttons.horizontal :dataEffect="'toggle-status'.$id" class="p-0 bg-transparent "
-                                     data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $typeToggle === 'on' ? 'Be Inactive' : 'Be Active' }}">
+                                     data-bs-toggle="tooltip" data-bs-placement="top"
+                                     title="{{ $typeToggle === 'on' ? 'Be Inactive' : 'Be Active' }}">
             <i class="fa fa-toggle-{{ $typeToggle }} text-warning"></i>
         </x-modals.buttons.horizontal>
 
     @endif
 
     @if($delete)
-            <x-modals.buttons.horizontal :dataEffect="'delete-'.$id" class="p-0 bg-transparent "
-                                         data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Instructor">
-                <i class="fa fa-trash text-danger"></i>
-            </x-modals.buttons.horizontal>
+
+        <x-modals.buttons.horizontal :dataEffect="'delete-'.$id" class="p-0 bg-transparent "
+                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Instructor">
+            <i class="fa fa-trash text-danger"></i>
+        </x-modals.buttons.horizontal>
+
     @endif
 </div>

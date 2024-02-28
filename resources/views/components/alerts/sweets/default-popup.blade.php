@@ -2,15 +2,19 @@
     'success' => null,
     'fail' => null,
     'title' => 'Well done !',
+    'successTitle' => 'Well done !',
+    'failTitle' => 'Opp\'s !',
     'confirmButtonColor' => '#57a94f',
     'confirmButtonText' => 'Acknowledged',
 ])
 
 
 @if ($success !=null)
+    {{ $title = $successTitle }}
         {{ $type = 'success' }}
     @elseif ($fail != null)
-        {{ $type = 'danger' }}
+    {{ $title = $failTitle }}
+    {{ $type = 'danger' }}
 @endif
 
 @if ($success != null || $fail !=null)

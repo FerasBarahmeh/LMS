@@ -57,7 +57,7 @@
                 </a>
                 <ul class="slide-menu">
                     <li>
-                        <a class="slide-item text-capitalize" href="{{ route('platforms.index') }}">show all</a>
+                        <a class="slide-item text-capitalize" href="{{ route('admin.platforms.index') }}">show all</a>
                     </li>
                 </ul>
             </li>

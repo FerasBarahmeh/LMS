@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admins\AdminController;
 use App\Http\Controllers\Admins\SocialMediaAccountsController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -21,20 +22,28 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
 
         Route::middleware(['auth', 'verified'])
-            ->prefix('admin')->group(function () {
+            ->prefix('admin')
+            ->name('admin.')
+            ->group(function () {
+
                 Route::get('dashboard', [AdminController::class, 'index'])
-                    ->name('admin.dashboard');
+                    ->name('dashboard');
 
                 Route::prefix('users')->group(function () {
                     Route::get('', [AdminController::class, 'users'])
-                        ->name('admin.users.all');
+                        ->name('users.all');
 
                     Route::get('instructors', [AdminController::class, 'instructors'])
-                        ->name('admin.users.instructors');
-
+                        ->name('users.instructors');
 
                     Route::get('students', [AdminController::class, 'students'])
-                        ->name('admin.users.students');
+                        ->name('users.students');
+
+                    Route::put('/toggle-status/{id}', [ProfileController::class, 'toggleStatus'])
+                        ->name('user.toggle.status');
+
+                    Route::put('/migrate-student-to-user/{id}', [AdminController::class, 'migrateToInstructor'])
+                        ->name('migrate.student.to.instructor');
 
                 });
 

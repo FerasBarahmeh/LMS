@@ -195,6 +195,7 @@ return [
          'Status' =>  \App\Enums\Status::class,
          'Theme' =>  \App\Enums\Theme::class,
          'TypeSkills' =>  \App\Enums\TypeSkills::class,
+         'Privileges' =>  \App\Enums\Privileges::class,
     ])->toArray(),
 
 ];

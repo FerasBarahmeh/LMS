@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
-            $table->string('specialization', 50);
-            $table->date('hire_date');
-            $table->date('experience_year');
-            $table->string('academic_degree', 50);
+            $table->string('specialization', 50)->nullable();
+            $table->date('hire_date')->nullable();
+            $table->date('experience_year')->nullable();
+            $table->string('academic_degree', 50)->nullable();
             $table->decimal('percentage_of_course')
                 ->default(25.5);
             $table->foreignId('user_id')->constrained();

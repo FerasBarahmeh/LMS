@@ -25,9 +25,9 @@ class ChangeStatusNotification extends Notification
     private function message(object $notifiable): string
     {
         if ($notifiable->status === Status::InActive->value) {
-            $message = "Hello {$notifiable->name}, we regret to inform you that due to Violating platform instructions, your account has been inactive. We apologize for any inconvenience and are here to assist with any concerns.";
+            $message = "Hello '{$notifiable->name}', we regret to inform you that due to Violating platform instructions, your account has been inactive. We apologize for any inconvenience and are here to assist with any concerns.";
         } else {
-            $message = "Hello {$notifiable->name}, we're excited to inform you that your account has been active! Enjoy enhanced features and benefits. Thank you for being a valued member!";
+            $message = "Hello '{$notifiable->name}', we're excited to inform you that your account has been active! Enjoy enhanced features and benefits. Thank you for being a valued member!";
         }
         return $message;
     }
