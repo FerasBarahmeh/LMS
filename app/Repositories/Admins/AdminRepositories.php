@@ -73,17 +73,10 @@ class AdminRepositories implements DBAdminInterface
     {
         $user = User::find($id);
         $user->privilege = Privileges::Student->value;
-        try {
-            DB::transaction(function () use ($user) {
-                $user->save();
-                $user->instructor->delete();
-            });
-            return Redirect::back()->with('migrate-instructor-success', "Great news! The privilege level for instruct {$user->name} has been successfully downgraded to student.");
-
-        } catch (Exception $exception) {
-            return Redirect::back()->with('migrate-instructor-field', 'Oops! The system could\'t downgrade the instructor. Please try again later.');
+        if ($user->save() && $user->instructor->delete()) {
+            return Redirect::back()->with( 'migrate-instructor-success' , "Great news! The privilege level for instruct {$user->name} has been successfully downgraded to student.");
         }
-
+        return Redirect::back()->with('migrate-instructor-field', 'Oops! The system could\'t downgrade the instructor. Please try again later.');
     }
 
     public
