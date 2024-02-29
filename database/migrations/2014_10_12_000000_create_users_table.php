@@ -25,20 +25,14 @@ return new class extends Migration {
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone', 10)->nullable();
-
-
             $table->enum('privilege', Privileges::values())
                 ->default(Privileges::Student->value);
-
             $table->enum('status', Status::values())
                 ->default(Status::Active->value);
-
             $table->enum('theme', Theme::values())
                 ->default(Theme::Light->value);
-
             $table->enum('notify_through', NotifyThrough::values())
-                ->default(NotifyThrough::Mail->value);
-
+                ->default(NotifyThrough::DB->value);
             $table->rememberToken();
             $table->timestamps();
         });

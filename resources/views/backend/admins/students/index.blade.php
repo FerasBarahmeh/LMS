@@ -46,10 +46,5 @@
     </x-slot>
 
     @include('layouts.table-data-assets')
-
-    <x-alerts.sweets.default-popup
-        :title="'Changed Successfully'"
-        :success="session('change-status-success')"
-        :fail="session('change-status-fail')"
-    />
+    @include('backend.admins.layouts.users-alerts')
 </x-app-layout>

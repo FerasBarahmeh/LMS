@@ -73,7 +73,6 @@ class AdminRepositories implements DBAdminInterface
 
     }
 
-
     public function migrateToInstructor(MigrateToInstructorRequest $request, string $id): RedirectResponse
     {
         $user = User::find($id);

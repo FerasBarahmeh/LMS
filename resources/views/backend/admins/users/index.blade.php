@@ -45,5 +45,5 @@
     </x-slot>
 
     @include('layouts.table-data-assets')
-    @include('backend.admins.users.alerts')
+    @include('backend.admins.layouts.users-alerts')
 </x-app-layout>
