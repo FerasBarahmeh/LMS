@@ -4,14 +4,14 @@ namespace App\Repositories;
 
 use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
-use App\Interfaces\Repositories\Admins\DBSocialMediaAccountInterface;
+use App\Interfaces\Repositories\DB\Admins\SocialMediaAccountInterface;
 use App\Models\Icon;
 use App\Models\SocialMediaAccount;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-class SocialMediaAccountRepositories implements DBSocialMediaAccountInterface
+class SocialMediaAccountRepositories implements SocialMediaAccountInterface
 {
     use QuantumQuerier;
 

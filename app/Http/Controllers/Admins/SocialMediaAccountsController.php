@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
-use App\Interfaces\Repositories\Admins\DBSocialMediaAccountInterface;
+use App\Interfaces\Repositories\DB\Admins\SocialMediaAccountInterface;
 use Illuminate\Contracts\View\View;
 
 class SocialMediaAccountsController extends Controller
 {
-    private DBSocialMediaAccountInterface $availablePlatform;
+    private SocialMediaAccountInterface $availablePlatform;
 
-    public function __construct(DBSocialMediaAccountInterface $availablePlatform)
+    public function __construct(SocialMediaAccountInterface $availablePlatform)
     {
         $this->availablePlatform = $availablePlatform;
     }

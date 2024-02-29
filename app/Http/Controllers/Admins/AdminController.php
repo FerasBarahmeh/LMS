@@ -6,15 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MigrateToInstructorRequest;
 use App\Http\Requests\MigrateToStudentRequest;
 use App\Http\Requests\ToggleStatusRequest;
-use App\Interfaces\Repositories\Admins\DBAdminInterface;
+use App\Interfaces\Repositories\DB\Admins\AdminInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
-    private DBAdminInterface $admin;
+    private AdminInterface $admin;
 
-    public function __construct(DBAdminInterface $admin)
+    public function __construct(AdminInterface $admin)
     {
         $this->admin = $admin;
     }

@@ -7,5 +7,4 @@ use Illuminate\Database\Eloquent\Model;
 
 class AcademicSubject extends Model
 {
-    use HasFactory;
 }

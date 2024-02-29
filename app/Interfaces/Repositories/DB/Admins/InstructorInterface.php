@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Interfaces\Repositories\Admins;
+namespace App\Interfaces\Repositories\DB\Admins;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-interface DBInstructorInterface
+interface InstructorInterface
 {
     /**
      * Show dashboard for instructor

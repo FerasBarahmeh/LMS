@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             IconSeeder::class,
             SocialMediaAccountSeeder::class,
             InstructorSeeder::class,
+            AcademicSubjectSeeder::class,
         ]);
     }
 }

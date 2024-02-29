@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Interfaces\Repositories\Admins;
+namespace App\Interfaces\Repositories\DB\Admins;
 
 use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
 use Illuminate\Contracts\View\View;
 
-interface DBSocialMediaAccountInterface
+interface SocialMediaAccountInterface
 {
     /**
      * Display a listing of the resource.

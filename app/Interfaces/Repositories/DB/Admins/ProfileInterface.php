@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Interfaces\Repositories\Admins;
+namespace App\Interfaces\Repositories\DB\Admins;
 
 use App\Http\Requests\{ProfileUpdateRequest};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-interface DBProfileInterface
+interface ProfileInterface
 {
     /**
      * Display the user's profile form.

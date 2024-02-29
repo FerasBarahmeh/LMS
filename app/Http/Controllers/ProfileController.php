@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\{ProfileUpdateRequest};
-use App\Interfaces\Repositories\Admins\DBProfileInterface;
+use App\Interfaces\Repositories\DB\Admins\ProfileInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    private DBProfileInterface $profile;
+    private ProfileInterface $profile;
 
-    public function __construct(DBProfileInterface $profile)
+    public function __construct(ProfileInterface $profile)
     {
         $this->profile = $profile;
     }

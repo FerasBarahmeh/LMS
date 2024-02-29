@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Interfaces\Repositories\Admins;
+namespace App\Interfaces\Repositories\DB\Admins;
 
 use App\Http\Requests\MigrateToInstructorRequest;
 use App\Http\Requests\MigrateToStudentRequest;
@@ -8,7 +8,7 @@ use App\Http\Requests\ToggleStatusRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-interface DBAdminInterface
+interface AdminInterface
 {
     public function index();
 

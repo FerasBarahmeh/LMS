@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Interfaces\Repositories\Admins\DBStudentInterface;
-use Illuminate\Http\Request;
+use App\Interfaces\Repositories\DB\Admins\StudentInterface;
 
 class StudentController extends Controller
 {
-    private DBStudentInterface $student;
+    private StudentInterface $student;
 
-    public function __construct(DBStudentInterface $student)
+    public function __construct(StudentInterface $student)
     {
         $this->student = $student;
     }

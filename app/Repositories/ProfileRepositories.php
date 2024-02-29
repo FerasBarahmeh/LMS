@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Enums\{MediaCollections, Theme};
 use App\Http\Requests\{ProfileUpdateRequest};
-use App\Interfaces\Repositories\Admins\DBProfileInterface;
+use App\Interfaces\Repositories\DB\Admins\ProfileInterface;
 use App\Models\User;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Http\{RedirectResponse, Request};
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\{Auth, Redirect, Validator};
 use Illuminate\Validation\{Rule, ValidationException};
 use Illuminate\View\View;
 
-class ProfileRepositories implements DBProfileInterface
+class ProfileRepositories implements ProfileInterface
 {
     use QuantumQuerier;
 
