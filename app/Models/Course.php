@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
@@ -19,4 +18,9 @@ class Course extends Model
         'academic_subject_id',
         'user_id',
     ];
+
+    public function sections(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CourseSection::class);
+    }
 }

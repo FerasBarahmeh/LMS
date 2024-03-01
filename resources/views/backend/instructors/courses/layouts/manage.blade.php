@@ -17,11 +17,9 @@
                             <!-- Left Side page-->
                             @include('backend.instructors.courses.layouts.tab-buttons')
 
-                            <div class="tabs-style-4">
-                                <div class="panel-body tabs-menu-body">
-                                    <div class="tab-content">
-                                        @yield('content')
-                                    </div>
+                            <div class="tabs-style-4 w-100">
+                                <div class="tab-content" @style(['box-shadow: 5px 7px 26px -5px #cdd4e7;'])>
+                                    @yield('content')
                                 </div>
                             </div>
                         </div>

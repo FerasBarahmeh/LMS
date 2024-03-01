@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,9 +13,8 @@ return new class extends Migration
         Schema::create('course_sections', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
-            $table->text('description')->nullable();
-            $table->text('resource')->nullable();
-            $table->foreignId('course_section_id')->constrained();
+            $table->text('objective')->nullable();
+            $table->foreignId('course_id')->constrained();
             $table->timestamps();
         });
     }

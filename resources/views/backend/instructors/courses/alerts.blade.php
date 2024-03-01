@@ -4,3 +4,4 @@
     :success="session('create-course-success')"
     :fail="session('create-course-fail')"
 />
+<x-alerts.alert :success="session('create-section-success')"/>

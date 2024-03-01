@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TemporaryFileController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -27,6 +28,13 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
 
         Route::get('/test', function () {
+            DB::enableQueryLog();
+
+            $course = \App\Models\Course::with('sections')->find(1);
+
+
+            $queries = DB::getQueryLog();
+            dd($queries);
             return 'test';
         });
 

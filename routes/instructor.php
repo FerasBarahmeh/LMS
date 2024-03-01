@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admins\InstructorController;
 use App\Http\Controllers\Instructors\CoursesController;
 use Illuminate\Support\Facades\Route;
+use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -17,6 +18,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->prefix(LaravelLocalization::setLocale())
     ->group(function () {
+
+        Livewire::setUpdateRoute(function ($handle) {
+            return Route::post('/custom/livewire/update', $handle);
+        });
 
         Route::middleware(['auth', 'verified'])
             ->prefix('instructor')
