@@ -9,3 +9,32 @@ ul {
     border-bottom: 1px solid #eee;
 }
 /* End Custom Data table */
+
+/* Grid */
+.d-grid {
+    display: grid;
+}
+.wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+    .wrapper {
+        grid-template-columns: minmax(200px, 1fr);
+        margin-left: 10px;
+        margin-right: 10px;
+        gap: 10px;
+    }
+}
+.gap-10 {
+    gap: 10px;
+}
+.gap-5 {
+    gap: 5px;
+}
+/* radius */
+.rad-5 {
+    border-radius: 5px;
+}

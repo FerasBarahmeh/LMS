@@ -6,7 +6,6 @@ use App\Http\Requests\Courses\StoreCourseRequest;
 use App\Interfaces\Repositories\DB\Instructor\CoursesInterface;
 use App\Models\AcademicSubject;
 use App\Models\Course;
-use App\Models\CourseSection;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -22,8 +21,10 @@ class CoursesRepositories implements CoursesInterface
      */
     public function index(): View
     {
+        $courses = Course::with('user')->get();
         return view(self::retrieveBlade('index'), [
             'academicSubjects' => AcademicSubject::all(),
+            'courses' => $courses,
         ]);
     }
 
