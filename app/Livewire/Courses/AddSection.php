@@ -39,7 +39,28 @@ class AddSection extends Component
      * @var int
      */
     #[Locked]
-    public int $course;
+    public int $courseID;
+
+    /**
+     * If section is saved
+     *
+     * @var bool
+     */
+    public bool $saved = false;
+
+    /**
+     * The section will add
+     *
+     * @var object
+     */
+    public object $section;
+
+    /**
+     * Course the section belong to
+     *
+     * @var Course
+     */
+    public Course $course;
 
     /**
      * Expand add section card
@@ -48,7 +69,7 @@ class AddSection extends Component
      */
     public function openAddSectionBody(): void
     {
-        $this->addSectionBodyOpen = ! $this->addSectionBodyOpen;
+        $this->addSectionBodyOpen = !$this->addSectionBodyOpen;
     }
 
     /**
@@ -58,11 +79,13 @@ class AddSection extends Component
      */
     public function save(): void
     {
-        $values = array_merge($this->validate(), ['course_id' => $this->course]);
-        CourseSection::create($values);
+        $values = array_merge($this->validate(), ['course_id' => $this->courseID]);
+        $this->section = CourseSection::create($values);
         session()->flash('create-section-success', 'Section add successfully.');
-        $this->reset(['course', 'title', 'objective']);
+        $this->reset(['courseID', 'title', 'objective']);
         $this->addSectionBodyOpen = false;
+        $this->saved = true;
+        $this->course = $this->section->course;
     }
 
     /**
@@ -75,7 +98,7 @@ class AddSection extends Component
         return [
             'title' => ['required', 'min:3', 'max:100', Rule::unique(CourseSection::class)],
             'objective' => 'nullable|max:200',
-            'course' => ['required', Rule::exists(Course::class, 'id')],
+            'courseID' => ['required', Rule::exists(Course::class, 'id')],
         ];
     }
 

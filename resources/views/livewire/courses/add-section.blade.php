@@ -32,4 +32,10 @@
             <x-primary-button wire:click="save">{{__('save')}}</x-primary-button>
         </div>
     </section>
+
+
+    @if($saved)
+        <p class="alert alert-info rad-5 box-shadow-info p-2 mt-2 mb-2">Custom this section</p>
+        <livewire:courses.section-edition-slug :section="$section" :course="$course"/>
+    @endif
 </div>
