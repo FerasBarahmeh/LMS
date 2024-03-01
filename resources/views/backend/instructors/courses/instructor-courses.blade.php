@@ -1,25 +1,20 @@
 <div>
-    <div class="card custom-card card-img-top-1">
+    <div class="card custom-card card-img-top-1 h-100">
         <figure>
-            <img class="card-img-top w-100 w-100"
-                 src="{{ asset('img/courses/empty.png') }}" alt="">
+            <img class="card-img-top w-100 w-100" src="{{ asset('img/courses/empty.png') }}" alt="">
         </figure>
         <div class="card-body pb-0">
             <a href="{{ route('instructor.courses.manage.curriculum', $course->id) }}">
                 <h4 class="card-title">{{ $course->name }}</h4>
             </a>
-            <p class="mb-2">Those who do not know how pursues or desires to occur in
-                which toil and pain can procure him some great pleasure. To take a
-                trivial example pain was born and I will give you a complete account of
-                the system, and expound the actual teachings of the great explorer of
-                the truth, the master-buil .the great explorer of the truth, the
-                master-buil</p>
+            <p class="mb-2">{{ $course->description }}</p>
         </div>
         <div
             class="item7-card-desc d-flex p-3 pt-0 align-items-center justify-content-center border-top">
             <div class="main-img-user online">
                 <figure>
-                    <img alt="avatar" src="{{ $course->user->media->first()->getUrl()  }}">
+                    <img alt="avatar"
+                         src="{{ phantomImagePicker($course->user->media->first()?->getUrl())   }}">
                 </figure>
             </div>
             <div class="main-contact-body">

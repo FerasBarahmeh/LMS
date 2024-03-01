@@ -31,6 +31,7 @@ class StoreCourseRequest extends FormRequest
             'name' => ['required', 'string', 'max:100', Rule::unique(Course::class)],
             'semester' => ['required', Rule::enum(Semesters::class)],
             'academic_subject_id' => ['required', Rule::exists(AcademicSubject::class, 'id')],
+            'description' => ['nullable', 'max:250'],
             'user_id' => ['required', Rule::exists(User::class, 'id')],
         ];
     }

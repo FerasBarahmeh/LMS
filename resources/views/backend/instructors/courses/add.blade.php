@@ -22,7 +22,7 @@
                     <x-input-label for="semester" :value="__('semester')"/>
                     <x-input-select name="semester">
                         @foreach(Semesters::cases() as $case)
-                            <x-option-select value="{{ $case->value }}">{{ $case->name }}</x-option-select>
+                            <x-option-select value="{{ $case->value }}" :selected="old('semester') == $case->value">{{ $case->name }}</x-option-select>
                         @endforeach
                     </x-input-select>
                     <x-input-error :messages="$errors->get('semester')" class="mt-2"/>
@@ -34,11 +34,19 @@
                     <x-input-select name="academic_subject_id">
                         <x-option-select value="null">chose this course subject</x-option-select>
                         @foreach($academicSubjects as $subject)
-                            <x-option-select value="{{ $subject->id }}">{{ $subject->name }}</x-option-select>
+                            <x-option-select value="{{ $subject->id }}" :selected="old('academic_subject_id') == $subject->id">{{ $subject->name }}</x-option-select>
                         @endforeach
                     </x-input-select>
                     <x-input-error :messages="$errors->get('academic_subject_id')" class="mt-2"/>
                 </div>
+
+                <!-- Description -->
+                <div class="mb-2">
+                    <x-input-label for="description" :value="__('Description')"/>
+                    <x-textarea-input name="description">{{ old('description') }}</x-textarea-input>
+                    <x-input-error :messages="$errors->get('description')" class="mt-2"/>
+                </div>
+
             </div>
 
             <div class="card-footer d-flex justify-content-end">
