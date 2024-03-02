@@ -25,6 +25,12 @@
                     <x-primary-button class="p-0 bg-transparent text-dark">
                         <i class="fa fa-plus"></i>
                     </x-primary-button>
+                    <x-modals.buttons.horizontal :dataEffect="'delete-section-'.$section->id" class="p-0 bg-transparent "
+                                                 data-bs-toggle="tooltip" data-bs-placement="top"
+                                                 title="Delete section">
+                        <i class="fa fa-trash text-danger fa-15"></i>
+                    </x-modals.buttons.horizontal>
+                    @include('backend.instructors.courses.confirm-delete-section', [$section])
                 </div>
             @endif
         </div>

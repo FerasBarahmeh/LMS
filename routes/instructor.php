@@ -47,6 +47,10 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
                                 Route::get('manage/{course}/settings', [CoursesController::class, 'settings'])
                                     ->name('settings');
+
+
+                                Route::delete('manage/{section}/delete', [CoursesController::class, 'deleteSection'])
+                                    ->name('section.delete');
                             });
                     });
             });

@@ -9,8 +9,6 @@
                     @include('backend.instructors.courses.layouts.alerts-form-errors-container')
 
                     <div class="card-body">
-                        <!-- Alerts -->
-                        @include('backend.instructors.courses.alerts')
 
                         <!-- Content -->
                         <div class="d-md-flex" @style(['gap: 10px;'])>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Instructors;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Courses\StoreCourseRequest;
+use App\Http\Requests\DeleteSectionRequest;
 use App\Interfaces\Repositories\DB\Instructor\CoursesInterface;
 use Illuminate\Http\Request;
 
@@ -78,5 +79,13 @@ class CoursesController extends Controller
     public function settings(string $id)
     {
         return $this->courses->settings($id);
+    }
+
+    /**
+     * Delete section
+     */
+    public function deleteSection(DeleteSectionRequest $request, $id)
+    {
+        return $this->courses->deleteSection($request, $id);
     }
 }

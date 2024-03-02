@@ -1,5 +1,4 @@
 <div>
-    @include('backend.instructors.courses.alerts')
     <div
         @class(['card-header', 'd-flex', 'align-items-center', 'justify-content-between'])
         @style(['box-shadow: 5px 7px 26px -5px #cdd4e7;'])
