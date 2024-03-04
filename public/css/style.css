@@ -38,3 +38,6 @@ ul {
 .rad-5 {
     border-radius: 5px;
 }
+.rad-half {
+    border-radius: 50%;
+}

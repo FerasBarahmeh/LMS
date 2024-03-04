@@ -16,7 +16,7 @@ class TemporaryFileController extends Controller
 
             $temp
                 ->addMediaFromRequest($request->input('name'))
-                ->toMediaCollection('images');
+                ->toMediaCollection('temp');
 
             return response()->json([
                 'id' => $temp->id
@@ -30,7 +30,7 @@ class TemporaryFileController extends Controller
            $id = json_decode($request->getContent())->id;
 
             $temp = TemporaryFile::find($id);
-            $temp->getMedia('images')->first()->delete();
+            $temp->getMedia('temp')->first()->delete();
             $temp->delete();
 
         return response()->noContent();

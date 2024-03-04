@@ -18,6 +18,7 @@
 
 @props([
     'preview' => true,
+    'accept' => ['image/*'],
     'name',
 ])
 @push('css')
@@ -36,23 +37,25 @@
 
 @push('js')
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-
-    @if($preview)
-        <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-        <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-    @endif
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
     <script>
-        @if($preview)
-        FilePond.registerPlugin(FilePondPluginImagePreview);
-        @endif
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginFileValidateSize,
+        );
         const inputElement = document.getElementById('filepond');
 
         // Create a FilePond instance
-        const pond = FilePond.create(inputElement);
+        const pond = FilePond.create(inputElement, {
+            acceptedFileTypes: @js($accept),
+        });
         let id = null;
 
         pond.setOptions({
+            maxFileSize: '500MB',
             server: {
                 process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
                     const formData = new FormData();

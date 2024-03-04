@@ -68,3 +68,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## packages
 
 - check mbstring extension is installed in your php version
+
+# note
+in your php config (php.ini) file change the post_max_size and upload_max_filesize	to the max size you wan't uploade

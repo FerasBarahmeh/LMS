@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('lecturers', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
+            $table->string('name')->unique();
             $table->string('description')->nullable();
+            $table->string('type_content')->default('video');
             $table->foreignId('course_section_id')->constrained();
             $table->timestamps();
         });

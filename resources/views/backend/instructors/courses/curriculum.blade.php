@@ -17,6 +17,9 @@
                 <h4 @class(['mb-4', 'text-dark', ])><i class="fa fa-caret-right m-1"></i>Sections for {{ $course->name }} course</h4>
                 @foreach($course->sections as $section)
                     <livewire:courses.section-edition-slug :section="$section" :course="$course"/>
+                    <div class="container">
+                        <livewire:courses.lecture :section="$section"/>
+                    </div>
                 @endforeach
             </section>
         </div>

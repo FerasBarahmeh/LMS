@@ -28,13 +28,7 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
 
         Route::get('/test', function () {
-            DB::enableQueryLog();
-
-            $course = \App\Models\Course::with('sections')->find(1);
-
-
-            $queries = DB::getQueryLog();
-            dd($queries);
+            dd(phpinfo());
             return 'test';
         });
 
