@@ -40,7 +40,8 @@
                 <!-- Lecture  options -->
                 <div class="buttons">
                     <x-primary-button class="bg-transparent  text-dark p-0">
-                        <i class="fa fa-plus"></i>
+                        <i class="fa fa-{{ $addContentStage ? 'minus' : 'plus' }}"
+                           wire:click="openAddContentSection"></i>
                     </x-primary-button>
                     <x-primary-button class="bg-transparent text-danger p-0" wire:click="refresh">
                         <i class="fa fa-trash"></i>
@@ -51,12 +52,40 @@
 
         @if($addContentStage)
             <div class="content">
-                <form method="post" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <x-input-label :content="'Upload lecture video'"/>
-                        <x-filepond :name="'lecture_video'"  :accept="['video/*']"/>
+
+                <div class="mb-3 mt-3">
+                    <x-alerts.alert :success="session('upload-lesson-success')"/>
+                    <div
+                        x-data="{ isUploading: false, progress: 0 }"
+                        x-on:livewire-upload-start="isUploading = true"
+                        x-on:livewire-upload-finish="isUploading = false, $wire.uploadCompleted()"
+                        x-on:livewire-upload-error="isUploading = false"
+                        x-on:livewire-upload-progress="progress = $event.detail.progress"
+                    >
+                        @if (! $lessonFile)
+                            <x-input-file wire:model="lessonFile" x-show="! isUploading" title="upload lesson"/>
+                        @endif
+
+
+
+                        <!-- Progress Bar -->
+                        <div x-show="isUploading">
+                            <div class="mg-b-10 mt-3 mb-3 w-100">
+                                <progress max="100" x-bind:value="progress" class="w-100"></progress>
+                            </div>
+                        </div>
+
                     </div>
-                </form>
+
+                    <x-input-error :messages="$errors->get('lessonFile')" class="mt-2"/>
+
+                    @if ($lessonFile)
+                        <video controls @class(['w-100 mt-3']) @style(['height: 500px']) loop="loop" poster="">
+                            <source src="{{ $lessonFile->temporaryUrl() }}" type="video/mp4">
+                        </video>
+                    @endif
+                </div>
+
             </div>
         @endif
     </div>

@@ -41,3 +41,12 @@ ul {
 .rad-half {
     border-radius: 50%;
 }
+/* Cursor */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/** Input file */
+.input-file-label:hover {
+    opacity: .6;
+}

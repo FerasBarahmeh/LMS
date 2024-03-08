@@ -5,12 +5,13 @@ namespace App\Livewire\Courses;
 use App\Models\CourseSection;
 use App\Models\Lecturer;
 use Illuminate\Contracts\View\View;
-use Illuminate\Validation\Rules\File;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Lecture extends Component
 {
+    use WithFileUploads;
+
     /**
      * Section followed to lecture
      *
@@ -48,10 +49,8 @@ class Lecture extends Component
 
     /**
      * Lesson video
-     *
-     * @var
      */
-    public $lesson;
+    public $lessonFile;
 
     /**
      * Livewire constructor
@@ -96,11 +95,26 @@ class Lecture extends Component
         $this->lecture-> name = null;
     }
 
+    public function uploadCompleted(): void
+    {
+        $this->validate();
+        session()->flash('upload-lesson-success', 'finish upload lesson');
+    }
+
+    /**
+     * Open upload file section
+     *
+     * @return void
+     */
+    public function openAddContentSection(): void
+    {
+        $this->addContentStage = ! $this->addContentStage;
+    }
+
     public function rules(): array
     {
         return [
-           'lesson' => ['required', File::types(['mp3', 'wav'])
-               ->max('500mb'),]
+           'lessonFile' => ['required', 'mimes:mp4', 'max:500000'],
         ];
     }
 
