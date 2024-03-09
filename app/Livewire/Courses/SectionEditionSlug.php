@@ -6,7 +6,6 @@ use App\Models\Course;
 use App\Models\CourseSection;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class SectionEditionSlug extends Component
@@ -32,8 +31,19 @@ class SectionEditionSlug extends Component
      */
     public bool $updateNameStage = false;
 
-    #[Validate('required|')]
+    /**
+     * Section name
+     *
+     * @var string
+     */
     public string $nameSection;
+
+    /**
+     * Section objective
+     *
+     * @var string|null
+     */
+    public string|null $objective;
 
     /**
      * Livewire constructor
@@ -43,6 +53,7 @@ class SectionEditionSlug extends Component
     public function mount(): void
     {
         $this->nameSection  = $this->section->title;
+        $this->objective  = $this->section->objective;
     }
 
     /**
@@ -67,16 +78,29 @@ class SectionEditionSlug extends Component
         $this->updateNameStage = false;
     }
 
+    /**
+     * Toggle status section
+     *
+     * @return void
+     */
     public function togglePublishStatus(): void
     {
         $this->section->published = !$this->section->published;
         $this->section->save();
     }
 
+    public function changeObjective(): void
+    {
+       $this->section->objective = $this->objective;
+       $this->section->save();
+       session()->flash('change-objective-success', 'success changed objectives');
+    }
+
     public function rules(): array
     {
         return [
             'nameSection' => ['required', 'min:3', 'max:100', Rule::unique(CourseSection::class)],
+            'objective' => ['nullable', 'min:3', 'max:200'],
         ];
     }
 
