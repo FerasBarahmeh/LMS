@@ -4,7 +4,7 @@
         @style(['box-shadow: 5px 7px 26px -5px #cdd4e7;'])
     >
         <h5 class="m-0 text-dark">Sections</h5>
-        <x-primary-button wire:click="openAddSectionBody" @class(['pt-1 pb-1 d-flex align-item-center justify-content-center'])>
+        <x-primary-button wire:click="openAddSectionBody">
             <i class="fa fa-{{ $addSectionBodyOpen ? 'minus' : 'plus' }}"></i>
         </x-primary-button>
     </div>
@@ -13,7 +13,7 @@
         <!-- Title -->
         <div class="mb-3">
             <x-input-label for="title" :value="'title'" class="text-muted tx-12"/>
-            <x-text-input wire:model="title"/>
+            <x-text-input wire:model="title"></x-text-input>
             <x-input-error :messages="$errors->get('title')" class="mt-2"/>
         </div>
 

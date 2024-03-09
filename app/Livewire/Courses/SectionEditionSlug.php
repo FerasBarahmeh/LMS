@@ -67,6 +67,12 @@ class SectionEditionSlug extends Component
         $this->updateNameStage = false;
     }
 
+    public function togglePublishStatus(): void
+    {
+        $this->section->published = !$this->section->published;
+        $this->section->save();
+    }
+
     public function rules(): array
     {
         return [

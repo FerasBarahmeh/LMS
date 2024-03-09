@@ -17,7 +17,10 @@
                     </x-primary-button>
                 </div>
             @else
-                <h6>{{ $section->title }}</h6>
+                <h6 class="d-flex align-items-center justify-content-center gap-10">
+                    <i class="fa fa-{{ $section->published ?  'fire text-orange' : 'eye-slash text-warning' }}"></i>
+                    <span>{{ $section->title }}</span>
+                </h6>
                 <div class="options d-flex gap-5">
 
                     <!-- Options dropdown -->
@@ -25,6 +28,7 @@
                         <x-slot name="title">Options</x-slot>
                         <x-slot name="links">
                             <x-dropdown-link wire:click="toggleUpdateNameStage"><i class="fa fa-edit"></i> Edit name</x-dropdown-link>
+                            <x-dropdown-link wire:click="togglePublishStatus">@if($section->published)<i class="fa fa-eye"></i> Publish @else <i class="fa fa-eye-slash"></i> Private @endif </x-dropdown-link>
                             <x-modals.buttons.horizontal class="bg-transparent text-danger" :dataEffect="'delete-section-'.$section->id"><i class="fa fa-trash text-danger fa-15"></i> Delete section</x-modals.buttons.horizontal>
                         </x-slot>
                     </x-dropdown>
