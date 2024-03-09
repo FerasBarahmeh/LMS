@@ -1,5 +1,5 @@
 @props([
-    'id',
+    'id' => null,
 ])
 
 

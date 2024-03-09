@@ -1,5 +1,6 @@
 <div>
     <div class="lecture item border p-2">
+        <h5>New lecture</h5>
         <div class="border-bottom w-100">
             <div class="d-flex justify-content-between align-items-center gap-5 p-1">
                 <div class="d-flex align-items-center gap-5">

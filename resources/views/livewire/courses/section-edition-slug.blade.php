@@ -18,18 +18,17 @@
                 </div>
             @else
                 <h6>{{ $section->title }}</h6>
-                <div class="options d-flex gap-5 pl-5 pr-5">
-                    <x-primary-button class="p-0 bg-transparent text-dark" wire:click="toggleUpdateNameStage">
-                        <i class="fa fa-edit"></i>
-                    </x-primary-button>
-                    <x-primary-button class="p-0 bg-transparent text-dark">
-                        <i class="fa fa-plus"></i>
-                    </x-primary-button>
-                    <x-modals.buttons.horizontal :dataEffect="'delete-section-'.$section->id" class="p-0 bg-transparent "
-                                                 data-bs-toggle="tooltip" data-bs-placement="top"
-                                                 title="Delete section">
-                        <i class="fa fa-trash text-danger fa-15"></i>
-                    </x-modals.buttons.horizontal>
+                <div class="options d-flex gap-5">
+
+                    <!-- Options dropdown -->
+                    <x-dropdown class="pt-1 pb-1 mb-1">
+                        <x-slot name="title">Options</x-slot>
+                        <x-slot name="links">
+                            <x-dropdown-link wire:click="toggleUpdateNameStage"><i class="fa fa-edit"></i> Edit name</x-dropdown-link>
+                            <x-modals.buttons.horizontal class="bg-transparent text-danger" :dataEffect="'delete-section-'.$section->id"><i class="fa fa-trash text-danger fa-15"></i> Delete section</x-modals.buttons.horizontal>
+                        </x-slot>
+                    </x-dropdown>
+
                     @include('backend.instructors.courses.confirm-delete-section', [$section])
                 </div>
             @endif

@@ -1,4 +1,4 @@
-<x-modal :id="'delete-section-'.$section->id">
+<x-modal id="delete-section-{{$section->id}}">
     <!-- Modal head -->
     <div class="modal-header">
         <h6 class="modal-title">
