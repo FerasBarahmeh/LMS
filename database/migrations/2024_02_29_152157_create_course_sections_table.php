@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('title')->unique();
             $table->text('objective')->nullable();
             $table->boolean('published')->default(false);
+            $table->unsignedInteger('total_lectures')->default(0);
             $table->foreignId('course_id')->constrained();
             $table->timestamps();
         });
