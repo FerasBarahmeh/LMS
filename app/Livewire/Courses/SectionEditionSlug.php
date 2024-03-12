@@ -18,13 +18,6 @@ class SectionEditionSlug extends Component
     public CourseSection $section;
 
     /**
-     * The Course follow for this section
-     *
-     * @var Course
-     */
-    public Course $course;
-
-    /**
      * If name section has updated
      *
      * @var bool
