@@ -18,6 +18,13 @@ class SectionEditionSlug extends Component
     public CourseSection $section;
 
     /**
+     * Object has information for iteration
+     *
+     * @var object
+     */
+    public object $loop;
+
+    /**
      * If name section has updated
      *
      * @var bool

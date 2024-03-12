@@ -43,7 +43,7 @@
                         <div class="wrapper d-grid gap-10">
                             @each('backend.instructors.courses.instructor-courses', $courses, 'course')
                         </div>
-
+                        {{ $courses->links() }}
                     </div>
                 </div>
             </div>

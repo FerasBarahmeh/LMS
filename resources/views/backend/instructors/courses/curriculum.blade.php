@@ -16,12 +16,10 @@
             <section class="sections p-4">
                 <h4 @class(['mb-4', 'text-dark', ])><i class="fa fa-caret-right m-1"></i>Sections for <q class="text-primary">{{ $course->name }}</q> course</h4>
                 @foreach($course->sections as $section)
-                    <livewire:courses.section-edition-slug :section="$section" :course="$course"/>
-                    <div class="container">
-{{--                        <livewire:courses.lecture :section="$section"/>--}}
-                    </div>
+                    <livewire:courses.section-edition-slug :section="$section" :loop="$loop"/>
                 @endforeach
             </section>
         </div>
     </div>
 @endsection
+

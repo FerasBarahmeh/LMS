@@ -23,7 +23,7 @@ class CoursesRepositories implements CoursesInterface
      */
     public function index(): View
     {
-        $courses = Course::with('user')->get();
+        $courses = Course::with('user', 'sections')->paginate(6);
         return view(self::retrieveBlade('index'), [
             'academicSubjects' => AcademicSubject::all(),
             'courses' => $courses,
