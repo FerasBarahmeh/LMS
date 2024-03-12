@@ -1,3 +1,4 @@
+@php use Illuminate\Contracts\Auth\MustVerifyEmail; @endphp
 <x-app-layout :title="'Dashboard'">
 
     <x-slot name="content">
@@ -26,14 +27,17 @@
                             <header class="card-header">
 
                                 <!-- Start verify email message -->
-                                @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
-                                    <div class="verify-message bg-warning p-2 m-2 box-shadow-warning d-flex justify-content-center align-items-center br-bl-7 br-br-7">
+                                @if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail())
+                                    <div
+                                        class="verify-message bg-warning p-2 m-2 box-shadow-warning d-flex justify-content-center align-items-center br-bl-7 br-br-7">
                                         <p class="text-gray-800 dark:text-gray-200 m-0">
                                             {{ __('email.email_un_verified_email') }}
                                         </p>
-                                        <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+                                        <form id="send-verification" method="post"
+                                              action="{{ route('verification.send') }}">
                                             @csrf
-                                            <button form="send-verification" type="submit" class="btn p-0 text-gray-800 dark:text-gray-200">
+                                            <button form="send-verification" type="submit"
+                                                    class="btn p-0 text-gray-800 dark:text-gray-200">
                                                 {{ __('email.click_to_resend_verification_email') }}
                                             </button>
                                         </form>
@@ -87,8 +91,4 @@
         </div>
     </x-slot>
 
-    @push('css')
-        <!---Internal Input tags css-->
-        <link href="{{ asset('backend/assets/plugins/inputtags/inputtags.css')}}" rel="stylesheet">
-    @endpush
 </x-app-layout>
