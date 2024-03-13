@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests;
 
-use App\Models\CourseSection;
+use App\Models\Lecturer;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class DeleteSectionRequest extends FormRequest
+class DeleteLectureRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,14 +26,14 @@ class DeleteSectionRequest extends FormRequest
     {
         return [
             'password' => ['required', 'current_password'],
-            'id' => ['required', Rule::exists(CourseSection::class)],
+            'id' => ['required', Rule::exists(Lecturer::class)],
         ];
     }
 
     public function prepareForValidation(): void
     {
         $this->merge([
-            'id' => $this->route('section')
+            'id' => $this->route('lecture')
         ]);
     }
 }

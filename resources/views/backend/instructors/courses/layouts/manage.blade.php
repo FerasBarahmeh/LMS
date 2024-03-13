@@ -6,8 +6,6 @@
                 <div class="card mg-b-20">
                     @include('backend.instructors.courses.layouts.card-header')
 
-                    @include('backend.instructors.courses.layouts.alerts-form-errors-container')
-
                     <div class="card-body">
 
                         <!-- Content -->

@@ -3,6 +3,7 @@
 namespace App\Interfaces\Repositories\DB\Instructor;
 
 use App\Http\Requests\Courses\StoreCourseRequest;
+use App\Http\Requests\DeleteLectureRequest;
 use App\Http\Requests\DeleteSectionRequest;
 use Illuminate\Http\Request;
 
@@ -52,4 +53,9 @@ interface CoursesInterface
      * Delete section
      */
     public function deleteSection(DeleteSectionRequest $request, $id);
+
+    /**
+     * Delete lecture
+     */
+    public function deleteLecture(DeleteLectureRequest $request, $id);
 }

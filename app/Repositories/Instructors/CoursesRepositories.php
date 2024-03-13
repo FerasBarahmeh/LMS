@@ -3,11 +3,13 @@
 namespace App\Repositories\Instructors;
 
 use App\Http\Requests\Courses\StoreCourseRequest;
+use App\Http\Requests\DeleteLectureRequest;
 use App\Http\Requests\DeleteSectionRequest;
 use App\Interfaces\Repositories\DB\Instructor\CoursesInterface;
 use App\Models\AcademicSubject;
 use App\Models\Course;
 use App\Models\CourseSection;
+use App\Models\Lecturer;
 use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -82,7 +84,13 @@ class CoursesRepositories implements CoursesInterface
     public function deleteSection(DeleteSectionRequest $request, $id): RedirectResponse
     {
         CourseSection::find($id)->delete();
-        return \redirect()->back()->with('delete-section-success', 'Success delete section for this course');
+        return redirect()->back()->with('delete-section-success', 'Success delete section for this course');
+    }
+
+    public function deleteLecture(DeleteLectureRequest $request, $id): RedirectResponse
+    {
+        Lecturer::find($id)->delete();
+        return redirect()->back()->with('delete-lecture-success', 'Success delete lecture for this course');
     }
 
     public function settings(string $id): View

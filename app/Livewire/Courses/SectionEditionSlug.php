@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\CourseSection;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class SectionEditionSlug extends Component
@@ -104,6 +105,7 @@ class SectionEditionSlug extends Component
         ];
     }
 
+    #[On('lecture-content')]
     public function render(): View
     {
         return view('livewire.courses.section-edition-slug');

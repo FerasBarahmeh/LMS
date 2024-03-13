@@ -42,7 +42,7 @@ class AddLecture extends Component
         $this->lectureOrder = $this->section->lectures->count() + 1;
     }
 
-    public function save()
+    public function save(): void
     {
         $this->validate();
         Lecturer::create([
@@ -51,6 +51,7 @@ class AddLecture extends Component
             'lecture_order' => $this->lectureOrder,
             'course_section_id' => $this->section->id,
         ]);
+        $this->dispatch('lecture-content');
     }
 
     public function rules(): array

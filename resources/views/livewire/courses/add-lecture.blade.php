@@ -3,7 +3,7 @@
         <!-- Modal head -->
         <div class="modal-header">
             <h6 class="modal-title">
-                Add new lecture for {{ $section->title }}
+                Add new lecture for <q class="text-primary">{{ $section->title }}</q>
             </h6>
             <x-close-modal-header-button/>
         </div>
@@ -19,7 +19,7 @@
 
                 <!-- Name -->
                 <div class="mt-6">
-                    <x-input-label for="name" value="{{ __('Name') }}" class="mt-3 mb-0 text-primary"/>
+                    <x-input-label for="name" value="{{ __('Name') }}" class="mt-3 mb-0"/>
                     <x-text-input
                         id="name"
                         wire:model="name"
@@ -32,7 +32,7 @@
 
                 <!-- Name -->
                 <div class="mt-6">
-                    <x-input-label for="description" value="{{ __('description') }}" class="mt-3 mb-0 text-primary"/>
+                    <x-input-label for="description" value="{{ __('description') }}" class="mt-3 mb-0"/>
                     <x-textarea-input
                         id="description"
                         wire:model="description"
@@ -51,5 +51,5 @@
 
         </div>
     </x-modal>
-    <x-alerts.errors/>
+
 </div>

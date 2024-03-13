@@ -11,7 +11,7 @@
 
         <div
             @class(['dropdown-menu tx-13'])
-            aria-labelledby="dropleftMenuButton"
+            aria-labelledby="drop{{ $direction }}MenuButton"
             href="#"
         >
             {{ $links }}
