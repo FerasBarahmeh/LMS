@@ -15,7 +15,7 @@ class NoSpaces implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (str_contains($value, ' ')){
+        if (str_contains(trim($value), ' ')){
             $fail('The :attribute must not contain spaces.');
         }
     }
