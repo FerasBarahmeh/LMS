@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('description')->nullable();
-            $table->string('type_content')->default('video');
             $table->boolean('published')->default(false);
             $table->unsignedInteger('lecture_order')->default(1);
             $table->foreignId('course_section_id')->constrained();

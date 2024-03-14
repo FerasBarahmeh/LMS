@@ -14,7 +14,7 @@
         <div class="mt-2">
             <h5 class="text-gray d-flex justify-content-between align-items-center m-0">
                 <span>Lectures</span>
-                <x-courses.add-lecture-button icon="plus">Add new</x-courses.add-lecture-button>
+                <x-courses.add-lecture-button icon="plus" class="p-0">Add new</x-courses.add-lecture-button>
             </h5>
 
             <div class="d-flex flex-column gap-5">
