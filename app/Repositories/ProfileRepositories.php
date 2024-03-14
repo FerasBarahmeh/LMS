@@ -81,12 +81,12 @@ class ProfileRepositories implements ProfileInterface
         $blob = $request->json('image');
         $user = User::find(auth()->id());
 
-        if ($user->hasMedia(self::$COLLECTION))
-            $user->getFirstMedia(self::$COLLECTION)->delete();
+        if ($user->hasMedia(MediaCollections::ProfilePicture->value))
+            $user->getFirstMedia(MediaCollections::ProfilePicture->value)->delete();
 
         $user->addMediaFromBase64($blob)
-            ->usingFileName('profile-picture-' . $user->id . '.png')
-            ->toMediaCollection(self::$COLLECTION);
+            ->usingFileName('profile.picture.' . $user->id . '.png')
+            ->toMediaCollection(MediaCollections::ProfilePicture->value);
     }
 
     /**
@@ -116,7 +116,7 @@ class ProfileRepositories implements ProfileInterface
 
     public static function setCollection(): void
     {
-        self::$COLLECTION = MediaCollections::Users->value;
+        self::$COLLECTION = MediaCollections::User->value;
     }
 
     public function setHome(): void

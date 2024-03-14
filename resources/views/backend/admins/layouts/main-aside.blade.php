@@ -12,7 +12,7 @@
         <div class="app-sidebar__user clearfix">
             <div class="dropdown user-pro-body">
                 <div class="">
-                    <img alt="user-img" class="avatar avatar-xl brround profile-picture-uploaded" src="{{ phantomImagePicker(user()->getFirstMediaUrl(Collection::Users->value) ) }}"/>
+                    <img alt="user-img" class="avatar avatar-xl brround profile-picture-uploaded" src="{{ phantomImagePicker(user()->getFirstMediaUrl(Collection::ProfilePicture->value) ) }}"/>
 
                     <span class="avatar-status profile-status bg-green"></span>
                 </div>

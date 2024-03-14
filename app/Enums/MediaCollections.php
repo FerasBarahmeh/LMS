@@ -8,5 +8,7 @@ enum MediaCollections: string
 {
     use EnumOperations;
 
-    case Users = 'users';
+    case User = 'user';
+
+    case ProfilePicture = 'profile.picture';
 }
