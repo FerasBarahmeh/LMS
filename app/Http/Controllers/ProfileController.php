@@ -6,7 +6,6 @@ use App\Enums\MediaCollections;
 use App\Enums\Theme;
 use App\Http\Requests\{ProfileUpdateRequest};
 use App\Models\User;
-use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,21 +17,37 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    use QuantumQuerier;
+    /**
+     * The path to the blade files for this controller
+     */
+    private const string BLADE_HUB = 'profile.';
+
+    /**
+     * The route name for this controller
+     */
+    private const string HOME_ROUTE_NAME = 'profile.edit';
+
+    private array $messages = [
+        'profile-update-fail' => 'Fail  Updated Profile',
+        'profile-update-successfully' => 'Profile Updated Successfully',
+    ];
 
     /**
      * Display the user's profile form.
      */
     public function index(Request $request): View
     {
-        return view(self::retrieveBlade('index'), [
+        return view(self::BLADE_HUB . 'index', [
             'user' => $request->user(),
         ]);
     }
 
+    /**
+     * Edit use information
+     */
     public function edit(Request $request): View
     {
-        return view(self::retrieveBlade('edit'), [
+        return view(self::BLADE_HUB . 'edit', [
             'user' => $request->user(),
         ]);
     }
@@ -51,9 +66,9 @@ class ProfileController extends Controller
         $saved = $request->user()->save();
 
         if (!$saved)
-            return self::toHome('profile-update-fail', 'Fail  Updated Profile');
+            return $this->backWith('profile-update-fail');
 
-        return self::toHome('profile-update-successfully', 'Profile Updated Successfully');
+        return $this->backWith('profile-update-successfully');
 
     }
 
@@ -78,7 +93,10 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function changeProfilePicture(Request $request)
+    /**
+     * Change profile picture for user
+     */
+    public function changeProfilePicture(Request $request): void
     {
         $blob = $request->json('image');
         $user = User::find(auth()->id());
@@ -92,6 +110,8 @@ class ProfileController extends Controller
     }
 
     /**
+     * Change theme app
+     *
      * @throws ValidationException
      */
     public function changeTheme(Request $request): RedirectResponse
@@ -108,22 +128,20 @@ class ProfileController extends Controller
 
         $request->user()->theme = $request->input('theme');
         $request->user()->save();
+
         return Redirect::back();
     }
 
-    public static function setBladeHub(): void
+    public function backWith(string $key, string|array|null $params=null): RedirectResponse
     {
-        self::$BLADES_HUB = 'profile.';
+        return Redirect::back()->with($key, $this->getMessage(key: $key, params: $params));
     }
 
-    public static function setCollection(): void
+    public function getMessage(string $key, string|array|null $params = null)
     {
-        self::$COLLECTION = MediaCollections::User->value;
-    }
+        if ($params == null) return $this->messages[$key];
+        if (is_string($params)) $params = [':params' => $params];
 
-    public function setHome(): void
-    {
-        self::$HOME = route('profile.edit');
+        return strtr($this->messages[$key], $params);
     }
-
 }

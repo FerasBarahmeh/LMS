@@ -10,21 +10,22 @@ use App\Models\AcademicSubject;
 use App\Models\Course;
 use App\Models\CourseSection;
 use App\Models\Lecturer;
-use App\Traits\Controllers\QuantumQuerier;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class CoursesController extends Controller
 {
-    use QuantumQuerier;
+    private const string BLADE_HUB = 'backend.instructors.courses.';
 
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         $courses = Course::with('user', 'sections')->paginate(6);
-        return view(self::retrieveBlade('index'), [
+        return view(self::BLADE_HUB . 'index', [
             'academicSubjects' => AcademicSubject::all(),
             'courses' => $courses,
         ]);
@@ -75,10 +76,10 @@ class CoursesController extends Controller
     /*
      * Show curriculum forms for specific course
      */
-    public function curriculum(string $id)
+    public function curriculum(string $id): View
     {
         $course = Course::with('sections')->find($id);
-        return view(self::retrieveBlade('curriculum'), [
+        return view(self::BLADE_HUB . 'curriculum', [
             'course' => $course,
         ]);
     }
@@ -86,10 +87,11 @@ class CoursesController extends Controller
     /*
      * Show settings forms for specific course
      */
-    public function settings(string $id)
+    public function settings(string $id): View
     {
         $course = Course::with('sections')->find($id);
-        return view(self::retrieveBlade('settings'), [
+
+        return view(self::BLADE_HUB . 'settings', [
             'course' => $course,
         ]);
     }
@@ -97,7 +99,7 @@ class CoursesController extends Controller
     /**
      * Delete section
      */
-    public function deleteSection(DeleteSectionRequest $request, $id)
+    public function deleteSection(DeleteSectionRequest $request, $id): RedirectResponse
     {
         CourseSection::find($id)->delete();
         return redirect()->back()->with('delete-section-success', 'Success delete section for this course');
@@ -107,14 +109,9 @@ class CoursesController extends Controller
     /**
      * Delete Lecture
      */
-    public function deleteLecture(DeleteLectureRequest $request, $id)
+    public function deleteLecture(DeleteLectureRequest $request, $id): RedirectResponse
     {
         Lecturer::find($id)->delete();
         return redirect()->back()->with('delete-lecture-success', 'Success delete lecture for this course');
-    }
-
-    public static function setBladeHub(): void
-    {
-        self::$BLADES_HUB = 'backend.instructors.courses.';
     }
 }

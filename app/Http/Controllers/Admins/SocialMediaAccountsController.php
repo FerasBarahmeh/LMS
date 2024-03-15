@@ -7,20 +7,30 @@ use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
 use App\Models\Icon;
 use App\Models\SocialMediaAccount;
-use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 
 class SocialMediaAccountsController extends Controller
 {
-    use QuantumQuerier;
+
+    private const string BLADE_HUB = 'backend.admins.platforms.';
+
+    private array $messages = [
+        'success-add-platform' => 'Success add media :params to valid platform',
+        'fail-add-platform' => 'Fail add media platform',
+        'fail-update-platform', 'Fail update platform',
+        'success-update-platform' => 'Successfully update platform',
+        'field-delete-platform' => 'the platform not exist in our source',
+        'success-delete-platform' => 'Successfully delete platform',
+    ];
 
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        return view(self::retrieveBlade('index'), [
+        return view(self::BLADE_HUB . 'index', [
             'platforms' => SocialMediaAccount::with('icon')->get(),
             'icons' => Icon::all('id', 'name'),
         ]);
@@ -32,13 +42,11 @@ class SocialMediaAccountsController extends Controller
     public function store(StoreAvailablePlatformRequest $request)
     {
         $platform = SocialMediaAccount::create($request->validated());
-        if (!$platform)
-            return self::toHome('fail-add-platform', 'Fail add media platform');
 
-        return self::toHome(
-            'success-add-platform',
-            "Success add media {$platform->name} to valid platform"
-        );
+        if (!$platform)
+            return $this->backWith('fail-add-platform');
+
+        return $this->backWith('success-add-platform', $platform->name);
     }
 
     /**
@@ -47,12 +55,14 @@ class SocialMediaAccountsController extends Controller
     public function update(UpdateAvailablePlatformRequest $request, string $id): RedirectResponse
     {
         $platform = SocialMediaAccount::find($id);
+
         if (!$platform)
-            return self::toHome('fail-update-platform', 'Fail update platform');
+            $this->backWith('fail-update-platform',);
 
         $platform->fill($request->validated());
         $platform->save();
-        return self::toHome('success-update-platform', 'Successfully update platform');
+
+        return $this->backWith('success-update-platform');
     }
 
     /**
@@ -61,25 +71,26 @@ class SocialMediaAccountsController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         $platform = SocialMediaAccount::findOrFail($id);
+
         if (!$platform)
-            return self::toHome('field-delete-platform', 'the platform not exist in our source');
+          return  $this->backWith('field-delete-platform');
 
         $platform->delete();
-        return self::toHome('success-delete-platform', 'Successfully delete platform');
+
+        return $this->backWith('success-delete-platform');
     }
 
-    public static function setBladeHub(): void
+    public function backWith(string $key, string|array|null $params = null): RedirectResponse
     {
-        self::$BLADES_HUB = 'backend.admins.platforms.';
+        return Redirect::back()->with($key, $this->getMessage(key: $key, params: $params));
     }
 
-    public static function setCollection(): void
+    public function getMessage(string $key, string|array|null $params = null)
     {
-        self::$COLLECTION = '';
-    }
+        if ($params == null) return $this->messages[$key];
 
-    public static function setHome(): void
-    {
-        self::$HOME = route('admin.platforms.index');
+        if (is_string($params)) $params = [':params' => $params];
+
+        return strtr($this->messages[$key], $params);
     }
 }

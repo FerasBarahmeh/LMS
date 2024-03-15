@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admins;
 
-use App\Enums\MediaCollections;
 use App\Enums\Privileges;
 use App\Enums\Status;
 use App\Http\Controllers\Controller;
@@ -11,18 +10,28 @@ use App\Http\Requests\MigrateToStudentRequest;
 use App\Http\Requests\ToggleStatusRequest;
 use App\Models\Instructor;
 use App\Models\User;
-use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
-    use QuantumQuerier;
+    /**
+     * The path to the blade files for this controller
+     */
+    private const string BLADE_HUB = 'backend.admins.';
+
+    private array $messages = [
+        'migrate-instructor-success' => "Great news! The privilege level for instruct :param has been successfully downgraded to student.",
+        'migrate-instructor-field' => 'Oops! The system could\'t downgrade the instructor. Please try again later.',
+        'migrate-student-success' => "Great news! The privilege level for instructor :param has been successfully upgraded to teacher status. Congratulations!",
+        'change-status-success' => 'Status update: The status for user :param has been successfully modified.',
+        'change-status-fail' => 'Failed to update status for user :param. Please check and try again.',
+    ];
 
     public function index(): View
     {
-        return view(self::retrieveBlade('dashboard'));
+        return view(self::BLADE_HUB . ' dashboard');
     }
 
     public function users(): View
@@ -30,7 +39,7 @@ class AdminController extends Controller
         $users = User::where('id', '!=', auth()->id())
             ->paginate(10);
 
-        return view(self::retrieveBlade('users.index'), [
+        return view(self::BLADE_HUB . 'users.index', [
             'users' => $users,
         ]);
     }
@@ -40,7 +49,7 @@ class AdminController extends Controller
         $instructors = User::where('privilege', Privileges::Instructor->value)
             ->paginate(10);
 
-        return view(self::retrieveBlade('instructors.index'), [
+        return view(self::BLADE_HUB . 'instructors.index', [
             'instructors' => $instructors,
         ]);
     }
@@ -50,7 +59,7 @@ class AdminController extends Controller
         $instructors = User::where('privilege', Privileges::Student->value)
             ->paginate(10);
 
-        return view(self::retrieveBlade('students.index'), [
+        return view(self::BLADE_HUB . 'students.index', [
             'instructors' => $instructors,
         ]);
     }
@@ -64,23 +73,22 @@ class AdminController extends Controller
         $instructor->status = $instructor->status == Status::InActive->value ? Status::Active->value : Status::InActive->value;
 
         if ($instructor->save()) {
-            return Redirect::back()->with('change-status-success', "Status update: The status for user {$instructor->name} has been successfully modified.");
+            return $this->backWith(key: 'change-status-success', params: $instructor->name);
         }
 
-        return Redirect::back()->with('change-status-fail', "Failed to update status for user {$instructor->name}. Please check and try again.");
+        return $this->backWith(key: 'change-status-fail', params: $instructor->name);
     }
 
     public function migrateToInstructor(MigrateToInstructorRequest $request, string $id): RedirectResponse
     {
         $user = User::find($id);
         $user->privilege = Privileges::Instructor->value;
+
         if ($user->save() && Instructor::create(['user_id' => $user->id])) {
-            return redirect()->back()
-                ->with('migrate-student-success',
-                    "Great news! The privilege level for instructor {$user->name} has been successfully upgraded to teacher status. Congratulations!");
+            return $this->backWith(key: 'migrate-student-success', params: $user->name);
         }
 
-        return Redirect::back()->with('migrate-student-field', 'Opp\'s ! The can\'t upgrade user now try again later plz.');
+        return $this->backWith(key: 'migrate-student-field');
     }
 
     public function migrateToStudent(MigrateToStudentRequest $request, string $id): RedirectResponse
@@ -88,18 +96,21 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->privilege = Privileges::Student->value;
         if ($user->save() && $user->instructor->delete()) {
-            return Redirect::back()->with('migrate-instructor-success', "Great news! The privilege level for instruct {$user->name} has been successfully downgraded to student.");
+            return $this->backWith('migrate-instructor-success', params: $user->name);
         }
-        return Redirect::back()->with('migrate-instructor-field', 'Oops! The system could\'t downgrade the instructor. Please try again later.');
+        return $this->backWith('migrate-instructor-field', params: $user->name);
     }
 
-    public static function setBladeHub(): void
+    public function backWith(string $key, string|array|null $params=null): RedirectResponse
     {
-        self::$BLADES_HUB = 'backend.admins.';
+        return Redirect::back()->with($key, $this->getMessage(key: $key, params: $params));
     }
 
-    public static function setCollection(): void
+    public function getMessage(string $key, string|array|null $params = null)
     {
-        self::$COLLECTION = MediaCollections::User->value;
+        if ($params == null) return $this->messages[$key];
+        if (is_string($params)) $params = [':params' => $params];
+
+        return strtr($this->messages[$key], $params);
     }
 }
