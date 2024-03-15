@@ -6,24 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Courses\StoreCourseRequest;
 use App\Http\Requests\DeleteLectureRequest;
 use App\Http\Requests\DeleteSectionRequest;
-use App\Interfaces\Repositories\DB\Instructor\CoursesInterface;
+use App\Models\AcademicSubject;
+use App\Models\Course;
+use App\Models\CourseSection;
+use App\Models\Lecturer;
+use App\Traits\Controllers\QuantumQuerier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CoursesController extends Controller
 {
-    private CoursesInterface $courses;
-
-    public function __construct(CoursesInterface $courses)
-    {
-        $this->courses = $courses;
-    }
+    use QuantumQuerier;
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return $this->courses->index();
+        $courses = Course::with('user', 'sections')->paginate(6);
+        return view(self::retrieveBlade('index'), [
+            'academicSubjects' => AcademicSubject::all(),
+            'courses' => $courses,
+        ]);
     }
 
     /**
@@ -31,7 +35,9 @@ class CoursesController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        return $this->courses->store($request);
+        $course = Course::create($request->validated());
+        return Redirect::route('instructor.courses.manage.curriculum', $course->id)->with('create-course-success', 'successfully created course now manage this course to publish it');
+
     }
 
     /**
@@ -39,7 +45,7 @@ class CoursesController extends Controller
      */
     public function show(string $id)
     {
-        return $this->courses->show($id);
+        // TODO: Implement show() method
     }
 
     /**
@@ -47,7 +53,7 @@ class CoursesController extends Controller
      */
     public function edit(string $id)
     {
-        return $this->courses->edit($id);
+        // TODO: Implement edit() method
     }
 
     /**
@@ -55,7 +61,7 @@ class CoursesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return $this->courses->update($request, $id);
+        // TODO: Implement update() method
     }
 
     /**
@@ -63,7 +69,7 @@ class CoursesController extends Controller
      */
     public function destroy(string $id)
     {
-        return $this->courses->destroy($id);
+        // TODO: Implement destroy() method
     }
 
     /*
@@ -71,7 +77,10 @@ class CoursesController extends Controller
      */
     public function curriculum(string $id)
     {
-        return $this->courses->curriculum($id);
+        $course = Course::with('sections')->find($id);
+        return view(self::retrieveBlade('curriculum'), [
+            'course' => $course,
+        ]);
     }
 
     /*
@@ -79,7 +88,10 @@ class CoursesController extends Controller
      */
     public function settings(string $id)
     {
-        return $this->courses->settings($id);
+        $course = Course::with('sections')->find($id);
+        return view(self::retrieveBlade('settings'), [
+            'course' => $course,
+        ]);
     }
 
     /**
@@ -87,7 +99,9 @@ class CoursesController extends Controller
      */
     public function deleteSection(DeleteSectionRequest $request, $id)
     {
-        return $this->courses->deleteSection($request, $id);
+        CourseSection::find($id)->delete();
+        return redirect()->back()->with('delete-section-success', 'Success delete section for this course');
+
     }
 
     /**
@@ -95,6 +109,12 @@ class CoursesController extends Controller
      */
     public function deleteLecture(DeleteLectureRequest $request, $id)
     {
-        return $this->courses->deleteLecture($request, $id);
+        Lecturer::find($id)->delete();
+        return redirect()->back()->with('delete-lecture-success', 'Success delete lecture for this course');
+    }
+
+    public static function setBladeHub(): void
+    {
+        self::$BLADES_HUB = 'backend.instructors.courses.';
     }
 }
