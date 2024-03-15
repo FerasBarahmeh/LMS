@@ -10,6 +10,7 @@ use App\Models\AcademicSubject;
 use App\Models\Course;
 use App\Models\CourseSection;
 use App\Models\Lecturer;
+use App\Traits\Controllers\FlashMessages;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,7 +18,19 @@ use Illuminate\Support\Facades\Redirect;
 
 class CoursesController extends Controller
 {
+    use FlashMessages;
+
     private const string BLADE_HUB = 'backend.instructors.courses.';
+
+
+    public function __construct()
+    {
+        $this->messages = [
+            'create-course-success' => 'successfully created course now manage this course to publish it',
+            'delete-section-success' => 'Success delete section for this course',
+            'delete-lecture-success' => 'Success delete lecture for this course',
+        ];
+    }
 
     /**
      * Display a listing of the resource.
@@ -34,10 +47,11 @@ class CoursesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCourseRequest $request)
+    public function store(StoreCourseRequest $request): RedirectResponse
     {
         $course = Course::create($request->validated());
-        return Redirect::route('instructor.courses.manage.curriculum', $course->id)->with('create-course-success', 'successfully created course now manage this course to publish it');
+        return Redirect::route('instructor.courses.manage.curriculum', $course->id)
+            ->with('create-course-success', $this->getMessage('create-course-success'));
 
     }
 
@@ -79,6 +93,7 @@ class CoursesController extends Controller
     public function curriculum(string $id): View
     {
         $course = Course::with('sections')->find($id);
+
         return view(self::BLADE_HUB . 'curriculum', [
             'course' => $course,
         ]);
@@ -102,8 +117,7 @@ class CoursesController extends Controller
     public function deleteSection(DeleteSectionRequest $request, $id): RedirectResponse
     {
         CourseSection::find($id)->delete();
-        return redirect()->back()->with('delete-section-success', 'Success delete section for this course');
-
+        return $this->backWith('delete-section-success');
     }
 
     /**
@@ -112,6 +126,6 @@ class CoursesController extends Controller
     public function deleteLecture(DeleteLectureRequest $request, $id): RedirectResponse
     {
         Lecturer::find($id)->delete();
-        return redirect()->back()->with('delete-lecture-success', 'Success delete lecture for this course');
+        return $this->backWith('delete-lecture-success');
     }
 }

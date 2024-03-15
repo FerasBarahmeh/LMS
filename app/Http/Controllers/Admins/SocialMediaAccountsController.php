@@ -7,23 +7,27 @@ use App\Http\Requests\StoreAvailablePlatformRequest;
 use App\Http\Requests\UpdateAvailablePlatformRequest;
 use App\Models\Icon;
 use App\Models\SocialMediaAccount;
+use App\Traits\Controllers\FlashMessages;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Redirect;
 
 class SocialMediaAccountsController extends Controller
 {
+    use FlashMessages;
 
     private const string BLADE_HUB = 'backend.admins.platforms.';
 
-    private array $messages = [
-        'success-add-platform' => 'Success add media :params to valid platform',
-        'fail-add-platform' => 'Fail add media platform',
-        'fail-update-platform', 'Fail update platform',
-        'success-update-platform' => 'Successfully update platform',
-        'field-delete-platform' => 'the platform not exist in our source',
-        'success-delete-platform' => 'Successfully delete platform',
-    ];
+    public function __construct()
+    {
+        $this->messages = [
+            'success-add-platform' => 'Success add media :params to valid platform',
+            'fail-add-platform' => 'Fail add media platform',
+            'fail-update-platform', 'Fail update platform',
+            'success-update-platform' => 'Successfully update platform',
+            'field-delete-platform' => 'the platform not exist in our source',
+            'success-delete-platform' => 'Successfully delete platform',
+        ];
+    }
 
     /**
      * Display a listing of the resource.
@@ -73,24 +77,10 @@ class SocialMediaAccountsController extends Controller
         $platform = SocialMediaAccount::findOrFail($id);
 
         if (!$platform)
-          return  $this->backWith('field-delete-platform');
+            return $this->backWith('field-delete-platform');
 
         $platform->delete();
 
         return $this->backWith('success-delete-platform');
-    }
-
-    public function backWith(string $key, string|array|null $params = null): RedirectResponse
-    {
-        return Redirect::back()->with($key, $this->getMessage(key: $key, params: $params));
-    }
-
-    public function getMessage(string $key, string|array|null $params = null)
-    {
-        if ($params == null) return $this->messages[$key];
-
-        if (is_string($params)) $params = [':params' => $params];
-
-        return strtr($this->messages[$key], $params);
     }
 }

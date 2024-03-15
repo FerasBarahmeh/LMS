@@ -31,7 +31,7 @@ class AdminController extends Controller
 
     public function index(): View
     {
-        return view(self::BLADE_HUB . ' dashboard');
+        return view(self::BLADE_HUB . 'dashboard');
     }
 
     public function users(): View
