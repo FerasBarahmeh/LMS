@@ -21,5 +21,6 @@ return [
     'success' => 'نجاح',
     'fail' => 'فشل',
     'danger' => 'خطر',
+    'warning' => 'تحذير',
 
 ];

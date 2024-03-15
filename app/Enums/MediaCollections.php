@@ -11,4 +11,8 @@ enum MediaCollections: string
     case User = 'user';
 
     case ProfilePicture = 'profile.picture';
+
+    case CourseVideo = 'course.video';
+
+    case    CourseDoc = 'course.doc';
 }
