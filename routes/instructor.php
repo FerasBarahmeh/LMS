@@ -6,15 +6,6 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-/*
-|--------------------------------------------------------------------------
-| Instructor Routes
-|--------------------------------------------------------------------------
-|
-| - Here is where you can register web and instructor routes for your application.
-| - Assigned to the  (web, instructor) middleware group
-|
-*/
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->prefix(LaravelLocalization::setLocale())
     ->group(function () {
