@@ -21,4 +21,9 @@ class Lecturer extends Model
     {
         return $this->hasMany(LectureAttachment::class);
     }
+
+    public function hasAttachments(): bool
+    {
+        return $this->attachments->count() >= 1;
+    }
 }
