@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admins\InstructorController;
 use App\Http\Controllers\Instructors\CoursesController;
+use App\Http\Controllers\Instructors\LectureController;
+use App\Http\Controllers\Instructors\SectionController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -39,13 +41,12 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
                                 Route::get('manage/{course}/settings', [CoursesController::class, 'settings'])
                                     ->name('settings');
 
-                                Route::delete('manage/sections/{section}/delete', [CoursesController::class, 'deleteSection'])
+                                Route::delete('manage/sections/{section}/delete', [SectionController::class, 'destroy'])
                                     ->name('section.delete');
 
-                                Route::delete('manage/lectures/{lecture}/delete', [CoursesController::class, 'deleteLecture'])
+                                Route::delete('manage/lectures/{lecture}/delete', [LectureController::class, 'destroy'])
                                     ->name('lecture.delete');
                             });
                     });
             });
-
     });

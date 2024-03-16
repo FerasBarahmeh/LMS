@@ -4,12 +4,8 @@ namespace App\Http\Controllers\Instructors;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Courses\StoreCourseRequest;
-use App\Http\Requests\DeleteLectureRequest;
-use App\Http\Requests\DeleteSectionRequest;
 use App\Models\AcademicSubject;
 use App\Models\Course;
-use App\Models\CourseSection;
-use App\Models\Lecturer;
 use App\Traits\Controllers\FlashMessages;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -27,8 +23,6 @@ class CoursesController extends Controller
     {
         $this->messages = [
             'create-course-success' => 'successfully created course now manage this course to publish it',
-            'delete-section-success' => 'Success delete section for this course',
-            'delete-lecture-success' => 'Success delete lecture for this course',
         ];
     }
 
@@ -109,23 +103,5 @@ class CoursesController extends Controller
         return view(self::BLADE_HUB . 'settings', [
             'course' => $course,
         ]);
-    }
-
-    /**
-     * Delete section
-     */
-    public function deleteSection(DeleteSectionRequest $request, $id): RedirectResponse
-    {
-        CourseSection::find($id)->delete();
-        return $this->backWith('delete-section-success');
-    }
-
-    /**
-     * Delete Lecture
-     */
-    public function deleteLecture(DeleteLectureRequest $request, $id): RedirectResponse
-    {
-        Lecturer::find($id)->delete();
-        return $this->backWith('delete-lecture-success');
     }
 }
