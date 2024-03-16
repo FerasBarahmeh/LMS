@@ -2,17 +2,22 @@
 
 namespace App\Livewire\Courses;
 
+use AllowDynamicProperties;
 use App\Enums\MediaCollections;
+use App\Enums\TypeAttachments;
+use App\Models\LectureAttachment as Attachment;
 use App\Models\Lecturer;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\FileNotPreviewableException;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class LectureAttachment extends Component
+#[AllowDynamicProperties] class LectureAttachment extends Component
 {
     use WithFileUploads;
 
@@ -54,9 +59,11 @@ class LectureAttachment extends Component
     /**
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
+     * @throws FileNotPreviewableException
      */
     public function uploadComplete(): void
     {
+        // TODO: refactor to apply Liscove SOLID
         if ($this->fileType == MediaCollections::CourseVideo->value)
             $this->uploadVideoComplete();
         else
@@ -68,20 +75,27 @@ class LectureAttachment extends Component
      *
      * @throws FileIsTooBig
      * @throws FileDoesNotExist
+     * @throws FileNotPreviewableException
      */
     public function uploadVideoComplete(): void
     {
-        if ($this->lecture->media()->where('collection_name', MediaCollections::CourseVideo->value)->exists()) {
-           session()->flash('already-has-lesson', 'The lecture has video lesson already');
+        if ($this->lecture->hasVideoAttachment()) {
+            session()->flash('already-has-lesson', 'The lecture has video lesson already');
             return;
         }
 
         $this->validate();
 
-        $this->lecture
+        $attachment = Attachment::create([
+            'type_attachment' => TypeAttachments::Video->value,
+            'lecturer_id' => $this->lecture->id,
+        ]);
+
+        $attachment
             ->addMedia($this->videoFile->getRealPath())
             ->toMediaCollection(MediaCollections::CourseVideo->value);
 
+        $this->hasAttachments = true;
         $this->reset('videoFile');
     }
 
@@ -90,14 +104,22 @@ class LectureAttachment extends Component
      *
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
+     * @throws FileNotPreviewableException
      */
     public function uploadDocComplete(): void
     {
         $this->validate();
-        $this->lecture
+
+        $attachment = Attachment::create([
+            'type_attachment' => TypeAttachments::File->value,
+            'lecturer_id' => $this->lecture->id
+        ]);
+
+        $attachment
             ->addMedia($this->docFile->getRealPath())
             ->toMediaCollection(MediaCollections::CourseDoc->value);
 
+        $this->hasAttachments = true;
         $this->reset('docFile');
     }
 

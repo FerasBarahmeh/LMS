@@ -39,3 +39,13 @@ if (! function_exists('parseDate')) {
        return $date != null ? \Illuminate\Support\Carbon::parse($date)->format($format) : '';
     }
 }
+
+/**
+ * Date for humans
+ */
+if (! function_exists('diffForHumans')) {
+    function diffForHumans($date): string
+    {
+       return $date != null ? \Illuminate\Support\Carbon::parse($date)->diffForHumans() : '';
+    }
+}

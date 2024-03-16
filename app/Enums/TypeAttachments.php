@@ -11,4 +11,15 @@ enum TypeAttachments: string
     case File = '1';
 
     case Video = '2';
+
+    /**
+     * Get name by value
+     */
+    public static function name($value): string
+    {
+        return match ($value) {
+            self::File->value => 'Doc',
+            self::Video->value => 'Video',
+        };
+    }
 }

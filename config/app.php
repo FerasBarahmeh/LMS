@@ -197,6 +197,7 @@ return [
          'TypeSkills' =>  \App\Enums\TypeSkills::class,
          'Privileges' =>  \App\Enums\Privileges::class,
          'Semesters' =>  \App\Enums\Semesters::class,
+         'AttachmentType' =>  \App\Enums\TypeAttachments::class,
     ])->toArray(),
 
 ];
