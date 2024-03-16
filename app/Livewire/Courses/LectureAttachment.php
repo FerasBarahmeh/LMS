@@ -2,14 +2,12 @@
 
 namespace App\Livewire\Courses;
 
-use AllowDynamicProperties;
 use App\Enums\MediaCollections;
 use App\Enums\TypeAttachments;
-use App\Models\LectureAttachment as Attachment;
 use App\Models\Lecture;
+use App\Models\LectureAttachment as Attachment;
 use App\Services\Models\LectureService;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\FileNotPreviewableException;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -18,11 +16,16 @@ use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-#[AllowDynamicProperties] class LectureAttachment extends Component
+class LectureAttachment extends Component
 {
     use WithFileUploads;
 
     public Lecture $lecture;
+
+    /**
+     * Service object for Lecture model
+     */
+    protected LectureService $lectureService;
 
     /**
      * If lecture has attachments
@@ -52,8 +55,9 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
      */
     public TemporaryUploadedFile|null $docFile = null;
 
-    public LectureService $lectureService ;
-
+    /**
+     * Livewire constructor
+     */
     public function mount(): void
     {
         $this->lectureService = new LectureService($this->lecture);
