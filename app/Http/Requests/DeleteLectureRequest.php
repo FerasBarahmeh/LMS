@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Lecturer;
+use App\Models\Lecture;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -26,7 +26,7 @@ class DeleteLectureRequest extends FormRequest
     {
         return [
             'password' => ['required', 'current_password'],
-            'id' => ['required', Rule::exists(Lecturer::class)],
+            'id' => ['required', Rule::exists(Lecture::class)],
         ];
     }
 

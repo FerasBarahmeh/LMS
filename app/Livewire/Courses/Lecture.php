@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Courses;
 
-use App\Models\Lecturer;
+use App\Models\Lecture as LectureModel;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -11,9 +11,9 @@ class Lecture extends Component
 {
     /**
      * Lecture
-     * @var Lecturer
+     * @var LectureModel
      */
-    public Lecturer $lecture;
+    public LectureModel $lecture;
 
     /**
      * Lecture name
@@ -68,7 +68,7 @@ class Lecture extends Component
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:150', Rule::unique(Lecturer::class)->ignore($this->lecture->id)],
+            'name' => ['required', 'max:150', Rule::unique(Lecture::class)->ignore($this->lecture->id)],
             'description' => ['required', 'max:250'],
         ];
     }

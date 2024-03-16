@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('lecture_attachments', function (Blueprint $table) {
             $table->id();
             $table->enum('type_attachment', \App\Enums\TypeAttachments::values());
-            $table->foreignId('lecturer_id')->constrained();
+            $table->foreignId('lecture_id')->constrained();
             $table->timestamps();
         });
     }

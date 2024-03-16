@@ -3,13 +3,13 @@
 namespace App\Services\Models;
 
 use App\Enums\TypeAttachments;
-use App\Models\Lecturer;
+use App\Models\Lecture;
 
 class LectureService
 {
-    protected Lecturer $lecture;
+    protected Lecture $lecture;
 
-    public function __construct(Lecturer $lecture)
+    public function __construct(Lecture $lecture)
     {
         $this->lecture = $lecture;
     }

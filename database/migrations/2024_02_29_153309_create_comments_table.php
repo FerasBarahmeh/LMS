@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('content');
             $table->unsignedInteger('parent')->default(0);
             $table->unsignedInteger('replies_count')->default(0);
-            $table->foreignId('lecturer_id')->constrained();
+            $table->foreignId('lecture_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

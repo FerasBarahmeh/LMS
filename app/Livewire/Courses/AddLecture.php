@@ -3,7 +3,7 @@
 namespace App\Livewire\Courses;
 
 use App\Models\CourseSection;
-use App\Models\Lecturer;
+use App\Models\Lecture;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -45,7 +45,7 @@ class AddLecture extends Component
     public function save(): void
     {
         $this->validate();
-        Lecturer::create([
+        Lecture::create([
             'name' => $this->name,
             'description' => $this->description,
             'lecture_order' => $this->lectureOrder,
@@ -57,7 +57,7 @@ class AddLecture extends Component
     public function rules(): array
     {
         return [
-           'name' => ['required', 'max:150', Rule::unique(Lecturer::class, 'name')],
+           'name' => ['required', 'max:150', Rule::unique(Lecture::class, 'name')],
            'description' => ['nullable', 'max:250'],
         ];
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Instructors;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DeleteLectureRequest;
-use App\Models\Lecturer;
+use App\Models\Lecture;
 use App\Traits\Controllers\FlashMessages;
 use Illuminate\Http\RedirectResponse;
 
@@ -24,7 +24,7 @@ class LectureController extends Controller
      */
     public function destroy(DeleteLectureRequest $request, $id): RedirectResponse
     {
-        $lecture = Lecturer::find($id)->delete();
+        $lecture = Lecture::find($id)->delete();
         return $this->backWith('delete-lecture-success');
     }
 }

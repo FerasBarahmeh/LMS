@@ -15,6 +15,6 @@ class LectureAttachment extends Model implements HasMedia
 
     public function lecture(): BelongsTo
     {
-        return $this->belongsTo(Lecturer::class);
+        return $this->belongsTo(Lecture::class);
     }
 }

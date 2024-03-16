@@ -6,7 +6,7 @@ use AllowDynamicProperties;
 use App\Enums\MediaCollections;
 use App\Enums\TypeAttachments;
 use App\Models\LectureAttachment as Attachment;
-use App\Models\Lecturer;
+use App\Models\Lecture;
 use App\Services\Models\LectureService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +22,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 {
     use WithFileUploads;
 
-    public Lecturer $lecture;
+    public Lecture $lecture;
 
     /**
      * If lecture has attachments
