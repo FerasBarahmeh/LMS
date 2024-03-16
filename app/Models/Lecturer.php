@@ -24,14 +24,4 @@ class Lecturer extends Model
     {
         return $this->hasMany(LectureAttachment::class);
     }
-
-    public function hasAttachments(): bool
-    {
-        return count(value: $this->attachments) >= 1;
-    }
-
-    public function hasVideoAttachment(): bool
-    {
-        return $this->attachments()->where('type_attachment', operator: TypeAttachments::Video->value)->limit(1)->count() >= 1;
-    }
 }

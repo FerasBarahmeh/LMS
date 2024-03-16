@@ -7,6 +7,7 @@ use App\Enums\MediaCollections;
 use App\Enums\TypeAttachments;
 use App\Models\LectureAttachment as Attachment;
 use App\Models\Lecturer;
+use App\Services\Models\LectureService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -51,9 +52,12 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
      */
     public TemporaryUploadedFile|null $docFile = null;
 
+    public LectureService $lectureService ;
+
     public function mount(): void
     {
-        $this->hasAttachments = $this->lecture->hasAttachments();
+        $this->lectureService = new LectureService($this->lecture);
+        $this->hasAttachments = $this->lectureService->hasAttachments();
     }
 
     /**
@@ -63,7 +67,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
      */
     public function uploadComplete(): void
     {
-        // TODO: refactor to apply Liscove SOLID
         if ($this->fileType == MediaCollections::CourseVideo->value)
             $this->uploadVideoComplete();
         else
@@ -79,7 +82,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
      */
     public function uploadVideoComplete(): void
     {
-        if ($this->lecture->hasVideoAttachment()) {
+        if ($this->lectureService->hasVideoAttachment()) {
             session()->flash('already-has-lesson', 'The lecture has video lesson already');
             return;
         }
