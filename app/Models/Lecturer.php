@@ -28,6 +28,6 @@ class Lecturer extends Model implements HasMedia
 
     public function hasAttachments(): bool
     {
-        return $this->attachments->count() >= 1;
+        return count(value: $this->attachments) >= 1;
     }
 }
