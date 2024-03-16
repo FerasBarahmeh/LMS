@@ -1,8 +1,8 @@
-<div>
+<div @class(['rad-5']) >
     <x-alerts.alert :success="session('change-objective-success')"/>
     <x-alerts.errors/>
-    <section class="section pb-2 w-100">
-        <div @class(['d-flex align-items-center justify-content-between w-100']) @style(['border-radius: 0;'])>
+    <section  @class([' w-100'])>
+        <div @class(['d-flex align-items-center justify-content-between w-100', 'bg-gray-100'=> $loop->odd]) @style(['border-radius: 0; padding: 10px;'])>
             <!-- Title input -->
             @if($updateNameStage)
                 <div class="mb-2 w-50">
@@ -24,14 +24,14 @@
             @else
 
                 <!-- Display title -->
-                <h6 class="d-flex align-items-center justify-content-center gap-10">
+                <h6 class="d-flex mb-0 align-items-center justify-content-center gap-10" data-toggle="tooltip" title="" data-placement="top" data-original-title="{{ $section->published ? 'published' : 'private' }}">
                     <i class="fa fa-{{ $section->published ?  'fire text-orange' : 'eye-slash text-warning' }}"></i>
                     <x-collapse-button href="content-section-{{ $section->id }}" class="text-dark">{{ $loop->iteration }} - {{  $section->title }}</x-collapse-button>
                 </h6>
 
                 <!-- Options dropdown -->
                 <div class="options d-flex gap-5">
-                    <x-dropdown class="pt-1 pb-1 mb-1" :direction="'up'">
+                    <x-dropdown class="pt-1 pb-1" :direction="'up'">
                         <x-slot name="title">Options</x-slot>
                         <x-slot name="links">
                             <!-- Edit section name -->
