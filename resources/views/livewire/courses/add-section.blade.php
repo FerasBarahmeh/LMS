@@ -1,39 +1,48 @@
 <div>
-    <div
-        @class(['card-header', 'd-flex', 'align-items-center', 'justify-content-between'])
-        @style(['box-shadow: 5px 7px 26px -5px #cdd4e7;'])
-    >
-        <h5 class="m-0 text-dark">Sections</h5>
-        <x-primary-button wire:click="openAddSectionBody">
-            <i class="fa fa-{{ $addSectionBodyOpen ? 'minus' : 'plus' }}"></i>
-        </x-primary-button>
-    </div>
-
-    <section @class(['card-body', 'd-none' => ! $addSectionBodyOpen])>
-        <!-- Title -->
-        <div class="mb-3">
-            <x-input-label for="title" :value="'title'" class="text-muted tx-12"/>
-            <x-text-input wire:model="title"></x-text-input>
-            <x-input-error :messages="$errors->get('title')" class="mt-2"/>
+    <x-alerts.success :message="session('create-section-success')"/>
+    <x-modal id="add-section">
+        <!-- Modal head -->
+        <div class="modal-header">
+            <h6 class="modal-title">
+                Add new section
+            </h6>
+            <x-close-modal-header-button/>
         </div>
 
-        <!-- Objective -->
-        <div class="mb-3">
-            <x-input-label for="objective" :value="'What will students be able to do at the end of this section?'"
-                           class="text-muted tx-12"/>
-            <x-textarea-input placholder="Enter learning objective" name="objective">{{ $objective }}</x-textarea-input>
-            <x-input-error :messages="$errors->get('objective')" class="mt-2"/>
+        <!-- Modal Body -->
+        <div class="modal-body">
+
+            <h2 class="text-dark">
+                {{ __('New section') }}
+            </h2>
+
+            <p class="mb-3">{{ __('When adding a new section to a course, it\'s crucial to ensure that it complements existing content rather than duplicating it, fostering a well-rounded learning experience. Additionally, consider student feedback and demand when selecting topics for the additional section to maximize engagement and relevance.') }}</p>
+
+            <!-- Title -->
+            <div class="mb-3">
+                <x-input-label for="title" :value="'title'" class="text-muted tx-12"/>
+                <x-text-input wire:model="title"></x-text-input>
+                <x-input-error :messages="$errors->get('title')" class="mt-2"/>
+            </div>
+
+            <!-- Objective -->
+            <div class="mb-3">
+                <x-input-label for="objective" class="text-muted tx-12">
+                    What will students be able to do at the end of this section?
+                </x-input-label>
+                <x-textarea-input placholder="Enter learning objective"
+                                  name="objective">{{ $objective }}</x-textarea-input>
+                <x-input-error :messages="$errors->get('objective')" class="mt-2"/>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <x-close-modal-footer-button wire:click="save" class="bg-dark text-white">
+                    {{ __('change') }}
+                </x-close-modal-footer-button>
+                <x-close-modal-footer-button>{{ __('close') }}</x-close-modal-footer-button>
+            </div>
+
         </div>
-
-        <!-- Save -->
-        <div class="card-footer border-top-0 p-0 d-flex align-items-center justify-content-end" @style(['gap: 10px;'])>
-            <x-secondary-button wire:click="openAddSectionBody">{{__('close')}}</x-secondary-button>
-            <x-primary-button wire:click="save">{{__('save')}}</x-primary-button>
-        </div>
-    </section>
-
-
-    @if($saved)
-        <p class="alert alert-info rad-5 box-shadow-info p-2 m  t-2 mb-2 mt-2">Custom the section</p>
-    @endif
+    </x-modal>
 </div>
