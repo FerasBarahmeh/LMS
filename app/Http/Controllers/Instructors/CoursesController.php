@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Instructors;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Courses\StoreCourseRequest;
+use App\Http\Requests\UpdateCourseRequest;
 use App\Models\AcademicSubject;
 use App\Models\Course;
 use App\Traits\Controllers\FlashMessages;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class CoursesController extends Controller
@@ -60,15 +60,19 @@ class CoursesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
-        // TODO: Implement edit() method
+        $course = Course::find($id);
+
+        return view(self::BLADE_HUB . 'edit', [
+            'course' => $course,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCourseRequest $request, string $id)
     {
         // TODO: Implement update() method
     }

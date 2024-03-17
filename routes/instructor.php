@@ -38,6 +38,9 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
                                 Route::get('manage/{course}/curriculum', [CoursesController::class, 'curriculum'])
                                     ->name('curriculum');
 
+                                Route::get('manage/{course}/edit', [CoursesController::class, 'edit'])
+                                    ->name('edit');
+
                                 Route::get('manage/{course}/settings', [CoursesController::class, 'settings'])
                                     ->name('settings');
 
