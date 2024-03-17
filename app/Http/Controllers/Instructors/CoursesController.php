@@ -9,6 +9,7 @@ use App\Models\AcademicSubject;
 use App\Models\Course;
 use App\Traits\Controllers\FlashMessages;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 
@@ -18,11 +19,15 @@ class CoursesController extends Controller
 
     private const string BLADE_HUB = 'backend.instructors.courses.';
 
+    private Collection $academicSubjects;
 
     public function __construct()
     {
+        $this->academicSubjects = AcademicSubject::all();
         $this->messages = [
             'create-course-success' => 'successfully created course now manage this course to publish it',
+            'update-course-success' => 'successfully update course',
+            'failed-course-success' => 'failed update course',
         ];
     }
 
@@ -33,7 +38,7 @@ class CoursesController extends Controller
     {
         $courses = Course::with('user', 'sections')->paginate(6);
         return view(self::BLADE_HUB . 'index', [
-            'academicSubjects' => AcademicSubject::all(),
+            'academicSubjects' => $this->academicSubjects,
             'courses' => $courses,
         ]);
     }
@@ -66,15 +71,20 @@ class CoursesController extends Controller
 
         return view(self::BLADE_HUB . 'edit', [
             'course' => $course,
+            'subjects' => $this->academicSubjects,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCourseRequest $request, string $id)
+    public function update(UpdateCourseRequest $request, string $id): RedirectResponse
     {
-        // TODO: Implement update() method
+        $course = Course::find($id);
+        $course->update($request->validated());
+        if ($course->save())
+            return $this->backWith('update-course-success');
+        return $this->backWith('failed-course-success');
     }
 
     /**

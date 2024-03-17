@@ -27,7 +27,7 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
                 /**
                  * Courses
                  */
-                Route::resource('courses', CoursesController::class)->except('create, destroy');
+                Route::resource('courses', CoursesController::class)->except('create');
                 Route::prefix('courses')
                     ->name('courses.')
                     ->group(function () {

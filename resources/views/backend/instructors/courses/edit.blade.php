@@ -15,7 +15,8 @@
             </p>
 
             <div class="mt-3">
-                <form method="post" >
+                <form method="post" action="{{ route('instructor.courses.update', $course->id) }}">
+                    @csrf @method('put')
                     <!-- Course name -->
                     <div class="mt-3">
                         <x-input-label for="name" value="{{ __('name') }}" class="mt-3 mb-1"/>
@@ -26,10 +27,54 @@
                     <!-- Description -->
                     <div class="mt-3">
                         <x-input-label for="description" value="{{ __('description') }}" class="mt-3 mb-1"/>
-
+                        <x-simple-editor name="description" >{!! $course->description !!}</x-simple-editor>
                         <x-input-error :messages="$errors->get('description')" class="mt-2"/>
                     </div>
 
+                    <!-- Semester -->
+                    <div class="mt-3">
+                        <x-input-label for="semester" value="{{ __('semester') }}" class="mt-3 mb-1"/>
+                        <x-input-select name="semester">
+                            <x-option-select
+                                value="{{ Semesters::First->value }}"
+                                :selected="Semesters::isFirst($course->semester)">
+                                {{ Semesters::name(Semesters::First->value) }}
+                            </x-option-select>
+                            <x-option-select
+                                value="{{ Semesters::Second->value }}"
+                                :selected="Semesters::isSecond($course->semester)">
+                                {{ Semesters::name( Semesters::Second->value) }}
+                            </x-option-select>
+                            <x-option-select
+                                value="{{ Semesters::Complement->value }}"
+                                :selected="Semesters::isComplement($course->semester)">
+                                {{ Semesters::name( Semesters::Complement->value) }}
+                            </x-option-select>
+                        </x-input-select>
+                        <x-input-error :messages="$errors->get('semester')" class="mt-2"/>
+                    </div>
+
+                    <!-- Academic Subject -->
+                    <div class="mt-3">
+                        <x-input-label
+                            for="academic_subject_id"
+                            value="{{ __('Academic Subject') }}"
+                            class="mt-3 mb-1"
+                        />
+                        <x-input-select name="academic_subject_id">
+                            @foreach($subjects as $subject)
+                                <x-option-select
+                                    value="{{ $subject->id }}"
+                                    :selected="$course->academic_subject_id == $subject->id || old('academic_subject_id')"
+                                >
+                                    {{ $subject->name }}
+                                </x-option-select>
+                            @endforeach
+                        </x-input-select>
+                        <x-input-error :messages="$errors->get('academic_subject_id')" class="mt-2"/>
+                    </div>
+
+                    <x-primary-button class="mt-4">Save</x-primary-button>
                 </form>
             </div>
         </div>

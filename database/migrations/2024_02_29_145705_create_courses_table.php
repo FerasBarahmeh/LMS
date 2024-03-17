@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100)->unique();
             $table->enum('semester', \App\Enums\Semesters::values());
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->decimal('price')->default(0);
             $table->boolean('is_free')->default(true);
             $table->unsignedInteger('enrollment_number')->default(0);
