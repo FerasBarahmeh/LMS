@@ -4,7 +4,7 @@
             <img class="card-img-top w-100 w-100" src="{{ asset('img/courses/empty.png') }}" alt="">
         </figure>
         <div class="card-body pb-0">
-            <a href="{{ route('instructor.courses.manage.curriculum', $course->id) }}">
+            <a href="{{ route('instructor.courses.edit', $course->id) }}">
                 <h4 class="card-title">{{ $course->name }}</h4>
             </a>
             <p class="mb-2">{{ $course->description }}</p>

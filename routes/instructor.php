@@ -29,27 +29,19 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
                  */
                 Route::resource('courses', CoursesController::class)->except('create');
                 Route::prefix('courses')
-                    ->name('courses.')
+                    ->name('courses.manage.')
                     ->group(function () {
+                        Route::get('manage/{course}/curriculum', [CoursesController::class, 'curriculum'])
+                            ->name('curriculum');
 
-                        Route::name('manage.')
-                            ->group(function () {
+                        Route::get('manage/{course}/settings', [CoursesController::class, 'settings'])
+                            ->name('settings');
 
-                                Route::get('manage/{course}/curriculum', [CoursesController::class, 'curriculum'])
-                                    ->name('curriculum');
+                        Route::delete('manage/sections/{section}/delete', [SectionController::class, 'destroy'])
+                            ->name('section.delete');
 
-                                Route::get('manage/{course}/edit', [CoursesController::class, 'edit'])
-                                    ->name('edit');
-
-                                Route::get('manage/{course}/settings', [CoursesController::class, 'settings'])
-                                    ->name('settings');
-
-                                Route::delete('manage/sections/{section}/delete', [SectionController::class, 'destroy'])
-                                    ->name('section.delete');
-
-                                Route::delete('manage/lectures/{lecture}/delete', [LectureController::class, 'destroy'])
-                                    ->name('lecture.delete');
-                            });
+                        Route::delete('manage/lectures/{lecture}/delete', [LectureController::class, 'destroy'])
+                            ->name('lecture.delete');
                     });
             });
     });
