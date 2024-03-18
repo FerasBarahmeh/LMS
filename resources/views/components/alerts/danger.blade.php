@@ -1,5 +1,6 @@
 @props(['message'])
 <div
+    {!! $attributes !!}
     class="alert alert-danger alert-dismissible fade show d-flex justify-content-between align-items-center"
      role="alert">
     <div class="d-flex" @style(['gap: 7px;'])>

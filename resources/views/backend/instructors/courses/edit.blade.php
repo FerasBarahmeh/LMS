@@ -96,7 +96,7 @@
                           enctype="multipart/form-data">
                         @csrf @method('patch')
                         <div class="mb-3">
-                            <x-input-file name="course_image"/>
+                            <x-input-file name="course_image"  accept="image/*"/>
                             <x-input-error :messages="$errors->get('course_image')" class="mt-2"/>
                         </div>
                         <x-primary-button class="mt-2">Change image</x-primary-button>
