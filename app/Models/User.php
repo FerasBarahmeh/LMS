@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Privileges;
+use App\Services\Models\UserService;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -58,5 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function instructor(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Instructor::class);
+    }
+
+    public function service(): UserService
+    {
+        return (new UserService($this));
     }
 }

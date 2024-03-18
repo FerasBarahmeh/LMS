@@ -17,11 +17,8 @@ class CourseService
     public function courseImage(): string
     {
         return
-            $this->course
-                ->getFirstMedia(MediaCollections::CourseImage->value)
-                ->getUrl()
-            ??
-            asset('img/courses/empty.png');
+            optional($this->course->getFirstMedia(MediaCollections::CourseImage->value))->getUrl()
+            ?? asset('img/courses/empty.png');
     }
 
     public function __destruct()
