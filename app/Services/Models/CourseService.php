@@ -18,7 +18,14 @@ class CourseService
     {
         return
             optional($this->course->getFirstMedia(MediaCollections::CourseImage->value))->getUrl()
-            ?? asset('img/courses/empty.png');
+            ?? asset('img/courses/img-empty.png');
+    }
+
+    public function coursePromotion(): string
+    {
+        return
+            optional($this->course->getFirstMedia(MediaCollections::CoursePromotional->value))->getUrl()
+            ?? asset('img/courses/promotional-img-empty.png');
     }
 
     public function __destruct()

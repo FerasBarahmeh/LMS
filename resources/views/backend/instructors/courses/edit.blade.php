@@ -93,11 +93,34 @@
                         standards to be accepted. Important guidelines: 750x422 pixels; .jpg, .jpeg,. gif, or .png. no
                         text on the image.</p>
                     <form method="POST" action="{{ route('instructor.courses.manage.image', $course->id) }}"
+                          submitWhenChange="course-img-input"
                           enctype="multipart/form-data">
                         @csrf @method('patch')
                         <div class="mb-3">
-                            <x-input-file name="course_image"  :submitWhenChange="true"  accept="image/*"/>
+                            <x-input-file name="course_image"  id="course-img-input"  accept="image/*"/>
                             <x-input-error :messages="$errors->get('course_image')" class="mt-2"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promotional video -->
+        <div class="mt-3">
+            <h5 class="pr-5 pl-5 mb-3 text-dark">Promotional video</h5>
+            <div class="flex-wrap d-flex align-items-center-center gap-10 pl-5 pr-5">
+                <video autoplay muted  class="flex-1 wd-300 ht-300 m-0">
+                    <source src="{{ $course->service()->coursePromotion() }}" type="video/mp4">
+                </video>
+                <div class="flex-1 align-self-center">
+                    <p class="text-dark text-break">Your promo video is a quick and compelling way for students to preview what they’ll learn in your course. Students considering your course are more likely to enroll if your promo video is well-made. Learn how to make your promo video awesome!</p>
+                    <form method="POST" action="{{ route('instructor.courses.manage.promotional', $course->id) }}"
+                          submitWhenChange="promotional-input,"
+                          enctype="multipart/form-data">
+                        @csrf @method('patch')
+                        <div class="mb-3">
+                            <x-input-file name="course_promotional" id="promotional-input"  accept="video/mp4"/>
+                            <x-input-error :messages="$errors->get('course_promotional')" class="mt-2"/>
                         </div>
                     </form>
                 </div>

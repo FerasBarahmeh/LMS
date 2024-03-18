@@ -39,8 +39,7 @@
 
 <!-- custom js -->
 <script src="{{ asset('backend/assets/js/custom.js')}}"></script>
-<script src="{{ asset('js/main.js')}}"></script>
-
+<script src="{{ asset('backend/assets/js/input-file.js')}}"></script>
 
 <script>
     $(function() {

@@ -16,4 +16,5 @@ enum MediaCollections: string
 
     case    CourseDoc = 'course.doc';
     case    CourseImage = 'course.image';
+    case    CoursePromotional = 'course.promotional';
 }

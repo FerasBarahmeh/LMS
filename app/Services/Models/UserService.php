@@ -18,7 +18,7 @@ class UserService
     {
         return
             optional($this->user->getFirstMedia(MediaCollections::ProfilePicture->value))->getUrl()
-            ?? asset('img/users/empty.png');
+            ?? asset('img/users/profile-picture-empty.png');
     }
 
     public function __destruct()

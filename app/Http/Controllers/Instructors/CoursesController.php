@@ -6,6 +6,7 @@ use App\Enums\MediaCollections;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Courses\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseImageRequest;
+use App\Http\Requests\UpdateCoursePromotionalRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\AcademicSubject;
 use App\Models\Course;
@@ -13,7 +14,6 @@ use App\Traits\Controllers\FlashMessages;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class CoursesController extends Controller
@@ -32,6 +32,7 @@ class CoursesController extends Controller
             'update-course-success' => 'successfully update course',
             'failed-course-success' => 'failed update course',
             'update-course-image-success' => 'Success update image course',
+            'update-course-promotional-success' => 'Success update course promotional course',
         ];
     }
 
@@ -124,6 +125,21 @@ class CoursesController extends Controller
             ->toMediaCollection(MediaCollections::CourseImage->value);
 
         return $this->backWith('update-course-image-success');
+    }
+
+    public function updatePromotional(UpdateCoursePromotionalRequest $request, $id): RedirectResponse
+    {
+        $course = Course::find($id);
+
+        if ($course->hasMedia(MediaCollections::CoursePromotional->value))
+            $course->getFirstMedia(MediaCollections::CoursePromotional->value)->delete();
+
+        $course
+            ->addMediaFromRequest('course_promotional')
+            ->usingFileName('promotional.mp4')
+            ->toMediaCollection(MediaCollections::CoursePromotional->value);
+
+        return $this->backWith('update-course-promotional-success');
     }
 
     /*

@@ -1,7 +1,7 @@
 <div>
     <div class="card custom-card card-img-top-1 h-100">
         <figure>
-            <img class="card-img-top w-100 w-100" src="{{ asset('img/courses/empty.png') }}" alt="">
+            <img class="card-img-top w-100 w-100" src="{{ asset('img/courses/img-empty.png') }}" alt="">
         </figure>
         <div class="card-body pb-0">
             <a href="{{ route('instructor.courses.edit', $course->id) }}">
