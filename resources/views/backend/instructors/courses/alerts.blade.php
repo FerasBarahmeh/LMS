@@ -14,5 +14,10 @@
     :success="session('update-course-success')"
 />
 
+<x-alerts.sweets.default-popup
+    :successTitle="'Success update image Course'"
+    :success="session('update-course-image-success')"
+/>
+
 <x-alerts.alert :success="session('create-section-success')"/>
 <x-alerts.alert :success="session('delete-section-success')"/>

@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use App\Services\Models\CourseService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Course extends Model
+class Course extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
     protected $fillable = [
         'name',
         'semester',
@@ -39,5 +44,13 @@ class Course extends Model
     public function sections(): HasMany
     {
         return $this->hasMany(CourseSection::class);
+    }
+
+    /**
+     * Get object from service model class
+     */
+    public function service(): CourseService
+    {
+        return (new CourseService($this));
     }
 }

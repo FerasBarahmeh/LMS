@@ -42,6 +42,9 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
                         Route::delete('manage/lectures/{lecture}/delete', [LectureController::class, 'destroy'])
                             ->name('lecture.delete');
+
+                        Route::patch('manage/course-image/{course}', [CoursesController::class, 'updateImage'])
+                            ->name('image');
                     });
             });
     });

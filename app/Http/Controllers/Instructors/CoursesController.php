@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Instructors;
 
+use App\Enums\MediaCollections;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Courses\StoreCourseRequest;
+use App\Http\Requests\UpdateCourseImageRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\AcademicSubject;
 use App\Models\Course;
@@ -11,6 +13,7 @@ use App\Traits\Controllers\FlashMessages;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class CoursesController extends Controller
@@ -28,6 +31,7 @@ class CoursesController extends Controller
             'create-course-success' => 'successfully created course now manage this course to publish it',
             'update-course-success' => 'successfully update course',
             'failed-course-success' => 'failed update course',
+            'update-course-image-success' => 'Success update image course',
         ];
     }
 
@@ -105,6 +109,21 @@ class CoursesController extends Controller
         return view(self::BLADE_HUB . 'curriculum', [
             'course' => $course,
         ]);
+    }
+
+    public function updateImage(UpdateCourseImageRequest $request, $id): RedirectResponse
+    {
+        $course = Course::find($id);
+
+        if ($course->hasMedia(MediaCollections::CourseImage->value))
+            $course->getFirstMedia(MediaCollections::CourseImage->value)->delete();
+
+        $course
+            ->addMediaFromRequest('course_image')
+            ->usingFileName('course-image.png')
+            ->toMediaCollection(MediaCollections::CourseImage->value);
+
+        return $this->backWith('update-course-image-success');
     }
 
     /*
