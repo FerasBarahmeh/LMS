@@ -5,16 +5,16 @@
         </figure>
         <div class="card-body pb-0">
             <a href="{{ route('instructor.courses.edit', $course->id) }}">
-                <h4 class="card-title">{{ $course->name }}</h4>
+                <h4 class="tx-15 mb-3 text-dark">{{ $course->name }}</h4>
             </a>
-            <p class="mb-2">{{ $course->description }}</p>
+            <div class="mb-2">{!! Str::limit($course->description, 200) !!}</div>
         </div>
         <div
             class="item7-card-desc d-flex p-3 pt-0 align-items-center justify-content-center border-top">
             <div class="main-img-user online">
                 <figure>
                     <img alt="avatar"
-                         src="{{ phantomImagePicker($course->user->media->first()?->getUrl())   }}">
+                         src="{{ $course->user->service()->profilePicture() }}">
                 </figure>
             </div>
             <div class="main-contact-body">
