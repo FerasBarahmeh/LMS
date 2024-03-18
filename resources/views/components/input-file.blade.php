@@ -1,7 +1,8 @@
+@props(['submitWhenChange' => false])
 <div class="w-100 mt-3">
-    <x-alerts.success :message="'Uploaded success'" @style(['display: none !important;'])/>
+    <p  class="text-success" @style(['display: none !important;'])>Uploaded success</p>
     <input {{ $attributes->merge(['class' => 'd-none', 'id' => 'input-file', 'type' => 'file']) }}/>
-    <x-alerts.danger :message="'Uploaded failed'" @style(['display: none !important;'])/>
+    <p class="text-danger" @style(['display: none !important;'])>Uploaded failed</p>
 </div>
 
 <div @class(['position-relative d-flex flex-column justify-content-center align-items-center gap-10 border p-2 rad-5'])>
@@ -17,11 +18,9 @@
     let fileInputs= document.querySelectorAll('#input-file');
     fileInputs.forEach(fileInput => {
         fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0){
-                fileInput.previousElementSibling.style.display = 'flex';
-            } else {
-                fileInput.nextElementSibling.classList.display = 'none';
-            }
+            fileInput.previousElementSibling.style.display = e.target.files.length > 0 ? 'flex' : 'none';
+            let submitWhenChange = @js($submitWhenChange);
+            submitWhenChange ?   fileInput.closest('form').submit() : false;
         });
     });
 </script>
