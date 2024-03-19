@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\{MediaCollections, Theme};
-use App\Traits\Controllers\FlashMessages;
+use App\Enums\{Theme};
 use App\Http\Requests\{ProfileUpdateRequest};
 use App\Models\User;
+use App\Traits\Controllers\FlashMessages;
 use Illuminate\Http\{RedirectResponse, Request};
 use Illuminate\Support\Facades\{Auth, Redirect, Validator};
 use Illuminate\Validation\{Rule, ValidationException};
@@ -104,13 +104,7 @@ class ProfileController extends Controller
     {
         $blob = $request->json('image');
         $user = User::find(auth()->id());
-
-        if ($user->hasMedia(MediaCollections::ProfilePicture->value))
-            $user->getFirstMedia(MediaCollections::ProfilePicture->value)->delete();
-
-        $user->addMediaFromBase64($blob)
-            ->usingFileName('profile.picture.' . $user->id . '.png')
-            ->toMediaCollection(MediaCollections::ProfilePicture->value);
+        $user->service()->updateProfilePicture($blob);
     }
 
     /**

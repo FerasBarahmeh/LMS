@@ -18,12 +18,14 @@ class CourseService
 
     public function courseImage(): string
     {
-        return $this->hasCourseImage() ?? asset('img/courses/img-empty.png');
+        $url = $this->hasCourseImage();
+        return ! $url ? asset('img/courses/img-empty.png') : $url;
     }
 
     public function coursePromotion(): string
     {
-        return $this->hasCoursePromotion() ?? asset('img/courses/promotional-img-empty.png');
+        $url = $this->hasCoursePromotion();
+        return  !$url ? asset('img/courses/promotional-img-empty.png') : $url;
     }
 
     /**
