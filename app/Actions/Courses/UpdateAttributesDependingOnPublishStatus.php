@@ -19,7 +19,7 @@ class UpdateAttributesDependingOnPublishStatus
         $publish->has_price = !$service->isFree();
         $publish->has_congratulations_message = $service->hasCongratulationsMessage();
         $publish->has_welcome_message = $service->hasWelcomeMessage();
-        UpdatePublishStatus::execute($course);
+        $service->updatePublishStatus();
         return $publish->save();
     }
 }

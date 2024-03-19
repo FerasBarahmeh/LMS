@@ -16,13 +16,6 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
 
         Route::get('/test', function () {
-            $course = \App\Models\Course::first();
-
-            $course->has_congratulations_message = true;
-//            $action = new \App\Actions\UpdatePublishStatus();
-//            $action($course);
-            $action = \App\Actions\Courses\UpdatePublishStatus::execute($course);
-            dd($action);
             return 'test';
         });
 

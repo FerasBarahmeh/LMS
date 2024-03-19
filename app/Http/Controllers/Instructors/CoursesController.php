@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Instructors;
 
 use App\Actions\Courses\StoreCourse;
-use App\Actions\Courses\UpdatePublishStatus;
-use App\Enums\MediaCollections;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Courses\StoreCourseRequest;
-use App\Http\Requests\PublishCourseRequest;
 use App\Http\Requests\UpdateCourseImageRequest;
 use App\Http\Requests\UpdateCoursePromotionalRequest;
 use App\Http\Requests\UpdateCourseRequest;
@@ -89,7 +86,7 @@ class CoursesController extends Controller
      */
     public function update(UpdateCourseRequest $request, string $id): RedirectResponse
     {
-        $course = Course::find($id);
+        $course = Course::findOrFail($id);
         $course->update($request->validated());
         if ($course->save())
             return $this->backWith('update-course-success');
@@ -118,38 +115,22 @@ class CoursesController extends Controller
 
     public function updateImage(UpdateCourseImageRequest $request, $id): RedirectResponse
     {
-        $course = Course::find($id);
-
-        if ($course->hasMedia(MediaCollections::CourseImage->value))
-            $course->getFirstMedia(MediaCollections::CourseImage->value)->delete();
-
-        $course
-            ->addMediaFromRequest('course_image')
-            ->usingFileName('course-image.png')
-            ->toMediaCollection(MediaCollections::CourseImage->value);
-
+        $course = Course::findOrFail($id);
+        $course->service()->updateImage();
         return $this->backWith('update-course-image-success');
     }
 
     public function updatePromotional(UpdateCoursePromotionalRequest $request, $id): RedirectResponse
     {
-        $course = Course::find($id);
-
-        if ($course->hasMedia(MediaCollections::CoursePromotional->value))
-            $course->getFirstMedia(MediaCollections::CoursePromotional->value)->delete();
-
-        $course
-            ->addMediaFromRequest('course_promotional')
-            ->usingFileName('promotional.mp4')
-            ->toMediaCollection(MediaCollections::CoursePromotional->value);
-
+        $course = Course::findOrFail($id);
+        $course->service()->updatePromotional();
         return $this->backWith('update-course-promotional-success');
     }
 
     public function publish(string $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
-        $published = UpdatePublishStatus::execute($course);
+        $published = $course->service()->updatePublishStatus();
         return $published
             ? $this->backWith('success-publish-course')
             : $this->backWith('failed-publish-course');

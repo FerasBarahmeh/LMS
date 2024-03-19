@@ -26,17 +26,11 @@ class UpdateCourseImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required', 'numeric', 'gt:0', Rule::exists(Course::class)],
             'course_image' => [
                 'required',
                 File::image()
                     ->max('3mb'),
             ],
         ];
-    }
-
-    public function prepareForValidation(): void
-    {
-        $this->merge(['id' => $this->route('course')]);
     }
 }
