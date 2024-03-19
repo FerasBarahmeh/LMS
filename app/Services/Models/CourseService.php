@@ -2,8 +2,10 @@
 
 namespace App\Services\Models;
 
+use App\Actions\Courses\UpdateAttributesDependingOnPublishStatus;
 use App\Enums\MediaCollections;
 use App\Models\Course;
+use App\Models\CoursePublicationState;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
@@ -11,21 +13,24 @@ class CourseService
 {
     protected Course $course;
 
+    public CoursePublicationState $publishStatus;
+
     public function __construct(Course $course)
     {
         $this->course = $course;
+        $this->publishStatus = $this->course->setting->publishStatus;
     }
 
     public function courseImage(): string
     {
-        $url = $this->hasCourseImage();
-        return ! $url ? asset('img/courses/img-empty.png') : $url;
+        $url = $this->urlCourseImage();
+        return !$url ? asset('img/courses/img-empty.png') : $url;
     }
 
     public function coursePromotion(): string
     {
-        $url = $this->hasCoursePromotion();
-        return  !$url ? asset('img/courses/promotional-img-empty.png') : $url;
+        $url = $this->urlCoursePromotion();
+        return !$url ? asset('img/courses/promotional-img-empty.png') : $url;
     }
 
     /**
@@ -41,6 +46,7 @@ class CourseService
                 ->addMediaFromRequest('course_image')
                 ->usingFileName('course-image.png')
                 ->toMediaCollection(MediaCollections::CourseImage->value);
+            UpdateAttributesDependingOnPublishStatus::execute($this->course);
         } catch (FileDoesNotExist|FileIsTooBig $e) {
         }
     }
@@ -58,38 +64,39 @@ class CourseService
                 ->addMediaFromRequest('course_promotional')
                 ->usingFileName('promotional.mp4')
                 ->toMediaCollection(MediaCollections::CoursePromotional->value);
+            UpdateAttributesDependingOnPublishStatus::execute($this->course);
         } catch (FileDoesNotExist|FileIsTooBig $e) {
         }
     }
 
-    public function hasCourseImage()
+    public function urlCourseImage()
     {
         return optional($this->course->getFirstMedia(MediaCollections::CourseImage->value))->getUrl() ?? false;
     }
 
-    public function hasCoursePromotion()
+    public function urlCoursePromotion()
     {
         return optional($this->course->getFirstMedia(MediaCollections::CoursePromotional->value))->getUrl() ?? false;
     }
 
     public function hasLecture(): bool
     {
-        return $this->course->setting->publishStatus->has_lectures;
+        return $this->course->sections->first()->lectures->first()->attachments != null;
     }
 
     public function hasDescription(): bool
     {
-        return $this->course->setting->publishStatus->has_description;
+        return $this->course->description != null;
     }
 
     public function hasCongratulationsMessage(): bool
     {
-        return $this->course->setting->publishStatus->has_congratulations_message;
+        return $this->course->congratulations_message != null;
     }
 
     public function hasWelcomeMessage(): bool
     {
-        return $this->course->setting->publishStatus->has_welcome_message;
+        return $this->course->welcome_message != null;
     }
 
     public function isFree(): bool
@@ -99,46 +106,43 @@ class CourseService
 
     public function publishable(): bool
     {
-        $coursePublishStatus = $this->course->setting->publishStatus;
-
-        return $coursePublishStatus->has_lecture
-            && $coursePublishStatus->has_description
-            && $coursePublishStatus->has_course_image
-            && $coursePublishStatus->has_promotional_video
-            && ($coursePublishStatus->is_free || $coursePublishStatus->has_price)
-            && $coursePublishStatus->has_congratulations_message
-            && $coursePublishStatus->has_welcome_message;
+        return $this->publishStatus->has_lecture
+            && $this->publishStatus->has_description
+            && $this->publishStatus->has_course_image
+            && $this->publishStatus->has_promotional_video
+            && ($this->publishStatus->is_free || $this->publishStatus->has_price)
+            && $this->publishStatus->has_congratulations_message
+            && $this->publishStatus->has_welcome_message;
     }
 
     public function isPublish(): bool
     {
-        return $this->course->setting->publishStatus->publish_status == true;
+        return $this->publishStatus->publish_status == true;
     }
 
     public function hasImage(): bool
     {
-        return $this->course->hasMedia(MediaCollections::CourseImage->value);
+        return $this->course->hasMedia(MediaCollections::CourseImage->value) != null;
     }
 
     public function hasPromotional(): bool
     {
-        return $this->course->hasMedia(MediaCollections::CoursePromotional->value);
+        return $this->course->hasMedia(MediaCollections::CoursePromotional->value) != null;
     }
 
     public function updatePublishStatus()
     {
-        $coursePublishStatus = $this->course->setting->publishStatus;
-
-        $coursePublishStatus->publish_status = $this->publishable();
+        $this->publishStatus->publish_status = $this->publishable();
 
         return
-            $coursePublishStatus->publish_status
-                ? $coursePublishStatus->save()
+            $this->publishStatus->publish_status
+                ? $this->publishStatus->save()
                 : false;
     }
 
     public function __destruct()
     {
         unset($this->course);
+        unset($this->publishStatus);
     }
 }

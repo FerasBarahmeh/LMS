@@ -26,17 +26,11 @@ class UpdateCoursePromotionalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required', 'numeric', 'gt:0', Rule::exists(Course::class)],
             'course_promotional' => [
                 'required',
                 File::types('mp4')
                     ->max('200mb'),
             ]
         ];
-    }
-
-    public function prepareForValidation(): void
-    {
-        $this->merge(['id' => $this->route('course')]);
     }
 }

@@ -106,7 +106,7 @@ class CoursesController extends Controller
      */
     public function curriculum(string $id): View
     {
-        $course = Course::with('sections')->find($id);
+        $course = Course::with('sections')->findOrFail($id);
 
         return view(self::BLADE_HUB . 'curriculum', [
             'course' => $course,

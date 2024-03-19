@@ -11,7 +11,7 @@ class LectureAttachment extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    protected $fillable = ['type_attachment', 'lecturer_id'];
+    protected $fillable = ['type_attachment', 'lecture_id'];
 
     public function lecture(): BelongsTo
     {

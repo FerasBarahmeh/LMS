@@ -95,7 +95,7 @@ class LectureAttachment extends Component
 
         $attachment = Attachment::create([
             'type_attachment' => TypeAttachments::Video->value,
-            'lecturer_id' => $this->lecture->id,
+            'lecture_id' => $this->lecture->id,
         ]);
 
         $attachment
@@ -119,7 +119,7 @@ class LectureAttachment extends Component
 
         $attachment = Attachment::create([
             'type_attachment' => TypeAttachments::File->value,
-            'lecturer_id' => $this->lecture->id
+            'lecture_id' => $this->lecture->id
         ]);
 
         $attachment
