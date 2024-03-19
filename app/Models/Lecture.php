@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\TypeAttachments;
+use App\Services\Models\LectureService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -23,5 +23,10 @@ class Lecture extends Model
     public function attachments(): HasMany
     {
         return $this->hasMany(LectureAttachment::class);
+    }
+
+    public function service(): LectureService
+    {
+        return (new LectureService($this));
     }
 }
