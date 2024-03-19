@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Instructors;
 
+use App\Actions\Courses\StoreCourse;
+use App\Actions\Courses\UpdatePublishStatus;
 use App\Enums\MediaCollections;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Courses\StoreCourseRequest;
+use App\Http\Requests\PublishCourseRequest;
 use App\Http\Requests\UpdateCourseImageRequest;
 use App\Http\Requests\UpdateCoursePromotionalRequest;
 use App\Http\Requests\UpdateCourseRequest;
@@ -33,6 +36,8 @@ class CoursesController extends Controller
             'failed-course-success' => 'failed update course',
             'update-course-image-success' => 'Success update image course',
             'update-course-promotional-success' => 'Success update course promotional course',
+            'success-publish-course' => 'Publish course successfully',
+            'failed-publish-course' => 'Failed publish course must has some some content missed',
         ];
     }
 
@@ -53,10 +58,9 @@ class CoursesController extends Controller
      */
     public function store(StoreCourseRequest $request): RedirectResponse
     {
-        $course = Course::create($request->validated());
+        $course = StoreCourse::execute($request->validated());
         return Redirect::route('instructor.courses.manage.curriculum', $course->id)
             ->with('create-course-success', $this->getMessage('create-course-success'));
-
     }
 
     /**
@@ -72,7 +76,7 @@ class CoursesController extends Controller
      */
     public function edit(string $id): View
     {
-        $course = Course::find($id);
+        $course = Course::findOrFail($id);
 
         return view(self::BLADE_HUB . 'edit', [
             'course' => $course,
@@ -140,6 +144,15 @@ class CoursesController extends Controller
             ->toMediaCollection(MediaCollections::CoursePromotional->value);
 
         return $this->backWith('update-course-promotional-success');
+    }
+
+    public function publish(string $id): RedirectResponse
+    {
+        $course = Course::findOrFail($id);
+        $published = UpdatePublishStatus::execute($course);
+        return $published
+            ? $this->backWith('success-publish-course')
+            : $this->backWith('failed-publish-course');
     }
 
     /*

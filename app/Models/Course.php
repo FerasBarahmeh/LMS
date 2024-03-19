@@ -6,6 +6,7 @@ use App\Services\Models\CourseService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -34,6 +35,14 @@ class Course extends Model implements HasMedia
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Setting course
+     */
+    public function setting(): HasOne
+    {
+        return $this->hasOne(CourseSetting::class);
     }
 
     /**

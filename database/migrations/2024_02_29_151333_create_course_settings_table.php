@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('course_settings', function (Blueprint $table) {
             $table->id();
-            $table->boolean('published')->default(false);
             $table->enum('currency', \App\Enums\Currency::values())->default(\App\Enums\Currency::JOD->value);
             $table->foreignId('course_id')->constrained();
-            $table->timestamps();
         });
     }
 

@@ -48,6 +48,9 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
                         Route::patch('manage/course-promotional/{course}', [CoursesController::class, 'updatePromotional'])
                             ->name('promotional');
+
+                        Route::put('manage/publish/{course}', [CoursesController::class, 'publish'])
+                            ->name('publish');
                     });
             });
     });
