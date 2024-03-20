@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Instructors;
 
 use App\Actions\Courses\StoreCourse;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CourseMessagesRequest;
 use App\Http\Requests\Courses\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseImageRequest;
 use App\Http\Requests\UpdateCoursePromotionalRequest;
@@ -35,6 +36,7 @@ class CoursesController extends Controller
             'update-course-promotional-success' => 'Success update course promotional course',
             'success-publish-course' => 'Publish course successfully',
             'failed-publish-course' => 'Failed publish course must has some some content missed',
+            'success-update-welcome-message' => 'Updated welcome message successfully',
         ];
     }
 
@@ -113,6 +115,26 @@ class CoursesController extends Controller
         ]);
     }
 
+    /*
+     * Show settings forms for specific course
+     */
+    public function settings(string $id): View
+    {
+        $course = Course::with('sections')->find($id);
+
+        return view(self::BLADE_HUB . 'settings', [
+            'course' => $course,
+        ]);
+    }
+
+    public function messages($id): View
+    {
+        $course = Course::findOrFail($id);
+        return view(self::BLADE_HUB . 'messages', [
+            'course' => $course,
+        ]);
+    }
+
     public function updateImage(UpdateCourseImageRequest $request, $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
@@ -136,15 +158,12 @@ class CoursesController extends Controller
             : $this->backWith('failed-publish-course');
     }
 
-    /*
-     * Show settings forms for specific course
-     */
-    public function settings(string $id): View
+    public function updateMessages(CourseMessagesRequest $request, $id)
     {
-        $course = Course::with('sections')->find($id);
+        $course = Course::findOrFail($id);
+        $course->update($request->validated());
+        $course->save();
 
-        return view(self::BLADE_HUB . 'settings', [
-            'course' => $course,
-        ]);
+        return $this->backWith('success-update-welcome-message');
     }
 }

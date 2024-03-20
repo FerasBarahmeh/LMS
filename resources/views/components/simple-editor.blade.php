@@ -8,12 +8,13 @@
     </style>
 @endpush
 
-<textarea id="editor" {!! $attributes->merge(['class' =>'']) !!}>{{ $slot }}</textarea>
+
+<textarea {{ $attributes['id'] ?? 'editor' }}  {!! $attributes->merge(['class' =>'']) !!}>{{ $slot }}</textarea>
 @push('js')
     <script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
     <script>
         ClassicEditor
-            .create( document.querySelector( '#editor' ), {
+            .create( document.querySelector( '#'+@js($attributes['id']) ), {
                 toolbar: {
                     items: [
                         'undo', 'redo',

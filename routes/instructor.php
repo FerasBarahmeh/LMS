@@ -37,6 +37,9 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
                         Route::get('manage/{course}/settings', [CoursesController::class, 'settings'])
                             ->name('settings');
 
+                        Route::get('manage/{course}/messages', [CoursesController::class, 'messages'])
+                            ->name('messages');
+
                         Route::delete('manage/sections/{section}/delete', [SectionController::class, 'destroy'])
                             ->name('section.delete');
 
@@ -51,6 +54,9 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
                         Route::put('manage/publish/{course}', [CoursesController::class, 'publish'])
                             ->name('publish');
+
+                        Route::put('manage/updateMessages/{course}', [CoursesController::class, 'updateMessages'])
+                            ->name('updateMessages');
                     });
             });
     });

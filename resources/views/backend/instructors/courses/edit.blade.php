@@ -28,7 +28,7 @@
                 <!-- Description -->
                 <div class="mt-3">
                     <x-input-label for="description" value="{{ __('description') }}" class="mt-3 mb-1"/>
-                    <x-simple-editor name="description">{!! $course->description !!}</x-simple-editor>
+                    <x-simple-editor id="description-course" name="description">{!! $course->description !!}</x-simple-editor>
                     <x-input-error :messages="$errors->get('description')" class="mt-2"/>
                 </div>
 
