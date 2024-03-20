@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Instructors;
 use App\Actions\Courses\StoreCourse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseMessagesRequest;
+use App\Http\Requests\CoursePriceRequest;
 use App\Http\Requests\Courses\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseImageRequest;
 use App\Http\Requests\UpdateCoursePromotionalRequest;
@@ -37,6 +38,7 @@ class CoursesController extends Controller
             'success-publish-course' => 'Publish course successfully',
             'failed-publish-course' => 'Failed publish course must has some some content missed',
             'success-update-welcome-message' => 'Updated welcome message successfully',
+            'success-update-price' => 'Price course updated  successes',
         ];
     }
 
@@ -158,12 +160,20 @@ class CoursesController extends Controller
             : $this->backWith('failed-publish-course');
     }
 
-    public function updateMessages(CourseMessagesRequest $request, $id)
+    public function updateMessages(CourseMessagesRequest $request, $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
         $course->update($request->validated());
         $course->save();
 
         return $this->backWith('success-update-welcome-message');
+    }
+
+    public function updatePrice(CoursePriceRequest $request, $id): RedirectResponse
+    {
+        $course = Course::findOrFail($id);
+        $course->update($request->validated());
+        $course->save();
+        return $this->backWith('success-update-price');
     }
 }

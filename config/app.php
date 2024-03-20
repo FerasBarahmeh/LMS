@@ -198,6 +198,7 @@ return [
          'Privileges' =>  \App\Enums\Privileges::class,
          'Semesters' =>  \App\Enums\Semesters::class,
          'AttachmentType' =>  \App\Enums\TypeAttachments::class,
+         'Currency' =>  \App\Enums\Currency::class,
     ])->toArray(),
 
 ];

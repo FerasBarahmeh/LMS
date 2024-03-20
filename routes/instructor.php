@@ -57,6 +57,9 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
                         Route::put('manage/updateMessages/{course}', [CoursesController::class, 'updateMessages'])
                             ->name('updateMessages');
+
+                        Route::put('manage/updatePrice/{course}', [CoursesController::class, 'updatePrice'])
+                            ->name('price');
                     });
             });
     });
