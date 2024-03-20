@@ -91,10 +91,10 @@ class CoursesController extends Controller
     public function update(UpdateCourseRequest $request, string $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
-        $course->update($request->validated());
-        if ($course->save())
-            return $this->backWith('update-course-success');
-        return $this->backWith('failed-course-success');
+        $saved = $course->update($request->validated())->save();
+        return $saved
+            ? $this->backWith('update-course-success')
+            : $this->backWith('failed-course-success');
     }
 
     /**
