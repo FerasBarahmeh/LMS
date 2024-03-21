@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Observers\CourseObserver;
 use App\Services\Models\CourseService;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
+#[ObservedBy(CourseObserver::class)]
 class Course extends Model implements HasMedia
 {
     use InteractsWithMedia;

@@ -15,13 +15,11 @@
         <li class="breadcrumb-item" @style(['font-size: 15px;'])>
             <a href="#">{{ $head }}</a>
         </li>
-        @if($partsName != null)
-        @foreach($partsName as $name)
-                <li class="breadcrumb-item" @style(['font-size: 15px;'])>
-                    <a href="#">{{ $name }}</a>
-                </li>
+        @foreach($partsName ?? [] as $name)
+            <li class="breadcrumb-item" style="font-size: 15px;">
+                <a href="#">{{ $name }}</a>
+            </li>
         @endforeach
-        @endif
         <li class="breadcrumb-item active" @style(['font-size: 15px;'])>{{ $tail }}</li>
     </ol>
 </nav>

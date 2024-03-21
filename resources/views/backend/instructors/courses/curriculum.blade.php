@@ -1,6 +1,33 @@
 @extends('backend.instructors.courses.layouts.manage')
 @section('card-title', 'select curriculum for ')
 @section('card-hint', 'Here’s where you add course content—like lectures, course sections, assignments, and more.')
+
+@section('alerts')
+    @if(session()->has('create-course-success'))
+        <x-alerts.sweets.default-popup
+            :successTitle="'Created course successfully'"
+            :successFail="'Created course Fail'"
+            :success="session('create-course-success')"
+            :fail="session('create-course-fail')"
+        />
+    @endif
+
+    @if (session()->has('create-section-success'))
+        <x-alerts.alert :success="session('create-section-success')"/>
+    @endif
+
+    @if (session()->has('delete-section-success'))
+        <x-alerts.alert :success="session('delete-section-success')"/>
+    @endif
+
+    @if (session()->has('delete-lecture-success'))
+        <x-alerts.sweets.default-popup
+            :successTitle="'Deleted lecture successfully'"
+            :success="session('delete-lecture-success')"
+        />
+    @endif
+@endsection
+
 @section('content')
     <div class="card-header border-bottom d-flex justify-content-between">
         <h2 class="text-dark">Curriculum <q class="text-muted ">{{ $course->name }}</q></h2>

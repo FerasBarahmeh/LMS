@@ -1,13 +1,11 @@
-<x-app-layout :title="$course->name . ' Curriculum | LSM'">
+<x-app-layout :title="$course->name">
     <x-slot name="content">
-        @include('backend.instructors.courses.alerts')
+        @yield('alerts')
         <div class="row">
             <div class="col-xl-12">
                 <div class="card mg-b-20">
-                    @include('backend.instructors.courses.layouts.card-header')
-
                     <div class="card-body">
-
+                        @include('backend.instructors.courses.layouts.card-header')
                         <!-- Content -->
                         <div class="d-md-flex" @style(['gap: 10px;'])>
                             <!-- Left Side page-->

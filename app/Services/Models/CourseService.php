@@ -81,7 +81,8 @@ class CourseService
 
     public function hasLecture(): bool
     {
-        return $this->course->sections->first()->lectures->first()->attachments != null;
+        return $this->course->sections->isNotEmpty()
+            && $this->course->sections->lectures->isNotEmpty();
     }
 
     public function hasDescription(): bool
@@ -130,14 +131,10 @@ class CourseService
         return $this->course->hasMedia(MediaCollections::CoursePromotional->value) != null;
     }
 
-    public function updatePublishStatus()
+    public function updatePublishStatus(): bool
     {
         $this->publishStatus->publish_status = $this->publishable();
-
-        return
-            $this->publishStatus->publish_status
-                ? $this->publishStatus->save()
-                : false;
+        return $this->publishStatus->publish_status && $this->publishStatus->save();
     }
 
     public function __destruct()

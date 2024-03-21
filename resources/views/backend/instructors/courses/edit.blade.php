@@ -1,7 +1,31 @@
-
 @extends('backend.instructors.courses.layouts.manage')
 @section('card-title', 'select curriculum for ')
 @section('card-hint', 'Here’s where you add course content—like lectures, course sections, assignments, and more.')
+
+@section('alerts')
+    @if(session()->has('update-course-success'))
+        <x-alerts.sweets.default-popup
+            :successTitle="'Success update Course'"
+            :success="session('update-course-success')"
+        />
+    @endif
+
+    @if (session()->has('update-course-image-success'))
+        <x-alerts.sweets.default-popup
+            :successTitle="'Success update image Course'"
+            :success="session('update-course-image-success')"
+        />
+    @endif
+
+    @if (session()->has('update-course-promotional-success'))
+        <x-alerts.sweets.default-popup
+            :successTitle="'Success update promotional video Course'"
+            :success="session('update-course-promotional-success')"
+        />
+    @endif
+@endsection
+
+
 @section('content')
     <div class="card-header border-bottom d-flex justify-content-between">
         <h2 class="text-dark">Landing page <q class="text-muted ">{{ $course->name }}</q></h2>
@@ -28,7 +52,8 @@
                 <!-- Description -->
                 <div class="mt-3">
                     <x-input-label for="description" value="{{ __('description') }}" class="mt-3 mb-1"/>
-                    <x-simple-editor id="description-course" name="description">{!! $course->description !!}</x-simple-editor>
+                    <x-simple-editor id="description-course"
+                                     name="description">{!! $course->description !!}</x-simple-editor>
                     <x-input-error :messages="$errors->get('description')" class="mt-2"/>
                 </div>
 

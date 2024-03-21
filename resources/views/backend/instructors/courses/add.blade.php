@@ -39,14 +39,6 @@
                     </x-input-select>
                     <x-input-error :messages="$errors->get('academic_subject_id')" class="mt-2"/>
                 </div>
-
-                <!-- Description -->
-                <div class="mb-2">
-                    <x-input-label for="description" :value="__('Description')"/>
-                    <x-textarea-input name="description">{{ old('description') }}</x-textarea-input>
-                    <x-input-error :messages="$errors->get('description')" class="mt-2"/>
-                </div>
-
             </div>
 
             <div class="card-footer d-flex justify-content-end">
