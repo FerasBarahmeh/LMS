@@ -30,7 +30,7 @@ class CourseService
     public function coursePromotion(): string
     {
         $url = $this->urlCoursePromotion();
-        return !$url ? asset('img/courses/promotional-img-empty.png') : $url;
+        return !$url ? asset('img/courses/promotional-empty.png') : $url;
     }
 
     /**

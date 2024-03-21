@@ -23,10 +23,6 @@
                     <!-- End form errors -->
 
                     <div class="card-body">
-                        <!-- Start alerts -->
-                        @include('backend/instructors/courses/alerts')
-                        <!-- End alerts -->
-
                         <!-- Start header -->
                         <div class="header">
                             <!-- Add button -->
