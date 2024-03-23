@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications;
+namespace App\Traits\Notifications;
 
 use App\Enums\NotifyThrough;
 

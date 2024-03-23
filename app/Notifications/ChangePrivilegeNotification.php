@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Enums\Privileges;
+use App\Traits\Notifications\NotifyNinja;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
