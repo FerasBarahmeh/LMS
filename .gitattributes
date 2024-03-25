@@ -1,18 +1,60 @@
-; * text=auto eol=lf
-
-; *.blade.php diff=php
-; *.css diff=css
-; *.html diff=html
-; *.md diff=markdown
-*.php diff=php
-; *.blade.php linguist-language=PHP
-
-*.html linguist-detectable=false
-*.md linguist-detectable=false
-*.css linguist-detectable=false
-*.scss linguist-detectable=false
-*.js linguist-detectable=false
+; ; * text=auto eol=lf
 ;
-; /.github export-ignore
-; CHANGELOG.md export-ignore
-; .styleci.yml export-ignore
+; ; *.blade.php diff=php
+; ; *.css diff=css
+; ; *.html diff=html
+; ; *.md diff=markdown
+; *.php diff=php
+; ; *.blade.php linguist-language=PHP
+;
+; *.html linguist-detectable=false
+; *.md linguist-detectable=false
+; *.css linguist-detectable=false
+; *.scss linguist-detectable=false
+; *.js linguist-detectable=false
+; ;
+; ; /.github export-ignore
+; ; CHANGELOG.md export-ignore
+; ; .styleci.yml export-ignore
+# Set text=auto and end-of-line style
+* text=auto eol=lf
+
+# Define specific file types
+*.blade.php linguist-language=PHP
+*.css linguist-language=CSS
+*.scss linguist-language=SCSS
+*.html linguist-language=HTML
+*.js linguist-language=JavaScript
+*.json linguist-language=JSON
+*.md linguist-language=Markdown
+*.php linguist-language=PHP
+*.vue linguist-language=Vue
+
+# Define attributes for generated files
+/public export-ignore
+/storage export-ignore
+
+# Ignore certain files and directories
+/.env* export-ignore
+/.gitignore export-ignore
+/.idea export-ignore
+/vendor export-ignore
+/node_modules export-ignore
+
+# Ignore specific files
+*.log export-ignore
+.env export-ignore
+
+# Ignore Composer dependencies
+/composer.lock export-ignore
+
+# Ignore Laravel Mix artifacts
+/public/css/*.css merge=union
+/public/js/*.js merge=union
+/public/mix-manifest.json merge=union
+
+# Ignore PHPStorm project files
+/.phpstorm.meta.php export-ignore
+
+# Ignore PHPUnit configuration files
+/phpunit.xml export-ignore
