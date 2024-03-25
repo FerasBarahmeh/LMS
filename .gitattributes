@@ -1,4 +1,4 @@
-* text=auto eol=lf
+; * text=auto eol=lf
 
 *.blade.php diff=php
 ; *.css diff=css
@@ -9,7 +9,7 @@
 *.html linguist-detectable=false
 *.md linguist-detectable=false
 *.css linguist-detectable=false
-
-/.github export-ignore
-CHANGELOG.md export-ignore
-.styleci.yml export-ignore
+;
+; /.github export-ignore
+; CHANGELOG.md export-ignore
+; .styleci.yml export-ignore
