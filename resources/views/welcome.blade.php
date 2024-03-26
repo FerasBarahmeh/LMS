@@ -1,1403 +1,867 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <title>Welcome</title>
-    <!-- Responsive -->
-    <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
-    <meta name="Author" content="Spruko Technologies Private Limited">
-    <meta name="Keywords"
-          content="admin,admin dashboard,admin dashboard template,admin panel template,admin template,admin theme,bootstrap 4 admin template,bootstrap 4 dashboard,bootstrap admin,bootstrap admin dashboard,bootstrap admin panel,bootstrap admin template,bootstrap admin theme,bootstrap dashboard,bootstrap form template,bootstrap panel,bootstrap ui kit,dashboard bootstrap 4,dashboard design,dashboard html,dashboard template,dashboard ui kit,envato templates,flat ui,html,html and css templates,html dashboard template,html5,jquery html,premium,premium quality,sidebar bootstrap 4,template admin bootstrap 4"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<x-guest-layout :title="'Welcome'">
+    <x-slot name="slot">
+        <!-- Main Slider -->
+        <div class="rev-slider">
+            <div id="rev_slider_486_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="news-gallery36" data-source="gallery" style="margin:0px auto;background-color:#ffffff;padding:0px;margin-top:0px;margin-bottom:0px;">
+                <!-- START REVOLUTION SLIDER 5.3.0.2 fullwidth mode -->
+                <div id="rev_slider_486_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.3.0.2">
+                    <ul>	<!-- SLIDE  -->
+                        <li data-index="rs-100"
+                            data-transition="parallaxvertical"
+                            data-slotamount="default"
+                            data-hideafterloop="0"
+                            data-hideslideonmobile="off"
+                            data-easein="default"
+                            data-easeout="default"
+                            data-masterspeed="default"
+                            data-thumb="error-404.html"
+                            data-rotate="0"
+                            data-fstransition="fade"
+                            data-fsmasterspeed="1500"
+                            data-fsslotamount="7"
+                            data-saveperformance="off"
+                            data-title="A STUDY ON HAPPINESS"
+                            data-param1="" data-param2=""
+                            data-param3="" data-param4=""
+                            data-param5="" data-param6=""
+                            data-param7="" data-param8=""
+                            data-param9="" data-param10=""
+                            data-description="Science says that Women are generally happier">
+                            <!-- MAIN IMAGE -->
+                            <img src="{{ asset('guest/assets/images/slider/slide1.jpg') }}" alt=""
+                                 data-bgposition="center center"
+                                 data-bgfit="cover"
+                                 data-bgrepeat="no-repeat"
+                                 data-bgparallax="10"
+                                 class="rev-slidebg"
+                                 data-no-retina />
 
-    @include('guests.layouts.guest-head')
-</head>
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption tp-shape tp-shapewrapper "
+                                 id="slide-100-layer-1"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                 data-width="full"
+                                 data-height="full"
+                                 data-whitespace="nowrap"
+                                 data-type="shape"
+                                 data-basealign="slide"
+                                 data-responsive_offset="off"
+                                 data-responsive="off"
+                                 data-frames='[{"from":"opacity:0;","speed":1,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"delay":"wait","speed":1,"to":"opacity:0;","ease":"Power4.easeOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+                                 style="z-index: 5;background-color:rgba(2, 0, 11, 0.80);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption Newspaper-Title   tp-resizeme"
+                                 id="slide-100-layer-2"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['0','0','0','0']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['250','250','250','240']"
+                                 data-fontsize="['50','50','50','30']"
+                                 data-lineheight="['55','55','55','35']"
+                                 data-width="full"
+                                 data-height="none"
+                                 data-whitespace="normal"
+                                 data-type="text"
+                                 data-responsive_offset="on"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                                 data-textAlign="['center','center','center','center']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[10,10,10,10]"
+                                 data-paddingleft="[0,0,0,0]"
+                                 style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;">
+                                Welcome To University
+                            </div>
 
-<body>
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption Newspaper-Subtitle   tp-resizeme"
+                                 id="slide-100-layer-3"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['0','0','0','0']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['210','210','210','210']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-type="text"
+                                 data-responsive_offset="on"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+                                 style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:18px; font-weight:400;">
+                                Batter Education For A Better
+                            </div>
 
-<div class="page-wrapper">
-    <!-- Preloader -->
-    <div class="preloader"></div>
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption Newspaper-Subtitle   tp-resizeme"
+                                 id="slide-100-layer-4"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['0','0','0','0']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['320','320','320','290']"
+                                 data-width="['800','800','700','420']"
+                                 data-height="['100','100','100','120']"
+                                 data-whitespace="unset"
+                                 data-type="text"
+                                 data-responsive_offset="on"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                                 data-textAlign="['center','center','center','center']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+                                 style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                            </div>
+                            <!-- LAYER NR. 4 -->
+                            <div class="tp-caption Newspaper-Button rev-btn "
+                                 id="slide-100-layer-5"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['90','80','75','90']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['400','400','400','420']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-type="button"
+                                 data-responsive_offset="on"
+                                 data-responsive="off"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+                                 data-textAlign="['center','center','center','center']"
+                                 data-paddingtop="[12,12,12,12]"
+                                 data-paddingright="[30,35,35,15]"
+                                 data-paddingbottom="[12,12,12,12]"
+                                 data-paddingleft="[30,35,35,15]"
+                                 style="z-index: 8; white-space: nowrap; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer; background-color:var(--primary) !important; border:0; border-radius:30px; margin-right:5px;">READ MORE </div>
+                            <div class="tp-caption Newspaper-Button rev-btn"
+                                 id="slide-100-layer-6"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['-90','-80','-75','-90']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['400','400','400','420']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-type="button"
+                                 data-responsive_offset="on"
+                                 data-responsive="off"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+                                 data-textAlign="['center','center','center','center']"
+                                 data-paddingtop="[12,12,12,12]"
+                                 data-paddingright="[30,35,35,15]"
+                                 data-paddingbottom="[12,12,12,12]"
+                                 data-paddingleft="[30,35,35,15]"
+                                 style="z-index: 8; white-space: nowrap; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer; border-radius:30px;">CONTACT US</div>
+                        </li>
+                        <li data-index="rs-200"
+                            data-transition="parallaxvertical"
+                            data-slotamount="default"
+                            data-hideafterloop="0"
+                            data-hideslideonmobile="off"
+                            data-easein="default"
+                            data-easeout="default"
+                            data-masterspeed="default"
+                            data-thumb="{{ asset('guest/assets/images/slider/slide1.jpg') }}"
+                            data-rotate="0"
+                            data-fstransition="fade"
+                            data-fsmasterspeed="1500"
+                            data-fsslotamount="7"
+                            data-saveperformance="off"
+                            data-title="A STUDY ON HAPPINESS"
+                            data-param1="" data-param2=""
+                            data-param3="" data-param4=""
+                            data-param5="" data-param6=""
+                            data-param7="" data-param8=""
+                            data-param9="" data-param10=""
+                            data-description="Science says that Women are generally happier">
+                            <!-- MAIN IMAGE -->
+                            <img src="{{ asset('guest/assets/images/slider/slide2.jpg') }}" alt=""
+                                 data-bgposition="center center"
+                                 data-bgfit="cover"
+                                 data-bgrepeat="no-repeat"
+                                 data-bgparallax="10"
+                                 class="rev-slidebg"
+                                 data-no-retina />
 
-    <header class="main-header header-style-three">
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption tp-shape tp-shapewrapper "
+                                 id="slide-200-layer-1"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                 data-width="full"
+                                 data-height="full"
+                                 data-whitespace="nowrap"
+                                 data-type="shape"
+                                 data-basealign="slide"
+                                 data-responsive_offset="off"
+                                 data-responsive="off"
+                                 data-frames='[{"from":"opacity:0;","speed":1,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"delay":"wait","speed":1000,"to":"opacity:1;","ease":"Power4.easeOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+                                 style="z-index: 5;background-color:rgba(2, 0, 11, 0.80);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+                            </div>
 
-        <!-- Header Upper -->
-        <div class="header-upper">
-            <div class="inner-container clearfix">
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption Newspaper-Title   tp-resizeme"
+                                 id="slide-200-layer-2"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['0','0','0','0']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['250','250','250','240']"
+                                 data-fontsize="['50','50','50','30']"
+                                 data-lineheight="['55','55','55','35']"
+                                 data-width="full"
+                                 data-height="none"
+                                 data-whitespace="normal"
+                                 data-type="text"
+                                 data-responsive_offset="on"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                                 data-textAlign="['center','center','center','center']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[10,10,10,10]"
+                                 data-paddingleft="[0,0,0,0]"
+                                 style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;text-transform:uppercase;">
+                                Welcome To University
+                            </div>
 
-                <!--Info-->
-                <div class="logo-outer">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="{{ asset('guest/assets/images/logo-lms.png') }}"
-                                 alt="" title=""
-                                 style="width: 100%; height: 100%;">
-                        </a>
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption Newspaper-Subtitle   tp-resizeme"
+                                 id="slide-200-layer-3"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['0','0','0','0']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['210','210','210','210']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-type="text"
+                                 data-responsive_offset="on"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+                                 style="z-index: 7; white-space: nowrap;text-transform:uppercase; color:#fff; font-family:rubik; font-size:18px; font-weight:400;">
+                                Batter Education For A Better
+                            </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption Newspaper-Subtitle   tp-resizeme"
+                                 id="slide-200-layer-4"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['0','0','0','0']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['320','320','320','290']"
+                                 data-width="['800','800','700','420']"
+                                 data-height="['100','100','100','120']"
+                                 data-whitespace="unset"
+                                 data-type="text"
+                                 data-responsive_offset="on"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                                 data-textAlign="['center','center','center','center']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+                                 style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                            </div>
+                            <!-- LAYER NR. 4 -->
+                            <div class="tp-caption Newspaper-Button rev-btn "
+                                 id="slide-200-layer-5"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['90','80','75','90']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['400','400','400','420']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-type="button"
+                                 data-responsive_offset="on"
+                                 data-responsive="off"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+                                 data-textAlign="['center','center','center','center']"
+                                 data-paddingtop="[12,12,12,12]"
+                                 data-paddingright="[30,35,35,15]"
+                                 data-paddingbottom="[12,12,12,12]"
+                                 data-paddingleft="[30,35,35,15]"
+                                 style="z-index: 8; white-space: nowrap; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer; background-color:var(--primary) !important; border:0; border-radius:30px; margin-right:5px;">READ MORE </div>
+                            <div class="tp-caption Newspaper-Button rev-btn"
+                                 id="slide-200-layer-6"
+                                 data-x="['center','center','center','center']"
+                                 data-hoffset="['-90','-80','-75','-90']"
+                                 data-y="['top','top','top','top']"
+                                 data-voffset="['400','400','400','420']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+                                 data-type="button"
+                                 data-responsive_offset="on"
+                                 data-responsive="off"
+                                 data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+                                 data-textAlign="['center','center','center','center']"
+                                 data-paddingtop="[12,12,12,12]"
+                                 data-paddingright="[30,35,35,15]"
+                                 data-paddingbottom="[12,12,12,12]"
+                                 data-paddingleft="[30,35,35,15]"
+                                 style="z-index: 8; white-space: nowrap; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer; border-radius:30px;">CONTACT US</div>
+                        </li>
+                        <!-- SLIDE  -->
+                    </ul>
+                </div><!-- END REVOLUTION SLIDER -->
+            </div>
+        </div>
+        <!-- Main Slider -->
+        <div class="content-block">
+
+            <!-- Our Services -->
+            <div class="section-area content-inner service-info-bx">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="service-bx">
+                                <div class="action-box">
+                                    <img src="{{ asset('guest/assets/images/our-services/pic1.jpg') }}" alt="">
+                                </div>
+                                <div class="info-bx text-center">
+                                    <div class="feature-box-sm radius bg-white">
+                                        <i class="fa fa-bank text-primary"></i>
+                                    </div>
+                                    <h4><a href="#">Best Industry Leaders</a></h4>
+                                    <a href="#" class="btn radius-xl">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="service-bx">
+                                <div class="action-box">
+                                    <img src="{{ asset('guest/assets/images/our-services/pic2.jpg') }}" alt="">
+                                </div>
+                                <div class="info-bx text-center">
+                                    <div class="feature-box-sm radius bg-white">
+                                        <i class="fa fa-book text-primary"></i>
+                                    </div>
+                                    <h4><a href="#">Learn Courses Online</a></h4>
+                                    <a href="#" class="btn radius-xl">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="service-bx m-b0">
+                                <div class="action-box">
+                                    <img src="{{ asset('guest/assets/images/our-services/pic3.jpg') }}" alt="">
+                                </div>
+                                <div class="info-bx text-center">
+                                    <div class="feature-box-sm radius bg-white">
+                                        <i class="fa fa-file-text-o text-primary"></i>
+                                    </div>
+                                    <h4><a href="#">Book Library & Store</a></h4>
+                                    <a href="#" class="btn radius-xl">View More</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <!-- Our Services END -->
 
-                <!--Nav Box-->
-                <div class="nav-outer clearfix">
-                    <!--Mobile Navigation Toggler For Mobile-->
-                    <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
-                    <nav class="main-menu navbar-expand-md navbar-light">
-                        <div class="navbar-header">
-                            <!-- Togg le Button -->
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="icon flaticon-menu"></span>
-                            </button>
+            <!-- Popular Courses -->
+            <div class="section-area section-sp2 popular-courses-bx">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 heading-bx left">
+                            <h2 class="title-head">Popular <span>Courses</span></h2>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
                         </div>
-
-                        <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                <li class="current dropdown"><a href="#">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Home page 01</a></li>
-                                        <li><a href="index-2.html">Home page 02</a></li>
-                                        <li><a href="index-3.html">Home page 03</a></li>
-                                        <li><a href="index-4.html">Home page 04</a></li>
-                                        <li class="dropdown"><a href="#">Header Styles</a>
-                                            <ul>
-                                                <li><a href="index.html">Header Style One</a></li>
-                                                <li><a href="index-2.html">Header Style Two</a></li>
-                                                <li><a href="index-3.html">Header Style Three</a></li>
-                                                <li><a href="index-4.html">Header Style Four</a></li>
+                    </div>
+                    <div class="row">
+                        <div class="courses-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+                            <div class="item">
+                                <div class="cours-bx">
+                                    <div class="action-box">
+                                        <img src="{{ asset('guest/assets/images/courses/pic1.jpg') }}" alt="">
+                                        <a href="#" class="btn">Read More</a>
+                                    </div>
+                                    <div class="info-bx text-center">
+                                        <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
+                                        <span>Programming</span>
+                                    </div>
+                                    <div class="cours-more-info">
+                                        <div class="review">
+                                            <span>3 Review</span>
+                                            <ul class="cours-star">
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
                                             </ul>
-                                        </li>
+                                        </div>
+                                        <div class="price">
+                                            <del>$190</del>
+                                            <h5>$120</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="cours-bx">
+                                    <div class="action-box">
+                                        <img src="{{ asset('guest/assets/images/courses/pic2.jpg') }}" alt="">
+                                        <a href="#" class="btn">Read More</a>
+                                    </div>
+                                    <div class="info-bx text-center">
+                                        <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
+                                        <span>Programming</span>
+                                    </div>
+                                    <div class="cours-more-info">
+                                        <div class="review">
+                                            <span>3 Review</span>
+                                            <ul class="cours-star">
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price">
+                                            <del>$190</del>
+                                            <h5>$120</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="cours-bx">
+                                    <div class="action-box">
+                                        <img src="{{ asset('guest/assets/images/courses/pic3.jpg') }}" alt="">
+                                        <a href="#" class="btn">Read More</a>
+                                    </div>
+                                    <div class="info-bx text-center">
+                                        <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
+                                        <span>Programming</span>
+                                    </div>
+                                    <div class="cours-more-info">
+                                        <div class="review">
+                                            <span>3 Review</span>
+                                            <ul class="cours-star">
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price">
+                                            <del>$190</del>
+                                            <h5>$120</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="cours-bx">
+                                    <div class="action-box">
+                                        <img src="{{ asset('guest/assets/images/courses/pic4.jpg') }}" alt="">
+                                        <a href="#" class="btn">Read More</a>
+                                    </div>
+                                    <div class="info-bx text-center">
+                                        <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
+                                        <span>Programming</span>
+                                    </div>
+                                    <div class="cours-more-info">
+                                        <div class="review">
+                                            <span>3 Review</span>
+                                            <ul class="cours-star">
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li class="active"><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price">
+                                            <del>$190</del>
+                                            <h5>$120</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Popular Courses END -->
+
+            <!-- Form -->
+            <div class="section-area section-sp1 ovpr-dark bg-fix online-cours" style="background-image:url({{ asset('guest/assets/images/background/bg1.jpg);') }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center text-white">
+                            <h2>Online Courses To Learn</h2>
+                            <h5>Own Your Feature Learning New Skills Online</h5>
+                            <form class="cours-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="What do you want to learn today?	">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="mw800 m-auto">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="cours-search-bx m-b30">
+                                    <div class="icon-box">
+                                        <h3><i class="ti-user"></i><span class="counter">5</span>M</h3>
+                                    </div>
+                                    <span class="cours-search-text">Over 5 million student</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="cours-search-bx m-b30">
+                                    <div class="icon-box">
+                                        <h3><i class="ti-book"></i><span class="counter">30</span>K</h3>
+                                    </div>
+                                    <span class="cours-search-text">30,000 Courses.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="cours-search-bx m-b30">
+                                    <div class="icon-box">
+                                        <h3><i class="ti-layout-list-post"></i><span class="counter">20</span>K</h3>
+                                    </div>
+                                    <span class="cours-search-text">Learn Anythink Online.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Form END -->
+            <div class="section-area section-sp2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center heading-bx">
+                            <h2 class="title-head m-b0">Upcoming <span>Events</span></h2>
+                            <p class="m-b0">Upcoming Education Events To Feed Brain. </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
+                            <div class="item">
+                                <div class="event-bx">
+                                    <div class="action-box">
+                                        <img src="{{ asset('guest/assets/images/event/pic4.jpg') }}" alt="">
+                                    </div>
+                                    <div class="info-bx d-flex">
+                                        <div>
+                                            <div class="event-time">
+                                                <div class="event-date">29</div>
+                                                <div class="event-month">October</div>
+                                            </div>
+                                        </div>
+                                        <div class="event-info">
+                                            <h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
+                                            <ul class="media-post">
+                                                <li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
+                                                <li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
+                                            </ul>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="event-bx">
+                                    <div class="action-box">
+                                        <img src="{{ asset('guest/assets/images/event/pic3.jpg') }}" alt="">
+                                    </div>
+                                    <div class="info-bx d-flex">
+                                        <div>
+                                            <div class="event-time">
+                                                <div class="event-date">29</div>
+                                                <div class="event-month">October</div>
+                                            </div>
+                                        </div>
+                                        <div class="event-info">
+                                            <h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
+                                            <ul class="media-post">
+                                                <li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
+                                                <li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
+                                            </ul>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="event-bx">
+                                    <div class="action-box">
+                                        <img src="{{ asset('guest/assets/images/event/pic2.jpg') }}" alt="">
+                                    </div>
+                                    <div class="info-bx d-flex">
+                                        <div>
+                                            <div class="event-time">
+                                                <div class="event-date">29</div>
+                                                <div class="event-month">October</div>
+                                            </div>
+                                        </div>
+                                        <div class="event-info">
+                                            <h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
+                                            <ul class="media-post">
+                                                <li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
+                                                <li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
+                                            </ul>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="#" class="btn">View All Event</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="section-area section-sp2 bg-fix ovbl-dark" style="background-image:url({{ asset('guest/assets/images/background/bg1.jpg);') }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-white heading-bx left">
+                            <h2 class="title-head text-uppercase">what people <span>say</span></h2>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+                        <div class="item">
+                            <div class="testimonial-bx">
+                                <div class="testimonial-thumb">
+                                    <img src="{{ asset('guest/assets/images/testimonials/pic1.jpg') }}" alt="">
+                                </div>
+                                <div class="testimonial-info">
+                                    <h5 class="name">Peter Packer</h5>
+                                    <p>-Art Director</p>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-bx">
+                                <div class="testimonial-thumb">
+                                    <img src="{{ asset('guest/assets/images/testimonials/pic2.jpg') }}" alt="">
+                                </div>
+                                <div class="testimonial-info">
+                                    <h5 class="name">Peter Packer</h5>
+                                    <p>-Art Director</p>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonials END -->
+
+            <!-- Recent News -->
+            <div class="section-area section-sp2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 heading-bx left">
+                            <h2 class="title-head">Recent <span>News</span></h2>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+                        </div>
+                    </div>
+                    <div class="recent-news-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+                        <div class="item">
+                            <div class="recent-news">
+                                <div class="action-box">
+                                    <img src="{{ asset('guest/assets/images/blog/latest-blog/pic1.jpg') }}" alt="">
+                                </div>
+                                <div class="info-bx">
+                                    <ul class="media-post">
+                                        <li><a href="#"><i class="fa fa-calendar"></i>Jan 02 2019</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>By William</a></li>
                                     </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">About us</a>
-                                    <ul>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="team.html">Our Team</a></li>
-                                        <li><a href="faq.html">Faq</a></li>
-                                        <li><a href="services.html">Services</a></li>
-                                        <li><a href="gallery.html">Gallery</a></li>
-                                        <li><a href="comming-soon.html">Comming Soon</a></li>
+                                    <h5 class="post-title"><a href="blog-details.html">This Story Behind Education Will Haunt You Forever.</a></h5>
+                                    <p>Knowing that, you’ve optimised your pages countless amount of times, written tons.</p>
+                                    <div class="post-extra">
+                                        <a href="#" class="btn-link">READ MORE</a>
+                                        <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>20 Comment</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="recent-news">
+                                <div class="action-box">
+                                    <img src="{{ asset('guest/assets/images/blog/latest-blog/pic2.jpg') }}" alt="">
+                                </div>
+                                <div class="info-bx">
+                                    <ul class="media-post">
+                                        <li><a href="#"><i class="fa fa-calendar"></i>Feb 05 2019</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>By John</a></li>
                                     </ul>
-                                </li>
-                                <li class="dropdown has-mega-menu"><a href="#">Pages</a>
-                                    <div class="mega-menu">
-                                        <div class="mega-menu-bar row clearfix">
-                                            <div class="column col-md-3 col-xs-12">
-                                                <h3>About Us</h3>
-                                                <ul>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="team.html">Our Team</a></li>
-                                                    <li><a href="faq.html">Faq</a></li>
-                                                    <li><a href="services.html">Services</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="column col-md-3 col-xs-12">
-                                                <h3>Doctors</h3>
-                                                <ul>
-                                                    <li><a href="doctors.html">Doctors</a></li>
-                                                    <li><a href="doctors-detail.html">Doctors Detail</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="column col-md-3 col-xs-12">
-                                                <h3>Blog</h3>
-                                                <ul>
-                                                    <li><a href="blog.html">Our Blog</a></li>
-                                                    <li><a href="blog-classic.html">Blog Classic</a></li>
-                                                    <li><a href="blog-detail.html">Blog Detail</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="column col-md-3 col-xs-12">
-                                                <h3>Shops</h3>
-                                                <ul>
-                                                    <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="shop-single.html">Shop Details</a></li>
-                                                    <li><a href="shoping-cart.html">Cart Page</a></li>
-                                                    <li><a href="checkout.html">Checkout Page</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                    <h5 class="post-title"><a href="blog-details.html">What Will Education Be Like In The Next 50 Years?</a></h5>
+                                    <p>As desperate as you are right now, you have done everything you can on your.</p>
+                                    <div class="post-extra">
+                                        <a href="#" class="btn-link">READ MORE</a>
+                                        <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>14 Comment</a>
                                     </div>
-                                </li>
-                                <li class="dropdown"><a href="#">Doctors</a>
-                                    <ul>
-                                        <li><a href="doctors.html">Doctors</a></li>
-                                        <li><a href="doctors-detail.html">Doctors Detail</a></li>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="recent-news">
+                                <div class="action-box">
+                                    <img src="{{ asset('guest/assets/images/blog/latest-blog/pic3.jpg') }}" alt="">
+                                </div>
+                                <div class="info-bx">
+                                    <ul class="media-post">
+                                        <li><a href="#"><i class="fa fa-calendar"></i>April 14 2019</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>By George</a></li>
                                     </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Department</a>
-                                    <ul>
-                                        <li><a href="department.html">Department</a></li>
-                                        <li><a href="department-detail.html">Department Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Our Blog</a></li>
-                                        <li><a href="blog-classic.html">Blog Classic</a></li>
-                                        <li><a href="blog-detail.html">Blog Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Shop</a>
-                                    <ul>
-                                        <li><a href="shop.html">Shop</a></li>
-                                        <li><a href="shop-single.html">Shop Details</a></li>
-                                        <li><a href="shoping-cart.html">Cart Page</a></li>
-                                        <li><a href="checkout.html">Checkout Page</a></li>
-                                    </ul>
-                                </li>
-
-
-                                <li class="dropdown"><a href="#">For You</a>
-                                    <ul>
-                                        @if (Route::has('login'))
-                                            @auth
-                                                <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                                            @else
-                                                <li><a href="{{ route('login') }}">Loin</a></li>
-
-                                                @if (Route::has('register'))
-                                                    <li><a href="{{ route('register') }}">Register</a></li>
-                                                @endif
-                                            @endauth
-                                        @endif
-                                    </ul>
-                                </li>
-
-
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <!-- Main Menu End-->
-
-                    <!-- Main Menu End-->
-                    <div class="outer-box clearfix">
-                        <!-- Main Menu End-->
-                        <div class="nav-box">
-                            <div class="nav-btn nav-toggler navSidebar-button"><span
-                                    class="icon flaticon-menu-1"></span></div>
-                        </div>
-
-                        <!-- Social Box -->
-                        <ul class="social-box clearfix">
-                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-skype"></span></a></li>
-                            <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                        </ul>
-
-                        <!-- Search Btn -->
-                        <div class="search-box-btn"><span class="icon flaticon-search"></span></div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!--End Header Upper-->
-
-        <!--Sticky Header-->
-        <div class="sticky-header">
-            <div class="auto-container clearfix">
-                <!--Logo-->
-                <div class="logo pull-left">
-                    <a href="index.html" class="img-responsive"><img
-                            src="{{ asset('guest/assets/images/logo-lms.png') }}" alt="" title=""></a>
-                </div>
-
-                <!--Right Col-->
-                <div class="right-col pull-right">
-                    <!-- Main Menu -->
-                    <nav class="main-menu navbar-expand-md">
-                        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-                            <ul class="navigation clearfix">
-                                <!--Keep This Empty / Menu will come through Javascript--></ul>
-                        </div>
-                    </nav><!-- Main Menu End-->
-                </div>
-
-            </div>
-        </div>
-        <!--End Sticky Header-->
-
-        <!-- Mobile Menu  -->
-        <div class="mobile-menu">
-            <div class="menu-backdrop"></div>
-            <div class="close-btn"><span class="icon far fa-window-close"></span></div>
-
-            <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
-            <nav class="menu-box">
-                <div class="nav-logo"><a href="index.html"><img src="{{ asset('guest/assets/images/nav-logo.png') }}"
-                                                                alt="" title=""></a></div>
-
-                <ul class="navigation clearfix"><!--Keep This Empty / Menu will come through Javascript--></ul>
-            </nav>
-        </div><!-- End Mobile Menu -->
-
-    </header>
-    <!-- End Main Header -->
-
-    <!-- Main Slider Three -->
-    <section class="main-slider-three">
-        <div class="banner-carousel">
-            <!-- Swiper -->
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide slide">
-                    <div class="auto-container">
-                        <div class="row clearfix">
-
-                            <!-- Content Column -->
-                            <div class="content-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="inner-column">
-                                    <h2>Your Most Trusted Health Partner For Life.</h2>
-                                    <div class="text">We offer free consulting and the best project management for your
-                                        ideas, 100% delivery guaranteed.
-                                    </div>
-                                    <div class="btn-box">
-                                        <a href="contact.html" class="theme-btn appointment-btn"><span class="txt">Appointment</span></a>
-                                        <a href="services.html" class="theme-btn services-btn">Services</a>
+                                    <h5 class="post-title"><a href="blog-details.html">Master The Skills Of Education And Be.</a></h5>
+                                    <p>You will see in the guide all my years of valuable experience together with.</p>
+                                    <div class="post-extra">
+                                        <a href="#" class="btn-link">READ MORE</a>
+                                        <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>23 Comment</a>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Image Column -->
-                            <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="inner-column">
-                                    <div class="image">
-                                        <img src="{{ asset('guest/assets/images/main-slider/3.jpg') }}" alt=""/>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="swiper-slide slide">
-                    <div class="auto-container">
-                        <div class="row clearfix">
-
-                            <!-- Content Column -->
-                            <div class="content-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="inner-column">
-                                    <h2>Your Most Trusted Health Partner For Life.</h2>
-                                    <div class="text">We offer free consulting and the best project management for your
-                                        ideas, 100% delivery guaranteed.
-                                    </div>
-                                    <div class="btn-box">
-                                        <a href="contact.html" class="theme-btn appointment-btn"><span class="txt">Appointment</span></a>
-                                        <a href="services.html" class="theme-btn services-btn">Services</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Image Column -->
-                            <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="inner-column">
-                                    <div class="image">
-                                        <img src="{{ asset('guest/assets/images/main-slider/3.jpg') }}" alt=""/>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="swiper-slide slide">
-                    <div class="auto-container">
-                        <div class="row clearfix">
-
-                            <!-- Content Column -->
-                            <div class="content-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="inner-column">
-                                    <h2>Your Most Trusted Health Partner For Life.</h2>
-                                    <div class="text">We offer free consulting and the best project management for your
-                                        ideas, 100% delivery guaranteed.
-                                    </div>
-                                    <div class="btn-box">
-                                        <a href="contact.html" class="theme-btn appointment-btn"><span class="txt">Appointment</span></a>
-                                        <a href="services.html" class="theme-btn services-btn">Services</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Image Column -->
-                            <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="inner-column">
-                                    <div class="image">
-                                        <img src="{{ asset('guest/assets/images/main-slider/3.jpg')}}" alt=""/>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-    <!-- End Main Slider -->
-
-    <!-- Health Section -->
-    <section class="health-section">
-        <div class="auto-container">
-            <div class="inner-container">
-
-                <div class="row clearfix">
-
-                    <!-- Content Column -->
-                    <div class="content-column col-lg-7 col-md-12 col-sm-12">
-                        <div class="inner-column">
-                            <div class="border-line"></div>
-                            <!-- Sec Title -->
-                            <div class="sec-title">
-                                <h2>Who We Are <br> Pioneering in Health.</h2>
-                                <div class="separator"></div>
-                            </div>
-                            <div class="text">Where you are at the heart of our mission. We hope you will consider us as
-                                your medical home—the place where you feel safe, comfortable and cared for. As a
-                                multi-specialty medical group,
-                            </div>
-                            <a href="about.html" class="theme-btn btn-style-one"><span class="txt">More About Us</span></a>
-                        </div>
-                    </div>
-
-                    <!-- Image Column -->
-                    <div class="image-column col-lg-5 col-md-12 col-sm-12">
-                        <div class="inner-column wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="image">
-                                <img src="{{ asset('guest/assets/images/resource/image-3.jpg') }}" alt=""/>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End Health Section -->
-
-    <!-- Featured Section -->
-    <section class="featured-section">
-        <div class="auto-container">
-            <div class="row clearfix">
-
-                <!-- Feature Block -->
-                <div class="feature-block col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="upper-box">
-                            <div class="icon flaticon-doctor-stethoscope"></div>
-                            <h3><a href="#">Medical Treatment</a></h3>
-                        </div>
-                        <div class="text">Whether you're taking your first steps, just finding your stride,</div>
-                    </div>
-                </div>
-
-                <!-- Feature Block -->
-                <div class="feature-block col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box wow fadeInLeft" data-wow-delay="250ms" data-wow-duration="1500ms">
-                        <div class="upper-box">
-                            <div class="icon flaticon-ambulance-side-view"></div>
-                            <h3><a href="#">Emergency Help</a></h3>
-                        </div>
-                        <div class="text">Whether you're taking your first steps, just finding your stride,</div>
-                    </div>
-                </div>
-
-                <!-- Feature Block -->
-                <div class="feature-block col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box wow fadeInLeft" data-wow-delay="500ms" data-wow-duration="1500ms">
-                        <div class="upper-box">
-                            <div class="icon fas fa-user-md"></div>
-                            <h3><a href="#">Qualified Doctors</a></h3>
-                        </div>
-                        <div class="text">Whether you're taking your first steps, just finding your stride,</div>
-                    </div>
-                </div>
-
-                <!-- Feature Block -->
-                <div class="feature-block col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box wow fadeInLeft" data-wow-delay="750ms" data-wow-duration="1500ms">
-                        <div class="upper-box">
-                            <div class="icon fas fa-briefcase-medical"></div>
-                            <h3><a href="#">Medical Professionals</a></h3>
-                        </div>
-                        <div class="text">Whether you're taking your first steps, just finding your stride,</div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End Featured Section -->
-
-    <!-- Department Section Three -->
-    <section class="department-section-three">
-        <div class="image-layer" style="background-image:url(images/background/6.jpg)"></div>
-        <div class="auto-container">
-            <!-- Department Tabs-->
-            <div class="department-tabs tabs-box">
-                <div class="row clearfix">
-                    <!--Column-->
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <!-- Sec Title -->
-                        <div class="sec-title light">
-                            <h2>Health <br> Department</h2>
-                            <div class="separator"></div>
-                        </div>
-                        <!--Tab Btns-->
-                        <ul class="tab-btns tab-buttons clearfix">
-                            <li data-tab="#tab-urology" class="tab-btn">Urology Department</li>
-                            <li data-tab="#tab-department" class="tab-btn active-btn">Neurology Department</li>
-                            <li data-tab="#tab-gastrology" class="tab-btn">Gastrology Department</li>
-                            <li data-tab="#tab-cardiology" class="tab-btn">Cardiology Department</li>
-                            <li data-tab="#tab-eye" class="tab-btn">Eye Care Department</li>
-                        </ul>
-                    </div>
-                    <!--Column-->
-                    <div class="col-lg-8 col-md-12 col-sm-12">
-                        <!--Tabs Container-->
-                        <div class="tabs-content">
-
-                            <!-- Tab -->
-                            <div class="tab" id="tab-urology">
-                                <div class="content">
-                                    <h2>Urology Department</h2>
-                                    <div class="title">Department of Neurology</div>
-                                    <div class="text">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                            pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec
-                                            pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                                        <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                            nec, vulputate eget, arcu.</p>
-                                    </div>
-                                    <div class="two-column row clearfix">
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>01 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>02 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="doctors-detail.html" class="theme-btn btn-style-two"><span class="txt">View More</span></a>
-                                </div>
-                            </div>
-
-                            <!-- Tab -->
-                            <div class="tab active-tab" id="tab-department">
-                                <div class="content">
-                                    <h2>Neurology Department</h2>
-                                    <div class="title">Department of Neurology</div>
-                                    <div class="text">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                            pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec
-                                            pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                                        <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                            nec, vulputate eget, arcu.</p>
-                                    </div>
-                                    <div class="two-column row clearfix">
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>01 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>02 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="doctors-detail.html" class="theme-btn btn-style-two"><span class="txt">View More</span></a>
-                                </div>
-                            </div>
-
-                            <!-- Tab -->
-                            <div class="tab" id="tab-gastrology">
-                                <div class="content">
-                                    <h2>Gastrology Department</h2>
-                                    <div class="title">Department of Neurology</div>
-                                    <div class="text">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                            pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec
-                                            pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                                        <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                            nec, vulputate eget, arcu.</p>
-                                    </div>
-                                    <div class="two-column row clearfix">
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>01 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>02 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="doctors-detail.html" class="theme-btn btn-style-two"><span class="txt">View More</span></a>
-                                </div>
-                            </div>
-
-                            <!-- Tab -->
-                            <div class="tab" id="tab-cardiology">
-                                <div class="content">
-                                    <h2>Cardiology Department</h2>
-                                    <div class="title">Department of Neurology</div>
-                                    <div class="text">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                            pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec
-                                            pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                                        <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                            nec, vulputate eget, arcu.</p>
-                                    </div>
-                                    <div class="two-column row clearfix">
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>01 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>02 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="doctors-detail.html" class="theme-btn btn-style-two"><span class="txt">View More</span></a>
-                                </div>
-                            </div>
-
-                            <!-- Tab -->
-                            <div class="tab" id="tab-eye">
-                                <div class="content">
-                                    <h2>Eye Care Department</h2>
-                                    <div class="title">Department of Neurology</div>
-                                    <div class="text">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                            pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec
-                                            pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                                        <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                            nec, vulputate eget, arcu.</p>
-                                    </div>
-                                    <div class="two-column row clearfix">
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>01 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                                            <h3>02 - Neurology Service</h3>
-                                            <div class="column-text">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                                                penatibus
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="doctors-detail.html" class="theme-btn btn-style-two"><span class="txt">View More</span></a>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Recent News End -->
 
         </div>
-    </section>
-    <!-- End Department Section -->
-
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="auto-container">
-
-            <!-- Sec Title -->
-            <div class="sec-title centered">
-                <h2>The Medical Specialists</h2>
-                <div class="separator"></div>
-            </div>
-
-            <div class="row clearfix">
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="image">
-                            <img src="{{ asset('guest/assets/images/resource/team-1.jpg') }}" alt=""/>
-                            <div class="overlay-box">
-                                <ul class="social-icons">
-                                    <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-google"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-skype"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                                <a href="#" class="appointment">Make Appointment</a>
-                            </div>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="#">Dr. Andria Jonea</a></h3>
-                            <div class="designation">Cancer Specialist</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="inner-box wow fadeInLeft" data-wow-delay="250ms" data-wow-duration="1500ms">
-                        <div class="image">
-                            <img src="{{ asset('guest/assets/images/resource/team-2.jpg') }}" alt=""/>
-                            <div class="overlay-box">
-                                <ul class="social-icons">
-                                    <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-google"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-skype"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                                <a href="#" class="appointment">Make Appointment</a>
-                            </div>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="#">Dr. Robet Samith</a></h3>
-                            <div class="designation">Heart Surgen</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="inner-box wow fadeInLeft" data-wow-delay="500ms" data-wow-duration="1500ms">
-                        <div class="image">
-                            <img src="{{ asset('guest/assets/images/resource/team-3.jpg') }}" alt=""/>
-                            <div class="overlay-box">
-                                <ul class="social-icons">
-                                    <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-google"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-skype"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                                <a href="#" class="appointment">Make Appointment</a>
-                            </div>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="#">Dr. Sharon Laura</a></h3>
-                            <div class="designation">Family Physician</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Block -->
-                <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="inner-box wow fadeInLeft" data-wow-delay="750ms" data-wow-duration="1500ms">
-                        <div class="image">
-                            <img src="{{ asset('guest/assets/images/resource/team-4.jpg')}}" alt=""/>
-                            <div class="overlay-box">
-                                <ul class="social-icons">
-                                    <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-google"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-skype"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                                <a href="#" class="appointment">Make Appointment</a>
-                            </div>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="#">Dr. Alex Furgosen</a></h3>
-                            <div class="designation">Ortho Specialist</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-    <!-- End Team Section -->
-
-    <!-- Video Section -->
-    <section class="video-section" style="background-image:url(images/background/5.jpg)">
-        <div class="auto-container">
-            <div class="content">
-                <a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-box"><span
-                        class="flaticon-play-button"><i class="ripple"></i></span></a>
-                <div class="text">WE ARE CARE ABOUT YOUR HEALTH</div>
-                <h2>We Care About You</h2>
-            </div>
-        </div>
-    </section>
-    <!-- End Video Section -->
-
-
-    <!-- Testimonial Section Two -->
-    <section class="testimonial-section-two">
-        <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title centered">
-                <h2>What Patients Saying</h2>
-                <div class="separator"></div>
-            </div>
-            <div class="testimonial-carousel owl-carousel owl-theme">
-
-                <!-- Tesimonial Block Two -->
-                <div class="testimonial-block-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('guest/assets/images/resource/author-4.jpg')}}" alt=""/>
-                        </div>
-                        <div class="text">Medical Centre is a great place to get all of your medical needs. I came in
-                            for a check up and did not wait more than 5 minutes before I was seen. I can only imagine
-                            the type of service you get for more serious issues. Thanks!
-                        </div>
-                        <div class="lower-box">
-                            <div class="clearfix">
-
-                                <div class="pull-left">
-                                    <div class="quote-icon flaticon-quote"></div>
-                                </div>
-                                <div class="pull-right">
-                                    <div class="author-info">
-                                        <h3>Max Winchester</h3>
-                                        <div class="author">Kidny Patient</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tesimonial Block Two -->
-                <div class="testimonial-block-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('guest/assets/images/resource/author-5.jpg')}}" alt=""/>
-                        </div>
-                        <div class="text">Medical Centre is a great place to get all of your medical needs. I came in
-                            for a check up and did not wait more than 5 minutes before I was seen. I can only imagine
-                            the type of service you get for more serious issues. Thanks!
-                        </div>
-                        <div class="lower-box">
-                            <div class="clearfix">
-
-                                <div class="pull-left">
-                                    <div class="quote-icon flaticon-quote"></div>
-                                </div>
-                                <div class="pull-right">
-                                    <div class="author-info">
-                                        <h3>Jack Monita</h3>
-                                        <div class="author">Kidny Patient</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tesimonial Block Two -->
-                <div class="testimonial-block-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('guest/assets/images/resource/author-4.jpg')}}" alt=""/>
-                        </div>
-                        <div class="text">Medical Centre is a great place to get all of your medical needs. I came in
-                            for a check up and did not wait more than 5 minutes before I was seen. I can only imagine
-                            the type of service you get for more serious issues. Thanks!
-                        </div>
-                        <div class="lower-box">
-                            <div class="clearfix">
-
-                                <div class="pull-left">
-                                    <div class="quote-icon flaticon-quote"></div>
-                                </div>
-                                <div class="pull-right">
-                                    <div class="author-info">
-                                        <h3>Max Winchester</h3>
-                                        <div class="author">Kidny Patient</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tesimonial Block Two -->
-                <div class="testimonial-block-two">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('guest/assets/images/resource/author-5.jpg')}}" alt=""/>
-                        </div>
-                        <div class="text">Medical Centre is a great place to get all of your medical needs. I came in
-                            for a check up and did not wait more than 5 minutes before I was seen. I can only imagine
-                            the type of service you get for more serious issues. Thanks!
-                        </div>
-                        <div class="lower-box">
-                            <div class="clearfix">
-
-                                <div class="pull-left">
-                                    <div class="quote-icon flaticon-quote"></div>
-                                </div>
-                                <div class="pull-right">
-                                    <div class="author-info">
-                                        <h3>Jack Monita</h3>
-                                        <div class="author">Kidny Patient</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End Testimonial Section Two -->
-
-    <!-- Counter Section -->
-    <section class="counter-section style-two" style="background-image: url(images/background/pattern-3.png)">
-        <div class="auto-container">
-
-            <!-- Fact Counter -->
-            <div class="fact-counter style-two">
-                <div class="row clearfix">
-
-                    <!--Column-->
-                    <div class="column counter-column col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="content">
-                                <div class="icon flaticon-logout"></div>
-                                <div class="count-outer count-box">
-                                    <span class="count-text" data-speed="2500" data-stop="2350">0</span>
-                                </div>
-                                <h4 class="counter-title">Satisfied Patients</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Column-->
-                    <div class="column counter-column col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
-                            <div class="content">
-                                <div class="icon flaticon-logout"></div>
-                                <div class="count-outer count-box alternate">
-                                    +<span class="count-text" data-speed="3000" data-stop="350">0</span>
-                                </div>
-                                <h4 class="counter-title">Doctor’s Team</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Column-->
-                    <div class="column counter-column col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
-                            <div class="content">
-                                <div class="icon flaticon-logout"></div>
-                                <div class="count-outer count-box">
-                                    <span class="count-text" data-speed="3000" data-stop="2150">0</span>
-                                </div>
-                                <h4 class="counter-title">Success Mission</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Column-->
-                    <div class="column counter-column col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner wow fadeInLeft" data-wow-delay="900ms" data-wow-duration="1500ms">
-                            <div class="content">
-                                <div class="icon flaticon-logout"></div>
-                                <div class="count-outer count-box">
-                                    +<span class="count-text" data-speed="2500" data-stop="225">0</span>
-                                </div>
-                                <h4 class="counter-title">Successfull Surgeries</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- End Counter Section -->
-
-    <!-- Doctor Info Section -->
-    <section class="doctor-info-section">
-        <div class="auto-container">
-            <div class="inner-container">
-                <div class="row clearfix">
-
-                    <!-- Doctor Block -->
-                    <div class="doctor-block col-lg-4 col-md-6 col-sm-12">
-                        <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <h3>Working Hours</h3>
-                            <ul class="doctor-time-list">
-                                <li>Mon–Fri <span>8:00am–7:00pm</span></li>
-                                <li>Saturday <span>9:00am–5:00pm</span></li>
-                                <li>Sunday <span>9:00am–3:00pm</span></li>
-                            </ul>
-                            <h4>Emergency Cases</h4>
-                            <div class="phone">Call us! <strong>+898 68679 575 09</strong></div>
-                        </div>
-                    </div>
-
-                    <!-- Doctor Block -->
-                    <div class="doctor-block col-lg-4 col-md-6 col-sm-12">
-                        <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <h3>Doctors Timetable</h3>
-                            <div class="text">The following is for guidance only to help you plan your appointment with
-                                a preferred doctor or nurse. It does not guarantee availability as the doctors or nurses
-                                may sometimes be attending to other duties.
-                            </div>
-                            <a href="#" class="detail">More Detail</a>
-                        </div>
-                    </div>
-
-                    <!-- Doctor Block -->
-                    <div class="doctor-block col-lg-4 col-md-6 col-sm-12">
-                        <div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <h3>Primary Health Care</h3>
-                            <div class="text">When you know you are using your best talents for something you love, you
-                                can’t it. Effective communication is the basis for building brands as solid as the
-                                relation-ships with build with our clients..
-                            </div>
-                            <a href="#" class="detail">Contact Now</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Doctor Info Section -->
-
-    <!-- News Section Two -->
-    <section class="news-section-two">
-        <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title centered">
-                <h2>Latest News & Articals</h2>
-                <div class="separator style-three"></div>
-            </div>
-            <div class="row clearfix">
-
-                <!-- News Block Two -->
-                <div class="news-block-two col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="blog-detail.html"><img src="{{ asset('guest/assets/images/resource/news-4.jpg')}}"
-                                                            alt=""/></a>
-                        </div>
-                        <div class="lower-content">
-                            <div class="content">
-                                <ul class="post-info">
-                                    <li><span
-                                            class="icon flaticon-chat-comment-oval-speech-bubble-with-text-lines"></span>
-                                        02
-                                    </li>
-                                    <li><span class="icon flaticon-heart"></span> 126</li>
-                                </ul>
-                                <ul class="post-meta">
-                                    <li>June 21, 2018 at 8:12pm</li>
-                                    <li>Post By: Admin</li>
-                                </ul>
-                                <h3><a href="blog-detail.html">Diagnostic Services for Efficient Results Picking
-                                        Right </a></h3>
-                                <div class="text">There are a lot of women that are unaware of the numerous risks
-                                    associated with their health and eventually ignore the ...
-                                </div>
-                                <a href="blog-detail.html" class="theme-btn btn-style-five"><span
-                                        class="txt">read more</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- News Block Two -->
-                <div class="news-block-two col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="blog-detail.html"><img src="{{ asset('guest/assets/images/resource/news-5.jpg')}}"
-                                                            alt=""/></a>
-                        </div>
-                        <div class="lower-content">
-                            <div class="content">
-                                <ul class="post-info">
-                                    <li><span
-                                            class="icon flaticon-chat-comment-oval-speech-bubble-with-text-lines"></span>
-                                        02
-                                    </li>
-                                    <li><span class="icon flaticon-heart"></span> 126</li>
-                                </ul>
-                                <ul class="post-meta">
-                                    <li>June 21, 2018 at 8:12pm</li>
-                                    <li>Post By: Admin</li>
-                                </ul>
-                                <h3><a href="blog-detail.html">Reasons to Visit for Heart Specialist Department.</a>
-                                </h3>
-                                <div class="text">There are a lot of women that are unaware of the numerous risks
-                                    associated with their health and eventually ignore the ...
-                                </div>
-                                <a href="blog-detail.html" class="theme-btn btn-style-five"><span
-                                        class="txt">read more</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!--Clients Section-->
-    <section class="clients-section">
-        <div class="outer-container">
-
-            <div class="sponsors-outer">
-                <!--Sponsors Carousel-->
-                <ul class="sponsors-carousel owl-carousel owl-theme">
-                    <li class="slide-item">
-                        <figure class="image-box"><a href="#"><img src="{{ asset('guest/assets/images/clients/1.png')}}"
-                                                                   alt=""></a></figure>
-                    </li>
-                    <li class="slide-item">
-                        <figure class="image-box"><a href="#"><img src="{{ asset('guest/assets/images/clients/2.png')}}"
-                                                                   alt=""></a></figure>
-                    </li>
-                    <li class="slide-item">
-                        <figure class="image-box"><a href="#"><img src="{{ asset('guest/assets/images/clients/3.png')}}"
-                                                                   alt=""></a></figure>
-                    </li>
-                    <li class="slide-item">
-                        <figure class="image-box"><a href="#"><img src="{{ asset('guest/assets/images/clients/4.png')}}"
-                                                                   alt=""></a></figure>
-                    </li>
-                    <li class="slide-item">
-                        <figure class="image-box"><a href="#"><img src="{{ asset('guest/assets/images/clients/5.png')}}"
-                                                                   alt=""></a></figure>
-                    </li>
-                    <li class="slide-item">
-                        <figure class="image-box"><a href="#"><img src="{{ asset('guest/assets/images/clients/1.png')}}"
-                                                                   alt=""></a></figure>
-                    </li>
-                    <li class="slide-item">
-                        <figure class="image-box"><a href="#"><img src="{{ asset('guest/assets/images/clients/2.png')}}"
-                                                                   alt=""></a></figure>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-    <!--End Clients Section-->
-
-    <!--Main Footer-->
-    <footer class="main-footer style-two">
-        <div class="auto-container">
-            <!--Widgets Section-->
-            <div class="widgets-section">
-                <div class="row clearfix">
-
-                    <!--big column-->
-                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="row clearfix">
-
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-7 col-md-6 col-sm-12">
-                                <div class="footer-widget logo-widget">
-                                    <div class="logo">
-                                        <a href="index.html"><img src="{{ asset('guest/assets/images/logo-3.png')}}"
-                                                                  alt=""/></a>
-                                    </div>
-                                    <div class="text">Meditech is a library of health and medical templates with
-                                        predefined web elements which helps you to build your medical templates best
-                                        site Provide Comprehensive Quality Care About Medical Care Health Suspendisse
-                                        metus turpis.
-                                    </div>
-                                    <ul class="social-icons">
-                                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-google"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-skype"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-linkedin"></span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-5 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget">
-                                    <div class="footer-title  clearfix">
-                                        <h2>Departments</h2>
-                                        <div class="separator"></div>
-                                    </div>
-                                    <ul class="footer-list">
-                                        <li><a href="#">Surgery & Radiology</a></li>
-                                        <li><a href="#">Family Medicine</a></li>
-                                        <li><a href="#">Women’s Health</a></li>
-                                        <li><a href="#">Optician</a></li>
-                                        <li><a href="#">Pediatrics</a></li>
-                                        <li><a href="#">Dermatology</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!--big column-->
-                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="row clearfix">
-
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-6 col-md-6 col-sm-12">
-                                <div class="footer-widget news-widget">
-                                    <div class="footer-title  clearfix">
-                                        <h2>News Update</h2>
-                                        <div class="separator"></div>
-                                    </div>
-
-                                    <!--News Widget Block-->
-                                    <div class="news-widget-block">
-                                        <div class="widget-inner">
-                                            <div class="image">
-                                                <img src="{{ asset('guest/assets/images/resource/news-image-1.jpg')}}"
-                                                     alt=""/>
-                                            </div>
-                                            <h3><a href="blog-detail.html">Integrative Medicine And Cancer Treatment</a>
-                                            </h3>
-                                            <div class="post-date">July 11, 2017</div>
-                                        </div>
-                                    </div>
-
-                                    <!--News Widget Block-->
-                                    <div class="news-widget-block">
-                                        <div class="widget-inner">
-                                            <div class="image">
-                                                <img src="{{ asset('guest/assets/images/resource/news-image-2.jpg')}}"
-                                                     alt=""/>
-                                            </div>
-                                            <h3><a href="blog-detail.html">Achieving Better Health Care One Patient
-                                                    Time</a></h3>
-                                            <div class="post-date">July 11, 2018</div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-6 col-md-6 col-sm-12">
-                                <div class="footer-widget contact-widget">
-                                    <div class="footer-title  clearfix">
-                                        <h2>Contact Us</h2>
-                                        <div class="separator"></div>
-                                    </div>
-
-                                    <ul class="contact-list">
-                                        <li><span class="icon flaticon-placeholder"></span>2130 Fulton Street San Diego
-                                            <br> CA 94117-1080 USA
-                                        </li>
-                                        <li><span class="icon flaticon-call"></span>Mon to Fri : 08:30 - 18:00 <br> <a
-                                                href="tel:+898-68679-575-09">+898 68679 575 09</a></li>
-                                        <li><span class="icon flaticon-message"></span>Do you have a Question? <a
-                                                href="mailto:info@gmail.com">info@gmail.com</a></li>
-                                    </ul>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-            <div class="auto-container">
-                <div class="copyright">MediTech Helth Care &copy; All Rights Reserved By Expertthemes</div>
-            </div>
-        </div>
-
-    </footer>
-
-</div>
-<!--End pagewrapper-->
-
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
-<!--Search Popup-->
-<div id="search-popup" class="search-popup">
-    <div class="close-search theme-btn"><span class="fas fa-window-close"></span></div>
-    <div class="popup-inner">
-        <div class="overlay-layer"></div>
-        <div class="search-form">
-            <form method="post" action="index.html">
-                <div class="form-group">
-                    <fieldset>
-                        <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here"
-                               required>
-                        <input type="submit" value="Search Now!" class="theme-btn">
-                    </fieldset>
-                </div>
-            </form>
-
-            <br>
-            <h3>Recent Search Keywords</h3>
-            <ul class="recent-searches">
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Web Development</a></li>
-                <li><a href="#">SEO</a></li>
-                <li><a href="#">Logistics</a></li>
-                <li><a href="#">Freedom</a></li>
-            </ul>
-
-        </div>
-
-    </div>
-</div>
-
-<!-- sidebar cart item -->
-<div class="xs-sidebar-group info-group">
-    <div class="xs-overlay xs-bg-black"></div>
-    <div class="xs-sidebar-widget">
-        <div class="sidebar-widget-container">
-            <div class="widget-heading">
-                <a href="#" class="close-side-widget">
-                    X
-                </a>
-            </div>
-            <div class="sidebar-textwidget">
-
-                <!-- Sidebar Info Content -->
-                <div class="sidebar-info-contents">
-                    <div class="content-inner">
-                        <div class="logo">
-                            <a href="index.html"><img src="{{ asset('guest/assets/images/logo-3.png')}}" alt=""/></a>
-                        </div>
-                        <div class="content-box">
-                            <h2>About Us</h2>
-                            <p class="text">Core values are the fundamental beliefs of a person or organization. The
-                                core values are the guiding prin ples that dictate behavior and action suas labore
-                                saperet has there any quote for write lorem percit latineu.</p>
-                            <a href="#" class="theme-btn btn-style-two"><span class="txt">Consultation</span></a>
-                        </div>
-                        <div class="contact-info">
-                            <h2>Contact Info</h2>
-                            <ul class="list-style-two">
-                                <li><span class="icon flaticon-map"></span>Chicago 12, Melborne City, USA</li>
-                                <li><span class="icon flaticon-telephone"></span>(111) 111-111-1111</li>
-                                <li><span class="icon flaticon-message-1"></span>meditech@gmail.com</li>
-                                <li><span class="icon flaticon-timetable"></span>Week Days: 09.00 to 18.00 Sunday:
-                                    Closed
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Social Box -->
-                        <ul class="social-box">
-                            <li class="facebook"><a href="#" class="fab fa-facebook-f"></a></li>
-                            <li class="twitter"><a href="#" class="fab fa-twitter"></a></li>
-                            <li class="linkedin"><a href="#" class="fab fa-linkedin-in"></a></li>
-                            <li class="instagram"><a href="#" class="fab fa-instagram"></a></li>
-                            <li class="youtube"><a href="#" class="fab fa-youtube"></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- END sidebar widget item -->
-
-<!-- Color Palate / Color Switcher -->
-<div class="color-palate">
-    <div class="color-trigger">
-        <i class="fas fa-cog"></i>
-    </div>
-    <div class="color-palate-head">
-        <h6>Choose Your Color</h6>
-    </div>
-    <div class="various-color clearfix">
-        <div class="colors-list">
-            <span class="palate default-color active" data-theme-file="css/color-themes/default-theme.css"></span>
-            <span class="palate green-color" data-theme-file="css/color-themes/green-theme.css"></span>
-            <span class="palate olive-color" data-theme-file="css/color-themes/olive-theme.css"></span>
-            <span class="palate orange-color" data-theme-file="css/color-themes/orange-theme.css"></span>
-            <span class="palate purple-color" data-theme-file="css/color-themes/purple-theme.css"></span>
-            <span class="palate teal-color" data-theme-file="css/color-themes/teal-theme.css"></span>
-            <span class="palate brown-color" data-theme-file="css/color-themes/brown-theme.css"></span>
-            <span class="palate redd-color" data-theme-file="css/color-themes/redd-color.css"></span>
-        </div>
-    </div>
-
-    <ul class="rtl-version option-box">
-        <li class="rtl">RTL Version</li>
-        <li>LTR Version</li>
-    </ul>
-
-    <a href="#" class="purchase-btn">Purchase now $17</a>
-
-    <div class="palate-foo">
-        <span>You will find much more options for colors and styling in admin panel. This color picker is used only for demonstation purposes.</span>
-    </div>
-
-</div>
-
-@include('guests.layouts.guest-footer-scripts')
-</body>
-</html>
+        <!-- contact area END -->
+    </x-slot>
+
+    @push('js')
+        <!-- Revolution JavaScripts Files -->
+        <script src="{{ asset('guest/assets/vendors/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+        <script src="{{ asset('guest/assets/vendors/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+        <!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+        <script src="{{ asset('guest/assets/vendors/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
+        <script src="{{ asset('guest/assets/vendors/revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
+        <script src="{{ asset('guest/assets/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
+        <script src="{{ asset('guest/assets/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+        <script src="{{ asset('guest/assets/vendors/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
+        <script src="{{ asset('guest/assets/vendors/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+        <script src="{{ asset('guest/assets/vendors/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+        <script src="{{ asset('guest/assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+        <script src="{{ asset('guest/assets/vendors/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+        <script>
+            jQuery(document).ready(function() {
+                var ttrevapi;
+                var tpj =jQuery;
+                if(tpj("#rev_slider_486_1").revolution == undefined){
+                    revslider_showDoubleJqueryError("#rev_slider_486_1");
+                }else{
+                    ttrevapi = tpj("#rev_slider_486_1").show().revolution({
+                        sliderType:"standard",
+                        jsFileLocation:"{{ asset('guest/assets/vendors/revolution/js/') }}",
+                        sliderLayout:"fullwidth",
+                        dottedOverlay:"none",
+                        delay:9000,
+                        navigation: {
+                            keyboardNavigation:"on",
+                            keyboard_direction: "horizontal",
+                            mouseScrollNavigation:"off",
+                            mouseScrollReverse:"default",
+                            onHoverStop:"on",
+                            touch:{
+                                touchenabled:"on",
+                                swipe_threshold: 75,
+                                swipe_min_touches: 1,
+                                swipe_direction: "horizontal",
+                                drag_block_vertical: false
+                            }
+                            ,
+                            arrows: {
+                                style: "uranus",
+                                enable: true,
+                                hide_onmobile: false,
+                                hide_onleave: false,
+                                tmp: '',
+                                left: {
+                                    h_align: "left",
+                                    v_align: "center",
+                                    h_offset: 10,
+                                    v_offset: 0
+                                },
+                                right: {
+                                    h_align: "right",
+                                    v_align: "center",
+                                    h_offset: 10,
+                                    v_offset: 0
+                                }
+                            },
+
+                        },
+                        viewPort: {
+                            enable:true,
+                            outof:"pause",
+                            visible_area:"80%",
+                            presize:false
+                        },
+                        responsiveLevels:[1240,1024,778,480],
+                        visibilityLevels:[1240,1024,778,480],
+                        gridwidth:[1240,1024,778,480],
+                        gridheight:[768,600,600,600],
+                        lazyType:"none",
+                        parallax: {
+                            type:"scroll",
+                            origo:"enterpoint",
+                            speed:400,
+                            levels:[5,10,15,20,25,30,35,40,45,50,46,47,48,49,50,55],
+                            type:"scroll",
+                        },
+                        shadow:0,
+                        spinner:"off",
+                        stopLoop:"off",
+                        stopAfterLoops:-1,
+                        stopAtSlide:-1,
+                        shuffle:"off",
+                        autoHeight:"off",
+                        hideThumbsOnMobile:"off",
+                        hideSliderAtLimit:0,
+                        hideCaptionAtLimit:0,
+                        hideAllCaptionAtLilmit:0,
+                        debugMode:false,
+                        fallbacks: {
+                            simplifyAll:"off",
+                            nextSlideOnWindowFocus:"off",
+                            disableFocusListener:false,
+                        }
+                    });
+                }
+            });
+        </script>
+    @endpush
+</x-guest-layout>

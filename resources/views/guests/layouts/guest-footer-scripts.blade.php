@@ -1,16 +1,18 @@
-<script src="{{asset('guest/assets/js/jquery.js')}}"></script>
-<script src="{{asset('guest/assets/js/popper.min.js')}}"></script>
-<script src="{{asset('guest/assets/js/jquery-ui.js')}}"></script>
-<script src="{{asset('guest/assets/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('guest/assets/js/jquery.fancybox.js')}}"></script>
-<script src="{{asset('guest/assets/js/parallax.min.js')}}"></script>
-<script src="{{asset('guest/assets/js/jquery.paroller.min.js')}}"></script>
-<script src="{{asset('guest/assets/js/owl.js')}}"></script>
-<script src="{{asset('guest/assets/js/wow.js')}}"></script>
-<script src="{{asset('guest/assets/js/nav-tool.js')}}"></script>
-<script src="{{asset('guest/assets/js/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{asset('guest/assets/js/main.js')}}"></script>
-<script src="{{asset('guest/assets/js/swiper.min.js')}}"></script>
-<script src="{{asset('guest/assets/js/appear.js')}}"></script>
-<script src="{{asset('guest/assets/js/script.js')}}"></script>
-<script src="{{asset('guest/assets/js/color-settings.js')}}"></script>
+<!-- External JavaScripts -->
+<script src="{{ asset('guest/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/bootstrap/js/popper.min.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/bootstrap-select/bootstrap-select.min.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/magnific-popup/magnific-popup.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/counter/waypoints-min.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/counter/counterup.min.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/imagesloaded/imagesloaded.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/masonry/masonry.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/masonry/filter.js') }}"></script>
+<script src="{{ asset('guest/assets/vendors/owl-carousel/owl.carousel.js') }}"></script>
+<script src="{{ asset('guest/assets/js/functions.js') }}"></script>
+<script src="{{ asset('guest/assets/js/contact.js') }}"></script>
+<script src='{{ asset('guest/assets/vendors/switcher/switcher.js') }}'></script>
+
+@stack('js')

@@ -1,7 +1,9 @@
 <x-auth-layout :title="__('email.verify_email')">
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-slot name="head">
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
+    </x-slot>
 
     <div class="container-fluid">
         <div class="row no-gutter">
@@ -14,7 +16,7 @@
                             <div class="card-sigin w-50">
                                 <div class="mb-5 d-flex justify-content-center">
                                     <a href="#" >
-                                        <img src="{{asset('guest/img/brand/logo-lms.png')}}"
+                                        <img src="{{asset('guest/assets/images/logo-white-2.png')}}"
                                              class="sign-favicon ht-40" alt="logo">
                                     </a>
                                 </div>
@@ -41,7 +43,7 @@
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                                 <x-secondary-button type="submit">
-                                                    {{ __('common.logout' }}
+                                                    {{ __('common.logout') }}
                                                 </x-secondary-button>
                                             </form>
                                         </div>

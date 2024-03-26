@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <title>{{ $title }}</title>
-    <!-- Responsive -->
-    <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
-    <meta name="Author" content="Spruko Technologies Private Limited">
-    <meta name="Keywords"
-          content="admin,admin dashboard,admin dashboard template,admin panel template,admin template,admin theme,bootstrap 4 admin template,bootstrap 4 dashboard,bootstrap admin,bootstrap admin dashboard,bootstrap admin panel,bootstrap admin template,bootstrap admin theme,bootstrap dashboard,bootstrap form template,bootstrap panel,bootstrap ui kit,dashboard bootstrap 4,dashboard design,dashboard html,dashboard template,dashboard ui kit,envato templates,flat ui,html,html and css templates,html dashboard template,html5,jquery html,premium,premium quality,sidebar bootstrap 4,template admin bootstrap 4"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    @include('guests.layouts.guest-head')
+    <!-- META ============================================= -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
+    <meta name="robots" content=""/>
+
+    <!-- DESCRIPTION -->
+    <meta name="description" content="EduChamp : Education HTML Template"/>
+
+    <!-- OG -->
+    <meta property="og:title" content="EduChamp : Education HTML Template"/>
+    <meta property="og:description" content="EduChamp : Education HTML Template"/>
+    <meta property="og:image" content=""/>
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- MOBILE SPECIFIC ============================================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- PAGE TITLE HERE ============================================= -->
+    <title>{{ $title }}</title>
+    @include('guests.layouts.guest-head-links')
 </head>
 
-<body>
+<body id="bg">
+<div class="page-wraper">
+    <div id="loading-icon-bx"></div>
+    @include('guests.layouts.header')
+    <div class="page-content bg-white">
+        {{ $slot }}
+    </div>
+</div>
 
+    @include('guests.layouts.footer')
+    <button class="back-to-top fa fa-chevron-up"></button>
     @include('guests.layouts.guest-footer-scripts')
 </body>
 </html>

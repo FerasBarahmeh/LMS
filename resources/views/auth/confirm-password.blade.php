@@ -1,7 +1,9 @@
 <x-auth-layout :title="__('password.confirm_password')">
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('password.hint_confirm_password') }}
-    </div>
+   <x-slot name="head">
+       <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+           {{ __('password.hint_confirm_password') }}
+       </div>
+   </x-slot>
 
     <form method="POST" action="{{ route('password.confirm') }}">
         @csrf

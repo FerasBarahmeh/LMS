@@ -1,68 +1,56 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 
-    <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <!-- META ============================================= -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
-    <meta name="Author" content="Spruko Technologies Private Limited">
-    <meta name="Keywords" content="admin,admin dashboard,admin dashboard template,admin panel template,admin template,admin theme,bootstrap 4 admin template,bootstrap 4 dashboard,bootstrap admin,bootstrap admin dashboard,bootstrap admin panel,bootstrap admin template,bootstrap admin theme,bootstrap dashboard,bootstrap form template,bootstrap panel,bootstrap ui kit,dashboard bootstrap 4,dashboard design,dashboard html,dashboard template,dashboard ui kit,envato templates,flat ui,html,html and css templates,html dashboard template,html5,jquery html,premium,premium quality,sidebar bootstrap 4,template admin bootstrap 4"/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
+    <meta name="robots" content=""/>
 
-    <!-- Title -->
+    <!-- DESCRIPTION -->
+    <meta name="description" content="EduChamp : Education HTML Template"/>
+
+    <!-- OG -->
+    <meta property="og:title" content="EduChamp : Education HTML Template"/>
+    <meta property="og:description" content="EduChamp : Education HTML Template"/>
+    <meta property="og:image" content=""/>
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- MOBILE SPECIFIC ============================================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- PAGE TITLE HERE ============================================= -->
     <title>{{ $title }}</title>
-    @include('backend.layouts.links')
+    @include('auth.layouts.head-links')
 </head>
-<body class="main-body bg-light">
 
-<!-- Loader -->
-<div id="global-loader">
-    <img src="{{ asset('img/brand/loader.svg') }}" class="loader-img" alt="Loader">
-</div>
-<!-- /Loader -->
-
-<!-- Page -->
-<div class="page">
-
-    <div class="container-fluid">
-        <div class="row no-gutter">
-            <!-- The image half -->
-            <div class="col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent">
-                <div class="row wd-100p mx-auto text-center">
-                    <div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
-                        <img src="{{ asset('img/brand/logo-light.png')}}"
-                             class="my-auto ht-xl-80p wd-md-100p wd-xl-80p mx-auto" alt="logo">
+<body id="bg">
+<div class="page-wraper">
+    <div id="loading-icon-bx"></div>
+    <div class="page-content bg-white">
+        <div class="account-form">
+            <div class="account-head" style="background-image:url({{ asset('guest/assets/images/background/bg2.jpg);')}}">
+                <a href="{{ route('home') }}"><img src="{{ asset('guest/assets/images/logo-white-2.png')}}" alt=""></a>
+            </div>
+            <div class="account-form-inner">
+                <div class="account-container">
+                    <div class="heading-bx left">
+                        {{ $head }}
                     </div>
+
+                    <!-- Form -->
+                    {{ $slot }}
                 </div>
             </div>
-            <!-- The content half -->
-            <div class="col-md-6 col-lg-6 col-xl-5">
-                <div class="login d-flex align-items-center py-2">
-                    <!-- Demo content-->
-                    <div class="container p-0">
-                        <div class="row">
-                            <div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
-                                <div class="card-sigin">
-                                    <div class="mb-5 d-flex align-items-center justify-content-center w-full">
-                                        <a href="#" >
-                                            <img src="{{asset('img/brand/logo-light.png')}}"
-                                                 class="sign-favicon ht-40" alt="logo">
-                                        </a>
-                                    </div>
-                                    {{ $slot }}
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End -->
-                </div>
-            </div><!-- End -->
         </div>
+
     </div>
-
 </div>
-<!-- End Page -->
 
-@include('backend.layouts.scripts')
+@include('guests.layouts.footer')
+<button class="back-to-top fa fa-chevron-up"></button>
+@include('guests.layouts.guest-footer-scripts')
 </body>
 </html>
