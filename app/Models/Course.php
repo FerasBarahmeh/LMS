@@ -58,6 +58,11 @@ class Course extends Model implements HasMedia
         return $this->hasMany(CourseSection::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(AcademicSubject::class, 'academic_subject_id');
+    }
+
     /**
      * Get object from service model class
      */

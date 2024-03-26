@@ -56,6 +56,9 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware(['web', Privileges::Instructor->value])
                 ->group(base_path('routes/instructor.php'));
+
+            Route::middleware(['web'])
+                ->group(base_path('routes/courses.php'));
         });
     }
 }

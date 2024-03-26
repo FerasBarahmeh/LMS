@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 
-class CoursesController extends Controller
+class InstructorCoursesController extends Controller
 {
     use FlashMessages;
 
@@ -65,14 +65,6 @@ class CoursesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        // TODO: Implement show() method
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id): View
@@ -95,14 +87,6 @@ class CoursesController extends Controller
         return $course->save()
             ? $this->backWith('update-course-success')
             : $this->backWith('failed-course-success');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        // TODO: Implement destroy() method
     }
 
     /*
@@ -175,5 +159,11 @@ class CoursesController extends Controller
         $course->update($request->validated());
         $course->save();
         return $this->backWith('success-update-price');
+    }
+
+    public function all()
+    {
+        $courses = Course::paginate(5);
+
     }
 }

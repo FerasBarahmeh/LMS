@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admins\InstructorController;
-use App\Http\Controllers\Instructors\CoursesController;
+use App\Http\Controllers\Instructors\InstructorCoursesController;
 use App\Http\Controllers\Instructors\LectureController;
 use App\Http\Controllers\Instructors\SectionController;
 use Illuminate\Support\Facades\Route;
@@ -24,12 +24,12 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
             /**
              * Courses
              */
-            Route::resource('courses', CoursesController::class)->except('create');
+            Route::resource('courses', InstructorCoursesController::class)->except('create', 'show', 'destroy');
             Route::prefix('courses')->name('courses.manage.')->group(function () {
                 /**
                  * In course controller
                  */
-                Route::controller(CoursesController::class)->group(function () {
+                Route::controller(InstructorCoursesController::class)->group(function () {
                     Route::get('manage/{course}/curriculum', 'curriculum')
                         ->name('curriculum');
 
