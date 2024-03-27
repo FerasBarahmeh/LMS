@@ -65,8 +65,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="javascript:;">Home <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <li><a href="index.html">Home 1</a></li>
-                                <li><a href="index-2.html">Home 2</a></li>
+                                <li><a href="{{ route('home') }}">Home</a></li>
                             </ul>
                         </li>
                         <li><a href="javascript:;">Pages <i class="fa fa-chevron-down"></i></a>
