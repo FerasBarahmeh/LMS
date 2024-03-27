@@ -6,6 +6,8 @@ use App\Actions\Courses\UpdateAttributesDependingOnPublishStatus;
 use App\Enums\MediaCollections;
 use App\Models\Course;
 use App\Models\CoursePublicationState;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
@@ -135,6 +137,20 @@ class CourseService
     {
         $this->publishStatus->publish_status = $this->publishable();
         return $this->publishStatus->publish_status && $this->publishStatus->save();
+    }
+
+    public static function publishedCoursesWith(...$relations): Builder
+    {
+        return Course::with(relations: $relations)->whereHas('setting.publishStatus', function ($query) {
+            $query->where('publish_status', true);
+        });
+    }
+
+    public static function publishedCourse(): Builder
+    {
+        return Course::with('user', 'category', 'setting', 'sections', 'media')->whereHas('setting.publishStatus', function ($query) {
+            $query->where('publish_status', true);
+        });
     }
 
     public function __destruct()

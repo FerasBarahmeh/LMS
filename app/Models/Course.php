@@ -58,9 +58,14 @@ class Course extends Model implements HasMedia
         return $this->hasMany(CourseSection::class);
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(AcademicSubject::class, 'academic_subject_id');
+    }
+
+    public function getPriceAttribute($value): string
+    {
+        return ($value == 0) ? 'free' : $value;
     }
 
     /**

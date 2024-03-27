@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AcademicSubject;
 use App\Models\Course;
+use App\Services\Models\CourseService;
 use Illuminate\Contracts\View\View;
 
 class CoursesController extends Controller
@@ -15,17 +17,21 @@ class CoursesController extends Controller
      */
     public function all(): View
     {
-        $courses = Course::with('category', 'setting')->paginate(2);
         return view(self::BLADE_HUB . 'index', [
-            'courses' => $courses,
+            'courses' => CourseService::publishedCoursesWith('category', 'setting', 'media')->paginate(9),
+            'recentCourses' => Course::with('media', 'setting', 'setting.publishStatus')->latest()->take(2)->get(),
+            'categories' => AcademicSubject::all(),
         ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): View
     {
-        //
+        $course = CourseService::publishedCourse()->findOrFail($id);
+        return view(self::BLADE_HUB . 'course', [
+            'course' => $course,
+        ]);
     }
 }

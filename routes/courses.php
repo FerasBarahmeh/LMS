@@ -12,5 +12,6 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
     Route::prefix('courses')->name('courses.')->controller(CoursesController::class)->group(function () {
         Route::get('', 'all')->name('all');
+        Route::get('/course/{course}', 'show')->name('course');
     });
 });
