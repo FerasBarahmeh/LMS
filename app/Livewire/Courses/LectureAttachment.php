@@ -23,11 +23,6 @@ class LectureAttachment extends Component
     public Lecture $lecture;
 
     /**
-     * Service object for Lecture model
-     */
-    protected LectureService $lectureService;
-
-    /**
      * If lecture has attachments
      *
      * @var bool
@@ -60,8 +55,7 @@ class LectureAttachment extends Component
      */
     public function mount(): void
     {
-        $this->lectureService = new LectureService($this->lecture);
-        $this->hasAttachments = $this->lectureService->hasAttachments();
+        $this->hasAttachments = $this->lecture->service()->hasAttachments();
     }
 
     /**
@@ -86,7 +80,7 @@ class LectureAttachment extends Component
      */
     public function uploadVideoComplete(): void
     {
-        if ($this->lectureService->hasVideoAttachment()) {
+        if ($this->lecture->service()->hasVideoAttachment()) {
             session()->flash('already-has-lesson', 'The lecture has video lesson already');
             return;
         }
@@ -132,7 +126,7 @@ class LectureAttachment extends Component
 
     public function rid($id): void
     {
-        Media::find($id)->delete();
+        Media::findOrFail($id)->delete();
     }
 
     public function rules(): array

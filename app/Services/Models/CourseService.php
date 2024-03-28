@@ -6,7 +6,6 @@ use App\Actions\Courses\UpdateAttributesDependingOnPublishStatus;
 use App\Enums\MediaCollections;
 use App\Models\Course;
 use App\Models\CoursePublicationState;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
@@ -14,6 +13,9 @@ use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 class CourseService
 {
     protected Course $course;
+
+    private const string EMPTY_IMAGE_PATH = 'img/courses/img-empty.png';
+    private const string EMPTY_PROMOTIONAL_PATH = 'img/courses/promotional-empty.png';
 
     public CoursePublicationState $publishStatus;
 
@@ -26,13 +28,29 @@ class CourseService
     public function courseImage(): string
     {
         $url = $this->urlCourseImage();
-        return !$url ? asset('img/courses/img-empty.png') : $url;
+        return !$url ? asset(self::EMPTY_IMAGE_PATH) : $url;
     }
 
     public function coursePromotion(): string
     {
         $url = $this->urlCoursePromotion();
-        return !$url ? asset('img/courses/promotional-empty.png') : $url;
+        return !$url ? asset(self::EMPTY_PROMOTIONAL_PATH) : $url;
+    }
+
+    public function deleteImage(): ?bool
+    {
+        return
+            $this->hasImage() ?
+                $this->course->getFirstMedia(MediaCollections::CourseImage->value)->delete()
+                : false;
+    }
+
+    public function deletePromotional(): ?bool
+    {
+        return
+            $this->hasPromotional() ?
+                $this->course->getFirstMedia(MediaCollections::CoursePromotional->value)->delete()
+                : false;
     }
 
     /**
@@ -40,10 +58,8 @@ class CourseService
      */
     public function updateImage(): void
     {
-        if ($this->hasImage())
-            $this->course->getFirstMedia(MediaCollections::CourseImage->value)->delete();
-
         try {
+            $this->deleteImage();
             $this->course
                 ->addMediaFromRequest('course_image')
                 ->usingFileName('course-image.png')
@@ -58,10 +74,8 @@ class CourseService
      */
     public function updatePromotional(): void
     {
-        if ($this->hasPromotional())
-            $this->course->getFirstMedia(MediaCollections::CoursePromotional->value)->delete();
-
         try {
+            $this->deletePromotional();
             $this->course
                 ->addMediaFromRequest('course_promotional')
                 ->usingFileName('promotional.mp4')
@@ -83,8 +97,11 @@ class CourseService
 
     public function hasLecture(): bool
     {
-        return $this->course->sections->isNotEmpty()
-            && $this->course->sections->lectures->isNotEmpty();
+        return
+            $this->course->sections->isNotEmpty()
+            && $this->course->sections->some(function ($section) {
+                return $section->lectures->isNotEmpty();
+            });
     }
 
     public function hasDescription(): bool
