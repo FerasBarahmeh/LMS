@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Instructors;
 
 use App\Actions\Courses\StoreCourse;
 use App\Actions\Courses\UpdateAttributesDependingOnPublishStatus;
+use App\Enums\MediaCollections;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseMessagesRequest;
 use App\Http\Requests\CoursePriceRequest;
@@ -125,7 +126,9 @@ class InstructorCoursesController extends Controller
     public function updateImage(UpdateCourseImageRequest $request, $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
-        $course = $course->service()->updateImageFromRequest('course_image');
+        $service = $course->service();
+        $service->clearImage();
+        $service->updateImageFromRequest('course_image');
         UpdateAttributesDependingOnPublishStatus::execute($course);
         return $this->backWith('update-course-image-success');
     }
@@ -133,7 +136,9 @@ class InstructorCoursesController extends Controller
     public function updatePromotional(UpdateCoursePromotionalRequest $request, $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
-        $course = $course->service()->updatePromotionalFromRequest('course_promotional');
+        $service = $course->service();
+        $service->clearPromotional();
+        $service->updatePromotionalFromRequest('course_promotional');
         UpdateAttributesDependingOnPublishStatus::execute($course);
         return $this->backWith('update-course-promotional-success');
     }

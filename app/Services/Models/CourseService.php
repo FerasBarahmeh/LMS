@@ -6,8 +6,6 @@ use App\Enums\MediaCollections;
 use App\Models\Course;
 use App\Models\CoursePublicationState;
 use Illuminate\Database\Eloquent\Builder;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 class CourseService
 {
@@ -36,54 +34,38 @@ class CourseService
         return !$url ? asset(self::EMPTY_PROMOTIONAL_PATH) : $url;
     }
 
-    public function deleteImage(): ?bool
+    public function clearImage(): false|\Spatie\MediaLibrary\HasMedia
     {
-        return
-            $this->hasImage() ?
-                $this->course->getFirstMedia(MediaCollections::CourseImage->value)->delete()
-                : false;
+        return $this->hasImage() ? $this->course->clearMediaCollection(MediaCollections::CourseImage->value) : false;
     }
 
-    public function deletePromotional(): ?bool
+    public function clearPromotional(): false|\Spatie\MediaLibrary\HasMedia
     {
-        return
-            $this->hasPromotional() ?
-                $this->course->getFirstMedia(MediaCollections::CoursePromotional->value)->delete()
-                : false;
+        return $this->hasPromotional() ? $this->course->clearMediaCollection(MediaCollections::CoursePromotional->value) : false ;
     }
 
     /**
      * Update course image
      */
-    public function updateImageFromRequest(string $requestName): Course|false
+    public function updateImageFromRequest(string $requestName): Course
     {
-        try {
-            $this->deleteImage();
-            $this->course
-                ->addMediaFromRequest(key: $requestName)
-                ->usingFileName('course-image.png')
-                ->toMediaCollection(MediaCollections::CourseImage->value);
-            return $this->course;
-        } catch (FileDoesNotExist|FileIsTooBig $e) {
-            return false;
-        }
+        $this->course
+            ->addMediaFromRequest(key: $requestName)
+            ->usingFileName('course-image.png')
+            ->toMediaCollection(MediaCollections::CourseImage->value);
+        return $this->course;
     }
 
     /**
      * Update promotional for course
      */
-    public function updatePromotionalFromRequest(string $requestName): Course|false
+    public function updatePromotionalFromRequest(string $requestName): Course
     {
-        try {
-            $this->deletePromotional();
-            $this->course
-                ->addMediaFromRequest(key: $requestName)
-                ->usingFileName('promotional.mp4')
-                ->toMediaCollection(MediaCollections::CoursePromotional->value);
-            return $this->course;
-        } catch (FileDoesNotExist|FileIsTooBig $e) {
-            return false;
-        }
+        $this->course
+            ->addMediaFromRequest(key: $requestName)
+            ->usingFileName('promotional.mp4')
+            ->toMediaCollection(MediaCollections::CoursePromotional->value);
+        return $this->course;
     }
 
     public function urlCourseImage()
@@ -133,7 +115,7 @@ class CourseService
 
     public function publishable(): bool
     {
-        // TODO: apply XOR SQL Query
+        // TODO: apply And SQL Query
         return $this->publishStatus->curriculum_compass
             && $this->publishStatus->has_description
             && $this->publishStatus->has_course_image
