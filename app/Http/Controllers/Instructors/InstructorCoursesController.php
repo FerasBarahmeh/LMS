@@ -125,7 +125,7 @@ class InstructorCoursesController extends Controller
     public function updateImage(UpdateCourseImageRequest $request, $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
-        $course = $course->service()->updateImage();
+        $course = $course->service()->updateImageFromRequest('course_image');
         UpdateAttributesDependingOnPublishStatus::execute($course);
         return $this->backWith('update-course-image-success');
     }
@@ -133,7 +133,7 @@ class InstructorCoursesController extends Controller
     public function updatePromotional(UpdateCoursePromotionalRequest $request, $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
-        $course = $course->service()->updatePromotional();
+        $course = $course->service()->updatePromotionalFromRequest('course_promotional');
         UpdateAttributesDependingOnPublishStatus::execute($course);
         return $this->backWith('update-course-promotional-success');
     }

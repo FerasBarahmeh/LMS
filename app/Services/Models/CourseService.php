@@ -55,12 +55,12 @@ class CourseService
     /**
      * Update course image
      */
-    public function updateImage(): Course|false
+    public function updateImageFromRequest(string $requestName): Course|false
     {
         try {
             $this->deleteImage();
             $this->course
-                ->addMediaFromRequest('course_image')
+                ->addMediaFromRequest(key: $requestName)
                 ->usingFileName('course-image.png')
                 ->toMediaCollection(MediaCollections::CourseImage->value);
             return $this->course;
@@ -72,12 +72,12 @@ class CourseService
     /**
      * Update promotional for course
      */
-    public function updatePromotional(): Course|false
+    public function updatePromotionalFromRequest(string $requestName): Course|false
     {
         try {
             $this->deletePromotional();
             $this->course
-                ->addMediaFromRequest('course_promotional')
+                ->addMediaFromRequest(key: $requestName)
                 ->usingFileName('promotional.mp4')
                 ->toMediaCollection(MediaCollections::CoursePromotional->value);
             return $this->course;
