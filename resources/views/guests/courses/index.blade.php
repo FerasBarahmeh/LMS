@@ -47,12 +47,12 @@
                                     @each('guests.courses.recentCourses', $recentCourses, 'recentCourse')
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-8 col-sm-12">
-                                <div class="row">
-                                    @each('guests.courses.courses', $courses, 'course')
-                                    <div class="col-lg-12 m-b20">
-                                        {{ $courses->links('vendor.pagination.guest') }}
-                                    </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-12">
+                            <div class="row">
+                                @each('guests.courses.courses', $courses, 'course')
+                                <div class="col-lg-12 m-b20">
+                                    {{ $courses->links('vendor.pagination.guest') }}
                                 </div>
                             </div>
                         </div>

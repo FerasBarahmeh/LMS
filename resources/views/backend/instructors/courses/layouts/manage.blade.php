@@ -1,6 +1,5 @@
 <x-app-layout :title="$course->name">
     <x-slot name="content">
-        @yield('alerts')
         <div class="row">
             <div class="col-xl-12">
                 <div class="card mg-b-20">

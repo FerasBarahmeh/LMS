@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Instructors;
 
 use App\Actions\Courses\StoreCourse;
+use App\Actions\Courses\UpdateAttributesDependingOnPublishStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseMessagesRequest;
 use App\Http\Requests\CoursePriceRequest;
@@ -106,7 +107,7 @@ class InstructorCoursesController extends Controller
      */
     public function settings(string $id): View
     {
-        $course = Course::with('sections')->find($id);
+        $course = Course::with('sections')->findOrFail($id);
 
         return view(self::BLADE_HUB . 'settings', [
             'course' => $course,
@@ -124,21 +125,23 @@ class InstructorCoursesController extends Controller
     public function updateImage(UpdateCourseImageRequest $request, $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
-        $course->service()->updateImage();
+        $course = $course->service()->updateImage();
+        UpdateAttributesDependingOnPublishStatus::execute($course);
         return $this->backWith('update-course-image-success');
     }
 
     public function updatePromotional(UpdateCoursePromotionalRequest $request, $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
-        $course->service()->updatePromotional();
+        $course = $course->service()->updatePromotional();
+        UpdateAttributesDependingOnPublishStatus::execute($course);
         return $this->backWith('update-course-promotional-success');
     }
 
     public function publish(string $id): RedirectResponse
     {
         $course = Course::findOrFail($id);
-        $published = $course->service()->updatePublishStatus();
+        $published = $course->service()->dispatchPublished();
         return $published
             ? $this->backWith('success-publish-course')
             : $this->backWith('failed-publish-course');

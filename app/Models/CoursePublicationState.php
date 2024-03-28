@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CoursePublicationState extends Model
 {
     protected $fillable = [
-        'publish_status',
-        'has_lecture',
+        'publishable',
+        'curriculum_compass',
         'has_description',
         'has_course_image',
         'has_promotional_video',

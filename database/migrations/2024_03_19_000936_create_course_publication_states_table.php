@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('course_publication_states', function (Blueprint $table) {
             $table->id();
-            $table->boolean('publish_status')->default(false);
-            $table->boolean('has_lecture')->default(false);
+            $table->boolean('publishable')->default(false);
+            $table->boolean('curriculum_compass')->default(false);
             $table->boolean('has_description')->default(false);
             $table->boolean('has_course_image')->default(false);
             $table->boolean('has_promotional_video')->default(false);

@@ -28,9 +28,13 @@
                 <form method="POST" action="{{ route('instructor.courses.manage.publish', $course->id) }}">
                     @csrf @method('put')
                     <x-primary-button
-                        name="id" @class(['mt-2 bg-transparent d-flex gap-5 align-items-center', 'text-danger disable' => !$course->service()->publishable() || $course->service()->isPublish(), 'text-success' => $course->service()->publishable()])>
-                        <i class="icon icon-rocket"></i>
-                        <span> {{ $course->service()->isPublish() ? 'Un publish' : 'Publish' }}</span>
+                        name="id" @class(['mt-2 bg-transparent d-flex gap-5 align-items-center', 'text-danger disable' => !$course->service()->publishable() || $course->setting->published, 'text-success' => $course->service()->publishable()])>
+                        @if($course->setting->publishStatus->publishable)
+                            <i class="icon icon-rocket"></i>
+                            <span> {{ $course->setting->published ? 'Un publish' : 'Publish' }}</span>
+                        @else
+                            <span> Can't publish yet</span>
+                        @endif
                     </x-primary-button>
                     <x-input-error :messages="$errors->get('id')" class="mt-2"/>
                 </form>

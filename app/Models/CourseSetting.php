@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseSetting extends Model
 {
-    protected $fillable = ['currency', 'course_id'];
+    protected $fillable = ['currency', 'published', 'course_id'];
 
     public $timestamps = false;
 

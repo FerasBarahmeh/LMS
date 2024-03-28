@@ -10,7 +10,7 @@ class UpdateAttributesDependingOnPublishStatus
     {
         $service = $course->service();
         $publish = $service->publishStatus;
-        $publish->has_lecture = $service->hasLecture();
+        $publish->curriculum_compass = $service->curriculumCompass();
         $publish->has_description = $service->hasDescription();
         $publish->has_course_image = $service->hasImage();
         $publish->has_promotional_video = $service->hasPromotional();
@@ -18,7 +18,7 @@ class UpdateAttributesDependingOnPublishStatus
         $publish->has_price = !$service->isFree();
         $publish->has_congratulations_message = $service->hasCongratulationsMessage();
         $publish->has_welcome_message = $service->hasWelcomeMessage();
-        $service->updatePublishStatus();
-        return $publish->save();
+        $service->updatePublishableStatus();
+        return  $course->save() && $publish->save() ;
     }
 }

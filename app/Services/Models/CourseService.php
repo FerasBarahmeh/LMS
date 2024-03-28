@@ -2,7 +2,6 @@
 
 namespace App\Services\Models;
 
-use App\Actions\Courses\UpdateAttributesDependingOnPublishStatus;
 use App\Enums\MediaCollections;
 use App\Models\Course;
 use App\Models\CoursePublicationState;
@@ -56,7 +55,7 @@ class CourseService
     /**
      * Update course image
      */
-    public function updateImage(): void
+    public function updateImage(): Course|false
     {
         try {
             $this->deleteImage();
@@ -64,15 +63,16 @@ class CourseService
                 ->addMediaFromRequest('course_image')
                 ->usingFileName('course-image.png')
                 ->toMediaCollection(MediaCollections::CourseImage->value);
-            UpdateAttributesDependingOnPublishStatus::execute($this->course);
+            return $this->course;
         } catch (FileDoesNotExist|FileIsTooBig $e) {
+            return false;
         }
     }
 
     /**
      * Update promotional for course
      */
-    public function updatePromotional(): void
+    public function updatePromotional(): Course|false
     {
         try {
             $this->deletePromotional();
@@ -80,8 +80,9 @@ class CourseService
                 ->addMediaFromRequest('course_promotional')
                 ->usingFileName('promotional.mp4')
                 ->toMediaCollection(MediaCollections::CoursePromotional->value);
-            UpdateAttributesDependingOnPublishStatus::execute($this->course);
+            return $this->course;
         } catch (FileDoesNotExist|FileIsTooBig $e) {
+            return false;
         }
     }
 
@@ -102,6 +103,12 @@ class CourseService
             && $this->course->sections->some(function ($section) {
                 return $section->lectures->isNotEmpty();
             });
+    }
+
+    public function curriculumCompass(): bool
+    {
+        // TODO: append publishing status for lecture and section as factor
+        return $this->hasLecture();
     }
 
     public function hasDescription(): bool
@@ -126,7 +133,8 @@ class CourseService
 
     public function publishable(): bool
     {
-        return $this->publishStatus->has_lecture
+        // TODO: apply XOR SQL Query
+        return $this->publishStatus->curriculum_compass
             && $this->publishStatus->has_description
             && $this->publishStatus->has_course_image
             && $this->publishStatus->has_promotional_video
@@ -135,38 +143,44 @@ class CourseService
             && $this->publishStatus->has_welcome_message;
     }
 
-    public function isPublish(): bool
+    public function published(): bool
     {
-        return $this->publishStatus->publish_status == true;
+        return $this->course->setting->published;
     }
 
     public function hasImage(): bool
     {
-        return $this->course->hasMedia(MediaCollections::CourseImage->value) != null;
+        return $this->course->hasMedia(MediaCollections::CourseImage->value);
     }
 
     public function hasPromotional(): bool
     {
-        return $this->course->hasMedia(MediaCollections::CoursePromotional->value) != null;
+        return $this->course->hasMedia(MediaCollections::CoursePromotional->value);
     }
 
-    public function updatePublishStatus(): bool
+    public function updatePublishableStatus(): bool
     {
-        $this->publishStatus->publish_status = $this->publishable();
-        return $this->publishStatus->publish_status && $this->publishStatus->save();
+        $this->publishStatus->publishable = $this->publishable();
+        return $this->course->setting->save();
+    }
+
+    public function dispatchPublished(): bool
+    {
+        $this->course->setting->published = $this->publishStatus->publishable && !$this->course->setting->published;
+        return $this->publishStatus->publishable && $this->course->setting->save();
     }
 
     public static function publishedCoursesWith(...$relations): Builder
     {
-        return Course::with(relations: $relations)->whereHas('setting.publishStatus', function ($query) {
-            $query->where('publish_status', true);
+        return Course::with(relations: $relations)->whereHas('setting', function ($query) {
+            $query->where('published', true);
         });
     }
 
     public static function publishedCourse(): Builder
     {
         return Course::with('user', 'category', 'setting', 'sections', 'media')->whereHas('setting.publishStatus', function ($query) {
-            $query->where('publish_status', true);
+            $query->where('publishable', true);
         });
     }
 
