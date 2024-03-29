@@ -3,9 +3,11 @@
 namespace App\Services\Models;
 
 use App\Enums\MediaCollections;
+use App\Enums\TypeAttachments;
 use App\Models\Course;
 use App\Models\CoursePublicationState;
 use Illuminate\Database\Eloquent\Builder;
+use Spatie\MediaLibrary\HasMedia;
 
 class CourseService
 {
@@ -34,14 +36,14 @@ class CourseService
         return !$url ? asset(self::EMPTY_PROMOTIONAL_PATH) : $url;
     }
 
-    public function clearImage(): false|\Spatie\MediaLibrary\HasMedia
+    public function clearImage(): false|HasMedia
     {
         return $this->hasImage() ? $this->course->clearMediaCollection(MediaCollections::CourseImage->value) : false;
     }
 
-    public function clearPromotional(): false|\Spatie\MediaLibrary\HasMedia
+    public function clearPromotional(): false|HasMedia
     {
-        return $this->hasPromotional() ? $this->course->clearMediaCollection(MediaCollections::CoursePromotional->value) : false ;
+        return $this->hasPromotional() ? $this->course->clearMediaCollection(MediaCollections::CoursePromotional->value) : false;
     }
 
     /**
@@ -78,19 +80,15 @@ class CourseService
         return optional($this->course->getFirstMedia(MediaCollections::CoursePromotional->value))->getUrl() ?? false;
     }
 
-    public function hasLecture(): bool
-    {
-        return
-            $this->course->sections->isNotEmpty()
-            && $this->course->sections->some(function ($section) {
-                return $section->lectures->isNotEmpty();
-            });
-    }
-
     public function curriculumCompass(): bool
     {
-        // TODO: append publishing status for lecture and section as factor
-        return $this->hasLecture();
+        return Course::with(['sections' => function ($query) {
+                $query->where('published', true)->with(['lectures' => function ($query) {
+                    $query->where('published', true)->with(['attachments' => function ($query) {
+                        $query->where('type_attachment', TypeAttachments::Video->value);
+                    }]);
+                }]);
+            }])->find(id: $this->course->id)->sections->pluck('lectures')->flatten()->pluck('attachments')->flatten()->count() > 0;
     }
 
     public function hasDescription(): bool
@@ -115,7 +113,6 @@ class CourseService
 
     public function publishable(): bool
     {
-        // TODO: apply And SQL Query
         return $this->publishStatus->curriculum_compass
             && $this->publishStatus->has_description
             && $this->publishStatus->has_course_image

@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers\Instructors;
 
-use App\Actions\Courses\StoreCourse;
-use App\Actions\Courses\UpdateAttributesDependingOnPublishStatus;
-use App\Enums\MediaCollections;
+use App\Actions\Courses\{StoreCourse, UpdateAttributesDependingOnPublishStatus};
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CourseMessagesRequest;
-use App\Http\Requests\CoursePriceRequest;
+use App\Http\Requests\{CourseMessagesRequest,
+    CoursePriceRequest,
+    UpdateCourseImageRequest,
+    UpdateCoursePromotionalRequest,
+    UpdateCourseRequest};
 use App\Http\Requests\Courses\StoreCourseRequest;
-use App\Http\Requests\UpdateCourseImageRequest;
-use App\Http\Requests\UpdateCoursePromotionalRequest;
-use App\Http\Requests\UpdateCourseRequest;
-use App\Models\AcademicSubject;
-use App\Models\Course;
+use App\Models\{AcademicSubject, Course};
 use App\Traits\Controllers\FlashMessages;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
@@ -108,7 +105,7 @@ class InstructorCoursesController extends Controller
      */
     public function settings(string $id): View
     {
-        $course = Course::with('sections')->findOrFail($id);
+        $course = Course::with('setting')->findOrFail($id);
 
         return view(self::BLADE_HUB . 'settings', [
             'course' => $course,
@@ -167,11 +164,5 @@ class InstructorCoursesController extends Controller
         $course->update($request->validated());
         $course->save();
         return $this->backWith('success-update-price');
-    }
-
-    public function all()
-    {
-        $courses = Course::paginate(5);
-
     }
 }
