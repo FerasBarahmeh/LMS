@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Courses;
 
+use App\Actions\Courses\UpdateAttributesDependingOnPublishStatus;
 use App\Models\Lecture as LectureModel;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
@@ -50,6 +51,7 @@ class Lecture extends Component
     {
         $this->lecture->published = !$this->lecture->published;
         $this->lecture->save();
+        UpdateAttributesDependingOnPublishStatus::execute($this->lecture->section->course);
     }
 
     public function changeDescription(): void

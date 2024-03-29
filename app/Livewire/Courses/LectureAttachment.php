@@ -6,7 +6,6 @@ use App\Enums\MediaCollections;
 use App\Enums\TypeAttachments;
 use App\Models\Lecture;
 use App\Models\LectureAttachment as Attachment;
-use App\Services\Models\LectureService;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\FileNotPreviewableException;
@@ -14,7 +13,6 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class LectureAttachment extends Component
 {
@@ -126,7 +124,7 @@ class LectureAttachment extends Component
 
     public function rid($id): void
     {
-        Media::findOrFail($id)->delete();
+        Attachment::findOrFail($id)->delete();
     }
 
     public function rules(): array

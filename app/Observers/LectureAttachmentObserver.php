@@ -28,7 +28,7 @@ class LectureAttachmentObserver
      */
     public function deleted(LectureAttachment $lectureAttachment): void
     {
-        //
+        UpdateAttributesDependingOnPublishStatus::execute($lectureAttachment->lecture->section->course);
     }
 
     /**
