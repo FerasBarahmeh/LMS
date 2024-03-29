@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Courses;
 
+use App\Actions\Courses\UpdateAttributesDependingOnPublishStatus;
 use App\Models\Course;
 use App\Models\CourseSection;
 use Illuminate\Contracts\View\View;
