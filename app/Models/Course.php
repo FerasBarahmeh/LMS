@@ -68,6 +68,12 @@ class Course extends Model implements HasMedia
         return ($value == 0) ? 'free' : $value;
     }
 
+    public function setPriceAttribute($value): void
+    {
+        $this->is_free = (int)$value > 0;
+        $this->save();
+    }
+
     /**
      * Get object from service model class
      */
