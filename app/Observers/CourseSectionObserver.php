@@ -21,7 +21,7 @@ class CourseSectionObserver
     public function updated(CourseSection $courseSection): void
     {
         if ($courseSection->isDirty('published')) {
-            UpdateAttributesDependingOnPublishStatus::execute($this->section->course);
+            UpdateAttributesDependingOnPublishStatus::execute($courseSection->course);
         }
     }
 
