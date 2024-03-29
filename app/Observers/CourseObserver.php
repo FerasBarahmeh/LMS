@@ -20,7 +20,9 @@ class CourseObserver
      */
     public function updated(Course $course): void
     {
-        UpdateAttributesDependingOnPublishStatus::execute($course);
+        if ($course->isDirty('description') || $course->isDirty('welcome_message') || $course->isDirty('congratulations_message')) {
+            UpdateAttributesDependingOnPublishStatus::execute($course);
+        }
     }
 
     /**
