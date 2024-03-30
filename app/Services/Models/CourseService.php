@@ -13,27 +13,12 @@ class CourseService
 {
     protected Course $course;
 
-    private const string EMPTY_IMAGE_PATH = 'img/courses/img-empty.png';
-    private const string EMPTY_PROMOTIONAL_PATH = 'img/courses/promotional-empty.png';
-
     public CoursePublicationState $publishStatus;
 
     public function __construct(Course $course)
     {
         $this->course = $course;
         $this->publishStatus = $this->course->setting->publishStatus;
-    }
-
-    public function courseImage(): string
-    {
-        $url = $this->urlCourseImage();
-        return !$url ? asset(self::EMPTY_IMAGE_PATH) : $url;
-    }
-
-    public function coursePromotion(): string
-    {
-        $url = $this->urlCoursePromotion();
-        return !$url ? asset(self::EMPTY_PROMOTIONAL_PATH) : $url;
     }
 
     public function clearImage(): false|HasMedia
@@ -70,14 +55,14 @@ class CourseService
         return $this->course;
     }
 
-    public function urlCourseImage()
+    public function urlCourseImage(): string
     {
-        return optional($this->course->getFirstMedia(MediaCollections::CourseImage->value))->getUrl() ?? false;
+        return $this->course->getFirstMediaUrl(MediaCollections::CourseImage->value);
     }
 
-    public function urlCoursePromotion()
+    public function urlCoursePromotion(): string
     {
-        return optional($this->course->getFirstMedia(MediaCollections::CoursePromotional->value))->getUrl() ?? false;
+        return $this->course->getFirstMediaUrl(MediaCollections::CoursePromotional->value);
     }
 
     public function curriculumCompass(): bool
