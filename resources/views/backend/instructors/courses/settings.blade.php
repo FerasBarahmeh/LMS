@@ -53,7 +53,7 @@
 
                 <!-- Alerts -->
                 @if (session()->has('success-update-price'))
-                    <x-alerts.success :mess age="session('success-update-price')"/>
+                    <x-alerts.success :message="session('success-update-price')"/>
                 @endif
 
                 <form method="POST" action="{{ route('instructor.courses.manage.price', $course->id) }}">
