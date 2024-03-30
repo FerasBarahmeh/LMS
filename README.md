@@ -6,5 +6,6 @@
 5) Generate key for app using `php artisan key:generate`
 6) Migration DB `php artisan mi:f --seed`
 7) Set your mail configuration in .env file
+8) Set "APP_URL=http://localhost:8000" in .env file 
 # Note
 in your php config (php.ini) file change the post_max_size and upload_max_filesize	to the max size you wan't uploade
