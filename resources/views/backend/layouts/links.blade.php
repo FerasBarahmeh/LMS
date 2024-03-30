@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link rel="icon" href="{{ asset('img/brand/logo-light.png')}}" type="image/x-icon"/>
+<link rel="icon" href="{{ asset('img/brand/logo.ico')}}" type="image/x-icon"/>
 <!--  Owl-carousel css-->
 <link href="{{ asset('backend/assets/plugins/owl-carousel/owl.carousel.css')}}" rel="stylesheet" />
 <!--  Custom Scroll bar-->
