@@ -19,6 +19,6 @@ class UpdateAttributesDependingOnPublishStatus
         $publish->has_congratulations_message = $service->hasCongratulationsMessage();
         $publish->has_welcome_message = $service->hasWelcomeMessage();
         $service->updatePublishableStatus();
-        return  $course->save() && $publish->save() ;
+        return $publish->save();
     }
 }
