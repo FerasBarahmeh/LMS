@@ -22,7 +22,6 @@ class Course extends Model implements HasMedia
         'semester',
         'description',
         'price',
-        'is_free',
         'enrollment_number',
         'congratulations_message',
         'welcome_message',
@@ -66,12 +65,6 @@ class Course extends Model implements HasMedia
     public function getPriceAttribute($value): string
     {
         return ($value == 0) ? 'free' : $value;
-    }
-
-    public function setPriceAttribute($value): void
-    {
-        $this->is_free = (int)$value > 0;
-        $this->save();
     }
 
     /**
