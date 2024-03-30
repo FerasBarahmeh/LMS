@@ -110,7 +110,7 @@
             <div class="flex-wrap d-flex align-items-center-center gap-10 pl-5 pr-5">
                 <figure class="flex-1 wd-300 ht-300 m-0">
                     <img
-                        src="{{ $course->service()->courseImage() }}"
+                        src="{{ altCourseImageUrl($course->service()->urlCourseImage()) }}"
                         alt='image course' class="w-100 h-100"/>
                 </figure>
                 <div class="flex-1 align-self-center">
@@ -134,8 +134,8 @@
         <div class="mt-3">
             <h5 class="pr-5 pl-5 mb-3 text-dark">Promotional video</h5>
             <div class="flex-wrap d-flex align-items-center-center gap-10 pl-5 pr-5">
-                <video autoplay muted class="flex-1 wd-300 ht-300 m-0" poster="{{ $course->service()->coursePromotion() }}">
-                    <source src="{{ $course->service()->coursePromotion() }}" type="video/mp4">
+                <video autoplay muted class="flex-1 wd-300 ht-300 m-0" poster="{{  altCoursePromotionUrl($course->service()->urlCoursePromotion()) }}">
+                    <source src="{{ altCoursePromotionUrl($course->service()->urlCoursePromotion()) }}" type="video/mp4">
                 </video>
                 <div class="flex-1 align-self-center">
                     <p class="text-dark text-break">Your promo video is a quick and compelling way for students to

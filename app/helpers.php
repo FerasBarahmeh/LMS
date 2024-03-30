@@ -49,3 +49,17 @@ if (! function_exists('diffForHumans')) {
        return $date != null ? \Illuminate\Support\Carbon::parse($date)->diffForHumans() : '';
     }
 }
+
+if (! function_exists('altCourseImageUrl')) {
+    function altCourseImageUrl(string $url ): string
+    {
+        return $url != '' ? $url : asset(path: config('paths.EMPTY_IMAGE_COURSE'));
+    }
+}
+
+if (! function_exists('altCoursePromotionUrl')) {
+    function altCoursePromotionUrl(string $url ): string
+    {
+        return $url != '' ? $url : asset(path: config('paths.EMPTY_PROMOTIONAL_COURSE'));
+    }
+}
