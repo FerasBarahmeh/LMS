@@ -13,22 +13,38 @@ class AuthenticationTest extends TestCase
 
     public function test_login_screen_can_be_rendered(): void
     {
+        $this->withOutLaravelLocalizationMiddlewares();
         $response = $this->get('/login');
 
         $response->assertStatus(200);
     }
 
-    public function test_users_can_authenticate_using_the_login_screen(): void
+    public function test_users_can_authenticate_using_email_in_login_screen(): void
     {
+        $this->withOutLaravelLocalizationMiddlewares();
         $user = User::factory()->create();
 
         $response = $this->post('/login', [
-            'email' => $user->email,
+            'user_identifier' => $user->email,
             'password' => 'password',
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+        $response->assertRedirect(RouteServiceProvider::determineIntendedHome());
+    }
+
+    public function test_users_can_authenticate_using_username_in_login_screen(): void
+    {
+        $this->withOutLaravelLocalizationMiddlewares();
+        $user = User::factory()->create();
+
+        $response = $this->post('/login', [
+            'user_identifier' => $user->username,
+            'password' => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertRedirect(RouteServiceProvider::determineIntendedHome());
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
