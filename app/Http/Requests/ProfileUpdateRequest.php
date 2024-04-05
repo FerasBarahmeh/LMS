@@ -18,8 +18,8 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'first_name' => ['required_without:last_name', 'string', 'max:127'],
-            'last_name' => ['required_without:first_name', 'string', 'max:127'],
+            'first_name' => ['required', 'string', 'max:127'],
+            'last_name' => ['nullable', 'string', 'max:127'],
             'username' => ['required', 'string', 'max:30', new NoSpaces, Rule::unique(User::class)->ignore($this->user()->id)],
             'email' => ['required' , 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'phone' => ['nullable', 'numeric', 'digits:10'],
@@ -28,27 +28,7 @@ class ProfileUpdateRequest extends FormRequest
 
     public function prepareForValidation(): void
     {
-        $this->mergeName();
-    }
-
-    public function mergeName(): void
-    {
-        if ($this->input('name') !== null) {
-            $this->processNameInput();
-        } else {
-            $this->generateNameFromParts();
-        }
-    }
-
-    protected function processNameInput(): void
-    {
-        $name = $this->input('name');
-        $parts = explode(' ', $name);
-        $firstName = array_shift($parts);
-        $lastName = end($parts);
-
-        $this->merge(['first_name' => $firstName]);
-        $this->merge(['last_name' => $lastName]);
+        $this->generateNameFromParts();
     }
 
     protected function generateNameFromParts(): void
