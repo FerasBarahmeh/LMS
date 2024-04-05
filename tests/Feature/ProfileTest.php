@@ -12,6 +12,8 @@ class ProfileTest extends TestCase
 
     public function test_profile_page_is_displayed(): void
     {
+        $this->withOutLaravelLocalizationMiddlewares();
+
         $user = User::factory()->create();
 
         $response = $this
@@ -23,22 +25,26 @@ class ProfileTest extends TestCase
 
     public function test_profile_information_can_be_updated(): void
     {
+        $this->withOutLaravelLocalizationMiddlewares();
+
         $user = User::factory()->create();
 
         $response = $this
             ->actingAs($user)
             ->patch('/profile', [
-                'name' => 'Test User',
+                'username' => 'username',
+                'first_name' => 'First name',
                 'email' => 'test@example.com',
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirectToRoute('profile.edit');
 
         $user->refresh();
 
-        $this->assertSame('Test User', $user->name);
+        $this->assertSame('username', $user->username);
+        $this->assertSame('First name', $user->first_name);
         $this->assertSame('test@example.com', $user->email);
         $this->assertNull($user->email_verified_at);
     }
@@ -51,12 +57,14 @@ class ProfileTest extends TestCase
             ->actingAs($user)
             ->patch('/profile', [
                 'name' => 'Test User',
+                'username' => 'username',
+                'first_name' => 'First name',
                 'email' => $user->email,
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirectToRoute('profile.edit');
 
         $this->assertNotNull($user->refresh()->email_verified_at);
     }
