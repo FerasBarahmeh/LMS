@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Enums\{Theme};
 use App\Http\Requests\{ProfileUpdateRequest};
 use App\Models\User;
-use App\Traits\Controllers\FlashMessages;
 use Illuminate\Http\{RedirectResponse, Request};
 use Illuminate\Support\Facades\{Auth, Redirect, Validator};
 use Illuminate\Validation\{Rule, ValidationException};
@@ -13,8 +12,6 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    use FlashMessages;
-
     /**
      * The path to the blade files for this controller
      */
@@ -23,18 +20,12 @@ class ProfileController extends Controller
     /**
      * The route name for this controller
      */
-    private const string HOME_ROUTE_NAME = 'profile.edit';
+    private const string PROFILE_EDIT_ROUTE = 'profile.edit';
 
-    /**
-     * Constructor controller
-     */
-    public function __construct()
-    {
-        $this->messages = [
-            'profile-update-fail' => 'Fail  Updated Profile',
-            'profile-update-successfully' => 'Profile Updated Successfully',
-        ];
-    }
+    protected const array MESSAGES = [
+        'profile-update-fail' => 'Fail  Updated Profile',
+        'profile-update-successfully' => 'Profile Updated Successfully',
+    ];
 
     /**
      * Display the user's profile form.
@@ -69,11 +60,11 @@ class ProfileController extends Controller
 
         $saved = $request->user()->save();
 
-        if (!$saved)
-            return $this->backWith('profile-update-fail');
+        $messageKey = $saved ? 'profile-update-successfully' : 'profile-update-fail';
+        $messageValue = self::MESSAGES[$messageKey];
 
-        return $this->backWith('profile-update-successfully');
-
+        return Redirect::route(self::PROFILE_EDIT_ROUTE)
+            ->with($messageKey, $messageValue);
     }
 
     /**
