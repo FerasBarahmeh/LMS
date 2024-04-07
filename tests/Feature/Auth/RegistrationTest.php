@@ -12,6 +12,7 @@ class RegistrationTest extends TestCase
 
     public function test_registration_screen_can_be_rendered(): void
     {
+        $this->withOutLaravelLocalizationMiddlewares();
         $response = $this->get('/register');
 
         $response->assertStatus(200);
@@ -19,7 +20,9 @@ class RegistrationTest extends TestCase
 
     public function test_new_users_can_register(): void
     {
+        $this->withOutLaravelLocalizationMiddlewares();
         $response = $this->post('/register', [
+            'username' => 'username',
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => 'password',
@@ -27,6 +30,6 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+        $response->assertRedirect(RouteServiceProvider::determineIntendedHome());
     }
 }
