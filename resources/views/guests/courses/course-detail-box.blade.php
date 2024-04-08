@@ -1,7 +1,7 @@
 <div class="course-detail-bx">
     <div class="course-price price">
 
-        <h4  @class(['price text-capitalize', 'free' => is_string($course->price)])>{{ $course->price }}</h4>
+        <h4  @class(['price text-capitalize', 'free' => is_numeric($course->price)])>{{  Currency::name($course->setting->currency) . ' ' .  $course->price }}</h4>
     </div>
     <div class="course-buy-now text-center">
         <a href="#" class="btn radius-xl text-uppercase">Buy Now This Courses</a>

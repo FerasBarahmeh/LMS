@@ -31,7 +31,7 @@
                     <div class="col-lg-9 col-md-8 col-sm-12">
                         <div class="courses-post">
                             <div class="ttr-post-media media-effect">
-                                <a href="#"><img src="{{ $course->service()->courseImage() }}" alt=""></a>
+                                <a href="#"><img src="{{ $course->service()->urlCourseImage() }}" alt=""></a>
                             </div>
                             <div class="ttr-post-info">
                                 <div class="ttr-post-title ">

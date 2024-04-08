@@ -1,7 +1,7 @@
 <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
     <div class="cours-bx">
         <div class="action-box">
-            <img src="{{ $course->service()->courseImage() }}" alt="">
+            <img src="{{ $course->service()->urlCourseImage() }}" alt="">
             <a href="{{ route('courses.course', $course->id) }}" class="btn">Describe</a>
         </div>
         <div class="info-bx text-center">

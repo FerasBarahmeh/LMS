@@ -1,6 +1,6 @@
 <div class="widget-post clearfix">
     <div class="ttr-post-media"><img
-            src="{{ $recentCourse->service()->courseImage() }}"
+            src="{{ $recentCourse->service()->urlCourseImage() }}"
             width="200" height="143" alt=""></div>
     <div class="ttr-post-info">
         <div class="ttr-post-header">
