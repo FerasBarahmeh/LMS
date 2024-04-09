@@ -138,14 +138,14 @@ class CourseService
     {
         return Course::with(relations: $relations)->whereHas('setting', function ($query) {
             $query->where('published', true);
-        });
+        })->where('price', '0');
     }
 
     public static function publishedCourse(): Builder
     {
         return Course::with('user', 'category', 'setting', 'sections', 'media')->whereHas('setting.publishStatus', function ($query) {
             $query->where('publishable', true);
-        });
+        })->where('price', '0');
     }
 
     public function __destruct()
