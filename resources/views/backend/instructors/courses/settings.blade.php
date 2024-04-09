@@ -32,19 +32,22 @@
                         @if($course->setting->publishStatus->publishable)
                             <i class="icon icon-rocket"></i>
                             <span> {{ $course->setting->published ? 'Un publish' : 'Publish' }}</span>
-                        @else
-                            <span> Can't publish yet</span>
                         @endif
                     </x-primary-button>
                     <x-input-error :messages="$errors->get('id')" class="mt-2"/>
                 </form>
 
                 <!-- Reason failure messages -->
-                <ul>
-                    @foreach($publishabilityFailureReasons as $reason)
-                        <li>{{ $reason }}</li>
-                    @endforeach
-                </ul>
+               @if(! $course->setting->publishStatus->publishable)
+                    <div class="hists">
+                        <h5 >Why You cant publish course ?</h5>
+                        <ul class="d-flex flex-column">
+                            @foreach($publishabilityFailureReasons as $reason)
+                                <li @class(['mt-1 pt-1 pb-1 pl-2 rad-5', 'bg-gray-200' => $loop->odd, 'bg-gray-500' => $loop->even])>{{ $reason }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+               @endif
             </div>
         </div>
 
