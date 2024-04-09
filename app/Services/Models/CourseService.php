@@ -148,6 +148,20 @@ class CourseService
         })->where('price', '0');
     }
 
+    public function getPublishabilityFailureReasons(): array
+    {
+        $publishable = $this->course->service()->publishStatus;
+        return array_filter([
+            !$publishable->curriculum_compass ? 'Add more curriculum' : '',
+            !$publishable->has_description ? 'Provide course description' : '',
+            !$publishable->has_course_image ? 'Include course image' : '',
+            !$publishable->has_promotional_video ? 'Upload promotional video' : '',
+            !$publishable->is_free ? 'Set course price to 0 (free)' : '',
+            !$publishable->has_congratulations_message ? 'Add congratulations message' : '',
+            !$publishable->has_welcome_message ? 'Add welcome message' : '',
+        ]);
+    }
+
     public function __destruct()
     {
         unset($this->course);

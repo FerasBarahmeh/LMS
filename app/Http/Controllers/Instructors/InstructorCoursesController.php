@@ -109,6 +109,7 @@ class InstructorCoursesController extends Controller
 
         return view(self::BLADE_HUB . 'settings', [
             'course' => $course,
+            'publishabilityFailureReasons' => $course->service()->getPublishabilityFailureReasons(),
         ]);
     }
 

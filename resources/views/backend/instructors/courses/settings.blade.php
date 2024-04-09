@@ -38,8 +38,13 @@
                     </x-primary-button>
                     <x-input-error :messages="$errors->get('id')" class="mt-2"/>
                 </form>
-                <span
-                    class="text-muted tx-11 p-2 m-3">{{ $course->service()->publishable() ? 'you can publish it now' : 'Can\'t publish for now'  }}</span>
+
+                <!-- Reason failure messages -->
+                <ul>
+                    @foreach($publishabilityFailureReasons as $reason)
+                        <li>{{ $reason }}</li>
+                    @endforeach
+                </ul>
             </div>
         </div>
 
