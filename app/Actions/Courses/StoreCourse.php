@@ -6,11 +6,12 @@ use App\Models\Course;
 
 class StoreCourse
 {
-    public static function execute(array $date)
+    public static function execute(array $data)
     {
-        $course = Course::create($date);
-        $course->setting()->create();
-        $course->setting->publishStatus()->create();
+        $course = Course::create($data);
+        $setting = $course->setting()->create();
+        $setting->publishStatus()->create();
+        EnrollmentToCourseForFreeAction::execute($course, user());
         return $course;
     }
 }

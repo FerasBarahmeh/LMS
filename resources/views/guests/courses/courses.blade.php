@@ -5,7 +5,7 @@
             <a href="{{ route('courses.course', $course->id) }}" class="btn">Describe</a>
         </div>
         <div class="info-bx text-center">
-            <h5><a href="#">{{ $course->name }}</a></h5>
+            <h5><a href="{{ route('courses.course', $course->id) }}">{{ Str::limit($course->name, 25) }}</a></h5>
             <span class="text-capitalize">{{ $course->category->name }}</span>
         </div>
         <div class="cours-more-info">
@@ -20,7 +20,8 @@
                 </ul>
             </div>
             <div class="price d-flex align-items-center justify-content-center">
-                <h5> <span class="tx-11">{{ Currency::name($course->setting->currency)  }}</span> {{ $course->price }}</h5>
+                <h5><span class="tx-11">{{ Currency::name($course->setting->currency)  }}</span> {{ $course->price }}
+                </h5>
             </div>
         </div>
     </div>

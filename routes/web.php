@@ -16,38 +16,41 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
 
         Route::get('/test', function () {
+            $payment = \App\Models\Payment::first();
             return 'test';
         });
 
         Route::middleware('auth')->group(function () {
-            Route::prefix('profile')->group(function () {
-                Route::get('/', [ProfileController::class, 'index'])
-                    ->name('profile.index');
+            /**
+             * Profile
+             */
+            Route::prefix('profile')->controller(ProfileController::class)->group(function () {
+                Route::get('/', 'index')->name('profile.index');
 
-                Route::get('/edit', [ProfileController::class, 'edit'])
-                    ->name('profile.edit');
+                Route::get('/edit', 'edit')->name('profile.edit');
 
-                Route::patch('', [ProfileController::class, 'update'])
-                    ->name('profile.update');
+                Route::patch('', 'update')->name('profile.update');
 
-                Route::delete('', [ProfileController::class, 'destroy'])
-                    ->name('profile.destroy');
+                Route::delete('', 'destroy')->name('profile.destroy');
 
-                Route::post('/change-profile-picture', [ProfileController::class, 'changeProfilePicture'])
-                    ->name('profile.change.profile.picture');
+                Route::post('/change-profile-picture', 'changeProfilePicture')->name('profile.change.profile.picture');
 
-                Route::put('/change-theme', [ProfileController::class, 'changeTheme'])
-                    ->name('user.change.theme');
+                Route::put('/change-theme', 'changeTheme')->name('user.change.theme');
 
             });
 
             /**
+             * Course enrollment
+             */
+
+
+            /**
              * Temporary Files
              */
-            Route::post('/tmp-upload', [TemporaryFileController::class, 'upload'])
-                ->name('tmp.upload');
-            Route::delete('/tmp-delete', [TemporaryFileController::class, 'delete'])
-                ->name('tmp.delete');
+            Route::controller(TemporaryFileController::class)->group(function () {
+                Route::post('/tmp-upload', 'upload')->name('tmp.upload');
+                Route::delete('/tmp-delete', 'delete')->name('tmp.delete');
+            });
 
 
         });

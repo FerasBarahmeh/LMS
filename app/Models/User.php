@@ -8,6 +8,9 @@ use App\Services\Models\UserService;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -59,9 +62,24 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         return User::where('privilege', Privileges::Instructor->value)->get();
     }
 
-    public function instructor(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function instructor(): HasOne
     {
         return $this->hasOne(Instructor::class);
+    }
+
+    public function courses(): BelongsToMany
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
     }
 
     public function service(): UserService
