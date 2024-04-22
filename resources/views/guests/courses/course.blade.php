@@ -19,6 +19,10 @@
     <!-- Breadcrumb row END -->
     <!-- inner page banner END -->
     <div class="content-block">
+        <!--  Alerts-->
+        <div class="container mt-2">
+            <x-alerts.alert :succeess="session('success-enroll')" :fail="session('fail-enroll')"/>
+        </div>
         <!-- About Us -->
         <div class="section-area section-sp1">
             <div class="container">

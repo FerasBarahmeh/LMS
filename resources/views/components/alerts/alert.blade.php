@@ -4,7 +4,7 @@
 @if(isset($success) )
     <x-alerts.success :message="$success"/>
 @elseif(isset($fail))
-    <x-alerts.success :message="$fail"/>
+    <x-alerts.danger :message="$fail"/>
 @endif
 
 <span id="alert-scroll"></span>

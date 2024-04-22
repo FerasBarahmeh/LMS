@@ -3,11 +3,8 @@
 namespace App\Services\Models;
 
 use App\Enums\MediaCollections;
+use App\Models\Course;
 use App\Models\User;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileCannotBeAdded;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\InvalidBase64Data;
 
 class UserService
 {
@@ -37,12 +34,19 @@ class UserService
         if ($this->hasProfilePicture() !== false)
             $this->user->getFirstMedia(MediaCollections::ProfilePicture->value)->delete();
 
-        try {
-            $this->user->addMediaFromBase64($blob)
-                ->usingFileName('profile.picture.png')
-                ->toMediaCollection(MediaCollections::ProfilePicture->value);
-        } catch (FileDoesNotExist|FileIsTooBig|InvalidBase64Data|FileCannotBeAdded $e) {
-        }
+        $this->user->addMediaFromBase64($blob)
+            ->usingFileName('profile.picture.png')
+            ->toMediaCollection(MediaCollections::ProfilePicture->value);
+    }
+
+    public function isEnrolled($courseId): bool
+    {
+        return (Course::findOrFail($courseId))->users()->where('user_id', $this->user->id)->exists();
+    }
+
+    public function isNotEnrolled($courseId): bool
+    {
+        return !(Course::findOrFail($courseId))->users()->where('user_id', $this->user->id)->exists();
     }
 
     public function __destruct()

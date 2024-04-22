@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TemporaryFileController;
 use Illuminate\Support\Facades\Route;
@@ -13,7 +14,6 @@ Route::get('/', function () {
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->prefix(LaravelLocalization::setLocale())
     ->group(function () {
-
 
         Route::get('/test', function () {
             $payment = \App\Models\Payment::first();
@@ -42,7 +42,9 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
             /**
              * Course enrollment
              */
-
+            Route::controller(EnrollmentController::class)->prefix('/enrollments')->group(function () {
+                Route::post('/enroll/{course}', 'enroll')->name('enrollments.enroll');
+            });
 
             /**
              * Temporary Files

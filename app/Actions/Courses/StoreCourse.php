@@ -11,7 +11,7 @@ class StoreCourse
         $course = Course::create($data);
         $setting = $course->setting()->create();
         $setting->publishStatus()->create();
-        EnrollmentToCourseForFreeAction::execute($course, user());
+        EnrollmentToCourseForFreeAction::execute($course);
         return $course;
     }
 }

@@ -9,7 +9,6 @@ use Illuminate\Contracts\View\View;
 
 class CoursesController extends Controller
 {
-
     private const string BLADE_HUB = 'guests.courses.';
 
     /**

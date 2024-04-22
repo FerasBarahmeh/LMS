@@ -1,11 +1,21 @@
 <div class="course-detail-bx">
-    <div class="course-price price">
 
-        <h4  @class(['price text-capitalize', 'free' => is_numeric($course->price)])>{{  Currency::name($course->setting->currency) . ' ' .  $course->price }}</h4>
-    </div>
-    <div class="course-buy-now text-center">
-        <a href="#" class="btn radius-xl text-uppercase">Buy Now This Courses</a>
-    </div>
+    @if(user()->service()->isNotEnrolled($course->id))
+        <div class="course-price price">
+            <h4  @class(['price text-capitalize', 'free' => is_string($course->price)])>{{  ! is_string($course->price) ? Currency::name($course->setting->currency) . ' ' .  $course->price : $course->price }}</h4>
+        </div>
+        <div class="course-buy-now text-center">
+            <form action="{{ route('enrollments.enroll', $course->id) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn radius-xl text-uppercase">Buy Now This Courses</button>
+            </form>
+        </div>
+    @else
+        <h4  @class(['price text-capitalize'])>
+            <a href="#">Go to Curriculum</a>
+        </h4>
+    @endif
+
     <div class="teacher-bx">
         <div class="teacher-info">
             <div class="teacher-thumb">
