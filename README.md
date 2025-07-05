@@ -11,3 +11,8 @@
 # Note
  - in your php config (php.ini) file change the post_max_size and upload_max_filesize	to the max size you wan't uploade
  - Connect to internet
+
+# How Login
+username: admin password: pasword # admin privilage
+username: instructor password: pasword # instructor privilage
+username: student password: pasword # student privilage
