@@ -17,7 +17,7 @@ class EnrollmentController extends Controller
         if (!user()->service()->isEnrolled($course)) {
             $course = Course::findOrFail($course);
             EnrollmentToCourseForFreeAction::execute($course);
-            return redirect()->route('course')->with('success-enroll', 'You are enrolled now.');
+            return redirect()->route('course', ['course'=>$course] )->with('success-enroll', 'You are enrolled now.');
         }
 
         return redirect()->back()->with('fail-enroll', 'You already enrolled in this course.');

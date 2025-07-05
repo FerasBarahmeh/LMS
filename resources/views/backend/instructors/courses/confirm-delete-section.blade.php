@@ -20,7 +20,7 @@
 
             <!-- Password -->
             <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="mt-3 mb-0 text-danger"/>
+                <x-input-label for="password" value="{{ __('Password.confirm_password') }}" class="mt-3 mb-0 text-danger"/>
                 <x-text-input
                     id="password"
                     name="password"
