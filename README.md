@@ -1,5 +1,5 @@
 # How Run application
-1) `git clone git clone git@github.com:FerasBarahmeh/LMS.git`
+1) `git clone git@github.com:FerasBarahmeh/LMS.git`
 2) `cd LMS`
 3) `composer update`
 4) copy .env file if your OS is linux use this command `cp .env.example .env`
